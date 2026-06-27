@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORKNIC</title>
+<meta name="description" content="도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
+<meta property="og:title" content="WORKNIC">
+<meta property="og:description" content="도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://worknic.co.kr">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@latest/css/SpoqaHanSansNeo.css">
+<style>
+  :root{
+    --ink:#1A1A1A;
+    --paper:#F4EFE6;
+    --line:#1A1A1A;
+    --sub:#888;
+    --hover:#FBF8F2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Spoqa Han Sans Neo',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .card{
+    width:100%;
+    max-width:400px;
+    opacity:0;
+    animation:rise .9s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  @keyframes rise{
+    from{opacity:0;transform:translateY(12px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .card{animation:none;opacity:1;}
+  }
+
+  /* 헤더 */
+  .comma{
+    width:30px;
+    height:auto;
+    color:var(--ink);
+    margin-bottom:20px;
+    display:block;
+  }
+  .mark{
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:5px;
+    margin-bottom:8px;
+  }
+  .tagline-top{
+    font-size:10px;
+    letter-spacing:2.4px;
+    text-transform:uppercase;
+    font-weight:400;
+    color:var(--ink);
+    margin-bottom:44px;
+  }
+
+  /* 채널 리스트 */
+  .channels{
+    list-style:none;
+    margin-bottom:36px;
+  }
+  .channels li{
+    border-top:1px solid var(--line);
+  }
+  .channels li:last-child{
+    border-bottom:1px solid var(--line);
+  }
+  .channels a{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    padding:16px 4px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:background .25s ease, padding-left .25s ease;
+  }
+  .channels a:hover,
+  .channels a:focus-visible{
+    background:var(--hover);
+    padding-left:12px;
+    outline:none;
+  }
+  .channels a:focus-visible{
+    outline:1px solid var(--ink);
+    outline-offset:-1px;
+  }
+  .ch-label{
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:1.5px;
+  }
+  .ch-sub{
+    font-size:11px;
+    font-weight:300;
+    letter-spacing:.3px;
+    color:var(--sub);
+  }
+
+  /* 연락 줄 */
+  .contact{
+    display:flex;
+    gap:18px;
+    margin-bottom:40px;
+    font-size:11px;
+    letter-spacing:1px;
+  }
+  .contact a{
+    color:var(--ink);
+    text-decoration:none;
+    transition:color .25s ease;
+  }
+  .contact a:hover,
+  .contact a:focus-visible{
+    color:var(--sub);
+    outline:none;
+  }
+  .contact .divider{
+    color:#CCC;
+  }
+
+  /* 푸터 */
+  .rule{
+    width:24px;
+    height:1px;
+    background:var(--ink);
+    margin-bottom:18px;
+  }
+  .creed{
+    font-size:12px;
+    letter-spacing:.3px;
+    line-height:1.8;
+  }
+  .place{
+    color:var(--sub);
+    font-size:11px;
+    letter-spacing:.8px;
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <svg class="comma" viewBox="-24.76 85.76 828.61 957.12" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WORKNIC">
+      <path d="m 0,0 c -9.99,0 -20,-0.383 -29.966,0.112 -9.192,0.458 -18.202,2.346 -25.92,7.931 -4.872,3.525 -8.439,7.926 -9.396,14.153 -1.113,7.237 -2.467,14.436 -3.707,21.653 -0.482,2.806 0.328,4.711 3.232,5.873 8.175,3.271 16.415,6.449 24.339,10.268 9.357,4.512 20.104,6.225 27.758,14.266 6.998,7.351 14.554,14.169 21.68,21.403 7.922,8.043 15.93,16.036 23.354,24.529 6.453,7.38 12.149,15.423 18.16,23.189 0.503,0.65 0.924,1.39 1.258,2.143 2.7,6.076 2.044,7.033 -4.533,6.498 -19.341,-1.574 -38.57,-0.064 -57.759,2.188 -9.575,1.124 -19.235,1.992 -28.632,4.019 -7.894,1.702 -15.674,4.417 -23.122,7.582 -9.938,4.223 -19.461,9.415 -29.244,14.015 -20.915,9.838 -41.746,19.576 -60.439,33.667 -13.581,10.239 -26.499,21.095 -39.017,32.531 -26.087,23.832 -46.681,51.808 -62.961,83.061 -5.757,11.053 -11.287,22.23 -17.249,33.171 -9.073,16.649 -9.496,33.343 -2.316,50.875 4.464,10.903 7.354,22.446 11.093,33.654 7.472,22.396 14.736,44.828 25.8,65.884 4.916,9.356 7.63,19.847 11.802,29.628 1.526,3.578 3.832,7.209 6.719,9.753 11.731,10.334 23.533,20.636 35.913,30.166 5.977,4.601 13.292,7.467 20.004,11.113 11.236,6.106 22.414,12.321 33.728,18.279 11.652,6.133 23.565,11.471 36.596,14.367 18.159,4.036 36.141,8.876 54.172,13.476 3.049,0.779 5.927,2.199 8.945,3.126 4.104,1.262 8.357,3.573 12.387,3.274 16.71,-1.241 32.613,4.317 48.968,5.067 14.56,0.668 29.23,-0.232 43.811,-1.119 9.77,-0.594 19.709,-1.449 29.12,-3.917 7.344,-1.926 14.386,-5.899 20.854,-10.063 9.347,-6.019 18.055,-13.034 27.035,-19.625 0.804,-0.589 1.665,-1.122 2.394,-1.794 7.531,-6.948 15.302,-13.662 22.446,-20.989 3.745,-3.842 6.425,-8.735 9.498,-13.216 2.589,-3.775 4.999,-7.671 7.577,-11.455 4.768,-7 9.324,-14.17 14.479,-20.875 6.689,-8.698 13.981,-16.928 20.801,-25.529 2.969,-3.744 6.226,-7.585 7.944,-11.937 6.103,-15.456 12.096,-30.987 17.226,-46.784 12.663,-38.999 18.584,-79.349 21.776,-120.047 0.76,-9.686 -1.913,-19.81 -4.019,-29.513 -3.284,-15.126 -6.307,-30.467 -11.494,-44.983 -6.986,-19.546 -15.892,-38.407 -24.031,-57.538 -5.863,-13.783 -11.022,-27.944 -17.939,-41.181 C 210.75,154.323 200.962,139.026 191.569,123.545 186.403,115.03 181.66,106.029 175.187,98.586 164.091,85.823 151.817,74.081 139.969,61.978 136.832,58.773 133.432,55.827 130.173,52.74 113.236,36.701 95.787,21.145 75.467,9.599 67.729,5.201 58.293,2.776 49.361,1.715 33.026,-0.225 16.492,-0.481 0.04,-1.439 0.027,-0.96 0.014,-0.479 0,0" fill="currentColor" fill-rule="evenodd" transform="matrix(1.3333333,0,0,-1.3333333,391.36333,997.46013)" />
+    </svg>
+    <div class="mark">WORKNIC</div>
+    <div class="tagline-top">Korea's First Tool Culture Brand</div>
+
+    <ul class="channels">
+      <li>
+        <a href="https://naver.me/G2EOPjhG" target="_blank" rel="noreferrer noopener">
+          <span class="ch-label">VISIT</span>
+          <span class="ch-sub">포천 매장 · 지도</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://smartstore.naver.com/worknic_korea/" target="_blank" rel="noreferrer noopener">
+          <span class="ch-label">STORE</span>
+          <span class="ch-sub">스마트스토어</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/worknic.korea/" target="_blank" rel="noreferrer noopener">
+          <span class="ch-label">INSTAGRAM</span>
+          <span class="ch-sub">@worknic.korea</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/@worknic_comma" target="_blank" rel="noreferrer noopener">
+          <span class="ch-label">YOUTUBE</span>
+          <span class="ch-sub">@worknic_comma</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="contact">
+      <a href="tel:1833-3640">T 1833-3640</a>
+      <span class="divider">·</span>
+      <a href="mailto:worknic@worknickorea.com">E-MAIL</a>
+    </div>
+
+    <div class="rule"></div>
+    <div class="creed">
+      도구를 고르는 기준은, 결국 삶의 태도입니다.<br>
+      <span class="place">포천 WORKNIC</span>
+    </div>
+  </main>
+</body>
+</html>

@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WORKNIC</title>
-<meta name="description" content="도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
+<meta name="description" content="페스툴(FESTOOL) 공식 특약점 · 조달청 등록업체. 도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
 <meta property="og:title" content="WORKNIC">
-<meta property="og:description" content="도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
+<meta property="og:description" content="페스툴(FESTOOL) 공식 특약점 · 조달청 등록업체. 도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://worknic.co.kr">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -93,14 +93,55 @@
     border-radius:4px;
     text-decoration:none;
     color:var(--paper);
-    transition:background .25s ease;
+    transition:background .25s ease, border-color .25s ease;
   }
   .ask:hover,.ask:focus-visible{background:#2c2719;outline:none;}
   .ask:focus-visible{outline:1px solid var(--gold);outline-offset:2px;}
   .ask-left{display:flex;flex-direction:column;gap:5px;padding-right:14px;}
   .ask-title{font-size:17px;font-weight:700;letter-spacing:.3px;}
   .ask-desc{font-size:12.5px;font-weight:300;color:var(--paper-dim);}
-  .ask-badge{font-size:11px;font-weight:500;color:var(--gold);letter-spacing:1px;white-space:nowrap;flex-shrink:0;}
+  .ask-badge{font-size:11px;font-weight:500;color:var(--gold);letter-spacing:1px;white-space:nowrap;flex-shrink:0;transition:color .4s ease;}
+
+  /* ===== 상태 한 줄 (상담 가능 등) ===== */
+  .ask-status{
+    display:none;
+    align-items:center;
+    gap:9px;
+    margin-top:9px;
+    font-size:12.5px;
+    font-weight:500;
+    letter-spacing:.2px;
+    line-height:1.5;
+  }
+  .ask.is-open .ask-status,
+  .ask.is-closed .ask-status{display:flex;}
+  /* 불 — 기본은 꺼진 상태 */
+  .ask-light{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    flex-shrink:0;
+    background:#3a352c;
+    transition:background .45s ease, box-shadow .45s ease;
+  }
+  /* 불이 켜진 느낌 — 따뜻한 골드 글로우 */
+  .ask.is-open .ask-light{
+    background:var(--gold);
+    box-shadow:0 0 10px 1px rgba(191,138,48,.6), 0 0 3px rgba(191,138,48,.95);
+    animation:lamp 3s ease-in-out infinite;
+  }
+  .ask.is-open .ask-status{color:var(--paper);}
+  .ask.is-open .ask-badge{color:var(--gold);}
+  /* 불이 꺼진 느낌 — 어둑하게 가라앉음 */
+  .ask.is-closed{border-color:var(--line);}
+  .ask.is-closed .ask-light{background:#33302a;box-shadow:none;}
+  .ask.is-closed .ask-status{color:var(--sub);}
+  .ask.is-closed .ask-badge{color:var(--sub);}
+  @keyframes lamp{
+    0%,100%{box-shadow:0 0 9px 1px rgba(191,138,48,.55), 0 0 3px rgba(191,138,48,.9);}
+    50%{box-shadow:0 0 15px 2px rgba(191,138,48,.8), 0 0 4px rgba(191,138,48,1);}
+  }
+  @media (prefers-reduced-motion:reduce){.ask.is-open .ask-light{animation:none;}}
 
   /* ===== 채널 ===== */
   .channels{list-style:none;}
@@ -132,39 +173,6 @@
     color:var(--paper-dim);text-align:right;
   }
 
-  /* ===== 연혁(서사+계보) ===== */
-  .lineage{
-    margin-top:36px;
-    padding:32px 0 46px;
-    border-top:1px solid var(--line-soft);
-    text-align:center;
-  }
-  .lineage-story{
-    font-size:14px;
-    font-weight:300;
-    line-height:1.75;
-    color:var(--paper-dim);
-    letter-spacing:.2px;
-    margin-bottom:22px;
-  }
-  .lineage-flow{
-    font-size:12px;
-    font-weight:300;
-    line-height:1.5;
-    color:var(--sub);
-    letter-spacing:.3px;
-    margin-bottom:18px;
-  }
-  .lineage-flow .arrow{color:rgba(140,132,120,.4);margin:0 6px;font-size:10px;}
-  .lineage-now{color:var(--paper-dim);font-weight:500;}
-  .lineage-since{
-    font-size:10px;
-    font-weight:500;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:var(--gold);
-  }
-
   /* ===== 푸터 (전문성) ===== */
   .foot{
     background:var(--bg-soft);
@@ -176,58 +184,141 @@
     max-width:440px;
     margin:0 auto;
   }
+  /* ── 푸터 타이포 스케일: 13.5 / 12 / 11 / 10 ── */
   .foot-creed{
-    font-size:12.5px;
-    line-height:1.85;
+    font-size:13.5px;
+    font-weight:400;
+    line-height:2;
     color:var(--paper-dim);
-    letter-spacing:.2px;
+    letter-spacing:.3px;
   }
+  .foot-lineage{
+    margin-top:16px;
+  }
+  .foot-lineage .lineage-flow{
+    font-size:12px;
+    font-weight:400;
+    line-height:1.6;
+    color:var(--sub);
+    letter-spacing:.4px;
+    margin-bottom:8px;
+  }
+  .foot-lineage .arrow{color:rgba(140,132,120,.4);margin:0 7px;font-size:9px;}
+  .foot-lineage .lineage-now{color:var(--paper-dim);font-weight:500;}
+  .foot-lineage .lineage-since{
+    font-size:10px;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ── 인증 + 제안 (2×2) ── */
+  .foot-cert{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 22px;
+    margin-top:26px;
+    padding-top:24px;
+    border-top:1px solid var(--line-soft);
+  }
+  .cert-item{
+    display:flex;
+    align-items:baseline;
+    gap:9px;
+  }
+  .cert-item::before{
+    content:"";
+    width:4px;
+    height:4px;
+    margin-top:6px;
+    border-radius:50%;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+  .cert-label{
+    font-size:12px;
+    font-weight:500;
+    line-height:1.5;
+    letter-spacing:.2px;
+    color:var(--paper-dim);
+  }
+  .cert-eng{
+    display:block;
+    margin-top:3px;
+    font-size:10px;
+    font-weight:400;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--sub);
+  }
+  /* 연결형 항목(창업 컨설팅·렌탈) */
+  .cert-link{text-decoration:none;}
+  .cert-link .cert-label{transition:color .2s ease;}
+  .cert-go{
+    width:9px;
+    height:9px;
+    margin-left:6px;
+    vertical-align:middle;
+    position:relative;
+    top:-1px;
+    transition:transform .2s ease;
+  }
+  .cert-link:hover .cert-label,
+  .cert-link:focus-visible .cert-label{color:var(--gold);}
+  .cert-link:hover .cert-go{transform:translate(1px,-1px);}
+  .cert-link:focus-visible{outline:1px solid var(--line);outline-offset:3px;border-radius:2px;}
+
+  /* ── 사업자 정보 ── */
   .foot-biz{
-    margin-top:20px;
+    margin-top:24px;
     font-size:11px;
-    line-height:2.05;
+    font-weight:400;
+    line-height:2.1;
     color:var(--sub);
     letter-spacing:.2px;
   }
   .foot-biz a{color:var(--paper-dim);text-decoration:none;}
   .foot-biz .row{display:block;}
-  .foot-legal{
-    margin-top:22px;
-    padding-top:18px;
-    border-top:1px solid var(--line-soft);
-    font-size:10.5px;
-    line-height:1.95;
-    color:var(--sub);
-    letter-spacing:.2px;
-  }
-  .foot-legal .tm{color:var(--paper-dim);}
 
-  /* ===== 공식 페이지 명시 ===== */
-  .foot-official{
-    margin-top:40px;
+  /* ── 하단 합침 (공식 안내 + 상표/저작권 + 콤마) ── */
+  .foot-close{
+    margin-top:32px;
     padding-top:26px;
     border-top:1px solid var(--line-soft);
     text-align:center;
   }
   .official-kr{
     font-size:11px;
-    line-height:1.7;
+    font-weight:400;
+    line-height:1.75;
     color:var(--paper-dim);
     letter-spacing:.2px;
   }
   .official-en{
-    margin-top:5px;
+    margin-top:4px;
     font-size:10px;
+    font-weight:400;
     line-height:1.6;
     color:var(--sub);
     letter-spacing:.3px;
   }
+  .foot-legal{
+    margin-top:18px;
+    font-size:10px;
+    font-weight:400;
+    line-height:1.9;
+    color:var(--sub);
+    letter-spacing:.2px;
+  }
+  .foot-legal .tm{color:var(--paper-dim);}
   .foot-comma{
     display:block;
-    width:15px;
+    width:14px;
     height:auto;
-    margin:28px auto 0;
-    opacity:.45;
+    margin:26px auto 0;
+    opacity:.4;
   }
 </style>
 </head>
@@ -239,12 +330,16 @@
       <span class="eyebrow">포천 WORKNIC</span>
     </header>
 
-    <a class="ask" href="https://talk.naver.com/profile/w4qyth" target="_blank" rel="noreferrer noopener">
+    <a class="ask" id="askCta" href="https://talk.naver.com/profile/w4qyth" target="_blank" rel="noreferrer noopener">
       <span class="ask-left">
         <span class="ask-title">실시간 문의</span>
         <span class="ask-desc">평일 09:00 – 16:00</span>
+        <span class="ask-status">
+          <span class="ask-light" aria-hidden="true"></span>
+          <span id="askStatusText"></span>
+        </span>
       </span>
-      <span class="ask-badge">네이버 톡톡 →</span>
+      <span class="ask-badge" id="askBadge">연결하기 →</span>
     </a>
 
     <ul class="channels">
@@ -273,19 +368,32 @@
         </a>
       </li>
     </ul>
-
-    <div class="lineage">
-      <div class="lineage-story">40년을 고쳐온 손이,<br>도구를 보는 눈이 되었습니다.</div>
-      <div class="lineage-flow">
-        대동농기구<span class="arrow">·</span>대동철물<span class="arrow">·</span>대동종합상사<span class="arrow">·</span><span class="lineage-now">워크닉</span>
-      </div>
-      <div class="lineage-since">Since 1980 · 경기도 포천</div>
-    </div>
   </main>
 
   <footer class="foot">
     <div class="foot-inner">
-      <p class="foot-creed">도구를 고르는 기준은, 결국 삶의 태도입니다.</p>
+      <p class="foot-creed">40년의 시간은 좋은 도구를 알아보는 기준이 되었습니다.<br>이제 워크닉은 그 기준으로, 오래 남을 도구의 문화를 만들어갑니다.</p>
+
+      <div class="foot-lineage">
+        <div class="lineage-flow">대동농기구<span class="arrow">·</span>대동철물<span class="arrow">·</span>대동종합상사<span class="arrow">·</span><span class="lineage-now">워크닉</span></div>
+        <div class="lineage-since">Since 1980 · 경기도 포천</div>
+      </div>
+
+      <div class="foot-cert">
+        <span class="cert-item">
+          <span class="cert-label">페스툴 공식 특약점<span class="cert-eng">Festool Authorized Dealer</span></span>
+        </span>
+        <span class="cert-item">
+          <span class="cert-label">조달청 등록업체<span class="cert-eng">Public Procurement Service</span></span>
+        </span>
+        <a class="cert-item cert-link" href="mailto:worknic@worknickorea.com?subject=창업 컨설팅 문의">
+          <span class="cert-label">창업 컨설팅<svg class="cert-go" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M3.5 3.5H8.5V8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="cert-eng">Brand &amp; Retail Consulting</span></span>
+        </a>
+        <a class="cert-item cert-link" href="https://member.worknic.co.kr" target="_blank" rel="noreferrer noopener">
+          <span class="cert-label">쉼표 멤버십<svg class="cert-go" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M3.5 3.5H8.5V8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="cert-eng">Comma Membership</span></span>
+        </a>
+      </div>
+
       <p class="foot-biz">
         <span class="row">워크닉 주식회사</span>
         <span class="row">경기도 포천시 화현면 화동로348번길 5-1</span>
@@ -294,17 +402,36 @@
         <span class="row">사업자등록번호 363-86-03519</span>
         <span class="row">통신판매업신고 2024-경기포천-0676</span>
       </p>
-      <p class="foot-legal">
-        <span class="tm">WORKNIC®</span> 워드마크와 콤마(,) 심볼은 워크닉 주식회사의 등록상표입니다.<br>
-        © 2026 WORKNIC Inc. All rights reserved.
-      </p>
-
-      <div class="foot-official">
-        <p class="official-kr">이 페이지는 워크닉 주식회사가 직접 운영·관리하는 공식 페이지입니다.</p>
-        <p class="official-en">This is the official website operated and managed by WORKNIC Inc.</p>
+      <div class="foot-close">
+        <p class="official-kr">본 페이지는 워크닉 주식회사가 직접 운영·관리하는 공식 웹사이트입니다.</p>
+        <p class="official-en">This is the official website, owned and operated by WORKNIC Inc.</p>
+        <p class="foot-legal">
+          <span class="tm">WORKNIC®</span> 워드마크와 콤마(,) 심볼은 워크닉 주식회사의 등록상표입니다.<br>
+          © 2026 WORKNIC Inc. All rights reserved.
+        </p>
         <img class="foot-comma" src="data:image/png;base64,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" alt="">
       </div>
     </div>
   </footer>
+  <script>
+  (function(){
+    var ask=document.getElementById('askCta');
+    if(!ask)return;
+    var statusText=document.getElementById('askStatusText');
+    // 한국 표준시(UTC+9) 기준 — 방문자 기기 시간대와 무관하게 계산
+    var now=new Date();
+    var kst=new Date(now.getTime()+now.getTimezoneOffset()*60000+9*3600000);
+    var day=kst.getDay();        // 0=일 ... 6=토
+    var hour=kst.getHours();
+    var open=(day>=1&&day<=5)&&hour>=9&&hour<16;  // 평일 09:00–16:00
+    if(open){
+      ask.classList.add('is-open');
+      statusText.textContent='현재 실시간 상담이 가능합니다';
+    }else{
+      ask.classList.add('is-closed');
+      statusText.textContent='지금은 상담 시간이 아닙니다 · 톡톡으로 남겨주세요';
+    }
+  })();
+  </script>
 </body>
 </html>

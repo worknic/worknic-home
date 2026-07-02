@@ -105,14 +105,15 @@
   /* ===== 상태 한 줄 (상담 가능 등) ===== */
   .ask-status{
     display:none;
-    align-items:center;
+    align-items:flex-start;
     gap:9px;
     margin-top:9px;
     font-size:12.5px;
     font-weight:500;
     letter-spacing:.2px;
-    line-height:1.5;
+    line-height:1.65;
   }
+  .ask-status .ask-line-promise{display:block;margin-top:3px;font-weight:400;}
   .ask.is-open .ask-status,
   .ask.is-closed .ask-status{display:flex;}
   /* 불 — 기본은 꺼진 상태 */
@@ -121,6 +122,7 @@
     height:8px;
     border-radius:50%;
     flex-shrink:0;
+    margin-top:5px;
     background:#3a352c;
     transition:background .45s ease, box-shadow .45s ease;
   }
@@ -426,10 +428,10 @@
     var open=(day>=1&&day<=5)&&hour>=9&&hour<16;  // 평일 09:00–16:00
     if(open){
       ask.classList.add('is-open');
-      statusText.textContent='현재 실시간 상담이 가능합니다';
+      statusText.innerHTML='지금 실시간 상담이 열려 있습니다.<span class="ask-line-promise">편하게 남겨주시면 바로 확인하여 답변 드리겠습니다.</span>';
     }else{
       ask.classList.add('is-closed');
-      statusText.textContent='지금은 상담 시간이 아닙니다 · 톡톡으로 남겨주세요';
+      statusText.innerHTML='지금은 실시간 상담 시간이 아닙니다.<span class="ask-line-promise">톡톡은 언제나 열려 있으니 편하게 남겨주세요. 순차적으로 확인하여 답변 드리겠습니다.</span>';
     }
   })();
   </script>

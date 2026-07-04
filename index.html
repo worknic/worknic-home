@@ -50,7 +50,7 @@
     width:100%;
     max-width:440px;
     margin:0 auto;
-    padding:56px 26px 0;
+    padding:56px 26px 44px;
     display:flex;
     flex-direction:column;
     opacity:0;
@@ -94,9 +94,9 @@
     align-items:center;
     justify-content:space-between;
     padding:20px 22px;
-    margin:34px 0 16px;
+    margin:38px 0 0;
     background:var(--card);
-    border:1px solid var(--gold);
+    border:1px solid var(--line);
     border-radius:4px;
     text-decoration:none;
     color:var(--paper);
@@ -180,6 +180,76 @@
   .ch-sub{
     font-size:12px;font-weight:300;letter-spacing:.2px;
     color:var(--paper-dim);text-align:right;
+  }
+
+  /* ===== 오늘의 쉼표 ===== */
+  .comma-today{
+    margin-top:44px;
+    margin-bottom:46px;
+    text-align:center;
+  }
+  .comma-eyebrow{
+    display:block;
+    font-size:10px;
+    font-weight:400;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--sub);
+    margin-bottom:16px;
+  }
+  .comma-line{
+    font-size:14.5px;
+    font-weight:300;
+    line-height:1.9;
+    color:var(--paper-dim);
+    letter-spacing:.3px;
+    min-height:1.9em;
+  }
+  /* 펜 끝 — 문장을 써내려가는 커서 */
+  .comma-caret{
+    display:inline-block;
+    width:1px;
+    height:1.05em;
+    margin-left:3px;
+    vertical-align:-0.16em;
+    background:var(--paper-dim);
+    opacity:0;
+    transition:opacity .7s ease;
+  }
+  .comma-caret.is-on{opacity:.5;animation:caret 1.1s step-end infinite;}
+  .comma-caret.is-rest{opacity:0;animation:none;}
+  @keyframes caret{0%,100%{opacity:.5;}50%{opacity:0;}}
+  /* 쉼표 초대 — 실시간 문의(테두리 버튼)와 다른 결: 조용한 초대, 밑줄이 탭 신호 */
+  .comma-invite{
+    display:block;
+    margin-top:24px;
+    padding:6px 12px 2px;
+    text-decoration:none;
+    text-align:center;
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity 1s ease, transform 1s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .comma-invite.is-in{opacity:1;transform:none;}
+  .ci-title{
+    display:block;
+    font-size:14.5px;font-weight:400;letter-spacing:.3px;line-height:1.75;color:var(--paper-dim);
+  }
+  .ci-hook{
+    display:inline-block;margin-top:10px;
+    font-size:14px;font-weight:500;letter-spacing:.3px;line-height:1.6;color:var(--gold);
+    border-bottom:1px solid rgba(191,138,48,.45);
+    padding-bottom:4px;
+    transition:border-color .2s ease;
+  }
+  .comma-invite:hover .ci-hook,
+  .comma-invite:focus-visible .ci-hook,
+  .comma-invite:active .ci-hook{border-color:var(--gold);}
+  .comma-invite:focus-visible{outline:none;}
+  @media (prefers-reduced-motion:reduce){
+    .comma-caret{display:none;}
+    .comma-invite{transition:none;opacity:1;transform:none;}
   }
 
   /* ===== 푸터 (전문성) ===== */
@@ -290,6 +360,8 @@
   }
   .foot-biz a{color:var(--paper-dim);text-decoration:none;}
   .foot-biz .row{display:block;}
+  /* 신뢰를 담보하는 정보는 또렷하게 */
+  .foot-biz .row-strong{color:var(--paper-dim);}
 
   /* ── 하단 합침 (공식 안내 + 상표/저작권 + 콤마) ── */
   .foot-close{
@@ -339,17 +411,14 @@
       <span class="eyebrow">포천 WORKNIC</span>
     </header>
 
-    <a class="ask" id="askCta" href="https://talk.naver.com/profile/w4qyth" target="_blank" rel="noreferrer noopener">
-      <span class="ask-left">
-        <span class="ask-title">실시간 문의</span>
-        <span class="ask-desc">평일 09:00 – 16:00</span>
-        <span class="ask-status">
-          <span class="ask-light" aria-hidden="true"></span>
-          <span id="askStatusText"></span>
-        </span>
-      </span>
-      <span class="ask-badge" id="askBadge">연결하기 →</span>
-    </a>
+    <div class="comma-today">
+      <span class="comma-eyebrow">오늘의 쉼표</span>
+      <p class="comma-line"><span id="commaText"></span><span class="comma-caret" id="commaCaret" aria-hidden="true"></span></p>
+      <a class="comma-invite" id="commaLink" href="https://comma.worknic.co.kr/letters" target="_blank" rel="noreferrer noopener">
+        <span class="ci-title">한 주 쌓인 마음, 여기 묻어두세요</span>
+        <span class="ci-hook">잔잔하고 따뜻한 위로를 만나보세요</span>
+      </a>
+    </div>
 
     <ul class="channels">
       <li>
@@ -377,6 +446,18 @@
         </a>
       </li>
     </ul>
+
+    <a class="ask" id="askCta" href="https://talk.naver.com/profile/w4qyth" target="_blank" rel="noreferrer noopener">
+      <span class="ask-left">
+        <span class="ask-title">실시간 문의</span>
+        <span class="ask-desc">평일 09:00 – 16:00</span>
+        <span class="ask-status">
+          <span class="ask-light" aria-hidden="true"></span>
+          <span id="askStatusText"></span>
+        </span>
+      </span>
+      <span class="ask-badge" id="askBadge">연결하기 →</span>
+    </a>
   </main>
 
   <footer class="foot">
@@ -408,8 +489,8 @@
         <span class="row">경기도 포천시 화현면 화동로348번길 5-1</span>
         <span class="row">대표번호 1833-3640 · <a href="mailto:worknic@worknickorea.com">worknic@worknickorea.com</a></span>
         <span class="row">운영시간 평일 07:00 – 18:00 · 실시간 상담 09:00 – 16:00</span>
-        <span class="row">사업자등록번호 363-86-03519</span>
-        <span class="row">통신판매업신고 2024-경기포천-0676</span>
+        <span class="row row-strong">사업자등록번호 363-86-03519</span>
+        <span class="row row-strong">통신판매업신고 2024-경기포천-0676</span>
       </p>
       <div class="foot-close">
         <p class="official-kr">본 페이지는 워크닉 주식회사가 직접 운영·관리하는 공식 웹사이트입니다.</p>
@@ -438,8 +519,82 @@
       statusText.innerHTML='지금 실시간 상담이 열려 있습니다.<span class="ask-line-promise">편하게 남겨주시면 바로 확인하여 답변 드리겠습니다.</span>';
     }else{
       ask.classList.add('is-closed');
-      statusText.innerHTML='지금은 실시간 상담 시간이 아닙니다.<span class="ask-line-promise">톡톡은 언제나 열려 있으니 편하게 남겨주세요. 순차적으로 확인하여 답변 드리겠습니다.</span>';
+      statusText.innerHTML='톡톡은 늘 열려 있습니다.<span class="ask-line-promise">편하게 남겨두시면, 문을 여는 아침에 가장 먼저 확인해 답 드리겠습니다.</span>';
     }
+  })();
+
+  // ===== 오늘의 쉼표 — 하루 한 문장(한국 표준시 기준) =====
+  (function(){
+    var textEl=document.getElementById('commaText');
+    var caret=document.getElementById('commaCaret');
+    var link=document.getElementById('commaLink');
+    if(!textEl)return;
+    // 워크닉 철학 문장 30 — 하루 한 문장(한국 표준시 기준)으로 회전
+    var lines=[
+      '좋은 도구는 손에 익기까지 시간을 요구한다. 사람도 그렇다.',
+      '유행은 지나가고, 손에 익은 것만 남는다.',
+      '새것보다, 길들인 것이 더 내 것이었다.',
+      '오래 쓴 것에는, 오래 쓴 이유가 생긴다.',
+      '십 년을 버틴 물건은, 십 년어치의 말을 품고 있다.',
+      '도구를 고르는 손끝에, 그 사람의 태도가 있다.',
+      '무엇을 쓰느냐가, 결국 어떻게 사느냐였다.',
+      '연장을 아끼는 사람은, 시간도 아낀다.',
+      '값이 아니라 태도로 골랐을 때, 후회가 없었다.',
+      '대충 쓴 도구는, 대충 보낸 하루를 닮는다.',
+      '빨리 끝낸 일보다, 제대로 끝낸 일이 오래 남았다.',
+      '손이 기억하는 일은, 쉽게 배신하지 않는다.',
+      '고치며 배운다. 버리며 배우는 것보다 깊게.',
+      '무뎌진 날을 가는 시간이, 사실은 나를 가는 시간이었다.',
+      '잘 드는 것 하나면, 군더더기 없는 하루가 된다.',
+      '좋은 도구는 실력을 대신하지 않는다. 다만 꺼내줄 뿐이다.',
+      '연장을 정리하는 저녁이, 하루 중 가장 조용했다.',
+      '쉼표는 문장을 멈추지 않는다. 숨을 고를 뿐이다.',
+      '하루를 잘 닫는 것도, 일의 일부였다.',
+      '다 쓴 도구를 닦는 시간에, 마음도 같이 닦였다.',
+      '느리게 가더라도, 방향이 맞으면 결국 도착한다.',
+      '급할수록, 날을 먼저 세웠다.',
+      '서두른 손끝은, 결국 두 번 일하게 만든다.',
+      '속도는 금세 잊히고, 방향은 오래 남았다.',
+      '쥐어본 것만이 안다. 무게는 설명되지 않는다.',
+      '좋은 것은 조용하다. 요란한 건 오래가지 않았다.',
+      '손에 맞는 무게를 알면, 삶의 무게도 가늠이 된다.',
+      '작업복을 벗어도, 그 태도는 벗어지지 않는다.',
+      '일하는 손과 사는 손은, 결국 같은 손이었다.',
+      '오늘 닦아둔 연장이, 내일의 나를 기다린다.'
+    ];
+    var now=new Date();
+    var kst=new Date(now.getTime()+now.getTimezoneOffset()*60000+9*3600000);
+    var start=new Date(kst.getFullYear(),0,0);
+    var day=Math.floor((kst-start)/86400000);
+    var sentence=lines[((day%lines.length)+lines.length)%lines.length];
+
+    // 움직임 최소화 설정이면 즉시 표시
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){
+      textEl.textContent=sentence;
+      if(link)link.classList.add('is-in');
+      return;
+    }
+
+    // 문장을 써내려간다 — 쉼표(,)에서 가장 오래 멈춘다
+    caret.classList.add('is-on');
+    var i=0;
+    function step(){
+      if(i<=sentence.length){
+        textEl.textContent=sentence.slice(0,i);
+        var ch=sentence.charAt(i-1);
+        i++;
+        var d=68;
+        if(ch===','){d=440;}          // 쉼표 — 멈춤
+        else if(ch==='.'){d=500;}
+        else if(ch===' '){d=140;}
+        setTimeout(step,d);
+      }else{
+        setTimeout(function(){ if(link)link.classList.add('is-in'); },520);
+        setTimeout(function(){ caret.classList.add('is-rest'); },2800);
+      }
+    }
+    setTimeout(step,680);
   })();
   </script>
 </body>

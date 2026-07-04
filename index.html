@@ -237,16 +237,25 @@
     font-size:14.5px;font-weight:400;letter-spacing:.3px;line-height:1.75;color:var(--paper-dim);
   }
   .ci-hook{
-    display:inline-block;margin-top:10px;
+    display:inline-flex;align-items:center;margin-top:10px;
     font-size:14px;font-weight:500;letter-spacing:.3px;line-height:1.6;color:var(--gold);
-    border-bottom:1px solid rgba(191,138,48,.45);
-    padding-bottom:4px;
-    transition:border-color .2s ease;
   }
-  .comma-invite:hover .ci-hook,
-  .comma-invite:focus-visible .ci-hook,
-  .comma-invite:active .ci-hook{border-color:var(--gold);}
+  /* 글쓰기 신호 — 만나보세요 뒤 펜 한 획 */
+  .ci-pen{
+    width:13px;height:13px;margin-left:7px;flex:none;
+    stroke:currentColor;opacity:.85;
+    transition:transform .3s ease,opacity .3s ease;
+  }
+  .comma-invite:hover .ci-pen,
+  .comma-invite:focus-visible .ci-pen,
+  .comma-invite:active .ci-pen{transform:translate(1px,-1px);opacity:1;}
   .comma-invite:focus-visible{outline:none;}
+  /* 조용한 안내 — 늘 열려 있음, 이름 없이 */
+  .ci-note{
+    display:block;margin-top:13px;
+    font-size:11.5px;font-weight:300;line-height:1.7;letter-spacing:.3px;
+    color:var(--sub);word-break:keep-all;
+  }
   @media (prefers-reduced-motion:reduce){
     .comma-caret{display:none;}
     .comma-invite{transition:none;opacity:1;transform:none;}
@@ -414,9 +423,10 @@
     <div class="comma-today">
       <span class="comma-eyebrow">오늘의 쉼표</span>
       <p class="comma-line"><span id="commaText"></span><span class="comma-caret" id="commaCaret" aria-hidden="true"></span></p>
-      <a class="comma-invite" id="commaLink" href="/letters" rel="noreferrer noopener">
+      <a class="comma-invite" id="commaLink" href="https://comma.worknic.co.kr/letters" rel="noreferrer noopener">
         <span class="ci-title">한 주 쌓인 마음, 여기 묻어두세요</span>
-        <span class="ci-hook">잔잔하고 따뜻한 위로를 만나보세요</span>
+        <span class="ci-hook">잔잔하고 따뜻한 위로를 만나보세요<svg class="ci-pen" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9.2 2.4l2.4 2.4-6.1 6.1-2.9.5.5-2.9 6.1-6.1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg></span>
+        <span class="ci-note">언제든 열려 있어요. 이름 없이, 따뜻한 쉼표를 나눠요.</span>
       </a>
     </div>
 

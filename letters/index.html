@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>누군가의 쉼표 · WORKNIC</title>
+<meta name="description" content="하루의 끝에, 서로의 쉼표를 나누는 곳. 도구를 고르는 기준은, 결국 삶의 태도입니다. 포천 WORKNIC">
+<meta property="og:title" content="누군가의 쉼표 · WORKNIC">
+<meta property="og:description" content="하루의 끝에, 서로의 쉼표를 나누는 곳. 포천 WORKNIC">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://comma.worknic.co.kr/letters">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@latest/css/SpoqaHanSansNeo.css">
+<style>
+  :root{
+    --paper:#F4EFE6;
+    --paper-2:#DED6C8;
+    --sub:#A69C8B;
+    --gold:#C2903A;
+    --line:rgba(244,239,230,.12);
+    --line-soft:rgba(244,239,230,.06);
+    --card:rgba(244,239,230,.035);
+    --placeholder:#7B7568;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Spoqa Han Sans Neo',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+    background:#1B1813;
+    background:linear-gradient(180deg,#23201A 0%,#1B1813 60%,#181510 100%) no-repeat fixed;
+    color:var(--paper);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  ::selection{background:rgba(194,144,58,.24);}
+
+  .wrap{max-width:516px;margin:0 auto;padding:100px 32px 100px;}
+  .fade{opacity:0;transform:translateY(8px);animation:rise 1.05s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none;}}
+
+  /* ===== 열기 ===== */
+  .open{text-align:center;}
+  .open-lead{font-size:15px;font-weight:300;line-height:2.05;color:var(--paper-2);letter-spacing:.3px;}
+
+  /* ===== 쉼표 남기기 (진입 · 살아있는 버튼) ===== */
+  .leave{text-align:center;margin-top:40px;}
+  .leave-link{
+    font-family:inherit;font-size:13px;font-weight:500;letter-spacing:.8px;color:var(--paper);
+    background:var(--card);border:1px solid var(--line);border-radius:2px;
+    padding:13px 28px;cursor:pointer;
+    transition:background .2s ease,border-color .2s ease,color .2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .leave-link:hover,.leave-link:focus-visible,.leave-link:active{
+    border-color:var(--gold);background:rgba(194,144,58,.10);color:var(--gold);outline:none;
+  }
+
+  .composer{display:none;margin-top:28px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .composer.is-open{display:block;animation:rise .55s ease forwards;}
+  .field{width:100%;font-family:inherit;font-size:16px;line-height:2;color:var(--paper);background:transparent;border:none;resize:none;outline:none;letter-spacing:.2px;}
+  .field::placeholder{color:var(--placeholder);}
+  .hp{position:absolute!important;left:-9999px!important;top:-9999px!important;width:1px;height:1px;opacity:0;overflow:hidden;}
+  .composer-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;}
+  .name-toggle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .chip{font-size:12px;font-weight:400;letter-spacing:.3px;color:var(--sub);padding:5px 3px;border:none;border-bottom:1px solid transparent;background:transparent;cursor:pointer;font-family:inherit;transition:all .2s ease;}
+  .chip.is-on{color:var(--paper);font-weight:500;border-color:var(--paper-2);}
+  .name-input{display:none;font-family:inherit;font-size:13px;color:var(--paper);background:transparent;border:none;border-bottom:1px solid var(--line);outline:none;padding:3px 2px;width:88px;letter-spacing:.2px;margin-left:4px;}
+  .name-input.is-show{display:inline-block;}
+  .name-input::placeholder{color:var(--placeholder);}
+  .composer-right{display:flex;align-items:center;gap:16px;}
+  .count{font-size:11px;color:var(--sub);font-variant-numeric:tabular-nums;}
+  .submit{
+    font-family:inherit;font-size:13px;font-weight:500;letter-spacing:.5px;color:var(--gold);
+    background:rgba(194,144,58,.12);border:1px solid rgba(194,144,58,.4);border-radius:2px;
+    padding:9px 20px;cursor:pointer;transition:background .2s ease,opacity .2s ease;
+  }
+  .submit:hover:not(:disabled){background:rgba(194,144,58,.2);}
+  .submit:disabled{opacity:.32;cursor:default;background:none;border-color:var(--line);color:var(--sub);}
+
+  .rest{display:none;text-align:center;margin-top:28px;font-size:14px;font-weight:300;line-height:2.05;color:var(--paper-2);}
+  .rest.is-show{display:block;animation:rise .85s ease forwards;}
+  .rest b{font-weight:500;color:var(--paper);}
+
+  /* ===== 벽 ===== */
+  .wall{margin-top:66px;}
+  .note{padding:40px 0;border-top:1px solid var(--line-soft);}
+  .note:first-child{border-top:none;}
+  .note-text{font-size:18.5px;font-weight:400;line-height:2.1;color:var(--paper);letter-spacing:.1px;white-space:pre-wrap;word-break:keep-all;}
+  .note-comma{font-weight:700;color:var(--gold);}
+  .note-meta{margin-top:15px;font-size:12.5px;font-weight:300;color:var(--sub);letter-spacing:.3px;}
+  .note-meta .nm{color:var(--paper-2);font-weight:500;}
+
+  /* 살아있는 행위 — 칩 형태 */
+  .note-actions{display:flex;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap;}
+  .act{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:inherit;font-size:12px;font-weight:500;letter-spacing:.3px;color:var(--paper-2);
+    background:var(--card);border:1px solid var(--line);border-radius:2px;
+    padding:8px 15px;cursor:pointer;
+    transition:background .2s ease,border-color .2s ease,color .2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .act:hover,.act:focus-visible,.act:active{background:rgba(244,239,230,.07);border-color:rgba(244,239,230,.22);color:var(--paper);outline:none;}
+  .act .cm{font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
+  .act .n{font-variant-numeric:tabular-nums;opacity:.7;}
+  .act.is-stay{color:var(--gold);border-color:rgba(194,144,58,.45);background:rgba(194,144,58,.10);}
+  .act.is-stay .cm{text-shadow:0 0 9px rgba(194,144,58,.6),0 0 3px rgba(194,144,58,.5);}
+
+  /* 곁의 말 */
+  .besides{margin:22px 0 0 2px;}
+  .beside{padding:12px 0 12px 20px;border-left:1px solid var(--line);}
+  .beside-text{font-size:14px;font-weight:300;line-height:1.8;color:var(--paper-2);letter-spacing:.2px;}
+  .beside-meta{margin-top:5px;font-size:11px;color:var(--sub);letter-spacing:.2px;}
+  .beside-meta .nm{color:var(--paper-2);}
+
+  .beside-form{display:none;margin:18px 0 2px;padding-left:20px;border-left:1px solid var(--line);}
+  .beside-form.is-open{display:block;}
+  .beside-input{width:100%;font-family:inherit;font-size:14px;color:var(--paper);background:transparent;border:none;border-bottom:1px solid var(--line);outline:none;padding:6px 2px;letter-spacing:.2px;}
+  .beside-input::placeholder{color:var(--placeholder);}
+  .beside-foot{display:flex;align-items:center;justify-content:space-between;margin-top:13px;gap:12px;}
+  .beside-name{font-family:inherit;font-size:12px;color:var(--paper);background:transparent;border:none;border-bottom:1px solid var(--line);outline:none;padding:3px 2px;width:80px;}
+  .beside-name::placeholder{color:var(--placeholder);}
+  .beside-send{
+    font-family:inherit;font-size:12px;font-weight:500;letter-spacing:.4px;color:var(--gold);
+    background:rgba(194,144,58,.10);border:1px solid rgba(194,144,58,.35);border-radius:2px;
+    padding:7px 15px;cursor:pointer;transition:background .2s ease;
+  }
+  .beside-send:hover{background:rgba(194,144,58,.18);}
+
+  .empty{padding:56px 4px;text-align:center;color:var(--sub);font-weight:300;font-size:14px;line-height:2.05;}
+
+  /* ===== 모인 쉼표 (자산으로 쌓임) — 조용한 한 줄 ===== */
+  .tally{margin-top:60px;text-align:center;font-size:11.5px;font-weight:300;letter-spacing:.5px;color:var(--sub);}
+  .tally-num{color:var(--paper-2);font-weight:400;font-variant-numeric:tabular-nums;}
+
+  /* ===== 푸터 ===== */
+  .foot{margin-top:70px;padding-top:38px;border-top:1px solid var(--line-soft);text-align:center;}
+  .foot-tag{font-size:12px;font-weight:300;line-height:1.9;color:var(--paper-2);letter-spacing:.3px;}
+
+  /* 돌아가기 = 마스트헤드형 워드마크 링크 */
+  .foot-return{display:inline-block;margin-top:26px;text-decoration:none;-webkit-tap-highlight-color:transparent;}
+  .foot-return-name{
+    display:inline-block;
+    font-size:13px;font-weight:700;letter-spacing:4px;color:var(--paper);
+    padding-bottom:5px;border-bottom:1px solid rgba(244,239,230,.22);
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .foot-return:hover .foot-return-name,
+  .foot-return:focus-visible .foot-return-name,
+  .foot-return:active .foot-return-name{color:var(--gold);border-color:var(--gold);}
+
+  /* 하단 안내 — 흐린 파인 프린트(전문성) */
+  .foot-fine{margin-top:46px;padding-top:28px;border-top:1px solid var(--line-soft);}
+  .foot-fine p{font-size:11px;font-weight:300;line-height:1.85;letter-spacing:.2px;color:rgba(244,239,230,.34);}
+  .foot-fine p + p{margin-top:15px;}
+  .foot-fine .fine-label{font-size:10px;font-weight:500;letter-spacing:2.5px;color:rgba(244,239,230,.5);}
+  .foot-fine .fine-label + p{margin-top:9px;}
+  .foot-fine .fine-warm{color:rgba(194,144,58,.62);}
+  .foot-fine .foot-legal{margin-top:22px;font-size:10px;line-height:1.95;letter-spacing:.2px;color:rgba(244,239,230,.26);}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="open fade">
+      <p class="open-lead">오늘 하루, 어땠나요.<br>여기, 사람들이 남긴 쉼표가 있습니다.</p>
+    </header>
+
+    <div class="leave fade" style="animation-delay:.08s">
+      <button class="leave-link" id="leaveBtn" type="button">쉼표 남기기</button>
+    </div>
+
+    <div class="composer" id="composer">
+      <textarea class="field" id="noteInput" rows="2" maxlength="100" placeholder="오늘, 마음에 걸린 한 줄을 남겨주세요."></textarea>
+      <input class="hp" id="noteHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="composer-foot">
+        <div class="name-toggle">
+          <button class="chip is-on" id="chipAnon" type="button">이름 없이</button>
+          <button class="chip" id="chipNamed" type="button">이름 적고</button>
+          <input class="name-input" id="nameInput" type="text" maxlength="12" placeholder="이름">
+        </div>
+        <div class="composer-right">
+          <span class="count"><span id="noteCount">0</span>/100</span>
+          <button class="submit" id="noteSubmit" type="button" disabled>남기기</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="rest" id="restMsg"><b>당신의 쉼표가 걸렸습니다.</b><br>오늘은 여기까지, 쉬어가세요.</p>
+
+    <section class="wall" id="wall"></section>
+
+    <p class="tally">지금까지 이곳에 <span class="tally-num" id="sumCount">0</span>개의 쉼표가 머물렀습니다.</p>
+
+    <footer class="foot">
+      <p class="foot-tag">도구를 고르는 기준은, 결국 삶의 태도입니다.</p>
+
+      <a class="foot-return" href="https://worknic.co.kr">
+        <span class="foot-return-name">WORKNIC</span>
+      </a>
+
+      <div class="foot-fine">
+        <p class="fine-label">이용 안내</p>
+        <p>본 공간에 남긴 쉼표는 익명으로 게시되며, 회원 가입 없이 이용하실 수 있습니다.<br>광고 · 비방 · 개인정보가 포함된 게시물은 사전 고지 없이 비공개될 수 있습니다.</p>
+        <p class="fine-warm">매주, 워크닉이 하나의 쉼표 곁에 답을 남깁니다.</p>
+        <p class="foot-legal">본 공간은 워크닉 주식회사가 운영·관리합니다 · worknic@worknickorea.com<br>WORKNIC® 및 콤마(,) 심볼은 워크닉 주식회사의 등록상표입니다 · © 2026 WORKNIC Inc.</p>
+      </div>
+    </footer>
+  </main>
+
+<script>
+/* ============================================================
+   누군가의 쉼표 — 열린 벽
+   [실서비스 연결] ENDPOINT 에 Google Apps Script 웹앱 URL 지정 시
+     목록 GET ?action=list  /  POST {type:'note'|'beside'|'stay', ...}
+   → 시트에 구조화된 자산으로 적재. POST는 반드시 text/plain(기본값)으로.
+   비어 있으면 시드로 미리보기(세션 임시 저장).
+   ============================================================ */
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbyeIIwOMV4Ju8H83vuvsoKbnwh2IaGYIkajhb0vUexPFBQdv6XJSbHtZi5-FImDgWvc/exec";
+
+let NOTES = [
+  { id:"s3", text:"퇴근길에 괜히 하늘 한 번 봤다.", name:null, date:"2026-07-03", stay:5, besides:[] },
+  { id:"s2", text:"3년 쓴 드라이버 손잡이가, 내 손 모양대로 닳아 있더라.", name:"민재", date:"2026-07-03", stay:12,
+    besides:[ {text:"그게 진짜 내 도구가 된 순간이네요.", name:null, date:"2026-07-03"} ] },
+  { id:"s1", text:"오늘은 아무것도 제대로 못 끝냈다. 그래도 내일 쓸 연장은 닦아뒀다.", name:null, date:"2026-07-02", stay:23,
+    besides:[ {text:"그거면 충분한 하루예요.", name:"무명", date:"2026-07-02"} ] }
+];
+let TOTAL = 1204;
+
+function kstNow(){ const n=new Date(); return new Date(n.getTime()+n.getTimezoneOffset()*60000+9*3600000); }
+function dayOfYear(){ const k=kstNow(); const s=new Date(k.getFullYear(),0,0); return Math.floor((k-s)/86400000); }
+function pick(arr){ const i=((dayOfYear()%arr.length)+arr.length)%arr.length; return arr[i]; }
+function fmtDate(iso){ const [,m,d]=iso.split("-"); return parseInt(m,10)+"월 "+parseInt(d,10)+"일"; }
+function esc(s){ return s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function isoToday(){ const k=kstNow(); const p=x=>String(x).padStart(2,"0"); return k.getFullYear()+"-"+p(k.getMonth()+1)+"-"+p(k.getDate()); }
+const stayed = new Set();
+
+function render(){
+  document.getElementById("sumCount").textContent = TOTAL.toLocaleString();
+  const wall = document.getElementById("wall");
+  if(!NOTES.length){
+    wall.innerHTML = '<div class="empty">아직 오늘의 쉼표가 조용합니다.<br>당신의 첫 쉼표를 남겨주세요.</div>';
+    return;
+  }
+  wall.innerHTML = NOTES.map(renderNote).join("");
+}
+function renderNote(n){
+  const name = n.name ? '<span class="nm">'+esc(n.name)+'</span>' : "이름 없이";
+  const besides = (n.besides||[]).map(function(b){
+    return '<div class="beside"><div class="beside-text">'+esc(b.text)+'</div>'+
+      '<div class="beside-meta">— '+(b.name?'<span class="nm">'+esc(b.name)+'</span>':"이름 없이")+' · '+fmtDate(b.date)+'</div></div>';
+  }).join("");
+  const on = stayed.has(n.id);
+  const num = (n.stay||0) > 0 ? '<span class="n">'+n.stay+'</span>' : '';
+  return '<article class="note" data-id="'+n.id+'">'+
+    '<p class="note-text">'+esc(n.text)+' <span class="note-comma">,</span></p>'+
+    '<p class="note-meta">— '+name+' · '+fmtDate(n.date)+'</p>'+
+    '<div class="note-actions">'+
+      '<button class="act stay-btn '+(on?'is-stay':'')+'" type="button" aria-pressed="'+on+'"><span class="cm">,</span>곁에 머물다'+num+'</button>'+
+      '<button class="act beside-btn" type="button">곁의 말 남기기</button>'+
+    '</div>'+
+    '<div class="besides">'+besides+'</div>'+
+    '<div class="beside-form">'+
+      '<input class="beside-input" type="text" maxlength="40" placeholder="이 쉼표 곁에, 짧은 말을 두고 가세요. (40자)">'+
+      '<input class="hp beside-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">'+
+      '<div class="beside-foot"><input class="beside-name" type="text" maxlength="12" placeholder="이름 (선택)">'+
+      '<button class="beside-send" type="button">곁에 두기</button></div>'+
+    '</div></article>';
+}
+
+document.addEventListener("click", function(e){
+  const stayBtn = e.target.closest(".stay-btn");
+  if(stayBtn){
+    const id = stayBtn.closest(".note").dataset.id;
+    const n = NOTES.find(x=>x.id===id); if(!n) return;
+    if(stayed.has(id)){ stayed.delete(id); n.stay=Math.max(0,(n.stay||0)-1); }
+    else { stayed.add(id); n.stay=(n.stay||0)+1; post({type:"stay", id:id}); }
+    render(); return;
+  }
+  const besideBtn = e.target.closest(".beside-btn");
+  if(besideBtn){
+    const form = besideBtn.closest(".note").querySelector(".beside-form");
+    form.classList.toggle("is-open");
+    if(form.classList.contains("is-open")) form.querySelector(".beside-input").focus();
+    return;
+  }
+  const sendBtn = e.target.closest(".beside-send");
+  if(sendBtn){
+    const id = sendBtn.closest(".note").dataset.id;
+    const form = sendBtn.closest(".beside-form");
+    const text = form.querySelector(".beside-input").value.trim();
+    const name = form.querySelector(".beside-name").value.trim() || null;
+    if(!text) return;
+    const n = NOTES.find(x=>x.id===id); if(!n) return;
+    var bhp=(form.querySelector(".beside-hp")||{}).value||"";
+    n.besides = n.besides||[]; n.besides.push({text:text, name:name, date:isoToday()});
+    post({type:"beside", parentId:id, text:text, name:name, hp:bhp});
+    render(); return;
+  }
+});
+
+const composer = document.getElementById("composer");
+const leaveBtn = document.getElementById("leaveBtn");
+leaveBtn.addEventListener("click", function(){
+  composer.classList.add("is-open");
+  leaveBtn.parentElement.style.display="none";
+  document.getElementById("noteInput").focus();
+});
+
+const chipAnon=document.getElementById("chipAnon");
+const chipNamed=document.getElementById("chipNamed");
+const nameInput=document.getElementById("nameInput");
+chipAnon.addEventListener("click",function(){ chipAnon.classList.add("is-on"); chipNamed.classList.remove("is-on"); nameInput.classList.remove("is-show"); nameInput.value=""; });
+chipNamed.addEventListener("click",function(){ chipNamed.classList.add("is-on"); chipAnon.classList.remove("is-on"); nameInput.classList.add("is-show"); nameInput.focus(); });
+
+const noteInput=document.getElementById("noteInput");
+const noteCount=document.getElementById("noteCount");
+const noteSubmit=document.getElementById("noteSubmit");
+noteInput.addEventListener("input",function(){
+  noteCount.textContent=noteInput.value.length;
+  noteSubmit.disabled = noteInput.value.trim().length===0;
+});
+noteSubmit.addEventListener("click", function(){
+  const text=noteInput.value.trim(); if(!text) return;
+  const name = chipNamed.classList.contains("is-on") ? (nameInput.value.trim()||null) : null;
+  NOTES.unshift({ id:"u"+Date.now(), text:text, name:name, date:isoToday(), stay:0, besides:[] });
+  TOTAL+=1;
+  var nhp=(document.getElementById("noteHp")||{}).value||"";
+  post({type:"note", text:text, name:name, hp:nhp});
+  composer.classList.remove("is-open");
+  noteInput.value=""; noteCount.textContent="0"; noteSubmit.disabled=true;
+  document.getElementById("restMsg").innerHTML='<b>당신의 쉼표가 #'+TOTAL.toLocaleString()+'번으로 이 벽에 남았습니다.</b><br>오늘은 여기까지, 쉬어가세요.';
+  document.getElementById("restMsg").classList.add("is-show");
+  render();
+  document.getElementById("restMsg").scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+async function post(payload){ if(!ENDPOINT) return; try{ await fetch(ENDPOINT,{method:"POST",body:JSON.stringify(payload)}); }catch(_){} }
+async function boot(){
+  if(ENDPOINT){
+    try{ const r=await fetch(ENDPOINT+"?action=list"); const d=await r.json();
+      if(Array.isArray(d.notes)) NOTES=d.notes; if(typeof d.total==="number") TOTAL=d.total; }catch(_){}
+  }
+  render();
+}
+boot();
+</script>
+</body>
+</html>

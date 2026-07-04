@@ -8,7 +8,7 @@
 <meta property="og:title" content="누군가의 쉼표 · WORKNIC">
 <meta property="og:description" content="하루의 끝에, 서로의 쉼표를 나누는 곳. 포천 WORKNIC">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://comma.worknic.co.kr/letters">
+<meta property="og:url" content="https://worknic.co.kr/letters/">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@latest/css/SpoqaHanSansNeo.css">
 <style>
@@ -44,18 +44,30 @@
   .open{text-align:center;}
   .open-lead{font-size:15px;font-weight:300;line-height:2.05;color:var(--paper-2);letter-spacing:.3px;}
 
-  /* ===== 쉼표 남기기 (진입 · 살아있는 버튼) ===== */
-  .leave{text-align:center;margin-top:40px;}
+  /* ===== 쉼표 남기기 (진입 · 인스타 신규등록식 초대) ===== */
+  .leave{text-align:center;margin-top:48px;}
   .leave-link{
-    font-family:inherit;font-size:13px;font-weight:500;letter-spacing:.8px;color:var(--paper);
-    background:var(--card);border:1px solid var(--line);border-radius:2px;
-    padding:13px 28px;cursor:pointer;
-    transition:background .2s ease,border-color .2s ease,color .2s ease;
-    -webkit-tap-highlight-color:transparent;
+    display:inline-flex;flex-direction:column;align-items:center;gap:14px;
+    font-family:inherit;color:var(--paper);
+    background:none;border:none;padding:6px;cursor:pointer;
+    transition:color .3s ease;-webkit-tap-highlight-color:transparent;
+    animation:breathe 3.6s ease-in-out infinite;
   }
-  .leave-link:hover,.leave-link:focus-visible,.leave-link:active{
-    border-color:var(--gold);background:rgba(194,144,58,.10);color:var(--gold);outline:none;
+  .leave-ic{
+    width:46px;height:46px;flex:none;
+    fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;
+    color:var(--paper-2);
+    transition:color .3s ease,transform .4s cubic-bezier(.16,1,.3,1);
   }
+  .leave-text{
+    font-size:13px;font-weight:300;letter-spacing:.4px;color:var(--paper-2);
+    transition:color .3s ease;
+  }
+  .leave-link:hover,.leave-link:focus-visible,.leave-link:active{animation:none;opacity:1;outline:none;}
+  .leave-link:hover .leave-ic,.leave-link:focus-visible .leave-ic{color:var(--gold);transform:scale(1.06);}
+  .leave-link:hover .leave-text,.leave-link:focus-visible .leave-text{color:var(--gold);}
+  @keyframes breathe{0%,100%{opacity:.55;}50%{opacity:1;}}
+  @media (prefers-reduced-motion:reduce){.leave-link{animation:none;opacity:1;}}
 
   .composer{display:none;margin-top:28px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .composer.is-open{display:block;animation:rise .55s ease forwards;}
@@ -92,21 +104,20 @@
   .note-meta{margin-top:15px;font-size:12.5px;font-weight:300;color:var(--sub);letter-spacing:.3px;}
   .note-meta .nm{color:var(--paper-2);font-weight:500;}
 
-  /* 살아있는 행위 — 칩 형태 */
-  .note-actions{display:flex;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap;}
+  /* 살아있는 행위 — 인스타식 아이콘 + 텍스트 (박스 없음) */
+  .note-actions{display:flex;align-items:center;gap:22px;margin-top:22px;flex-wrap:wrap;}
   .act{
     display:inline-flex;align-items:center;gap:7px;
-    font-family:inherit;font-size:12px;font-weight:500;letter-spacing:.3px;color:var(--paper-2);
-    background:var(--card);border:1px solid var(--line);border-radius:2px;
-    padding:8px 15px;cursor:pointer;
-    transition:background .2s ease,border-color .2s ease,color .2s ease;
-    -webkit-tap-highlight-color:transparent;
+    font-family:inherit;font-size:12.5px;font-weight:400;letter-spacing:.2px;color:var(--paper-2);
+    background:none;border:none;padding:0;cursor:pointer;
+    transition:color .25s ease;-webkit-tap-highlight-color:transparent;
   }
-  .act:hover,.act:focus-visible,.act:active{background:rgba(244,239,230,.07);border-color:rgba(244,239,230,.22);color:var(--paper);outline:none;}
-  .act .cm{font-weight:700;font-size:14px;line-height:1;position:relative;top:1px;}
-  .act .n{font-variant-numeric:tabular-nums;opacity:.7;}
-  .act.is-stay{color:var(--gold);border-color:rgba(194,144,58,.45);background:rgba(194,144,58,.10);}
-  .act.is-stay .cm{text-shadow:0 0 9px rgba(194,144,58,.6),0 0 3px rgba(194,144,58,.5);}
+  .act:hover,.act:focus-visible,.act:active{color:var(--paper);outline:none;}
+  .act .ic{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:fill .3s ease,transform .25s ease;}
+  .act:active .ic{transform:scale(.9);}
+  .act .n{font-variant-numeric:tabular-nums;opacity:.6;font-size:11.5px;}
+  .act.is-stay{color:var(--gold);}
+  .act.is-stay .ic-heart{fill:currentColor;}
 
   /* 곁의 말 */
   .besides{margin:22px 0 0 2px;}
@@ -176,7 +187,10 @@
     </header>
 
     <div class="leave fade" style="animation-delay:.08s">
-      <button class="leave-link" id="leaveBtn" type="button">쉼표 남기기</button>
+      <button class="leave-link" id="leaveBtn" type="button">
+        <svg class="leave-ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><line x1="24" y1="16" x2="24" y2="32"/><line x1="16" y1="24" x2="32" y2="24"/></svg>
+        <span class="leave-text">오늘 하루 나만의 쉼표를 남겨주세요</span>
+      </button>
     </div>
 
     <div class="composer" id="composer">
@@ -266,8 +280,8 @@ function renderNote(n){
     '<p class="note-text">'+esc(n.text)+' <span class="note-comma">,</span></p>'+
     '<p class="note-meta">— '+name+'</p>'+
     '<div class="note-actions">'+
-      '<button class="act stay-btn '+(on?'is-stay':'')+'" type="button" aria-pressed="'+on+'"><span class="cm">,</span>곁에 머물다'+num+'</button>'+
-      '<button class="act beside-btn" type="button">곁의 말 남기기</button>'+
+      '<button class="act stay-btn '+(on?'is-stay':'')+'" type="button" aria-pressed="'+on+'"><svg class="ic ic-heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>곁에 머물다'+num+'</button>'+
+      '<button class="act beside-btn" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>곁의 말 남기기</button>'+
     '</div>'+
     '<div class="besides">'+besides+'</div>'+
     '<div class="beside-form">'+

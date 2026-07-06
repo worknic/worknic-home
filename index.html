@@ -240,6 +240,19 @@
     -webkit-tap-highlight-color:transparent;
   }
   .comma-invite.is-in{opacity:1;transform:none;}
+  /* 쉼표, 수집 — 7색이 하나씩 천천히 맺힌다 */
+  .ci-dots{display:flex;justify-content:center;gap:9px;margin-bottom:20px;}
+  .ci-dot{width:7px;height:7px;border-radius:50%;opacity:0;transform:scale(.35);}
+  .comma-invite.is-in .ci-dot{animation:ciDotIn .85s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes ciDotIn{to{opacity:1;transform:scale(1);}}
+  .comma-invite.is-in .ci-dot:nth-child(1){animation-delay:.20s;}
+  .comma-invite.is-in .ci-dot:nth-child(2){animation-delay:.42s;}
+  .comma-invite.is-in .ci-dot:nth-child(3){animation-delay:.64s;}
+  .comma-invite.is-in .ci-dot:nth-child(4){animation-delay:.86s;}
+  .comma-invite.is-in .ci-dot:nth-child(5){animation-delay:1.08s;}
+  .comma-invite.is-in .ci-dot:nth-child(6){animation-delay:1.30s;}
+  .comma-invite.is-in .ci-dot:nth-child(7){animation-delay:1.52s;}
+  @media (prefers-reduced-motion:reduce){.ci-dot{opacity:1;transform:none;animation:none;}}
   .ci-title{
     display:block;
     font-size:14.5px;font-weight:400;letter-spacing:.3px;line-height:1.75;color:var(--paper-dim);
@@ -265,45 +278,68 @@
     color:var(--sub);word-break:keep-all;
   }
   /* 진입 버튼 — 하이엔드 · 골드 스윕 필 */
+  /* 진입 — 절제된 텍스트 CTA, 골드 밑줄이 그어진다 */
   .ci-enter{
-    position:relative;isolation:isolate;overflow:hidden;
-    display:inline-flex;align-items:center;gap:10px;
-    margin-top:22px;padding:15px 34px;
-    font-size:11.5px;font-weight:600;letter-spacing:2px;
-    color:var(--paper);
-    background:transparent;
-    border:1px solid rgba(191,138,48,.42);border-radius:2px;
-    box-shadow:0 0 0 rgba(191,138,48,0);
-    transition:color .55s cubic-bezier(.16,1,.3,1),
-               border-color .55s cubic-bezier(.16,1,.3,1),
-               box-shadow .55s cubic-bezier(.16,1,.3,1),
-               transform .55s cubic-bezier(.16,1,.3,1);
+    position:relative;
+    display:inline-flex;align-items:center;gap:12px;
+    margin-top:28px;padding:10px 4px 13px;
+    font-size:11.5px;font-weight:500;letter-spacing:3px;
+    color:var(--paper);background:transparent;border:none;
+    transition:color .5s cubic-bezier(.16,1,.3,1);
   }
-  .ci-enter::before{
-    content:"";position:absolute;inset:0;z-index:-1;
-    background:linear-gradient(120deg,#CB9E42 0%,#BF8A30 55%,#A9781F 100%);
-    transform:translateX(-101%);
-    transition:transform .6s cubic-bezier(.16,1,.3,1);
+  .ci-enter::after{
+    content:"";position:absolute;left:4px;right:4px;bottom:5px;height:1px;
+    background:linear-gradient(90deg,var(--gold),rgba(191,138,48,.3));
+    opacity:.4;transition:opacity .55s cubic-bezier(.16,1,.3,1);
   }
   .ci-arrow{
-    width:15px;height:15px;flex:none;
-    fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;
+    width:14px;height:14px;flex:none;
+    fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;
     transition:transform .55s cubic-bezier(.16,1,.3,1);
   }
   .comma-invite:hover .ci-enter,
   .comma-invite:focus-visible .ci-enter,
-  .comma-invite:active .ci-enter{
-    color:#1A1815;border-color:transparent;
-    transform:translateY(-1px);
-    box-shadow:0 12px 28px -12px rgba(191,138,48,.55);
-  }
-  .comma-invite:hover .ci-enter::before,
-  .comma-invite:focus-visible .ci-enter::before,
-  .comma-invite:active .ci-enter::before{transform:translateX(0);}
+  .comma-invite:active .ci-enter{color:#D9BC7A;}
+  .comma-invite:hover .ci-enter::after,
+  .comma-invite:focus-visible .ci-enter::after,
+  .comma-invite:active .ci-enter::after{opacity:1;}
   .comma-invite:hover .ci-arrow,
-  .comma-invite:focus-visible .ci-arrow{transform:translateX(4px);}
+  .comma-invite:focus-visible .ci-arrow{transform:translateX(5px);}
   @media (prefers-reduced-motion:reduce){
-    .ci-enter,.ci-enter::before,.ci-arrow{transition:none;}
+    .ci-enter,.ci-enter::after,.ci-arrow{transition:none;}
+  }
+  /* 진입 — 쉼표를 하나 둔다 (침묵의 한 박자) */
+  .ci-line{
+    display:block;margin-top:14px;font-size:12px;font-weight:300;line-height:1.7;
+    color:var(--sub);letter-spacing:.4px;word-break:keep-all;opacity:.85;
+  }
+  .ci-place{
+    position:relative;display:inline-flex;align-items:center;gap:11px;
+    margin-top:30px;padding:10px 8px 6px;cursor:pointer;
+    -webkit-user-select:none;user-select:none;
+  }
+  .ci-place-label{
+    font-size:12px;font-weight:500;letter-spacing:3px;color:var(--paper-dim);
+    transition:color .5s ease,opacity .6s ease,letter-spacing .6s ease;
+  }
+  .ci-comma{
+    width:14px;height:auto;color:var(--gold);opacity:.3;
+    transform:scale(.9);transform-origin:center bottom;
+    transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
+  }
+  .comma-invite:hover .ci-place-label,
+  .comma-invite:focus-visible .ci-place-label{color:var(--paper);}
+  .comma-invite:hover .ci-comma,
+  .comma-invite:focus-visible .ci-comma{opacity:.6;}
+  .ci-place.is-placing .ci-place-label{opacity:.2;letter-spacing:4.5px;}
+  .ci-place.is-placing .ci-comma{animation:commaPlace .85s cubic-bezier(.34,1.4,.5,1) forwards;}
+  @keyframes commaPlace{
+    0%{opacity:.3;transform:scale(.85);filter:drop-shadow(0 0 0 rgba(191,138,48,0));}
+    55%{opacity:1;transform:scale(1.3);filter:drop-shadow(0 0 11px rgba(191,138,48,.55));}
+    100%{opacity:1;transform:scale(1.12);filter:drop-shadow(0 0 6px rgba(191,138,48,.32));}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ci-comma{transition:none;}.ci-place.is-placing .ci-comma{animation:none;opacity:1;transform:scale(1.1);}
   }
   @media (prefers-reduced-motion:reduce){
     .comma-caret{display:none;}
@@ -320,6 +356,7 @@
   .foot-inner{
     max-width:440px;
     margin:0 auto;
+    text-align:center;
   }
   /* ── 푸터 타이포 스케일: 13.5 / 12 / 11 / 10 ── */
   .foot-creed{
@@ -358,8 +395,8 @@
     align-items:center;
     justify-content:center;
     gap:9px 13px;
-    margin-top:26px;
-    padding-top:24px;
+    margin-top:30px;
+    padding-top:28px;
     border-top:1px solid var(--line-soft);
   }
   .foot-marks a{
@@ -380,24 +417,32 @@
   .foot-marks .mk-sep{color:rgba(140,132,120,.35);font-size:10px;}
   @media (max-width:480px){.foot-marks{gap:8px 10px;}.foot-marks a{font-size:11px;}}
 
-  /* ── 사업자 정보 ── */
-  .foot-biz{
-    margin-top:24px;
-    font-size:11px;
-    font-weight:400;
-    line-height:2.1;
-    color:var(--sub);
-    letter-spacing:.2px;
+  /* ── 사업자 정보 · 필요한 이의 손끝에서만 열린다 ── */
+  .biz-fold{margin-top:28px;}
+  .biz-fold summary{
+    list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+    font-size:10.5px;font-weight:500;letter-spacing:2px;
+    color:var(--sub);transition:color .3s ease;padding:5px 2px;
   }
-  .foot-biz a{color:var(--paper-dim);text-decoration:none;}
-  .foot-biz .row{display:block;}
-  /* 신뢰를 담보하는 정보는 또렷하게 */
-  .foot-biz .row-strong{color:var(--paper-dim);}
+  .biz-fold summary::-webkit-details-marker{display:none;}
+  .biz-fold summary:hover{color:var(--paper-dim);}
+  .biz-chevron{width:8px;height:8px;flex:none;fill:none;stroke:currentColor;stroke-width:1.4;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.16,1,.3,1);}
+  .biz-fold[open] .biz-chevron{transform:rotate(180deg);}
+  .biz-body{
+    margin-top:15px;font-size:11px;font-weight:400;line-height:2.05;color:var(--sub);letter-spacing:.2px;
+    animation:bizOpen .55s cubic-bezier(.16,1,.3,1);
+  }
+  .biz-body span{display:block;}
+  .biz-body a{color:var(--paper-dim);text-decoration:none;}
+  .biz-body .row-strong{color:var(--paper-dim);}
+  @keyframes bizOpen{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.biz-body{animation:none;}.biz-chevron{transition:none;}}
 
   /* ── 하단 합침 (공식 안내 + 상표/저작권 + 콤마) ── */
   .foot-close{
-    margin-top:32px;
-    padding-top:26px;
+    margin-top:30px;
+    padding-top:28px;
     border-top:1px solid var(--line-soft);
     text-align:center;
   }
@@ -479,9 +524,20 @@
       <span class="comma-eyebrow">오늘의 쉼표</span>
       <p class="comma-line"><span id="commaText"></span><span class="comma-caret" id="commaCaret" aria-hidden="true"></span></p>
       <a class="comma-invite" id="commaLink" href="https://worknic.co.kr/letters/" rel="noreferrer noopener">
-        <span class="ci-hook">잔잔하고 따뜻한 위로를 만나보세요<svg class="ci-pen" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9.2 2.4l2.4 2.4-6.1 6.1-2.9.5.5-2.9 6.1-6.1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg></span>
-        <span class="ci-note">언제든 열려 있어요. 이름 없이, 따뜻한 쉼표를 나눠요.</span>
-        <span class="ci-enter">참여하기<svg class="ci-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+        <span class="ci-dots" aria-hidden="true">
+          <span class="ci-dot" style="background:#829F0F"></span>
+          <span class="ci-dot" style="background:#982C22"></span>
+          <span class="ci-dot" style="background:#BE6C1A"></span>
+          <span class="ci-dot" style="background:#15642D"></span>
+          <span class="ci-dot" style="background:#434077"></span>
+          <span class="ci-dot" style="background:#733193"></span>
+          <span class="ci-dot" style="background:#135587"></span>
+        </span>
+        <span class="ci-place" id="ciPlace" aria-hidden="true">
+          <span class="ci-place-label" id="ciLabel">쉼표 기록하기</span>
+          <svg class="ci-comma" id="ciComma" viewBox="0 0 448 508" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M0 0 C4.05 -0.39 4.05 -0.39 9.31 -0.4 C11.19 -0.4 13.07 -0.41 15.01 -0.41 C16 -0.4 16 -0.4 21 -0.38 C22.98 -0.39 24.95 -0.4 26.99 -0.41 C28.87 -0.41 30.75 -0.4 32.69 -0.4 C34.42 -0.4 36.16 -0.39 37.95 -0.39 C38.62 -0.32 38.62 -0.32 42 0 C42.33 0.49 42.33 0.49 44 3 C47.19 3.41 47.19 3.41 51 3.5 C54.81 3.59 54.81 3.59 58 4 C58.33 4.5 58.33 4.5 60 7 C62.33 7.69 64.66 8.36 67 9 C67.33 9.66 67.66 10.32 68 11 C69.07 11.25 70.14 11.5 71.25 11.75 C75.81 13.27 76.98 15.37 80 19 C81.15 19.33 82.31 19.66 83.5 20 C88.02 21.29 89.17 23.32 92 27 C93.24 27.99 94.48 28.98 95.75 30 C99.47 33.44 99.22 34.3 100 39 C103.31 42.12 103.31 42.12 107 45 C111 49 111 49 111.31 51.88 C112 55 112 55 115.5 58 C119.53 61.46 119.19 62.12 120 67 C121.15 67.99 122.31 68.98 123.5 70 C127.53 73.46 127.19 74.12 128 79 C129.15 79.99 130.31 80.98 131.5 82 C135.35 85.3 135.56 86.2 136 91 C136.99 91.66 137.98 92.32 139 93 C139.33 96.33 139.67 99.67 140 103 C140.99 103.66 141.98 104.32 143 105 C143.33 108.33 143.67 111.67 144 115 C144.99 115.66 145.98 116.32 147 117 C147.46 120.61 147.5 124.17 147.59 127.81 C147.73 128.86 147.86 129.92 148 131 C148.99 131.66 149.98 132.32 151 133 C151.39 137.72 151.49 142.37 151.53 147.1 C151.59 149.74 151.78 152.37 152 155 C152.99 155.66 153.98 156.32 155 157 C155.39 161.42 155.39 161.42 155.4 167.19 C155.4 168.2 155.4 169.21 155.41 170.26 C155.41 172.4 155.4 174.55 155.39 176.69 C155.38 179.99 155.39 183.28 155.41 186.57 C155.41 188.65 155.4 190.73 155.4 192.81 C155.4 194.72 155.39 196.62 155.39 198.58 C155.26 200.04 155.13 201.5 155 203 C154.5 203.33 154.5 203.33 152 205 C151.59 208.19 151.59 208.19 151.5 212 C151.41 215.81 151.41 215.81 151 219 C150.5 219.33 150.5 219.33 148 221 C147.83 222.65 147.67 224.3 147.5 226 C147.33 227.65 147.17 229.3 147 231 C146.5 231.33 146.5 231.33 144 233 C143.31 235.33 142.64 237.66 142 240 C141.34 240.33 140.68 240.66 140 241 C139.86 242.63 139.71 244.26 139.56 245.94 C139.38 247.61 139.19 249.28 139 251 C138.5 251.33 138.5 251.33 136 253 C135.31 255.33 134.64 257.66 134 260 C133.34 260.33 132.68 260.66 132 261 C131.67 262.15 131.34 263.31 131 264.5 C130.67 265.65 130.34 266.81 130 268 C129.34 268.33 128.68 268.66 128 269 C127.86 270.63 127.71 272.26 127.56 273.94 C127.38 275.61 127.19 277.28 127 279 C126.01 279.66 125.02 280.32 124 281 C123.87 281.55 123.87 281.55 123.19 284.31 C121.73 288.85 119.6 290 116 293 C114.75 296.75 114.75 296.75 114 300 C113.34 300.33 112.68 300.66 112 301 C111.88 301.54 111.88 301.54 111.25 304.25 C109.73 308.81 107.63 309.98 104 313 C103.67 314.15 103.34 315.31 103 316.5 C101.72 320.97 99.51 322.08 96 325 C95.67 326.15 95.34 327.31 95 328.5 C93.71 333.02 91.68 334.17 88 337 C87.01 338.15 86.02 339.31 85 340.5 C82.19 343.77 79.3 346.25 76 349 C75.01 350.15 74.02 351.31 73 352.5 C70.19 355.77 67.3 358.25 64 361 C63.5 361.62 63.5 361.62 61 364.75 C57.56 368.47 56.7 368.22 52 369 C51.01 370.15 50.02 371.31 49 372.5 C45.54 376.53 44.88 376.19 40 377 C39.18 378.15 38.35 379.31 37.5 380.5 C33.41 384.59 32.3 384.5 26.75 384.75 C25.53 384.74 24.31 384.74 23.05 384.73 C22.04 384.82 21.04 384.91 20 385 C19.34 385.99 18.68 386.98 18 388 C13.95 388.39 13.95 388.39 8.69 388.4 C6.81 388.4 4.93 388.41 2.99 388.41 C2 388.4 2 388.4 -3 388.38 C-4.98 388.39 -6.95 388.4 -8.99 388.41 C-10.87 388.41 -12.75 388.4 -14.69 388.4 C-16.42 388.4 -18.16 388.39 -19.95 388.39 C-21.29 388.26 -22.62 388.13 -24 388 C-24.33 387.5 -24.33 387.5 -26 385 C-27.57 384.92 -29.13 384.83 -30.75 384.75 C-36 384 -36 384 -39.44 380.56 C-40.28 379.39 -41.13 378.21 -42 377 C-42.99 376.34 -43.98 375.68 -45 375 C-45.9 366.3 -45.9 366.3 -42.88 361.94 C-39.76 359.84 -37.66 359.49 -34 359 C-33.34 358.01 -32.68 357.02 -32 356 C-30 355.67 -28 355.33 -26 355 C-25.34 354.01 -24.68 353.02 -24 352 C-23.09 351.92 -22.19 351.83 -21.25 351.75 C-16.51 350.66 -14.98 347.73 -12 344 C-10 342.33 -8 340.67 -6 339 C-5.01 337.85 -4.02 336.69 -3 335.5 C-0.19 332.23 2.7 329.75 6 327 C6.99 325.85 7.98 324.69 9 323.5 C11.8 320.23 14.66 317.69 18 315 C22 311 22 311 22.5 306 C22 301 22 301 18 297 C14.62 296.5 14.62 296.5 10.88 296.44 C7.12 296.37 7.12 296.37 4 296 C3.67 295.5 3.67 295.5 2 293 C-1.68 292.62 -1.68 292.62 -6.44 292.59 C-8.14 292.57 -9.84 292.55 -11.59 292.53 C-12.48 292.52 -12.48 292.52 -17 292.5 C-20.52 292.48 -24.04 292.45 -27.56 292.41 C-28.35 292.4 -28.35 292.4 -32.32 292.38 C-33.53 292.26 -34.75 292.13 -36 292 C-36.33 291.5 -36.33 291.5 -38 289 C-40.33 288.31 -42.66 287.64 -45 287 C-45.33 286.34 -45.66 285.68 -46 285 C-47.16 284.67 -48.31 284.34 -49.5 284 C-50.66 283.67 -51.81 283.34 -53 283 C-53.33 282.34 -53.66 281.68 -54 281 C-55.63 280.86 -57.26 280.71 -58.94 280.56 C-60.61 280.38 -62.28 280.19 -64 280 C-64.33 279.5 -64.33 279.5 -66 277 C-67.09 276.73 -68.19 276.46 -69.31 276.19 C-73.85 274.73 -75 272.6 -78 269 C-81.75 267.75 -81.75 267.75 -85 267 C-85.33 266.34 -85.66 265.68 -86 265 C-86.54 264.88 -86.54 264.88 -89.25 264.25 C-93.81 262.73 -94.98 260.63 -98 257 C-99.16 256.67 -100.31 256.34 -101.5 256 C-106.02 254.71 -107.17 252.68 -110 249 C-111.16 248.01 -112.31 247.02 -113.5 246 C-116.77 243.19 -119.25 240.3 -122 237 C-123.16 236.01 -124.31 235.02 -125.5 234 C-128.77 231.19 -131.25 228.3 -134 225 C-136.31 222.97 -138.64 220.97 -141 219 C-145 215 -145 215 -145.31 212.12 C-146 209 -146 209 -149.5 206 C-153.53 202.54 -153.19 201.88 -154 197 C-155.16 196.09 -156.31 195.19 -157.5 194.25 C-162.1 189.98 -161.68 187.09 -162 181 C-162.99 180.34 -163.98 179.68 -165 179 C-165.08 178.09 -165.17 177.19 -165.25 176.25 C-166 173 -166 173 -169.51 170.5 C-173 167 -173 167 -173.79 161.67 C-173.73 159.72 -173.68 157.76 -173.62 155.75 C-173.6 153.79 -173.57 151.82 -173.54 149.8 C-173.45 149.01 -173.45 149.01 -173 145 C-172.5 144.67 -172.5 144.67 -170 143 C-169.84 141.35 -169.67 139.7 -169.5 138 C-169.34 136.35 -169.17 134.7 -169 133 C-168.5 132.67 -168.5 132.67 -166 131 C-165.83 129.35 -165.67 127.7 -165.5 126 C-165.33 124.35 -165.17 122.7 -165 121 C-164.5 120.67 -164.5 120.67 -162 119 C-161.84 117.35 -161.67 115.7 -161.5 114 C-161.34 112.35 -161.17 110.7 -161 109 C-160.5 108.67 -160.5 108.67 -158 107 C-157.84 105.35 -157.67 103.7 -157.5 102 C-157.34 100.35 -157.17 98.7 -157 97 C-156.5 96.67 -156.5 96.67 -154 95 C-153.31 92.67 -152.64 90.34 -152 88 C-151.67 87.84 -151.67 87.84 -150 87 C-149.67 85.84 -149.34 84.69 -149 83.5 C-148.67 82.34 -148.34 81.19 -148 80 C-147.67 79.84 -147.67 79.84 -146 79 C-145.93 78.19 -145.93 78.19 -145.56 74.06 C-145.38 72.39 -145.19 70.72 -145 69 C-144.5 68.67 -144.5 68.67 -142 67 C-141.73 65.91 -141.46 64.81 -141.19 63.69 C-139.71 59.1 -137.78 57.91 -134 55 C-131.97 52.69 -129.97 50.36 -128 48 C-123.78 43.78 -123.34 43.81 -118 43 C-117.34 42.01 -116.68 41.02 -116 40 C-115.09 39.92 -114.19 39.84 -113.25 39.75 C-110 39 -110 39 -107 35.5 C-103.7 31.65 -102.8 31.44 -98 31 C-97.67 30.5 -97.67 30.5 -96 28 C-95.09 27.92 -94.19 27.84 -93.25 27.75 C-90 27 -90 27 -87.25 23.5 C-82.98 18.9 -80.09 19.32 -74 19 C-73.67 18.5 -73.67 18.5 -72 16 C-68.39 15.54 -64.83 15.5 -61.19 15.41 C-60.14 15.27 -59.08 15.14 -58 15 C-57.34 14.01 -56.68 13.02 -56 12 C-54 11.67 -52 11.33 -50 11 C-49.34 10.01 -48.68 9.02 -48 8 C-43.35 7.53 -38.74 7.5 -34.06 7.41 C-32.72 7.27 -31.38 7.14 -30 7 C-29.34 6.01 -28.68 5.02 -28 4 C-22.42 3.61 -16.91 3.51 -11.32 3.47 C-8.21 3.41 -5.1 3.22 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z" transform="translate(233,60)"/></svg>
+        </span>
+        <span class="ci-line">여기, 당신의 쉼표를 기록하세요.</span>
       </a>
     </div>
 
@@ -519,7 +575,7 @@
     </a>
 
     <div class="follow">
-      <p class="follow-title">Follow us and get benefits.</p>
+      <p class="follow-title">워크닉의 기록은, 계속됩니다.</p>
       <nav class="follow-links" aria-label="소셜 채널">
         <a href="https://www.instagram.com/worknic.korea/" target="_blank" rel="noreferrer noopener">Instagram</a>
         <span class="follow-dot" aria-hidden="true">·</span>
@@ -549,14 +605,17 @@
         <a href="https://worknic.co.kr/membership/" rel="noreferrer noopener">쉼표 멤버십</a>
       </nav>
 
-      <p class="foot-biz">
-        <span class="row">워크닉 주식회사</span>
-        <span class="row">경기도 포천시 화현면 화동로348번길 5-1</span>
-        <span class="row">대표번호 1833-3640 · <a href="mailto:worknic@worknickorea.com">worknic@worknickorea.com</a></span>
-        <span class="row">운영시간 평일 07:00 – 18:00 · 실시간 상담 09:00 – 16:00</span>
-        <span class="row row-strong">사업자등록번호 363-86-03519</span>
-        <span class="row row-strong">통신판매업신고 2024-경기포천-0676</span>
-      </p>
+      <details class="biz-fold">
+        <summary>사업자 정보 열어보기<svg class="biz-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></summary>
+        <div class="biz-body">
+          <span>워크닉 주식회사</span>
+          <span>경기도 포천시 화현면 화동로348번길 5-1</span>
+          <span>대표번호 1833-3640 · <a href="mailto:worknic@worknickorea.com">worknic@worknickorea.com</a></span>
+          <span>운영시간 평일 07:00 – 18:00 · 실시간 상담 09:00 – 16:00</span>
+          <span class="row-strong">사업자등록번호 363-86-03519</span>
+          <span class="row-strong">통신판매업신고 2024-경기포천-0676</span>
+        </div>
+      </details>
       <div class="foot-close">
         <p class="official-kr">본 페이지는 워크닉 주식회사가 직접 운영·관리하는 공식 웹사이트입니다.</p>
         <p class="official-en">This is the official website, owned and operated by WORKNIC Inc.</p>
@@ -660,6 +719,27 @@
       if(o.pause) t+=300;     // 쉼표·마침표 뒤 — 숨 고르기
     });
     setTimeout(function(){ if(link)link.classList.add('is-in'); }, t+300);
+  })();
+
+  // ===== 참여하기 — 쉼표를 하나 둔다 =====
+  (function(){
+    var link=document.getElementById('commaLink');
+    var place=document.getElementById('ciPlace');
+    if(!link||!place) return;
+    var href=link.getAttribute('href');
+    var done=false;
+    function go(){ if(done) return; done=true; window.location.href=href; }
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function trigger(){
+      if(done||place.classList.contains('is-placing')) return;
+      if(reduce){ go(); return; }
+      place.classList.add('is-placing');   // 쉼표가 맺힌다
+      setTimeout(go, 900);                 // 잔향이 가라앉은 뒤, 벽이 열린다
+    }
+    // 단순 이동 대신, 쉼표를 두고 들어간다
+    link.addEventListener('click',function(e){ e.preventDefault(); trigger(); });
+    link.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); trigger(); } });
   })();
   </script>
 </body>

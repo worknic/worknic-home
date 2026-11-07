@@ -9963,6 +9963,216 @@
       "revision": 2
     },
     {
+      "id": "8152942068",
+      "name": "40Vmax | 18V  무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML009GX",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "국내 등록 모델",
+          "ML009GX"
+        ],
+        [
+          "기본 본체 모델",
+          "ML009G"
+        ],
+        [
+          "전압",
+          "40Vmax / 18V"
+        ],
+        [
+          "루멘",
+          "강/중/약 · 10,000 /4,000 /2,000 lm"
+        ],
+        [
+          "룩스",
+          "강/중/약 · 4,300/1,900/1,000 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "248 x 386 x 305 mm"
+        ],
+        [
+          "중량",
+          "6.4 - 9.9 kg"
+        ]
+      ],
+      "images": [
+        "https://worknic.co.kr/assets/products/official-20261108e/ml009g.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/8152942068",
+      "sourceTitle": "마끼다 LED 충전랜턴 ML009GX 10000루멘 3단계 밝기조절",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1083,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1569",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-08",
+        "identity": {
+          "manufacturerModel": "ML009GX",
+          "imageModel": "ML009G",
+          "salesModel": "ML009GX",
+          "technicalModel": "ML009G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "강·중·약 3단계 밝기를 선택하는 무선 작업등입니다. 국내 제조사 표기 광속은 강 10,000lm · 중 4,000lm · 약 2,000lm입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "밝기 단계와 설치 공간, 사용할 전원을 함께 확인해 주세요. 배터리·삼각대·확산 부속의 포함 여부는 국내 공급 구성으로 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다. 사진은 ML009G 기본 본체입니다. 국내 등록 모델 ML009GX의 세부 공급 구성은 견적서에서 확인합니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "사용 전압과 전원 연결 방식을 확인해 주세요. 교체 부속과 연결 부품은 정확한 모델을 기준으로 안내합니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "밝기 단계와 설치 공간, 사용할 전원을 함께 확인해 주세요. 배터리·삼각대·확산 부속의 포함 여부는 국내 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "보유 장비를 기준으로, 필요한 구성을 더합니다.",
+          "text": "지금 쓰는 장비와 작업 환경을 함께 알려주세요. 필요한 제품과 부속을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1569",
+            "checkedOn": "2026-11-08",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/8152942068",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML009G",
+            "scope": "기본 본체 ML009G의 공식 제품 사진. 국내 판매 구성과 사양은 국내 자료를 기준으로 안내합니다.",
+            "checkedOn": "2026-11-08"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/upload/product/gmanual_20220919171017.pdf",
+            "scope": "국내 등록명 ML009GX와 기본 본체 ML009G의 연결 확인.",
+            "checkedOn": "2026-11-08"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/12bf16b0-990e-4708-a69b-30b08b5dd3ee_ml009g_p_1500px.png",
+            "editedSource": "/assets/products/official-20261108e/ml009g.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "source_transparent",
+            "framing": {
+              "left": 0,
+              "top": 5,
+              "width": 1500,
+              "height": 1490
+            },
+            "caption": "마끼다 · ML009G 기본 본체 (국내 등록명 ML009GX)",
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "b61066734d75e0c509f6964b8574e856a6d57b8f7a8f070b1788a265391fb13e",
+            "manufacturerSourceSha256": "5e36f891f14c598d8643978fd4b9f773a1b7edb1e38212a4a978d048865050da",
+            "losslessCompression": {
+              "pixelEqualityVerified": true,
+              "noResize": true,
+              "noRecolour": true
+            }
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "domestic_model_correspondence_and_official_native_photo",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "reason": "시험 배터리 또는 작동 모드 조건 확인 필요"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "국내 공식 자료에서 기본 본체 모델과 등록명 연결 확인",
+            "공식 1500×1500 원본 PNG·기존 국내 사진 대조",
+            "사진 픽셀 동일성 검증·확대 및 임의 색상 보정 없음",
+            "조건이 불명확한 사용시간은 생략"
+          ],
+          "followupBatch": "remaining115-night-20261108",
+          "research": {
+            "officialUkPage": "",
+            "officialThaiPage": "",
+            "officialBrochure": "",
+            "status": "추가 공식 고해상도 사진 미확보"
+          }
+        },
+        "modelCorrespondence": {
+          "registeredModel": "ML009GX",
+          "baseModel": "ML009G",
+          "verifiedOn": "2026-11-08",
+          "evidence": {
+            "type": "domestic_official_manual",
+            "url": "https://www.lkmakita.co.kr/upload/product/gmanual_20220919171017.pdf",
+            "page": 1
+          }
+        }
+      },
+      "revision": 4
+    },
+    {
       "id": "makita-dml814",
       "name": "18V 무선 타워 라이트",
       "brand": "makita",
@@ -10129,6 +10339,217 @@
         }
       },
       "revision": 2
+    },
+    {
+      "id": "9464409868",
+      "name": "40Vmax | 18V  무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML005GX",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "국내 등록 모델",
+          "ML005GX"
+        ],
+        [
+          "기본 본체 모델",
+          "ML005G"
+        ],
+        [
+          "전압",
+          "40Vmax / 18V"
+        ],
+        [
+          "루멘",
+          "강/중/약 3,600/1,800/900 lm"
+        ],
+        [
+          "룩스",
+          "강/중/약 2,100/1,000/500 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "248 x 309 x 423 mm"
+        ],
+        [
+          "중량",
+          "4.6 - 6.5 kg"
+        ]
+      ],
+      "images": [
+        "https://worknic.co.kr/assets/products/official-20261108e/ml005g.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9464409868",
+      "sourceTitle": "마끼다 40V 18V ML005GX 충전 LED랜턴 작업등 본체 3600루멘",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1085,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1551",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-08",
+        "identity": {
+          "manufacturerModel": "ML005GX",
+          "imageModel": "ML005G",
+          "salesModel": "ML005GX",
+          "technicalModel": "ML005G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "강·중·약 3단계 밝기를 선택하는 무선 작업등입니다. 국내 제조사 표기 광속은 강 3,600lm · 중 1,800lm · 약 900lm입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "밝기 단계와 설치 공간, 사용할 전원을 함께 확인해 주세요. 배터리·삼각대·확산 부속의 포함 여부는 국내 공급 구성으로 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다. 사진은 ML005G 기본 본체입니다. 국내 등록 모델 ML005GX의 세부 공급 구성은 견적서에서 확인합니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "사용 전압과 전원 연결 방식을 확인해 주세요. 교체 부속과 연결 부품은 정확한 모델을 기준으로 안내합니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "밝기 단계와 설치 공간, 사용할 전원을 함께 확인해 주세요. 배터리·삼각대·확산 부속의 포함 여부는 국내 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "보유 장비를 기준으로, 필요한 구성을 더합니다.",
+          "text": "지금 쓰는 장비와 작업 환경을 함께 알려주세요. 필요한 제품과 부속을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1551",
+            "checkedOn": "2026-11-08",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/9464409868",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML005G",
+            "scope": "기본 본체 ML005G의 공식 제품 사진. 국내 판매 구성과 사양은 국내 자료를 기준으로 안내합니다.",
+            "checkedOn": "2026-11-08"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/upload/product/thumbnail/ggdetail_20221027105331_thum.jpg",
+            "scope": "국내 등록명 ML005GX와 기본 본체 ML005G의 연결 확인.",
+            "checkedOn": "2026-11-08"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/7d039585-0417-4c64-979a-5c6a9250c35c_ml005g_p_1500px.png",
+            "editedSource": "/assets/products/official-20261108e/ml005g.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "source_transparent",
+            "framing": {
+              "left": 32,
+              "top": 0,
+              "width": 1420,
+              "height": 1500
+            },
+            "caption": "마끼다 · ML005G 기본 본체 (국내 등록명 ML005GX)",
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "7798da77de59d7c79762ba935630217372aa6f62b25cf4726803e1c85e501a52",
+            "manufacturerSourceSha256": "1316384abd826d32acdc25e84ca2a79b38eb413a23ef8885a938ba9a494114dc",
+            "losslessCompression": {
+              "pixelEqualityVerified": true,
+              "noResize": true,
+              "noRecolour": true
+            }
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "domestic_model_correspondence_and_official_native_photo",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "reason": "시험 배터리 또는 작동 모드 조건 확인 필요"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "국내 공식 자료에서 기본 본체 모델과 등록명 연결 확인",
+            "공식 1500×1500 원본 PNG·기존 국내 사진 대조",
+            "사진 픽셀 동일성 검증·확대 및 임의 색상 보정 없음",
+            "조건이 불명확한 사용시간은 생략"
+          ],
+          "followupBatch": "remaining115-night-20261108",
+          "research": {
+            "officialUkPage": "",
+            "officialThaiPage": "",
+            "officialBrochure": "",
+            "status": "추가 공식 고해상도 사진 미확보"
+          }
+        },
+        "modelCorrespondence": {
+          "registeredModel": "ML005GX",
+          "baseModel": "ML005G",
+          "verifiedOn": "2026-11-08",
+          "evidence": {
+            "type": "domestic_official_detail",
+            "url": "https://www.lkmakita.co.kr/upload/product/thumbnail/ggdetail_20221027105331_thum.jpg",
+            "detailModelLabel": "ML005G",
+            "registeredModelLabel": "ML005GX"
+          }
+        }
+      },
+      "revision": 4
     },
     {
       "id": "makita-ml007g",

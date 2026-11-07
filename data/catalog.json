@@ -8028,6 +8028,193 @@
       "revision": 2
     },
     {
+      "id": "makita-dur368a",
+      "name": "18VX2 무선 예초기(바이크 핸들)",
+      "brand": "makita",
+      "model": "DUR368A",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "잔디 가장자리와 잡초를 정리하는 정원공구입니다. 핸들 형식과 절단폭, 장착 가능한 날을 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DUR368A"
+        ],
+        [
+          "전압",
+          "18V x 2 (36V)"
+        ],
+        [
+          "작업능력",
+          "절단폭 · 나일론컷팅헤드:350mm · 플라스틱날:255mm"
+        ],
+        [
+          "무부하속도",
+          "강/중/약 · 6,500 / 5,300 / 3,500 rpm"
+        ],
+        [
+          "전장(L x W x H)",
+          "1,758x615x442 mm"
+        ],
+        [
+          "중량",
+          "4.7(BL1860B 장착 시) kg"
+        ]
+      ],
+      "images": [
+        "https://worknic.co.kr/assets/products/official-20261108c/dur368a.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DUR368A 18VX2 무선 예초기(바이크 핸들)",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1023,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1033",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DUR368A",
+          "imageModel": "DUR368A",
+          "salesModel": "DUR368A"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "trimmer",
+          "label": "예초기·트리머"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "18V 배터리 두 개를 사용하는 36V 예초기입니다. 국내 제조사 표기 기준 나일론 커팅헤드 절단 폭은 350mm, 플라스틱 날 절단 폭은 255mm입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "바이크 핸들 형식과 나일론 커팅헤드·플라스틱 날의 절단 폭을 함께 확인해 주세요. 교체 날과 보호 커버의 호환 여부는 정확한 본체 모델을 기준으로 안내합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "바이크 핸들 형식과 나일론 커팅헤드·플라스틱 날의 절단 폭을 함께 확인해 주세요. 교체 날과 보호 커버의 호환 여부는 정확한 본체 모델을 기준으로 안내합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1033",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.th/V2Products/Details/1108",
+            "checkedOn": "2026-11-08",
+            "scope": "공식 모델명과 제품 사진 출처. 국내 판매 구성·가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.th/pdf/productv2/638076702513232187LeafletDUR368A.pdf",
+            "checkedOn": "2026-11-08",
+            "scope": "DUR368A 바이크 핸들 제품 사진 확인. 사양과 공급 구성은 국내 공식 자료를 기준으로 안내합니다."
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.makita.co.th/pdf/productv2/638076702513232187LeafletDUR368A.pdf",
+            "editedSource": "/assets/products/official-20261108c/dur368a.png",
+            "width": 1681,
+            "height": 1121,
+            "status": "approved_official_pdf_extract",
+            "verifiedModel": true,
+            "background": "manufacturer_native_mask",
+            "framing": {
+              "left": 17,
+              "top": 204,
+              "width": 1641,
+              "height": 565
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "10e909b59fda6961be0ecc04ada6543b358723761bfdae2435db24db42b26ff0",
+            "extraction": {
+              "method": "original_pdf_image_with_native_soft_mask",
+              "pdfPage": 2,
+              "nativeXref": 134,
+              "nativeSmask": 133,
+              "sourcePdfSha256": "db9bd7d5e86eec3988a826ad44a360003b767cba98134e317be6a2af4aece241",
+              "nativeWidth": 1681,
+              "nativeHeight": 1121,
+              "colourHandling": "원본 PDF 내장 사진의 색상 공간과 제조사 소프트 마스크를 적용한 출력. 임의 색상 보정·재생성·확대 없음"
+            }
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_pdf_native_soft_mask_and_domestic_spec_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "공식 PDF 내장 사진·제조사 소프트 마스크 사용",
+            "DUR368L 루프 핸들과 구분하여 DUR368A 바이크 핸들 전체 사진 대조",
+            "국내 공식 사양 유지·사진 확대 및 형태 재생성 없음",
+            "미확인 사용 장면·후기 생략"
+          ],
+          "followupBatch": "remaining115-night-20261108",
+          "research": {
+            "officialUkPage": "https://www.makitauk.com/product/dur368a",
+            "officialThaiPage": "https://www.makita.co.th/V2Products/Details/1108",
+            "officialBrochure": "https://www.makita.co.th/pdf/productv2/638076702513232187LeafletDUR368A.pdf",
+            "status": "제품 일부 확대 사진·제품 전체 썸네일 없음"
+          }
+        }
+      },
+      "revision": 4
+    },
+    {
       "id": "makita-dlm532",
       "name": "18VX2 무선 잔디깎기",
       "brand": "makita",

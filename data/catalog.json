@@ -1,0 +1,1461 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-07",
+  "brands": [
+    {
+      "id": "chulma",
+      "name": "철마",
+      "english": "CHULMA",
+      "category": "목공 수공구",
+      "aliases": [
+        "철마",
+        "철마공업사"
+      ],
+      "logo": "/assets/brand-chulma.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 1,
+      "revision": 1
+    },
+    {
+      "id": "komelon",
+      "name": "코메론",
+      "english": "KOMELON",
+      "category": "줄자·측정",
+      "aliases": [
+        "코메론"
+      ],
+      "logo": "/assets/brands/komelon.png",
+      "logoSource": "https://www.komelon.co.kr/img/layout/header_logo.png",
+      "published": true,
+      "order": 2,
+      "revision": 1
+    },
+    {
+      "id": "tajima",
+      "name": "타지마",
+      "english": "TAJIMA",
+      "category": "측정·휴대",
+      "aliases": [
+        "타지마",
+        "tajima"
+      ],
+      "logo": "/assets/brand-tajima.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 3,
+      "revision": 1
+    },
+    {
+      "id": "hasegawa",
+      "name": "하세가와",
+      "english": "HASEGAWA",
+      "category": "사다리·작업대",
+      "aliases": [
+        "하세가와"
+      ],
+      "logo": "/assets/brand-hasegawa.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 4,
+      "revision": 1
+    },
+    {
+      "id": "festool",
+      "name": "페스툴",
+      "english": "FESTOOL",
+      "category": "목공·집진",
+      "aliases": [
+        "페스툴"
+      ],
+      "logo": "/assets/brand-festool.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 5,
+      "revision": 1
+    },
+    {
+      "id": "hultafors",
+      "name": "훌타포스",
+      "english": "HULTAFORS",
+      "category": "측정·수공구",
+      "aliases": [
+        "훌타포스"
+      ],
+      "logo": "/assets/brand-hultafors.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 6,
+      "revision": 1
+    },
+    {
+      "id": "ceragrit",
+      "name": "세라그릿",
+      "english": "CeraGrit",
+      "category": "샌딩·연마",
+      "aliases": [
+        "CeraGrit",
+        "세라그릿"
+      ],
+      "logo": "/assets/brands/ceragrit.png",
+      "logoSource": "https://ecimg.cafe24img.com/pg1603b81472130004/ceragrit/web/upload/category/editor/2026/05/17/c7812d5daa52d373ccb83c27c961d0a6.png",
+      "published": true,
+      "order": 7,
+      "revision": 1
+    },
+    {
+      "id": "makita",
+      "name": "마끼다",
+      "english": "makita",
+      "category": "전동공구",
+      "aliases": [
+        "마끼다",
+        "마키타"
+      ],
+      "logo": "/assets/brand-makita.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 8,
+      "revision": 1
+    },
+    {
+      "id": "knipex",
+      "name": "크니펙스",
+      "english": "KNIPEX",
+      "category": "플라이어·절단",
+      "aliases": [
+        "크니펙스"
+      ],
+      "logo": "/assets/brand-knipex.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 9,
+      "revision": 1
+    },
+    {
+      "id": "kurokin",
+      "name": "쿠로킨",
+      "english": "KUROKIN",
+      "category": "작업 수공구",
+      "aliases": [
+        "쿠로킨",
+        "KUROKIN"
+      ],
+      "logo": "/assets/brands/kurokin.png",
+      "logoSource": "https://kurokin-tools.com/cdn/shop/files/kurokin_rogo_9071d95d-3712-4366-aace-8c7c34d011e9.png?v=1789546124",
+      "published": true,
+      "order": 10,
+      "revision": 1
+    },
+    {
+      "id": "katims",
+      "name": "카팀스",
+      "english": "KATIMS",
+      "category": "툴 벨트·파우치",
+      "aliases": [
+        "카팀스",
+        "KATIMS"
+      ],
+      "logo": "/assets/brand-katims.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 11,
+      "revision": 1
+    },
+    {
+      "id": "marvel",
+      "name": "마벨",
+      "english": "MARVEL",
+      "category": "전설·배선 공구",
+      "aliases": [
+        "마벨",
+        "MARVEL"
+      ],
+      "logo": "/assets/brands/marvel.png",
+      "logoSource": "https://www.marvelcorp.co.jp/wp-content/themes/corporate/img/common/logo.png",
+      "published": true,
+      "order": 12,
+      "revision": 1
+    },
+    {
+      "id": "bessey",
+      "name": "베세이",
+      "english": "BESSEY",
+      "category": "클램프·고정",
+      "aliases": [
+        "베세이"
+      ],
+      "logo": "/assets/brand-bessey.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 13,
+      "revision": 1
+    },
+    {
+      "id": "bestmax",
+      "name": "베스트맥스",
+      "english": "BESTMAX",
+      "category": "원형톱날",
+      "aliases": [
+        "베스트맥스"
+      ],
+      "logo": "/assets/brands/bestmax-header.jpg",
+      "logoSource": "https://shinwoncorp.com/wp-content/uploads/2025/05/%EB%B3%B8%EB%AC%B801.jpg",
+      "published": true,
+      "order": 14,
+      "revision": 1
+    },
+    {
+      "id": "motoyuki",
+      "name": "모토유키",
+      "english": "MOTOYUKI",
+      "category": "절단·톱날",
+      "aliases": [
+        "모토유키"
+      ],
+      "logo": "/assets/brands/motoyuki.svg",
+      "logoSource": "https://motoyuki.co.jp/cdn/shop/files/globalsaw_logo.svg?v=1734447940&width=554",
+      "published": true,
+      "order": 15,
+      "revision": 1
+    },
+    {
+      "id": "stabila",
+      "name": "스타빌라",
+      "english": "STABILA",
+      "category": "수평·측정",
+      "aliases": [
+        "스타빌라"
+      ],
+      "logo": "/assets/brand-stabila.png",
+      "logoSource": "https://worknic.co.kr/",
+      "published": true,
+      "order": 16,
+      "revision": 1
+    },
+    {
+      "id": "utoku",
+      "name": "유토쿠",
+      "english": "UTOKU",
+      "category": "라쳇·소켓",
+      "aliases": [
+        "UTOKU",
+        "유토쿠"
+      ],
+      "logo": "/assets/brands/utoku.png",
+      "logoSource": "https://www.utokutools.tw/images/layout06-4/common/logo.png",
+      "published": true,
+      "order": 17,
+      "revision": 1
+    },
+    {
+      "id": "sb",
+      "name": "에스비",
+      "english": "SB",
+      "category": "수평·측정",
+      "aliases": [
+        "에스비",
+        "(주)에스비"
+      ],
+      "logo": "/assets/brands/sb.png",
+      "logoSource": "https://sb-tool.co.kr/image/common/logo.png",
+      "published": true,
+      "order": 18,
+      "revision": 1
+    },
+    {
+      "id": "toolstar",
+      "name": "툴스타",
+      "english": "TOOLSTAR",
+      "category": "작업·측정 공구",
+      "aliases": [
+        "툴스타",
+        "TOOLSTAR"
+      ],
+      "logo": "/assets/brands/toolstar.png",
+      "logoSource": "https://yes09.sangbo.co.kr/resources/brandImage/11120.png",
+      "published": true,
+      "order": 19,
+      "revision": 1
+    },
+    {
+      "id": "ips",
+      "name": "아이피에스",
+      "english": "IPS PLIERS",
+      "category": "플라이어",
+      "aliases": [
+        "아이피에스",
+        "IPS",
+        "IPS PLIERS"
+      ],
+      "logo": "/assets/brands/ips.png",
+      "logoSource": "https://ips-tool.co.jp/wordpress/wp-content/uploads/head_logo_02.png",
+      "published": true,
+      "order": 20,
+      "revision": 1
+    },
+    {
+      "id": "kovea",
+      "name": "코베아",
+      "english": "KOVEA",
+      "category": "토치·가열",
+      "aliases": [
+        "코베아"
+      ],
+      "logo": "/assets/brands/kovea.png",
+      "logoSource": "https://www.kovea.co.kr/entwiz/img/logo_color.png",
+      "published": true,
+      "order": 21,
+      "revision": 1
+    },
+    {
+      "id": "jitool",
+      "name": "제일타카",
+      "english": "JITOOL",
+      "category": "타카·체결",
+      "aliases": [
+        "제일타카"
+      ],
+      "logo": "/assets/brands/jitool.svg",
+      "logoSource": "https://jitool.com/img/svg/logo.svg",
+      "published": true,
+      "order": 22,
+      "revision": 1
+    },
+    {
+      "id": "kamelo",
+      "name": "카멜로",
+      "english": "KameLo",
+      "category": "작업 장갑·보호",
+      "aliases": [
+        "카멜로"
+      ],
+      "logo": "/assets/brands/kamelo.png",
+      "logoSource": "https://cdn-saas-web-116-108.cdn-nhncommerce.com/cjj11231_godomall_com/data/skin/front/designbook_mytoolsh/img/banner/1bb87d41d15fe27b500a4bfcde01bb0e_77234.png",
+      "published": true,
+      "order": 23,
+      "revision": 1
+    }
+  ],
+  "products": [
+    {
+      "id": "13678473108",
+      "brand": "chulma",
+      "name": "목공용 구두칼",
+      "model": "CK-102",
+      "summary": "손으로 다듬는 작업의 작은 도구입니다.",
+      "category": "절단·다듬기",
+      "specs": [
+        [
+          "모델",
+          "CK-102"
+        ],
+        [
+          "자루",
+          "나무"
+        ],
+        [
+          "제품군",
+          "목공용 구두칼"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260723_85/1784787409876nrIOc_PNG/7782322947241716_1766837963.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13678473108",
+      "sourceTitle": "철마 구두칼 목공용 목재용 세밀작업 나무자루 CK-102",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 1,
+      "revision": 1
+    },
+    {
+      "id": "11551563001",
+      "brand": "chulma",
+      "name": "고속도 광폭 끌 100mm",
+      "model": "철마 고속도끌 하이스강 100mm",
+      "summary": "",
+      "category": "목공 수공구",
+      "specs": [
+        [
+          "모델",
+          "철마 고속도끌 하이스강 100mm"
+        ],
+        [
+          "등록 상품명",
+          "철마 고속도 광폭 끌 100mm"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260729_73/1785304318620qzwxl_PNG/3466198565775010_190677665.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11551563001",
+      "sourceTitle": "철마 고속도 광폭 끌 100mm",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 2,
+      "revision": 1
+    },
+    {
+      "id": "7340014024",
+      "brand": "komelon",
+      "name": "프로아츠줄자 KMC-31LT",
+      "model": "코메론 프로아츠줄자",
+      "summary": "",
+      "category": "줄자·측정",
+      "specs": [
+        [
+          "모델",
+          "코메론 프로아츠줄자"
+        ],
+        [
+          "등록 상품명",
+          "코메론 프로아츠줄자 KMC-31LT"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20221007_140/1665153194100VC2BW_PNG/66289089821563454_620730760.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/7340014024",
+      "sourceTitle": "코메론 프로아츠줄자 KMC-31LT",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 3,
+      "revision": 1
+    },
+    {
+      "id": "13583273899",
+      "brand": "komelon",
+      "name": "줄자 네오 KMC-330 50M",
+      "model": "KMC-330 50M",
+      "summary": "",
+      "category": "줄자·측정",
+      "specs": [
+        [
+          "모델",
+          "KMC-330 50M"
+        ],
+        [
+          "등록 상품명",
+          "코메론 줄자 네오 KMC-330 50M"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260527_53/1779887844497L1tHv_JPEG/3644283306132538_2099687268.jpeg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13583273899",
+      "sourceTitle": "코메론 줄자 네오 KMC-330 50M",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 4,
+      "revision": 1
+    },
+    {
+      "id": "13383153150",
+      "brand": "tajima",
+      "name": "고아츠 시그마 줄자",
+      "model": "SS25-55 · 5.5m",
+      "summary": "작업의 시작이 되는 길이를 확인합니다.",
+      "category": "측정·표시",
+      "specs": [
+        [
+          "모델",
+          "SS25-55"
+        ],
+        [
+          "길이",
+          "5.5m"
+        ],
+        [
+          "제품군",
+          "줄자"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260410_204/1775829971432vLFno_PNG/34208067682420454_2097914388.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13383153150",
+      "sourceTitle": "타지마 고아츠 시그마 줄자 SS25-55 5.5M",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 5,
+      "revision": 1
+    },
+    {
+      "id": "13773047402",
+      "brand": "tajima",
+      "name": "탈착식 공구 파우치",
+      "model": "SFKBNC-KG3L2H",
+      "summary": "작업에 필요한 도구를 나누어 수납합니다.",
+      "category": "휴대·정리",
+      "specs": [
+        [
+          "모델",
+          "SFKBNC-KG3L2H"
+        ],
+        [
+          "수납 구성",
+          "3단"
+        ],
+        [
+          "형태",
+          "탈착식 파우치"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260404_50/1775278530668UqJuk_JPEG/68003648965919538_1294019964.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13773047402",
+      "sourceTitle": "타지마 트윈 탈착식 코듀라 공구집 파우치 3단 대형파우치 SFKBNC-KG3L2H",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 6,
+      "revision": 1
+    },
+    {
+      "id": "12135631016",
+      "brand": "hasegawa",
+      "name": "프로용 스텝사다리 SBL2.0-06",
+      "model": "SBL2.0-06",
+      "summary": "",
+      "category": "사다리·작업대",
+      "specs": [
+        [
+          "모델",
+          "SBL2.0-06"
+        ],
+        [
+          "등록 상품명",
+          "하세가와 프로용 스텝사다리 SBL2.0-06"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20250721_272/1753107782828s38e3_JPEG/87240631171254677_445572453.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12135631016",
+      "sourceTitle": "하세가와 프로용 스텝사다리 SBL2.0-06",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 7,
+      "revision": 1
+    },
+    {
+      "id": "11560523993",
+      "brand": "hasegawa",
+      "name": "아시가루 블랙 사다리 5단 RZB-15B",
+      "model": "RZB-15B",
+      "summary": "",
+      "category": "사다리·작업대",
+      "specs": [
+        [
+          "모델",
+          "RZB-15B"
+        ],
+        [
+          "등록 상품명",
+          "하세가와 아시가루 블랙 사다리 5단 RZB-15B"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20250306_263/1741270299792YJICg_PNG/75403118541955975_2098088336.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11560523993",
+      "sourceTitle": "하세가와 아시가루 블랙 사다리 5단 RZB-15B",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 8,
+      "revision": 1
+    },
+    {
+      "id": "12232450481",
+      "brand": "festool",
+      "name": "시스테이너 콤비",
+      "model": "SYS3-COMBI M 337",
+      "summary": "상자와 서랍에 도구를 나누어 담습니다.",
+      "category": "휴대·정리",
+      "specs": [
+        [
+          "모델",
+          "SYS3-COMBI M 337"
+        ],
+        [
+          "제품 번호",
+          "577767"
+        ],
+        [
+          "형태",
+          "수납·서랍 일체형"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20250824_5/17559633560586O3Wx_PNG/10572173020344159_1158464376.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12232450481",
+      "sourceTitle": "페스툴 시스테이너3 SYS3-COMBI M 337 577767 시스테이너 콤비 수납 서랍 일체형 이동식 정리함",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 9,
+      "revision": 1
+    },
+    {
+      "id": "13638565751",
+      "brand": "festool",
+      "name": "도미노 접합기",
+      "model": "DF 500 RQ Plus",
+      "summary": "목재를 잇는 작업의 구성을 살펴봅니다.",
+      "category": "목공·접합",
+      "specs": [
+        [
+          "모델",
+          "DF 500 RQ Plus"
+        ],
+        [
+          "제품 번호",
+          "578485"
+        ],
+        [
+          "제품군",
+          "도미노 접합기"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260620_135/1781920445144X3XY0_PNG/59443122012120139_1528173138.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13638565751",
+      "sourceTitle": "페스툴 신제품 DF 500 RQ Plus 전기 목공 조이너 도미노 세트 578485",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 10,
+      "revision": 1
+    },
+    {
+      "id": "9102494027",
+      "brand": "hultafors",
+      "name": "타일 해머",
+      "model": "",
+      "summary": "",
+      "category": "측정·수공구",
+      "specs": [
+        [
+          "등록 상품명",
+          "훌타포스 타일 해머"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20230824_113/1692863923955vwVWy_JPEG/15207309437151061_1054790479.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9102494027",
+      "sourceTitle": "훌타포스 타일 해머",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 11,
+      "revision": 1
+    },
+    {
+      "id": "10780480661",
+      "brand": "hultafors",
+      "name": "끌 HDC 6",
+      "model": "HDC 6",
+      "summary": "",
+      "category": "측정·수공구",
+      "specs": [
+        [
+          "모델",
+          "HDC 6"
+        ],
+        [
+          "등록 상품명",
+          "훌타포스 끌 HDC 6"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240823_243/1724396658543aB8ty_PNG/39293557360679916_1808234193.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10780480661",
+      "sourceTitle": "훌타포스 끌 HDC 6",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 12,
+      "revision": 1
+    },
+    {
+      "id": "12635593910",
+      "brand": "ceragrit",
+      "name": "세라그립 샌딩블럭 아데방 목공작업 900g 블랙",
+      "model": "",
+      "summary": "",
+      "category": "샌딩·연마",
+      "specs": [
+        [
+          "등록 상품명",
+          "세라그립 샌딩블럭 아데방 목공작업 900g 블랙"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251104_168/1762265942420v8JKJ_PNG/96398758544331203_325399272.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12635593910",
+      "sourceTitle": "세라그립 샌딩블럭 아데방 목공작업 900g 블랙",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 13,
+      "revision": 1
+    },
+    {
+      "id": "12635591708",
+      "brand": "ceragrit",
+      "name": "세라그립 샌딩블럭 아데방 목공작업 900g 블루",
+      "model": "",
+      "summary": "",
+      "category": "샌딩·연마",
+      "specs": [
+        [
+          "등록 상품명",
+          "세라그립 샌딩블럭 아데방 목공작업 900g 블루"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251104_195/1762265897337wEJ06_PNG/25250751061098857_1185177434.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12635591708",
+      "sourceTitle": "세라그립 샌딩블럭 아데방 목공작업 900g 블루",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 14,
+      "revision": 1
+    },
+    {
+      "id": "13721375775",
+      "brand": "makita",
+      "name": "18V 임팩트 드라이버",
+      "model": "DTD158Z",
+      "summary": "체결 작업에 사용할 충전 도구를 고릅니다.",
+      "category": "체결·가공",
+      "specs": [
+        [
+          "모델",
+          "DTD158Z"
+        ],
+        [
+          "전압 계열",
+          "18V"
+        ],
+        [
+          "제품군",
+          "충전 임팩트 드라이버"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260814_196/1786714398683tGqpd_PNG/17925699591630532_1881578111.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13721375775",
+      "sourceTitle": "마끼다 18V 임팩트 충전드릴 DTD158Z",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 15,
+      "revision": 1
+    },
+    {
+      "id": "13853946102",
+      "brand": "makita",
+      "name": "목공용 원형톱날",
+      "model": "B-12603 · 335mm",
+      "summary": "톱날의 지름과 날 수, 내경을 함께 봅니다.",
+      "category": "절단·다듬기",
+      "specs": [
+        [
+          "모델",
+          "B-12603"
+        ],
+        [
+          "지름",
+          "335mm"
+        ],
+        [
+          "날 수",
+          "60T"
+        ],
+        [
+          "내경",
+          "25mm"
+        ],
+        [
+          "판매 단위",
+          "1장"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20261105_141/1793861971396WBKfi_PNG/30040613156931292_1450737301.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13853946102",
+      "sourceTitle": "마끼다 목공용 원형톱날 B-12603 335mm 60T 내경 25mm 1장",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 16,
+      "revision": 1
+    },
+    {
+      "id": "13506265769",
+      "brand": "knipex",
+      "name": "압착 펜치 뺀치 09-12-240SB",
+      "model": "",
+      "summary": "",
+      "category": "플라이어·절단",
+      "specs": [
+        [
+          "등록 상품명",
+          "크니펙스 압착 펜치 뺀치 09-12-240SB"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260509_208/1778302868882kElRH_JPEG/27059140021451404_96495132.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13506265769",
+      "sourceTitle": "크니펙스 압착 펜치 뺀치 09-12-240SB",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 17,
+      "revision": 1
+    },
+    {
+      "id": "12832976801",
+      "brand": "knipex",
+      "name": "슬립조인트 플라이어 82-02-150",
+      "model": "슬립조인트 플라이어(TwinGrip)_82-02-150",
+      "summary": "",
+      "category": "플라이어·절단",
+      "specs": [
+        [
+          "모델",
+          "슬립조인트 플라이어(TwinGrip)_82-02-150"
+        ],
+        [
+          "등록 상품명",
+          "크니펙스 슬립조인트 플라이어 82-02-150"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251216_249/17658677956162LwuA_JPEG/45419380123773870_1383849672.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12832976801",
+      "sourceTitle": "크니펙스 슬립조인트 플라이어 82-02-150",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 18,
+      "revision": 1
+    },
+    {
+      "id": "13703066863",
+      "brand": "katims",
+      "name": "펌핏 툴 벨트",
+      "model": "KL-7020 · L",
+      "summary": "몸에 맞는 사이즈로 작업 도구를 곁에 둡니다.",
+      "category": "휴대·정리",
+      "specs": [
+        [
+          "모델",
+          "KL-7020"
+        ],
+        [
+          "사이즈",
+          "L"
+        ],
+        [
+          "제품군",
+          "툴 벨트"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260806_107/1785998026974HLGtQ_PNG/46561939991533319_1806933274.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13703066863",
+      "sourceTitle": "가야라이프 카팀스 펌핏 툴 벨트 KL-7020 L size",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 19,
+      "revision": 1
+    },
+    {
+      "id": "13703048681",
+      "brand": "katims",
+      "name": "챔피언 툴 벨트",
+      "model": "KL-7010 · M",
+      "summary": "자주 쓰는 도구를 허리에서 정리합니다.",
+      "category": "휴대·정리",
+      "specs": [
+        [
+          "모델",
+          "KL-7010"
+        ],
+        [
+          "사이즈",
+          "M"
+        ],
+        [
+          "제품군",
+          "툴 벨트"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260806_128/1785997318458CX0aY_PNG/59352098162992206_673735730.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13703048681",
+      "sourceTitle": "가야라이프 카팀스 챔피언 툴벨트 KL-7010 M size",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 20,
+      "revision": 1
+    },
+    {
+      "id": "9949989859",
+      "brand": "marvel",
+      "name": "와이어커터 MI-100",
+      "model": "MI-100",
+      "summary": "",
+      "category": "전설·배선 공구",
+      "specs": [
+        [
+          "모델",
+          "MI-100"
+        ],
+        [
+          "등록 상품명",
+          "마벨 와이어커터 MI-100"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240214_229/1707888149241cUqlG_PNG/109023984077341073_305143604.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9949989859",
+      "sourceTitle": "마벨 와이어커터 MI-100",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 21,
+      "revision": 1
+    },
+    {
+      "id": "9931687339",
+      "brand": "marvel",
+      "name": "압착펜치 MVA-200",
+      "model": "MVA-200",
+      "summary": "",
+      "category": "전설·배선 공구",
+      "specs": [
+        [
+          "모델",
+          "MVA-200"
+        ],
+        [
+          "등록 상품명",
+          "마벨 압착펜치 MVA-200"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240208_148/1707374052663zqdhW_PNG/108509832378250391_1890257154.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9931687339",
+      "sourceTitle": "마벨 압착펜치 MVA-200",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 22,
+      "revision": 1
+    },
+    {
+      "id": "6693845380",
+      "brand": "bessey",
+      "name": "목공클램프 파이프클램프 BPC-H12",
+      "model": "베세이 파이프클램프 BPC-H12",
+      "summary": "",
+      "category": "클램프·고정",
+      "specs": [
+        [
+          "모델",
+          "베세이 파이프클램프 BPC-H12"
+        ],
+        [
+          "등록 상품명",
+          "목공클램프 베세이 파이프클램프 BPC-H12"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20220519_12/1652966619938OxQFv_PNG/54102508467255875_294091452.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6693845380",
+      "sourceTitle": "목공클램프 베세이 파이프클램프 BPC-H12",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 23,
+      "revision": 1
+    },
+    {
+      "id": "13706008778",
+      "brand": "bessey",
+      "name": "원 핸드 퀵 클램프 600/80mm EZL60-8",
+      "model": "EZL60-8",
+      "summary": "",
+      "category": "클램프·고정",
+      "specs": [
+        [
+          "모델",
+          "EZL60-8"
+        ],
+        [
+          "등록 상품명",
+          "베세이 원 핸드 퀵 클램프 600/80mm EZL60-8"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260807_227/1786079633049wxoh6_PNG/46643546070722649_1735055832.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13706008778",
+      "sourceTitle": "베세이 원 핸드 퀵 클램프 600/80mm EZL60-8",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 24,
+      "revision": 1
+    },
+    {
+      "id": "10683597130",
+      "brand": "bestmax",
+      "name": "스텐용 톱날 ST-255",
+      "model": "ST-255",
+      "summary": "",
+      "category": "원형톱날",
+      "specs": [
+        [
+          "모델",
+          "ST-255"
+        ],
+        [
+          "등록 상품명",
+          "베스트맥스 스텐용 톱날 ST-255"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240802_191/17225649741707NIDX_JPEG/36032473687106803_1218089568.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10683597130",
+      "sourceTitle": "베스트맥스 스텐용 톱날 ST-255",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 25,
+      "revision": 1
+    },
+    {
+      "id": "10683185871",
+      "brand": "bestmax",
+      "name": "금속용 톱날 BM-255S",
+      "model": "BM-255S",
+      "summary": "",
+      "category": "원형톱날",
+      "specs": [
+        [
+          "모델",
+          "BM-255S"
+        ],
+        [
+          "등록 상품명",
+          "베스트맥스 금속용 톱날 BM-255S"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240802_254/1722560190686J93IM_JPEG/68933769747626749_1830354734.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10683185871",
+      "sourceTitle": "베스트맥스 금속용 톱날 BM-255S",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 26,
+      "revision": 1
+    },
+    {
+      "id": "10352768362",
+      "brand": "motoyuki",
+      "name": "가치메타 절단석 GM-105 멀티날",
+      "model": "GM-105",
+      "summary": "",
+      "category": "절단·톱날",
+      "specs": [
+        [
+          "모델",
+          "GM-105"
+        ],
+        [
+          "등록 상품명",
+          "모토유키 가치메타 절단석 GM-105 멀티날"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240521_122/1716262078418D6642_JPEG/43564762303809007_2123895583.jpeg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10352768362",
+      "sourceTitle": "모토유키 가치메타 절단석 GM-105 멀티날",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 27,
+      "revision": 1
+    },
+    {
+      "id": "12901302484",
+      "brand": "stabila",
+      "name": "토피도 자석수평기 225mm",
+      "model": "",
+      "summary": "",
+      "category": "수평·측정",
+      "specs": [
+        [
+          "등록 상품명",
+          "스타빌라 토피도 자석수평기 225mm"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251230_67/176707811288023JX9_JPEG/21763136769300817_2112960194.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12901302484",
+      "sourceTitle": "스타빌라 토피도 자석수평기 225mm",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 28,
+      "revision": 1
+    },
+    {
+      "id": "12901206928",
+      "brand": "stabila",
+      "name": "포켓용 미니 수평기 70mm",
+      "model": "",
+      "summary": "",
+      "category": "수평·측정",
+      "specs": [
+        [
+          "등록 상품명",
+          "스타빌라 포켓용 미니 수평기 70mm"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251230_77/17670747239607RY3N_JPEG/101207516062161358_2090761949.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12901206928",
+      "sourceTitle": "스타빌라 포켓용 미니 수평기 70mm",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 29,
+      "revision": 1
+    },
+    {
+      "id": "13527350830",
+      "brand": "utoku",
+      "name": "미끄럼 방지 소켓 레일 옐로우색상",
+      "model": "",
+      "summary": "",
+      "category": "라쳇·소켓",
+      "specs": [
+        [
+          "등록 상품명",
+          "UTOKU 유토쿠 미끄럼 방지 소켓 레일 옐로우색상"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260514_127/1778739790724JOJnE_PNG/2221316129043407_613993878.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13527350830",
+      "sourceTitle": "UTOKU 유토쿠 미끄럼 방지 소켓 레일 옐로우색상",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 30,
+      "revision": 1
+    },
+    {
+      "id": "12717517134",
+      "brand": "utoku",
+      "name": "4-in-1 다기능 멀티 래칫 라쳇 렌치 레드",
+      "model": "UTOKU",
+      "summary": "",
+      "category": "라쳇·소켓",
+      "specs": [
+        [
+          "모델",
+          "UTOKU"
+        ],
+        [
+          "등록 상품명",
+          "유토쿠 UTOKU 4-in-1 다기능 멀티 래칫 라쳇 렌치 레드"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251121_263/17637162487582KgKW_PNG/17891501577630055_1648906225.PNG"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12717517134",
+      "sourceTitle": "유토쿠 UTOKU 4-in-1 다기능 멀티 래칫 라쳇 렌치 레드",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 31,
+      "revision": 1
+    },
+    {
+      "id": "12833986283",
+      "brand": "sb",
+      "name": "국산 분도기 NO-19",
+      "model": "NO-19",
+      "summary": "",
+      "category": "수평·측정",
+      "specs": [
+        [
+          "모델",
+          "NO-19"
+        ],
+        [
+          "등록 상품명",
+          "국산 에스비 분도기 NO-19"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251216_251/1765880981827kCz57_JPEG/75356109857854003_1381629680.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12833986283",
+      "sourceTitle": "국산 에스비 분도기 NO-19",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 32,
+      "revision": 1
+    },
+    {
+      "id": "12833976286",
+      "brand": "sb",
+      "name": "국산 분도기 NO-30",
+      "model": "NO-30",
+      "summary": "",
+      "category": "수평·측정",
+      "specs": [
+        [
+          "모델",
+          "NO-30"
+        ],
+        [
+          "등록 상품명",
+          "국산 에스비 분도기 NO-30"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251216_114/1765880793411QQUNb_JPEG/80889287441108744_1598127706.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12833976286",
+      "sourceTitle": "국산 에스비 분도기 NO-30",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 33,
+      "revision": 1
+    },
+    {
+      "id": "13515360763",
+      "brand": "toolstar",
+      "name": "미니 손커터 TS-MC-08",
+      "model": "MC-08",
+      "summary": "",
+      "category": "작업·측정 공구",
+      "specs": [
+        [
+          "모델",
+          "MC-08"
+        ],
+        [
+          "등록 상품명",
+          "툴스타 미니 손커터 TS-MC-08"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260511_74/1778508325147VBGtx_JPEG/30716119017282214_1228130967.jpeg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13515360763",
+      "sourceTitle": "툴스타 미니 손커터 TS-MC-08",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 34,
+      "revision": 1
+    },
+    {
+      "id": "12013907892",
+      "brand": "toolstar",
+      "name": "커터칼 TC-P98 18mm",
+      "model": "툴스타 보급형 커터칼 18mm TC-P98",
+      "summary": "",
+      "category": "작업·측정 공구",
+      "specs": [
+        [
+          "모델",
+          "툴스타 보급형 커터칼 18mm TC-P98"
+        ],
+        [
+          "등록 상품명",
+          "툴스타 커터칼 TC-P98 18mm"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260904_38/1788531647790OxMvI_PNG/122664526347330604_1959980995.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12013907892",
+      "sourceTitle": "툴스타 커터칼 TC-P98 18mm",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 35,
+      "revision": 1
+    },
+    {
+      "id": "10057112332",
+      "brand": "kovea",
+      "name": "가스랙 안전받침대 KTR-1111",
+      "model": "KTR-1111",
+      "summary": "",
+      "category": "토치·가열",
+      "specs": [
+        [
+          "모델",
+          "KTR-1111"
+        ],
+        [
+          "등록 상품명",
+          "코베아 가스랙 안전받침대 KTR-1111"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20240311_153/1710119456738rrdIg_JPEG/111255290554627378_1801225208.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10057112332",
+      "sourceTitle": "코베아 가스랙 안전받침대 KTR-1111",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 36,
+      "revision": 1
+    },
+    {
+      "id": "6879356338",
+      "brand": "kovea",
+      "name": "호스펜토치 정밀작업 납땜 KT-2202",
+      "model": "코베아 호스펜토치 KT-2202",
+      "summary": "",
+      "category": "토치·가열",
+      "specs": [
+        [
+          "모델",
+          "코베아 호스펜토치 KT-2202"
+        ],
+        [
+          "등록 상품명",
+          "코베아 호스펜토치 정밀작업 납땜 KT-2202"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20230112_274/1673534757101sq0G0_PNG/74670590908815501_1142985331.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6879356338",
+      "sourceTitle": "코베아 호스펜토치 정밀작업 납땜 KT-2202",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 37,
+      "revision": 1
+    },
+    {
+      "id": "12873523843",
+      "brand": "jitool",
+      "name": "핀 F25 5000pcs 20갑 1박스",
+      "model": "F25 5000pcs",
+      "summary": "",
+      "category": "타카·체결",
+      "specs": [
+        [
+          "모델",
+          "F25 5000pcs"
+        ],
+        [
+          "등록 상품명",
+          "제일타카핀 F25 5000pcs 20갑 1박스"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20260622_237/1782125086937u7Htb_PNG/690158004143546_1622029872.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12873523843",
+      "sourceTitle": "제일타카핀 F25 5000pcs 20갑 1박스",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 38,
+      "revision": 1
+    },
+    {
+      "id": "6198021113",
+      "brand": "jitool",
+      "name": "타카핀 F30 스태플 1갑 5000개",
+      "model": "제일타카 타카핀 스태플 F30 1갑 5000개",
+      "summary": "",
+      "category": "타카·체결",
+      "specs": [
+        [
+          "모델",
+          "제일타카 타카핀 스태플 F30 1갑 5000개"
+        ],
+        [
+          "등록 상품명",
+          "제일타카 타카핀 F30 스태플 1갑 5000개"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251016_260/1760585533984haBo3_PNG/8455027735435847_30346169.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6198021113",
+      "sourceTitle": "제일타카 타카핀 F30 스태플 1갑 5000개",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 39,
+      "revision": 1
+    },
+    {
+      "id": "8675153104",
+      "brand": "kamelo",
+      "name": "우피 작업용 안전 장갑 707-W",
+      "model": "707-W",
+      "summary": "",
+      "category": "작업 장갑·보호",
+      "specs": [
+        [
+          "모델",
+          "707-W"
+        ],
+        [
+          "등록 상품명",
+          "카멜로 우피 작업용 안전 장갑 707-W"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20230608_163/1686190457087Fw30k_JPEG/3852083052876045_1046845890.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/8675153104",
+      "sourceTitle": "카멜로 우피 작업용 안전 장갑 707-W",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 40,
+      "revision": 1
+    },
+    {
+      "id": "12771968838",
+      "brand": "kamelo",
+      "name": "방한용 작업장갑 700-YK 캠핑장갑",
+      "model": "",
+      "summary": "",
+      "category": "작업 장갑·보호",
+      "specs": [
+        [
+          "등록 상품명",
+          "카멜로 방한용 작업장갑 700-YK 캠핑장갑"
+        ]
+      ],
+      "images": [
+        "https://shop-phinf.pstatic.net/20251204_121/17647740799395e63W_JPEG/41176522072236413_865164691.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12771968838",
+      "sourceTitle": "카멜로 방한용 작업장갑 700-YK 캠핑장갑",
+      "sourceCheckedOn": "2026-11-07",
+      "published": true,
+      "order": 41,
+      "revision": 1
+    }
+  ]
+}

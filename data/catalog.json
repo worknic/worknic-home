@@ -3889,6 +3889,2345 @@
       }
     },
     {
+      "id": "13500231381",
+      "name": "40Vmax 무선 그라운드 트리머",
+      "published": true,
+      "order": 674,
+      "brand": "makita",
+      "model": "UG001GZ",
+      "summary": "잔디 가장자리와 잡초를 정리하는 정원공구입니다. 핸들 형식과 절단폭, 장착 가능한 날을 확인해 주세요.",
+      "category": "공구·작업용품 / 정원공구",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UG001G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "최대 출력",
+          "790 W"
+        ],
+        [
+          "무부하속도",
+          "고속 : 2,000 / 저속 : 1,500 rpm"
+        ],
+        [
+          "분당 스트로크",
+          "고속 : 4,000 / 저속 : 3,000 spm"
+        ],
+        [
+          "절단 능력",
+          "500 mm"
+        ],
+        [
+          "전장(L x W x H)",
+          "1,345 x 521 x 791 mm"
+        ],
+        [
+          "중량",
+          "10 kg[BL4040F장착 시]"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260430/260430170738351_fbe9.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13500231381",
+      "sourceTitle": "마끼다 무선 그라운드 트리머 UG001GZ 정원관리 잔디깎기",
+      "sourceCheckedOn": "2026-11-07",
+      "sourceImport": {
+        "method": "seller_screen",
+        "brandFilter": "마끼다",
+        "sourcePage": 1,
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 최대 출력 790 W · 무부하속도 고속 : 2,000 / 저속 : 1,500 rpm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "절단 능력과 본체 크기·중량을 함께 비교해 주세요. 적용 가능한 날과 작업 조건은 해당 모델의 안내를 확인합니다."
+          }
+        ],
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "절단 능력과 본체 크기·중량을 함께 비교해 주세요. 적용 가능한 날과 작업 조건은 해당 모델의 안내를 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13500231381",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 목록의 상품명·판매·전시 상태. 코드는 상품명 표기 기준"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3267",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260430/260430170738351_fbe9.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 231,
+              "top": 156,
+              "width": 1019,
+              "height": 970
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "d62b267c21c20f9d07f5f09a2b0f6bef6c69e071dcaf9c192fc27c928eeb4783"
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "연속 사용시간",
+              "value": "고속 : 90 / 저속 : 160 min[BL4040F장착 시]",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "identity": {
+          "manufacturerModel": "UG001G",
+          "imageModel": "UG001G",
+          "salesModel": "UG001GZ"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "trimmer",
+          "label": "예초기·트리머"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 3
+    },
+    {
+      "id": "8772037705",
+      "name": "18V 무선 송풍기",
+      "published": true,
+      "order": 929,
+      "brand": "makita",
+      "model": "DUB184Z",
+      "summary": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요.",
+      "category": "공구·작업용품 / 정원공구",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DUB184"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "공기량",
+          "13.0 ㎥/min"
+        ],
+        [
+          "공기속도",
+          "52.1 m/s"
+        ],
+        [
+          "최대무부하속도",
+          "0-18,000 rpm"
+        ],
+        [
+          "전장(L x W x H)",
+          "810x160x285 mm"
+        ],
+        [
+          "중량",
+          "3.0 kg"
+        ]
+      ],
+      "images": [
+        "https://makita.com.vn/wp-content/uploads/2021/08/dub184z.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/8772037705",
+      "sourceTitle": "마끼다 충전 송풍기 18V 본체 DUB184Z",
+      "sourceCheckedOn": "2026-11-07",
+      "sourceImport": {
+        "method": "seller_screen",
+        "brandFilter": "마끼다",
+        "sourcePage": 8,
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 공기량 13.0 ㎥/min · 공기속도 52.1 m/s. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          }
+        ],
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/8772037705",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 목록의 상품명·판매·전시 상태. 코드는 상품명 표기 기준"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1008",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makita.com.vn/en/product/platform-en/18v/blower-18v/dub184z-cordless-blowerbl18v/",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://makita.com.vn/wp-content/uploads/2021/08/dub184z.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 0,
+              "top": 265,
+              "width": 1500,
+              "height": 970
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "82cdd3f41d67a1fb1cf6b7eedc576e972fcdcbd0c9d642540ca625b0ca8538f7"
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "identity": {
+          "manufacturerModel": "DUB184",
+          "imageModel": "DUB184",
+          "salesModel": "DUB184Z"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "blower",
+          "label": "송풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 3
+    },
+    {
+      "id": "makita-uc032g",
+      "name": "40Vmax 무선 체인톱",
+      "brand": "makita",
+      "model": "UC032G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지와 목재를 절단하는 정원공구입니다. 가이드바 길이와 체인 규격, 손잡이 형식과 작업 높이를 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UC032G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "작업능력",
+          "체인타입 : 91 PX · 피치 : 9.652mm · 게이지 : 1.3 mm"
+        ],
+        [
+          "가이드바 길이",
+          "350 mm"
+        ],
+        [
+          "분당체인속도",
+          "0 - 25.0 m/s"
+        ],
+        [
+          "체인오일탱크",
+          "200 ml"
+        ],
+        [
+          "전장(L x W x H)",
+          "309 x 193 x 219 mm · [BL4040F포함 / 가이드바 미 포함]"
+        ],
+        [
+          "중량",
+          "2.5 [베어툴] kg"
+        ],
+        [
+          "톱날",
+          "91 - 26 T"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20261012/261012174058841_a018.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UC032G 40Vmax 무선 체인톱",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 950,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3319",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UC032G",
+          "imageModel": "UC032G",
+          "salesModel": "UC032G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "saw",
+          "label": "체인톱·전정톱"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 작업능력 체인타입 : 91 PX · 피치 : 9.652mm · 게이지 : 1.3 mm · 가이드바 길이 350 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3319",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20261012/261012174058841_a018.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 393,
+              "width": 1050,
+              "height": 497
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "7dedf6d4bb03be2f3c6864997261feb313b21e6392e535a09a03a5262fe5606c"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-uc033g",
+      "name": "40Vmax 무선 체인톱",
+      "brand": "makita",
+      "model": "UC033G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지와 목재를 절단하는 정원공구입니다. 가이드바 길이와 체인 규격, 손잡이 형식과 작업 높이를 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UC033G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "작업능력",
+          "체인타입 : M53RK · 피치 : 8.255 mm · 게이지 : 1.3 mm"
+        ],
+        [
+          "가이드바 길이",
+          "500 mm"
+        ],
+        [
+          "분당체인속도",
+          "29.0 m/s"
+        ],
+        [
+          "체인오일탱크",
+          "260 ml"
+        ],
+        [
+          "전장(L x W x H)",
+          "449 x 303 x 280 [가이드바 미 포함] mm"
+        ],
+        [
+          "중량",
+          "8.1 [BL4080H / 가이드바, 톱 체인, 체인 오일 포함] kg"
+        ],
+        [
+          "톱날",
+          "M53 - 40.5 T"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260720/26072015252826_4b0f.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UC033G 40Vmax 무선 체인톱",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 951,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3281",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UC033G",
+          "imageModel": "UC033G",
+          "salesModel": "UC033G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "saw",
+          "label": "체인톱·전정톱"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 작업능력 체인타입 : M53RK · 피치 : 8.255 mm · 게이지 : 1.3 mm · 가이드바 길이 500 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3281",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260720/26072015252826_4b0f.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 402,
+              "width": 1050,
+              "height": 478
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "ad8bc53a7dd0435c6b3b6f1c646e477ed1a542441eefed15ccdee27a30f735dc"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-uh023g",
+      "name": "40Vmax 무선 전정기",
+      "brand": "makita",
+      "model": "UH023G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "생울타리와 관목을 다듬는 정원공구입니다. 날 길이와 작업 높이, 손잡이 형식을 비교해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UH023G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "날 길이",
+          "200 mm"
+        ],
+        [
+          "날 간격",
+          "19 mm"
+        ],
+        [
+          "절단 폭",
+          "198 mm"
+        ],
+        [
+          "분당스트로크",
+          "3,600 spm"
+        ],
+        [
+          "무부하속도",
+          "1,800 rpm"
+        ],
+        [
+          "최대 출력",
+          "430 W"
+        ],
+        [
+          "전장(L x W x H)",
+          "563 x 80 x 124 [BL4025장착 시] mm"
+        ],
+        [
+          "중량",
+          "1.8 [BL4025장착 시] kg"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260703/260703150251629_387c.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UH023G 40Vmax 무선 전정기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 952,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3278",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UH023G",
+          "imageModel": "UH023G",
+          "salesModel": "UH023G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "hedge",
+          "label": "전정기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 날 길이 200 mm · 날 간격 19 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "날 길이·간격과 절단 폭을 비교해 주세요. 필요한 교체 날은 본체 모델과 함께 호환 여부를 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "날 길이·간격과 절단 폭을 비교해 주세요. 필요한 교체 날은 본체 모델과 함께 호환 여부를 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3278",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260703/260703150251629_387c.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 443,
+              "width": 1050,
+              "height": 397
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "6ceeecc3fb4c8955dc594b391a5b4b9dad7e9697be225018eb6d37bf049f9ff2"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ub005g",
+      "name": "40Vmax 무선 집진 & 송풍기",
+      "brand": "makita",
+      "model": "UB005G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UB005G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "송풍 모드",
+          "최대 풍압(N) : 4.0 / 5.0 (모드1/2) · 최대 풍량(m³/min) : 3.1 / 3.5 (모드1/2) · 최대 풍속(m/s) : 78 / 87 (모드1/2) · 연속 사용(분) : 16 / 12 (모드1/2) · [BL4040F장착 시]"
+        ],
+        [
+          "흡입 모드",
+          "최대 풍량(m³/min) : 6.2 / 6.8 (모드1/2) · 최대 밀폐 흡입력(kPa) : 3.5 / 4.2 (모드1/2) · 최대 흡입력(W) : 110 / 150 (모드1/2) · 연속 사용(분) : 13 / 10 (모드1/2) · [BL4040F장착 시]"
+        ],
+        [
+          "먼지 주머니 용량",
+          "25 L"
+        ],
+        [
+          "전장(L x W x H)",
+          "1,169 x 184 x 412 mm · [먼지 주머니 미포함]"
+        ],
+        [
+          "중량",
+          "4.4 kg [BL4040F장착 시]"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260701/260701112837691_5605.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UB005G 40Vmax 무선 집진 & 송풍기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 953,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3277",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UB005G",
+          "imageModel": "UB005G",
+          "salesModel": "UB005G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "blower",
+          "label": "송풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 송풍 모드 최대 풍압(N) : 4.0 / 5.0 (모드1/2) · 최대 풍량(m³/min) : 3.1 / 3.5 (모드1/2) · 최대 풍속(m/s) : 78 / 87 (모드1/2) · 연속 사용(분) : 16 / 12 (모드1/2) · [BL4040F장착 시] · 흡입 모드 최대 풍량(m³/min) : 6.2 / 6.8 (모드1/2) · 최대 밀폐 흡입력(kPa) : 3.5 / 4.2 (모드1/2) · 최대 흡입력(W) : 110 / 150 (모드1/2) · 연속 사용(분) : 13 / 10 (모드1/2) · [BL4040F장착 시]. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3277",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260701/260701112837691_5605.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 208,
+              "width": 1050,
+              "height": 866
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "dc16e6f8db90af03044e2451db64817819d56d1a138b67d1c61d25f40077dfc8"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ub004g",
+      "name": "40Vmax 무선 배낭형 블로워",
+      "brand": "makita",
+      "model": "UB004G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UB004G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "끝 노즐 직경",
+          "71 mm"
+        ],
+        [
+          "송풍력",
+          "(모드 1/2) 0 - 17 / 32 N · [BL4080H x 2 장착 시]"
+        ],
+        [
+          "공기량",
+          "(모드 1/2) 0 - 13.8 / 19.1 ㎥/min · [BL4080H x 2 장착 시]"
+        ],
+        [
+          "최대 공기 속도",
+          "96.0 m/s [BL4080H x 2 장착 시]"
+        ],
+        [
+          "연속 사용 시간",
+          "(모드 1/2) 38 / 14 분 · [BL4080H x 2 장착 시]"
+        ],
+        [
+          "전장(L x W x H)",
+          "242 x 585 x 522 mm"
+        ],
+        [
+          "중량",
+          "8.8 [BL4080H x 2 장착 시] kg"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260622/260622135927431_9777.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UB004G 40Vmax 무선 배낭형 블로워",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 954,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3276",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UB004G",
+          "imageModel": "UB004G",
+          "salesModel": "UB004G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "blower",
+          "label": "송풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 끝 노즐 직경 71 mm · 송풍력 (모드 1/2) 0 - 17 / 32 N · [BL4080H x 2 장착 시]. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3276",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260622/260622135927431_9777.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 327,
+              "width": 1050,
+              "height": 629
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "cc8e4e9c368a3c4b861d848243dcd7a0dcd932bc6b5cfa97b95407a3274dfb40"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dhw080",
+      "name": "18V x 2 무선 고압 세척기",
+      "brand": "makita",
+      "model": "DHW080",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "야외의 물 세척 작업에 사용하는 제품입니다. 급수 방식과 압력, 전원과 호스 구성을 먼저 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DHW080"
+        ],
+        [
+          "전압",
+          "18V x 2 (36V)"
+        ],
+        [
+          "일반 압력",
+          "최고 - 5.5 / 최저 3.0 MPa"
+        ],
+        [
+          "최대 압력",
+          "8.0 MPa"
+        ],
+        [
+          "최대 유량",
+          "6.3 L/min"
+        ],
+        [
+          "최대 공급 온도",
+          "40 ℃"
+        ],
+        [
+          "고압 호스 길이",
+          "5 m"
+        ],
+        [
+          "전장(L x W x H)",
+          "438 x 218 x 269 mm"
+        ],
+        [
+          "중량",
+          "7.7 [BL1860B x 2 장착 시] kg"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260615/260615140809984_27a9.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DHW080 18V x 2 무선 고압 세척기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 955,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3274",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DHW080",
+          "imageModel": "DHW080",
+          "salesModel": "DHW080"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "washer",
+          "label": "세척기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V x 2 (36V) · 일반 압력 최고 - 5.5 / 최저 3.0 MPa · 최대 압력 8.0 MPa. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "압력·유량·호스 길이를 비교해 주세요. 급수 조건과 사용할 세척 부속의 호환 여부를 함께 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "압력·유량·호스 길이를 비교해 주세요. 급수 조건과 사용할 세척 부속의 호환 여부를 함께 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3274",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260615/260615140809984_27a9.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 373,
+              "width": 1050,
+              "height": 537
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "e5edffbb2e3fd4b3357f68f4b22b41dbbb2d64a2ccd14d11c6a494d45d8a9b0b"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-duc258",
+      "name": "18V 무선 체인톱",
+      "brand": "makita",
+      "model": "DUC258",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지와 목재를 절단하는 정원공구입니다. 가이드바 길이와 체인 규격, 손잡이 형식과 작업 높이를 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DUC258"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "작업능력",
+          "체인타입 : 80 TXL · 피치 : 8.255 mm · 게이지 : 1.1 mm"
+        ],
+        [
+          "가이드바 길이",
+          "250 mm"
+        ],
+        [
+          "체인 스피드",
+          "0 - 24 m/s"
+        ],
+        [
+          "체인오일탱크",
+          "140 mL"
+        ],
+        [
+          "전장(L x W x H)",
+          "287 x 181 x 194 mm · [가이드바 미 포함, BL1860B장착 시]"
+        ],
+        [
+          "중량",
+          "1.8 kg[베어툴]"
+        ],
+        [
+          "톱날",
+          "80 - 23 T"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260416/260416171227110_17fa.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DUC258 18V 무선 체인톱",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 956,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3256",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DUC258",
+          "imageModel": "DUC258",
+          "salesModel": "DUC258"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "saw",
+          "label": "체인톱·전정톱"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 작업능력 체인타입 : 80 TXL · 피치 : 8.255 mm · 게이지 : 1.1 mm · 가이드바 길이 250 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3256",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260416/260416171227110_17fa.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 356,
+              "width": 1050,
+              "height": 571
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "cef1020ee0755742b9b12b753c91d93b78ed0d46dab2637948baa032d82a4a9d"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ub003g",
+      "name": "40Vmax 무선 송풍기",
+      "brand": "makita",
+      "model": "UB003G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UB003G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "송풍 모드",
+          "최대풍압(N) : 7 / 16 (모드1/2) · 최대 풍량(m³/min) : 9.4 / 13.8 (모드1/2) · 최대 풍속(m/s) : 46 / 68 (모드1/2) · 연속 사용(분) : 30 / 9 (모드1/2) · [BL4050F장착 시]"
+        ],
+        [
+          "흡입 모드",
+          "최대 풍량 : 13.0 m³/min · 최대 밀폐 흡입력 : 3.3 kPa · 최대 흡입력 : 280 W · 먼지 주머니 용량 : 50 L · 연속 사용 | 모드1 : 30 분 / 모드2 : 9 분 · [BL4050F장착 시]"
+        ],
+        [
+          "전장(L x W x H)",
+          "699 - 830 x 201 x 400 mm · [노즐 길이에 따라 변동]"
+        ],
+        [
+          "중량",
+          "5.0 kg [BL4050F장착 시]"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260323/260323162929954_894f.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UB003G 40Vmax 무선 송풍기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 957,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3245",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UB003G",
+          "imageModel": "UB003G",
+          "salesModel": "UB003G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "blower",
+          "label": "송풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 송풍 모드 최대풍압(N) : 7 / 16 (모드1/2) · 최대 풍량(m³/min) : 9.4 / 13.8 (모드1/2) · 최대 풍속(m/s) : 46 / 68 (모드1/2) · 연속 사용(분) : 30 / 9 (모드1/2) · [BL4050F장착 시] · 흡입 모드 최대 풍량 : 13.0 m³/min · 최대 밀폐 흡입력 : 3.3 kPa · 최대 흡입력 : 280 W · 먼지 주머니 용량 : 50 L · 연속 사용 | 모드1 : 30 분 / 모드2 : 9 분 · [BL4050F장착 시]. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "풍량·풍속과 노즐 형식을 함께 비교해 주세요. 흡입 기능이나 집진백은 해당 모델의 사양과 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3245",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260323/260323162929954_894f.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 354,
+              "width": 1050,
+              "height": 574
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "ace1183a96a888f268b73a4700fc8a3fbabbbf37f86d20129bb4d0224da59a23"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "13096575864",
+      "name": "18V 무선 전지가위",
+      "brand": "makita",
+      "model": "DUP181Z",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지치기 작업에 사용하는 전지가위입니다. 절단 가능한 가지의 굵기와 날 교체 조건을 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DUP181"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "최대 절단",
+          "30 mm"
+        ],
+        [
+          "블레이드 각도 조절",
+          "4단계 : ⌀30 / ⌀25 / ⌀18 / ⌀10 mm"
+        ],
+        [
+          "전장(L x W x H)",
+          "300 x 75 x 113 mm · [BL1820B장착 시]"
+        ],
+        [
+          "중량",
+          "0.76 kg[베어툴]"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260114/260114145741714_559c.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13096575864",
+      "sourceTitle": "마끼다 무선 전지가위 DUP181Z 18V 충전 전동가위 베어툴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 958,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3229",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DUP181",
+          "imageModel": "DUP181",
+          "salesModel": "DUP181Z"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "pruner",
+          "label": "전지가위"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 최대 절단 30 mm · 블레이드 각도 조절 4단계 : ⌀30 / ⌀25 / ⌀18 / ⌀10 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "최대 절단 지름과 사용할 가지의 상태를 함께 확인해 주세요. 실제 절단 능력은 재질과 작업 조건에 따라 달라질 수 있습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "최대 절단 지름과 사용할 가지의 상태를 함께 확인해 주세요. 실제 절단 능력은 재질과 작업 조건에 따라 달라질 수 있습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3229",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13096575864",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260114/260114145741714_559c.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 414,
+              "width": 1050,
+              "height": 455
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "99cc9e7a92a39e93d746a9bf68c3067e9595c54aa616fa93187e1bda1e4dd022"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-uc031g",
+      "name": "40Vmax 무선 체인톱",
+      "brand": "makita",
+      "model": "UC031G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지와 목재를 절단하는 정원공구입니다. 가이드바 길이와 체인 규격, 손잡이 형식과 작업 높이를 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UC031G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "작업능력",
+          "체인타입 : 80 TXL · 피치 : 8.255 mm · 게이지 : 1.1 mm"
+        ],
+        [
+          "가이드바 길이",
+          "250 mm"
+        ],
+        [
+          "분당체인속도",
+          "0 - 24.0 m/s"
+        ],
+        [
+          "체인오일탱크",
+          "150 ml"
+        ],
+        [
+          "전장(L x W x H)",
+          "295 x 188 x 203 mm · [BL4025포함 / 가이드바 미 포함]"
+        ],
+        [
+          "중량",
+          "2.0 kg [베어툴]"
+        ],
+        [
+          "톱날",
+          "80 - 23 T"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260114/260114144307299_2e50.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UC031G 40Vmax 무선 체인톱",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 959,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3228",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UC031G",
+          "imageModel": "UC031G",
+          "salesModel": "UC031G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "saw",
+          "label": "체인톱·전정톱"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 작업능력 체인타입 : 80 TXL · 피치 : 8.255 mm · 게이지 : 1.1 mm · 가이드바 길이 250 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3228",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260114/260114144307299_2e50.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 358,
+              "width": 1050,
+              "height": 566
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "17184aead998582e03f79af4b1ce11cce15bf6e2f12e459dd7c1a79522e3c911"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-uc030g",
+      "name": "40Vmax 무선 체인톱",
+      "brand": "makita",
+      "model": "UC030G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지와 목재를 절단하는 정원공구입니다. 가이드바 길이와 체인 규격, 손잡이 형식과 작업 높이를 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UC030G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "작업능력",
+          "체인타입 : 95 TXL · 피치 : 8.255 mm · 게이지 : 1.3 mm"
+        ],
+        [
+          "가이드바 길이",
+          "500 mm"
+        ],
+        [
+          "분당체인속도",
+          "0 - 29.0 m/s"
+        ],
+        [
+          "체인오일탱크",
+          "260 ml"
+        ],
+        [
+          "전장(L x W x H)",
+          "449 x 232 x 280 mm · [가이드바 미 포함]"
+        ],
+        [
+          "중량",
+          "4.5 kg [베어툴]"
+        ],
+        [
+          "톱날",
+          "95 - 41 T"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20260114/260114135930590_b25d.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UC030G 40Vmax 무선 체인톱",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 960,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3227",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "UC030G",
+          "imageModel": "UC030G",
+          "salesModel": "UC030G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "saw",
+          "label": "체인톱·전정톱"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 작업능력 체인타입 : 95 TXL · 피치 : 8.255 mm · 게이지 : 1.3 mm · 가이드바 길이 500 mm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "가이드바 길이와 체인 피치·게이지를 함께 확인해 주세요. 같은 브랜드의 체인이라도 모든 본체와 호환되지는 않습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3227",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20260114/260114135930590_b25d.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 215,
+              "top": 401,
+              "width": 1050,
+              "height": 480
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "d261861f478d55f695641ba0572ea467e953ba618554b479315c8b4ff0859638"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-bl4080h",
+      "name": "40Vmax 8.0Ah 배터리",
+      "brand": "makita",
+      "model": "BL4080H",
+      "category": "공구·작업용품 / 배터리·충전기",
+      "summary": "정격 전압과 배터리 플랫폼을 확인해 호환되는 공구와 함께 구성합니다.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "BL4080H"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "부품코드",
+          "1913S8-7"
+        ],
+        [
+          "잔량표시",
+          "있음"
+        ],
+        [
+          "중량",
+          "1,820 g"
+        ]
+      ],
+      "images": [
+        "https://www.lkmakita.co.kr/upload/product/thumbnail/20251022/251022103914225_791a.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "BL4080H 40Vmax 8.0Ah 배터리",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 961,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3196",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "BL4080H",
+          "imageModel": "BL4080H",
+          "salesModel": "BL4080H"
+        },
+        "classification": {
+          "area": "power-accessories",
+          "type": "battery",
+          "label": "배터리·충전기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 부품코드 1913S8-7 · 잔량표시 있음. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "사용할 본체와 충전기의 정확한 모델을 알려주세요. 같은 브랜드라도 전압군과 배터리 플랫폼이 다르면 호환되지 않을 수 있습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "사용할 본체와 충전기의 정확한 모델을 알려주세요. 같은 브랜드라도 전압군과 배터리 플랫폼이 다르면 호환되지 않을 수 있습니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3196",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.lkmakita.co.kr/upload/product/thumbnail/20251022/251022103914225_791a.png",
+            "width": 1480,
+            "height": 1282,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 225,
+              "top": 156,
+              "width": 1030,
+              "height": 970
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "a76135dddbcc3ee55d5cd0bba12bd7b56497347e06b110914f4582acf4e4e1a6"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "충전시간",
+              "value": "76 분",
+              "reason": "충전기·출력 조건 별도 확인"
+            },
+            {
+              "label": "최대출력",
+              "value": "3.8 kW",
+              "reason": "충전기·출력 조건 별도 확인"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
       "id": "7293920199",
       "name": "18V 무선 송풍기",
       "brand": "makita",
@@ -4029,6 +6368,169 @@
       "revision": 2
     },
     {
+      "id": "makita-dcf301",
+      "name": "18V 무선 선풍기",
+      "brand": "makita",
+      "model": "DCF301",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 곳에 바람을 보내는 이동형 선풍기입니다. 전원과 풍속 조절, 설치 공간을 기준으로 선택해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DCF301"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "작업능력",
+          "최대풍속 : 240m/min · 공기량 : 강/중/약 · 21/15/10m³/min · 팬직경 : 330mm (13＂)"
+        ],
+        [
+          "전장(L x W x H)",
+          "269 x 439 x 602 mm"
+        ],
+        [
+          "중량",
+          "3.8 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dcf/559be7eb-28d1-4c98-935b-57e13cfd34be_dcf301z_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DCF301 18V 무선 선풍기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1074,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1613",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DCF301",
+          "imageModel": "DCF301",
+          "salesModel": "DCF301"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "fan",
+          "label": "선풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 작업능력 최대풍속 : 240m/min · 공기량 : 강/중/약 · 21/15/10m³/min · 팬직경 : 330mm (13＂). 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "풍속·풍량과 팬 크기를 비교하고 설치 공간을 확인해 주세요. 배터리와 외부 전원 부속의 포함 여부는 견적 시 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "풍속·풍량과 팬 크기를 비교하고 설치 공간을 확인해 주세요. 배터리와 외부 전원 부속의 포함 여부는 견적 시 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1613",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DCF301Z",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dcf/559be7eb-28d1-4c98-935b-57e13cfd34be_dcf301z_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 240,
+              "top": 0,
+              "width": 1020,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "ff038ec995d52107a385794d5b17de4d2b1510bb8c777806c41a22ea0e59b71d"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "연속시간",
+              "reason": "시험 배터리 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
       "id": "makita-dcf203",
       "name": "18V 무선 선풍기",
       "brand": "makita",
@@ -4150,6 +6652,2690 @@
           "state": "reviewed",
           "scope": "manufacturer_information_and_enquiry_only",
           "pending": []
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml013g",
+      "name": "40Vmax 무선 자석 랜턴",
+      "brand": "makita",
+      "model": "ML013G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML013G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "루멘",
+          "강 : 1,200 / 중 : 800 / 약 : 500 lm"
+        ],
+        [
+          "룩스",
+          "[광원으로부터 0.5m 떨어진 곳] · 강 : 1,750 / 중 : 1,150 / 약 : 700 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "196 x 91 x 161 mm"
+        ],
+        [
+          "중량",
+          "1.92 [BL4040장착 시] kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/bde0d102-2e4a-4468-b24f-965a65bea14a_ml013g_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML013G 40Vmax 무선 자석 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1078,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3273",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML013G",
+          "imageModel": "ML013G",
+          "salesModel": "ML013G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 루멘 강 : 1,200 / 중 : 800 / 약 : 500 lm · 룩스 [광원으로부터 0.5m 떨어진 곳] · 강 : 1,750 / 중 : 1,150 / 약 : 700 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3273",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML013G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/bde0d102-2e4a-4468-b24f-965a65bea14a_ml013g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 263,
+              "top": 0,
+              "width": 974,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "f4a5acd9015a4f44dd9d5c08991397c2c8e42c9ef3d65a077a2498e9e2b1d2c7"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "강 : 12 / 중 : 18 / 약 : 29 시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml819",
+      "name": "18V 무선 자석 랜턴",
+      "brand": "makita",
+      "model": "DML819",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML819"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "루멘",
+          "강 : 1,200 / 중 : 800 / 약 : 500 lm"
+        ],
+        [
+          "룩스",
+          "[광원으로부터 0.5m 떨어진 곳] · 강 : 1,750 / 중 : 1,150 / 약 : 700 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "178 x 91 x 161 mm"
+        ],
+        [
+          "중량",
+          "1.58 [BL1860B장착 시] kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/18b861ab-ca32-4a85-aedb-2d49dbff58d7_dml819_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML819 18V 무선 자석 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1079,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=3272",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML819",
+          "imageModel": "DML819",
+          "salesModel": "DML819"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 루멘 강 : 1,200 / 중 : 800 / 약 : 500 lm · 룩스 [광원으로부터 0.5m 떨어진 곳] · 강 : 1,750 / 중 : 1,150 / 약 : 700 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=3272",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML819",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/18b861ab-ca32-4a85-aedb-2d49dbff58d7_dml819_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 267,
+              "top": 0,
+              "width": 966,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "912dc64c7b1cefb6b959848c34d49d3f116eb8e433539b55ad07480797129a1d"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "강 : 9 / 중 : 14 / 약 : 22 시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 1480,
+            "height": 1282
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml010g",
+      "name": "40Vmax | 18V 무선 오뚝이 랜턴",
+      "brand": "makita",
+      "model": "ML010G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML010G"
+        ],
+        [
+          "전압",
+          "40Vmax / 18V"
+        ],
+        [
+          "루멘",
+          "강 / 중 / 약 · 5,500/3,000/1,500 lm"
+        ],
+        [
+          "룩스",
+          "강 / 중 / 약 · 550/300/150 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "490 x 490 x 814 mm"
+        ],
+        [
+          "중량",
+          "14.4 - 19.2 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/caa3b65f-dfda-46a2-ba2b-2a85047eabfe_ml010g_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML010G 40Vmax | 18V 무선 오뚝이 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1080,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1658",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML010G",
+          "imageModel": "ML010G",
+          "salesModel": "ML010G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax / 18V · 루멘 강 / 중 / 약 · 5,500/3,000/1,500 lm · 룩스 강 / 중 / 약 · 550/300/150 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1658",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML010G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/caa3b65f-dfda-46a2-ba2b-2a85047eabfe_ml010g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 292,
+              "top": 0,
+              "width": 907,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "e94e9643ce0a8c2a55c051dd2fdb27e32ec0e1e5e0e5c7cdbd89fa130c6ba802"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml814",
+      "name": "18V 무선 타워 라이트",
+      "brand": "makita",
+      "model": "DML814",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML814"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "루멘",
+          "강 / 중 / 약 3,000 / 1,700 / 900 lm"
+        ],
+        [
+          "룩스",
+          "(조사거리 3m) 강 / 중 / 약 130 / 80 / 40 lx · (조사거리 5m) 강 / 중 / 약 50 / 30 / 15 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "573 x 658 x 1,250 - 2,240 mm"
+        ],
+        [
+          "중량",
+          "7.2 - 7.9 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/086abd5b-c5f8-464e-b6ec-e206770f4f03_dml814_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML814 18V 무선 타워 라이트",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1084,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1552",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML814",
+          "imageModel": "DML814",
+          "salesModel": "DML814"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 루멘 강 / 중 / 약 3,000 / 1,700 / 900 lm · 룩스 (조사거리 3m) 강 / 중 / 약 130 / 80 / 40 lx · (조사거리 5m) 강 / 중 / 약 50 / 30 / 15 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1552",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML814",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/086abd5b-c5f8-464e-b6ec-e206770f4f03_dml814_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 516,
+              "top": 0,
+              "width": 467,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "82948f4ff89f1031e7da5ecfcbfbeb537fc2440b196eef613f4f71e24e23e126"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "강/중/약 3 / 5.5 / 10시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml007g",
+      "name": "40Vmax 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML007G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML007G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "루멘",
+          "스팟,플러드,스팟+플러드: · 600,1,000,1,250 lm"
+        ],
+        [
+          "룩스",
+          "스팟,플러드,스팟+플러드: · 82,000,520,60,000 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "330x120x133 mm"
+        ],
+        [
+          "중량",
+          "1.9 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/bc643024-7050-4d6c-82e0-e1b807520cc3_ml007g_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML007G 40Vmax 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1086,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1539",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML007G",
+          "imageModel": "ML007G",
+          "salesModel": "ML007G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 루멘 스팟,플러드,스팟+플러드: · 600,1,000,1,250 lm · 룩스 스팟,플러드,스팟+플러드: · 82,000,520,60,000 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1539",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML007G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/bc643024-7050-4d6c-82e0-e1b807520cc3_ml007g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 352,
+              "top": 0,
+              "width": 798,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "821d4d07ed0f1d84e10bc0381fa6388079aa9971fcc85435df4758ee0e9789c7"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "9979369217",
+      "name": "40Vmax | 18V  무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML003G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML003G"
+        ],
+        [
+          "전압",
+          "40Vmax / 18V / DIY14.4V"
+        ],
+        [
+          "사용시간",
+          "22시간 (약모드 BL4040장착 시)"
+        ],
+        [
+          "루멘",
+          "강1,100 / 약450 lm"
+        ],
+        [
+          "룩스",
+          "강500/약200 (조사거리 1m) · 강1,900/약800 (조사거리 0.5m) lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "249 x 298 x 280 mm"
+        ],
+        [
+          "중량",
+          "4.4 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/187f6050-c4bd-4663-b257-3ecb921cdbba_ml003g_p_1500px.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9979369217",
+      "sourceTitle": "마끼다 18V 40V 충전 작업등 랜턴 ML003G",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1087,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1537",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML003G",
+          "imageModel": "ML003G",
+          "salesModel": "ML003G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax / 18V / DIY14.4V · 사용시간 22시간 (약모드 BL4040장착 시) · 루멘 강1,100 / 약450 lm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1537",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/9979369217",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML003G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/187f6050-c4bd-4663-b257-3ecb921cdbba_ml003g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 0,
+              "top": 0,
+              "width": 1500,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "409b7dd265e1f89b4859ef79c9b7b865f02f0ef31d3310dbf985af837f8c770f"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml816",
+      "name": "18V 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "DML816",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML816"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "루멘",
+          "강500/중250/약100 lm"
+        ],
+        [
+          "룩스",
+          "강800/중400/약180 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "267-400 x 79 x 127 mm"
+        ],
+        [
+          "중량",
+          "1.1 (BL1860B 장착 시) kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/110e5da9-66c3-48e0-abc6-1d54550435dd_dml816_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML816 18V 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1088,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1526",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML816",
+          "imageModel": "DML816",
+          "salesModel": "DML816"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 루멘 강500/중250/약100 lm · 룩스 강800/중400/약180 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1526",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML816",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/110e5da9-66c3-48e0-abc6-1d54550435dd_dml816_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 502,
+              "top": 0,
+              "width": 512,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "7d3499facdb77f66a190f181854cd5bd412b0a4a46abf3dda73265963e4eddde"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "72시간(6.0Ah 장착 시)",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml006g",
+      "name": "40Vmax 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML006G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML006G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "사용시간",
+          "약 82시간(BL4040 장착 시)"
+        ],
+        [
+          "루멘",
+          "500/250/100 lm"
+        ],
+        [
+          "룩스",
+          "800/400/180 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "275-408x85x148 mm"
+        ],
+        [
+          "중량",
+          "1.1 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/e525fb7f-cc14-48c2-bfea-e108663426c0_ml006g_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML006G 40Vmax 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1089,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1519",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML006G",
+          "imageModel": "ML006G",
+          "salesModel": "ML006G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 사용시간 약 82시간(BL4040 장착 시) · 루멘 500/250/100 lm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1519",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML006G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/e525fb7f-cc14-48c2-bfea-e108663426c0_ml006g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 480,
+              "top": 0,
+              "width": 540,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "27f48fcbfb4d780e84b449e2425a2412ad79656a50a2fca5ccf0d9b8b979ca0d"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml002g",
+      "name": "40Vmax 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML002G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML002G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "루멘",
+          "710/340/130(메인LED전체/절반/서브LED) lm"
+        ],
+        [
+          "룩스",
+          "340/310/1,900(메인LED전체/절반/서브LED) lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "370x86x126 (BL4025) · 376x86x141 (BL4040) mm"
+        ],
+        [
+          "중량",
+          "1.17 (BL4025) kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/e40a0d91-4ff4-4be6-9b18-0cbdeb2682ab_ml002g_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML002G 40Vmax 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1090,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1085",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML002G",
+          "imageModel": "ML002G",
+          "salesModel": "ML002G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 루멘 710/340/130(메인LED전체/절반/서브LED) lm · 룩스 340/310/1,900(메인LED전체/절반/서브LED) lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1085",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML002G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/e40a0d91-4ff4-4be6-9b18-0cbdeb2682ab_ml002g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 509,
+              "top": 0,
+              "width": 482,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "ea79853c8c0ddcac2256a669b71152842e5756dea1a1f89e9c01fd98b9fb3660"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "10시간 (BL4025)",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml001g",
+      "name": "40Vmax 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML001G",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML001G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "루멘",
+          "160 lm"
+        ],
+        [
+          "룩스",
+          "3,000 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "281x88x121 (BL4025) · 287x88x136 (BL4040) mm"
+        ],
+        [
+          "중량",
+          "0.99 (BL4025) kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml0/e0de095a-ca94-4432-a9da-d0c96ed5b705_ml001g_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML001G 40Vmax 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1091,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1084",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML001G",
+          "imageModel": "ML001G",
+          "salesModel": "ML001G"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 40Vmax · 루멘 160 lm · 룩스 3,000 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1084",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML001G",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml0/e0de095a-ca94-4432-a9da-d0c96ed5b705_ml001g_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 241,
+              "top": 0,
+              "width": 919,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "ee3b3871194b248cb0ccffbed422b9a6e6246a2b47780710d3fb7a70754ace7b"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "34(BL4025)",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "9979397391",
+      "name": "18V 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "DML811",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "작업 공간을 비추는 18V 무선 LED 랜턴입니다. 본체 크기와 설치 공간, 전원 구성을 함께 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML811"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "전장(L x W x H)",
+          "249x302x271 mm"
+        ],
+        [
+          "중량",
+          "4.7 (BL1860B 장착 시) kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/1ecf8c22-6bc3-4792-9e42-efa5569e4542_dml811_p_1500px.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9979397391",
+      "sourceTitle": "마끼다 18V 작업등 랜턴 DML811",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1092,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1035",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML811",
+          "imageModel": "DML811",
+          "salesModel": "DML811"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1035",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/9979397391",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML811",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/1ecf8c22-6bc3-4792-9e42-efa5569e4542_dml811_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 49,
+              "top": 0,
+              "width": 1402,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "39d5c55d583124a401b840041ad9712a361fb45e311044099470f615c73e6a2b"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "최대 13시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            },
+            {
+              "label": "루멘",
+              "value": "1,800/800/350(조사거리 1m) · 200/100/40(3m) · 85/40/17(5m) lm",
+              "reason": "공식 표의 단위·값 대응 재확인 필요"
+            },
+            {
+              "label": "룩스",
+              "value": "강 / 중 / 약 · 3,000 / 1,500 / 750 lx",
+              "reason": "공식 표의 단위·값 대응 재확인 필요"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml815",
+      "name": "18V 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "DML815",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML815"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "사용시간",
+          "BL1860장착 시 : 약 54시간"
+        ],
+        [
+          "루멘",
+          "160 lm"
+        ],
+        [
+          "룩스",
+          "3,000 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "272x79x116 mm"
+        ],
+        [
+          "중량",
+          "0.93 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/be5e7c03-d659-4907-b11a-6f30e12c43d1_dml815_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML815 18V 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1093,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1026",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML815",
+          "imageModel": "DML815",
+          "salesModel": "DML815"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 사용시간 BL1860장착 시 : 약 54시간 · 루멘 160 lm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1026",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML815",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/be5e7c03-d659-4907-b11a-6f30e12c43d1_dml815_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 285,
+              "top": 0,
+              "width": 930,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "904df7a0771933dcff2d205cef21b834d6e1662ce03d5d9c676743c2ee23c640"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml812",
+      "name": "18V 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "DML812",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML812"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "사용시간",
+          "BL1860장착 시 : 약 10시간"
+        ],
+        [
+          "루멘",
+          "스팟/플러드/스팟+플러드 · 600/1,000/1,250 lm"
+        ],
+        [
+          "룩스",
+          "스팟/플러드/스팟+플러드 · 71,000/520/51,000 lx"
+        ],
+        [
+          "전장(L x W x H)",
+          "313x119x115 mm"
+        ],
+        [
+          "중량",
+          "1.6 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/4d014360-61a4-404d-8680-244968aa1527_dml812_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML812 18V 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1094,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1016",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML812",
+          "imageModel": "DML812",
+          "salesModel": "DML812"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 사용시간 BL1860장착 시 : 약 10시간 · 루멘 스팟/플러드/스팟+플러드 · 600/1,000/1,250 lm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1016",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML812",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/4d014360-61a4-404d-8680-244968aa1527_dml812_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 329,
+              "top": 0,
+              "width": 841,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "2edfb8b94bb95acf125cf08cd2f6d8b70ebbda7fbfec30234fd9395af5744d15"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml808",
+      "name": "18V 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "DML808",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML808"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "루멘",
+          "190 lm"
+        ],
+        [
+          "룩스",
+          "170-4,500 lx"
+        ],
+        [
+          "중량",
+          "1.09 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/33440151-b3b0-4e48-b623-2e1e836b979b_dml808_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML808 18V 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1095,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=619",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML808",
+          "imageModel": "DML808",
+          "salesModel": "DML808"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V · 루멘 190 lm · 룩스 170-4,500 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=619",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML808",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/33440151-b3b0-4e48-b623-2e1e836b979b_dml808_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 229,
+              "top": 0,
+              "width": 1042,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "c0130d48a79daa6108d46cb6e74b4440392e76c42d60c57e648313178846fe2d"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "BL1850B 사용시 · 26시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            },
+            {
+              "label": "전장(L x W x H)",
+              "value": "297 mm",
+              "reason": "세 방향 치수 확인 불가"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml106",
+      "name": "12Vmax 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML106",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML106"
+        ],
+        [
+          "전압",
+          "12Vmax"
+        ],
+        [
+          "루멘",
+          "190 lm"
+        ],
+        [
+          "룩스",
+          "170-4,500 lx"
+        ],
+        [
+          "중량",
+          "0.78 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml1/fb900676-58cc-4b11-a477-16264b5f0ef8_ml106_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML106 12Vmax 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1096,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=618",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML106",
+          "imageModel": "ML106",
+          "salesModel": "ML106"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 12Vmax · 루멘 190 lm · 룩스 170-4,500 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=618",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML106",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml1/fb900676-58cc-4b11-a477-16264b5f0ef8_ml106_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 218,
+              "top": 0,
+              "width": 1063,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "6dcfaaf6f8afc364d91ec209e41fa7f86237f9df36bce55bc4916e92ee6a3ec8"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "BL1041B 사용시 · 12시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            },
+            {
+              "label": "전장(L x W x H)",
+              "value": "290 mm",
+              "reason": "세 방향 치수 확인 불가"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-ml104",
+      "name": "12Vmax 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "ML104",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "ML104"
+        ],
+        [
+          "전압",
+          "12Vmax"
+        ],
+        [
+          "사용시간",
+          "BL1041B 사용시 · 메인 라이트 17시간 · 서브라이트 19시간"
+        ],
+        [
+          "루멘",
+          "710/190 lm"
+        ],
+        [
+          "룩스",
+          "340/190 lx"
+        ],
+        [
+          "중량",
+          "0.78 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/ml1/a8f639a2-cf65-4fac-8ca9-3f3a446d92cc_ml104_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "ML104 12Vmax 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1097,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=612",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "ML104",
+          "imageModel": "ML104",
+          "salesModel": "ML104"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 12Vmax · 사용시간 BL1041B 사용시 · 메인 라이트 17시간 · 서브라이트 19시간 · 루멘 710/190 lm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=612",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/ML104",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/ml1/a8f639a2-cf65-4fac-8ca9-3f3a446d92cc_ml104_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 545,
+              "top": 0,
+              "width": 409,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "b0c37caada8c1e8cf764b6a45037b1876327164ce00d7c50927aebe078513173"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "전장(L x W x H)",
+              "value": "414 mm",
+              "reason": "세 방향 치수 확인 불가"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
         }
       },
       "revision": 2
@@ -4282,6 +9468,343 @@
           "state": "reviewed",
           "scope": "manufacturer_information_and_enquiry_only",
           "pending": []
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml805",
+      "name": "18V|14.4V 무선 LED 랜턴",
+      "brand": "makita",
+      "model": "DML805",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML805"
+        ],
+        [
+          "전압",
+          "18V / 14.4V"
+        ],
+        [
+          "사용시간",
+          "BL1850B 사용시 · 강 8.5시간 · 약 17시간"
+        ],
+        [
+          "루멘",
+          "750/450 lm"
+        ],
+        [
+          "룩스",
+          "1,150/750 lx"
+        ],
+        [
+          "중량",
+          "2.3-2.7 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/35278ca7-c785-46d3-b3d1-1588c2e23f5b_dml805_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML805 18V|14.4V 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1101,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=225",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML805",
+          "imageModel": "DML805",
+          "salesModel": "DML805"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V / 14.4V · 사용시간 BL1850B 사용시 · 강 8.5시간 · 약 17시간 · 루멘 750/450 lm. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=225",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML805",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/35278ca7-c785-46d3-b3d1-1588c2e23f5b_dml805_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 119,
+              "top": 0,
+              "width": 1261,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "a0168504951da00d46252d9bbc649f19709ca6171369219144630bb1d3fb06e9"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "전장(L x W x H)",
+              "value": "214 mm",
+              "reason": "세 방향 치수 확인 불가"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 740,
+            "height": 641
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
+        }
+      },
+      "revision": 2
+    },
+    {
+      "id": "makita-dml802",
+      "name": "18V|14.4V 무선  LED 랜턴",
+      "brand": "makita",
+      "model": "DML802",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML802"
+        ],
+        [
+          "전압",
+          "18V / 14.4V"
+        ],
+        [
+          "루멘",
+          "160 lm"
+        ],
+        [
+          "룩스",
+          "4,000 lx"
+        ],
+        [
+          "중량",
+          "0.64-1.0 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/25f31cdd-3f6c-44ae-9eee-21bb5a17355f_dml802_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DML802 18V|14.4V 무선 LED 랜턴",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1103,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=223",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML802",
+          "imageModel": "DML802",
+          "salesModel": "DML802"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "전압 18V / 14.4V · 루멘 160 lm · 룩스 4,000 lx. 국내 제조사 공개 표기 기준입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "조명 모드와 밝기를 비교해 주세요. 연속 사용시간은 배터리·밝기·작업 환경에 따라 달라지며, 사진 속 배터리의 포함 여부는 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=223",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML802",
+            "checkedOn": "2026-11-08",
+            "scope": "해당 기본 모델 본체의 고해상도 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/25f31cdd-3f6c-44ae-9eee-21bb5a17355f_dml802_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original",
+            "framing": {
+              "left": 321,
+              "top": 0,
+              "width": 858,
+              "height": 1500
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "7d0cbce74970d0a48112252cb112029af9a5852ebcea5572664076f107933c2e"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "official_model_spec_and_photo_batch_review",
+          "omittedUnconfirmedSpecs": [
+            {
+              "label": "사용시간",
+              "value": "BL1850B 사용시 · 23시간",
+              "reason": "배터리·모드 또는 충전기 조건 불명확"
+            },
+            {
+              "label": "전장(L x W x H)",
+              "value": "272 mm",
+              "reason": "세 방향 치수 확인 불가"
+            }
+          ]
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 740,
+            "height": 641
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "원본 제품 픽셀 보존·화면 배치만 정렬",
+            "고해상도 공식 사진과 국내 모델 본체 형태 대조",
+            "미확인 사용 장면·소비자 후기 생략"
+          ]
         }
       },
       "revision": 2

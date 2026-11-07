@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-11-07",
+  "updatedAt": "2026-11-07T14:27:43.101Z",
   "brands": [
     {
       "id": "chulma",
@@ -3887,6 +3887,416 @@
           ]
         }
       }
+    },
+    {
+      "id": "7293920199",
+      "name": "18V 무선 송풍기",
+      "brand": "makita",
+      "model": "DUB185Z",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DUB185"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "공기량",
+          "3.2 ㎥/min"
+        ],
+        [
+          "공기속도",
+          "98 m/s"
+        ],
+        [
+          "최대무부하속도",
+          "0-18,000 rpm"
+        ],
+        [
+          "전장(L x W x H)",
+          "517x156x210 mm"
+        ],
+        [
+          "중량",
+          "1.9 kg"
+        ]
+      ],
+      "images": [
+        "https://makita.com.vn/wp-content/uploads/2021/08/dub185z-5.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/7293920199",
+      "sourceTitle": "마끼다 18V 송풍기 DUB185Z 충전송풍기 캠핑용 낙엽청소기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1021,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1044",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DUB185",
+          "imageModel": "DUB185Z",
+          "salesModel": "DUB185Z"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "blower",
+          "label": "송풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "선택 기준",
+            "text": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요."
+          },
+          {
+            "title": "전원과 판매 구성",
+            "text": "보유 배터리와 필요한 구성을 알려주시면 국내 공급 조건을 확인해 견적을 안내합니다. 이 페이지의 모델 소개는 고정된 세트 구성을 의미하지 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "unit": "구성과 수량 확인 후 견적",
+          "included": "국내 공급 구성은 견적서에서 확정",
+          "excluded": "배터리·충전기·별매 부속의 포함 여부는 견적 시 구분",
+          "options": "공급 가능한 옵션·색상·납기는 별도 확인",
+          "text": "제조사 기본 모델을 소개하는 문의 전용 페이지입니다. 판매가는 미정이며, 국내 판매 단위·포함품·배터리·충전기 구성은 요청하신 수량과 함께 확인한 뒤 견적서에 구분해 안내합니다. 사진 속 부속품이 모두 포함되는 것으로 보지 마세요."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1044",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/7293920199",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makita.com.vn/en/product/platform-en/18v/blower-18v/dub185z-cordless-blower18v/",
+            "checkedOn": "2026-11-07",
+            "scope": "해당 기본 모델 본체의 1500×1500px 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://makita.com.vn/wp-content/uploads/2021/08/dub185z-5.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": []
+        }
+      },
+      "revision": 1
+    },
+    {
+      "id": "makita-dcf203",
+      "name": "18V 무선 선풍기",
+      "brand": "makita",
+      "model": "DCF203",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 곳에 바람을 보내는 이동형 선풍기입니다. 전원과 풍속 조절, 설치 공간을 기준으로 선택해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DCF203"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "작업능력",
+          "최대 풍속:190m/min · 사용시간: · 약/중/강 · 960/580/360분"
+        ],
+        [
+          "전장(L x W x H)",
+          "140x333x447 mm"
+        ],
+        [
+          "중량",
+          "2.6 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dcf/f980596b-c7a7-4742-bd63-8ef62b3dce2f_dcf203z_p_1500px.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DCF203 18V 무선 선풍기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1075,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1029",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DCF203",
+          "imageModel": "DCF203Z",
+          "salesModel": "DCF203"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "fan",
+          "label": "선풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "선택 기준",
+            "text": "현장과 야외에서 필요한 곳에 바람을 보내는 이동형 선풍기입니다. 전원과 풍속 조절, 설치 공간을 기준으로 선택해 주세요."
+          },
+          {
+            "title": "전원과 판매 구성",
+            "text": "보유 배터리와 필요한 구성을 알려주시면 국내 공급 조건을 확인해 견적을 안내합니다. 이 페이지의 모델 소개는 고정된 세트 구성을 의미하지 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "unit": "구성과 수량 확인 후 견적",
+          "included": "국내 공급 구성은 견적서에서 확정",
+          "excluded": "배터리·충전기·별매 부속의 포함 여부는 견적 시 구분",
+          "options": "공급 가능한 옵션·색상·납기는 별도 확인",
+          "text": "제조사 기본 모델을 소개하는 문의 전용 페이지입니다. 판매가는 미정이며, 국내 판매 단위·포함품·배터리·충전기 구성은 요청하신 수량과 함께 확인한 뒤 견적서에 구분해 안내합니다. 사진 속 부속품이 모두 포함되는 것으로 보지 마세요."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "현장과 야외에서 필요한 곳에 바람을 보내는 이동형 선풍기입니다. 전원과 풍속 조절, 설치 공간을 기준으로 선택해 주세요."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1029",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DCF203Z",
+            "checkedOn": "2026-11-07",
+            "scope": "해당 기본 모델 본체의 1500×1500px 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dcf/f980596b-c7a7-4742-bd63-8ef62b3dce2f_dcf203z_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": []
+        }
+      },
+      "revision": 1
+    },
+    {
+      "id": "8934383938",
+      "name": "18V|14.4V 무선 랜턴",
+      "brand": "makita",
+      "model": "DML807",
+      "category": "공구·작업용품 / 캠핑·야외용품",
+      "summary": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DML807"
+        ],
+        [
+          "전압",
+          "18V / 14.4V"
+        ],
+        [
+          "루멘",
+          "메인 라이트 710 · 서브 라이트 130 lm"
+        ],
+        [
+          "룩스",
+          "메인 라이트 340 · 서브 라이트 1,900 lx"
+        ],
+        [
+          "중량",
+          "0.72-1.1 kg"
+        ]
+      ],
+      "images": [
+        "https://cdn.makitatools.com/apps/cms/img/dml/dc5dedfb-e9a1-44df-b083-6c62babc11ee_dml807_p_1500px.png"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/8934383938",
+      "sourceTitle": "마끼다 충전랜턴 작업등 DML807 18V 본체",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 1100,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=226",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-07",
+        "identity": {
+          "manufacturerModel": "DML807",
+          "imageModel": "DML807",
+          "salesModel": "DML807"
+        },
+        "classification": {
+          "area": "camping",
+          "type": "lighting",
+          "label": "랜턴·조명"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "선택 기준",
+            "text": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요."
+          },
+          {
+            "title": "전원과 판매 구성",
+            "text": "보유 배터리와 필요한 구성을 알려주시면 국내 공급 조건을 확인해 견적을 안내합니다. 이 페이지의 모델 소개는 고정된 세트 구성을 의미하지 않습니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "unit": "구성과 수량 확인 후 견적",
+          "included": "국내 공급 구성은 견적서에서 확정",
+          "excluded": "배터리·충전기·별매 부속의 포함 여부는 견적 시 구분",
+          "options": "공급 가능한 옵션·색상·납기는 별도 확인",
+          "text": "제조사 기본 모델을 소개하는 문의 전용 페이지입니다. 판매가는 미정이며, 국내 판매 단위·포함품·배터리·충전기 구성은 요청하신 수량과 함께 확인한 뒤 견적서에 구분해 안내합니다. 사진 속 부속품이 모두 포함되는 것으로 보지 마세요."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "현장과 야외에서 필요한 공간을 밝히는 조명입니다. 광량과 조사 범위, 사용할 배터리와 설치 방식을 함께 살펴보세요."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=226",
+            "checkedOn": "2026-11-07",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/8934383938",
+            "checkedOn": "2026-11-07",
+            "scope": "판매자센터 상품명·판매/전시 상태. 공식 기본 모델과 판매 모델 접미사를 구분"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://makitatools.com/products/details/DML807",
+            "checkedOn": "2026-11-07",
+            "scope": "해당 기본 모델 본체의 1500×1500px 투명 배경 공식 사진. 해외 판매 구성·전압·인증은 국내 사양으로 전용하지 않음"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://cdn.makitatools.com/apps/cms/img/dml/dc5dedfb-e9a1-44df-b083-6c62babc11ee_dml807_p_1500px.png",
+            "width": 1500,
+            "height": 1500,
+            "status": "approved_original_transparent",
+            "verifiedModel": true,
+            "background": "transparent_original"
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": []
+        }
+      },
+      "revision": 1
     }
   ]
 }

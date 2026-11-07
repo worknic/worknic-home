@@ -6228,6 +6228,589 @@
       "revision": 2
     },
     {
+      "id": "makita-ub002g",
+      "name": "40Vmax 무선 송풍기",
+      "brand": "makita",
+      "model": "UB002G",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "작업 공간의 먼지와 낙엽을 정리하는 송풍기입니다. 풍량과 풍속, 노즐 형식에 따라 쓰임을 비교해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "UB002G"
+        ],
+        [
+          "전압",
+          "40Vmax"
+        ],
+        [
+          "공기량",
+          "최대 3.6 ㎥/min"
+        ],
+        [
+          "공기속도",
+          "최대 99 m/s"
+        ],
+        [
+          "전장(L x W x H)",
+          "515x156x227 mm"
+        ],
+        [
+          "중량",
+          "2.0 kg"
+        ]
+      ],
+      "images": [
+        "https://worknic.co.kr/assets/products/official-20261108d/ub002g.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "UB002G 40Vmax 무선 송풍기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 962,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1794",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-08",
+        "identity": {
+          "manufacturerModel": "UB002G",
+          "imageModel": "UB002G",
+          "salesModel": "UB002G"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "blower",
+          "label": "송풍기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "40Vmax 전원을 사용하는 송풍기입니다. 국내 제조사 공개 표기의 최대 공기량은 3.6㎥/min, 최대 공기속도는 99m/s입니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "필요한 풍량과 노즐 길이, 송풍·흡입 용도를 구분해 주세요. 사진은 가든 노즐 장착 예시이며 노즐·집진 부속의 국내 공급 구성은 견적 시 확인합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다. 사진은 가든 노즐 장착 예시입니다. 가든 노즐의 포함 여부와 국내 공급 가능 여부는 별도로 확인합니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "필요한 풍량과 노즐 길이, 송풍·흡입 용도를 구분해 주세요. 사진은 가든 노즐 장착 예시이며 노즐·집진 부속의 국내 공급 구성은 견적 시 확인합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1794",
+            "checkedOn": "2026-11-08",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.nz/products/model/UB002G",
+            "checkedOn": "2026-11-08",
+            "scope": "공식 모델명과 제품 사진 출처. 국내 판매 구성·가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://media.makita.co.nz/_media/product-sheets/U/UB002G-PS.pdf",
+            "checkedOn": "2026-11-08",
+            "scope": "UB002G 제품 사진 확인. 사양과 공급 구성은 국내 공식 자료를 기준으로 안내합니다."
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://media.makita.co.nz/_media/product-sheets/U/UB002G-PS.pdf",
+            "editedSource": "/assets/products/official-20261108d/ub002g.png",
+            "width": 1560,
+            "height": 459,
+            "status": "approved_official_pdf_extract",
+            "verifiedModel": true,
+            "background": "manufacturer_native_mask",
+            "framing": {
+              "left": 0,
+              "top": 0,
+              "width": 1529,
+              "height": 374
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "38f16f961b0f0b07b3366cfd75df8503bd31d2550c144def4b9c367311b6d77b",
+            "resolutionReview": {
+              "rule": "aspect_aware_native_photo",
+              "longEdge": 1560,
+              "shortEdge": 459,
+              "noUpscaling": true
+            },
+            "extraction": {
+              "method": "original_pdf_image_with_native_soft_mask",
+              "pdfPage": 4,
+              "nativeXref": 30,
+              "nativeSmask": 29,
+              "sourcePdfSha256": "57a6fac3455298a30b207d1a5d72b9852426df6e4ea10e4883ad12468c0e7f3f",
+              "nativeWidth": 1560,
+              "nativeHeight": 459,
+              "colourHandling": "원본 PDF 색상 공간과 제조사 마스크를 적용한 출력. 제품 사진 확대·재생성·임의 색상 보정 없음"
+            }
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "native_official_photo_exact_model_and_domestic_rendered_spec_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "공식 내장 제품 전체 사진과 국내 모델 대조",
+            "제품 원본 해상도 유지·확대 없음",
+            "국내 공식 표기 재확인",
+            "미확인 사용 장면·후기 생략"
+          ],
+          "followupBatch": "remaining115-night-20261108",
+          "research": {
+            "officialUkPage": "https://www.makitauk.com/product/ub002g",
+            "officialThaiPage": "",
+            "officialBrochure": "",
+            "status": "추가 공식 고해상도 사진 미확보"
+          }
+        }
+      },
+      "revision": 4
+    },
+    {
+      "id": "makita-dua200",
+      "name": "18V 무선 장대톱",
+      "brand": "makita",
+      "model": "DUA200",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "가지와 목재를 절단하는 정원공구입니다. 가이드바 길이와 체인 규격, 손잡이 형식과 작업 높이를 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DUA200"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "작업능력",
+          "가이드바 길이 200 mm · 체인속도 0-6.7 m/s · 체인오일탱크 55mL"
+        ],
+        [
+          "전장(L x W x H)",
+          "1,620 - 2,520 x 85 x 134 mm"
+        ],
+        [
+          "중량",
+          "3.2 - 3.5 kg"
+        ]
+      ],
+      "images": [
+        "https://worknic.co.kr/assets/products/official-20261108d/dua200.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DUA200 18V 무선 장대톱",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 965,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1779",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-08",
+        "identity": {
+          "manufacturerModel": "DUA200",
+          "imageModel": "DUA200",
+          "salesModel": "DUA200"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "saw",
+          "label": "체인톱·전정톱"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "18V 전원을 사용하는 장대톱입니다. 국내 제조사 표기 기준 가이드바 길이는 200mm이며 헤드 각도는 9단계로 조절할 수 있습니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "가이드바 길이와 작업 높이, 파이프 구성을 함께 확인해 주세요. 교체 체인과 가이드바의 호환 여부는 정확한 본체 모델을 기준으로 안내합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "가이드바 길이와 작업 높이, 파이프 구성을 함께 확인해 주세요. 교체 체인과 가이드바의 호환 여부는 정확한 본체 모델을 기준으로 안내합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1779",
+            "checkedOn": "2026-11-08",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.th/V2Products/Details/2378",
+            "checkedOn": "2026-11-08",
+            "scope": "공식 모델명과 제품 사진 출처. 국내 판매 구성·가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.th/pdf/productv2/638636555071431403LeafletDUA200%20.pdf",
+            "checkedOn": "2026-11-08",
+            "scope": "DUA200 제품 사진 확인. 사양과 공급 구성은 국내 공식 자료를 기준으로 안내합니다."
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.makita.co.th/pdf/productv2/638636555071431403LeafletDUA200%20.pdf",
+            "editedSource": "/assets/products/official-20261108d/dua200.png",
+            "width": 4134,
+            "height": 436,
+            "status": "approved_official_pdf_extract",
+            "verifiedModel": true,
+            "background": "manufacturer_native_mask",
+            "framing": {
+              "left": 0,
+              "top": 14,
+              "width": 4134,
+              "height": 414
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "bd15041a2d9d4b5901762374b54453663a25d58039b83794e86d6fabe6dde07f",
+            "resolutionReview": {
+              "rule": "aspect_aware_native_photo",
+              "longEdge": 4134,
+              "shortEdge": 436,
+              "noUpscaling": true
+            },
+            "extraction": {
+              "method": "original_pdf_image_with_native_soft_mask",
+              "pdfPage": 2,
+              "nativeXref": 190,
+              "nativeSmask": 198,
+              "sourcePdfSha256": "9732f99aea7ac1468d4449a30835bdbc6bc6e5e8180ec1b1e58ee6f5cbc17249",
+              "nativeWidth": 4134,
+              "nativeHeight": 436,
+              "colourHandling": "원본 PDF 색상 공간과 제조사 마스크를 적용한 출력. 제품 사진 확대·재생성·임의 색상 보정 없음"
+            }
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "native_official_photo_exact_model_and_domestic_rendered_spec_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "공식 내장 제품 전체 사진과 국내 모델 대조",
+            "제품 원본 해상도 유지·확대 없음",
+            "국내 공식 표기 재확인",
+            "미확인 사용 장면·후기 생략"
+          ],
+          "followupBatch": "remaining115-night-20261108",
+          "research": {
+            "officialUkPage": "https://www.makitauk.com/product/dua200",
+            "officialThaiPage": "https://www.makita.co.th/V2Products/Details/2378",
+            "officialBrochure": "https://www.makita.co.th/pdf/productv2/638636555071431403LeafletDUA200%20.pdf",
+            "status": "체인·헤드 확대 사진만 확보·전체 본체 원본 없음"
+          }
+        }
+      },
+      "revision": 4
+    },
+    {
+      "id": "makita-dhw180",
+      "name": "18V 무선 세척기",
+      "brand": "makita",
+      "model": "DHW180",
+      "category": "공구·작업용품 / 정원공구",
+      "summary": "야외의 물 세척 작업에 사용하는 제품입니다. 급수 방식과 압력, 전원과 호스 구성을 먼저 확인해 주세요.",
+      "specs": [
+        [
+          "제조사 기본 모델",
+          "DHW180"
+        ],
+        [
+          "전압",
+          "18V"
+        ],
+        [
+          "최대 압력",
+          "2.4 MPa"
+        ],
+        [
+          "최대 유량",
+          "5.3 L/min"
+        ],
+        [
+          "최대 공급 온도",
+          "40 ℃"
+        ],
+        [
+          "호스 길이",
+          "6 m"
+        ],
+        [
+          "전장(L x W x H)",
+          "419 x 99 x 239 mm"
+        ],
+        [
+          "중량",
+          "2.3 - 2.7 kg"
+        ]
+      ],
+      "images": [
+        "https://worknic.co.kr/assets/products/official-20261108d/dhw180.png"
+      ],
+      "sourceUrl": "",
+      "sourceTitle": "DHW180 18V 무선 세척기",
+      "sourceCheckedOn": "2026-11-07",
+      "order": 966,
+      "published": true,
+      "sourceImport": {
+        "method": "manufacturer_public_catalog",
+        "sourceUrl": "https://www.lkmakita.co.kr/products/view?prodId=1778",
+        "checkedOn": "2026-11-07"
+      },
+      "guide": {
+        "version": 3,
+        "checkedOn": "2026-11-08",
+        "identity": {
+          "manufacturerModel": "DHW180",
+          "imageModel": "DHW180",
+          "salesModel": "DHW180"
+        },
+        "classification": {
+          "area": "garden",
+          "type": "washer",
+          "label": "세척기"
+        },
+        "commerce": {
+          "mode": "enquiry-only",
+          "priceStatus": "undetermined",
+          "label": "별도 문의"
+        },
+        "features": [
+          {
+            "title": "확인된 규격으로 비교합니다.",
+            "text": "18V 전원을 사용하는 무선 세척기입니다. 국내 제조사 표기의 최대 압력은 2.4MPa, 최대 유량은 5.3L/min입니다. 실제 압력과 유량은 작업 조건에 따라 달라집니다."
+          },
+          {
+            "title": "작업에 필요한 구성을 확인합니다.",
+            "text": "급수 방식과 호스 길이, 사용할 노즐을 함께 확인해 주세요. 페트병 어댑터와 급수·세척 부속의 포함 여부는 국내 공급 구성으로 구분합니다."
+          }
+        ],
+        "configuration": {
+          "status": "enquiry_scope",
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다. 사진의 배터리는 장착 예시입니다."
+        },
+        "checks": [
+          {
+            "title": "정확한 모델과 전원",
+            "text": "기본 모델과 국내 판매 모델의 접미사를 구분하고, 배터리 플랫폼·전압을 확인해 주세요. 서로 다른 전압군의 배터리가 모두 호환되는 것은 아닙니다."
+          },
+          {
+            "title": "작업 조건과 규격",
+            "text": "급수 방식과 호스 길이, 사용할 노즐을 함께 확인해 주세요. 페트병 어댑터와 급수·세척 부속의 포함 여부는 국내 공급 구성으로 구분합니다."
+          },
+          {
+            "title": "구성과 공급 조건",
+            "text": "판매가 미정 · 별도 문의 제품입니다. 필요한 수량·구성·납기를 알려주시면 재고와 국내 공급 가능 여부를 확인합니다. 가격·재고·정해진 세트 구성을 보장하는 표시는 아닙니다."
+          }
+        ],
+        "note": {
+          "title": "같은 전원으로, 필요한 쓰임을 연결합니다.",
+          "text": "새 장비를 고르기 전에 보유한 배터리와 작업 환경을 함께 알려주세요. 현장과 야외에서 실제로 필요한 본체와 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "manufacturer",
+            "url": "https://www.lkmakita.co.kr/products/view?prodId=1778",
+            "checkedOn": "2026-11-08",
+            "scope": "국내 공식 모델명·제품군·표기 사양. 국내 판매 구성과 가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.th/V2Products/Details/2175",
+            "checkedOn": "2026-11-08",
+            "scope": "공식 모델명과 제품 사진 출처. 국내 판매 구성·가격은 견적 시 확인"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.makita.co.th/pdf/productv2/638617433235140847LeafletDHW180.pdf",
+            "checkedOn": "2026-11-08",
+            "scope": "DHW180 제품 사진 확인. 사양과 공급 구성은 국내 공식 자료를 기준으로 안내합니다."
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.makita.co.th/pdf/productv2/638617433235140847LeafletDHW180.pdf",
+            "editedSource": "/assets/products/official-20261108d/dhw180.png",
+            "width": 2326,
+            "height": 687,
+            "status": "approved_official_pdf_extract",
+            "verifiedModel": true,
+            "background": "manufacturer_native_mask",
+            "framing": {
+              "left": 0,
+              "top": 0,
+              "width": 2326,
+              "height": 687
+            },
+            "reviewedOn": "2026-11-08",
+            "sourceSha256": "6742e671200cc4050985d61c22d3ac3e99a342b753706cc35fa1445f2597672a",
+            "resolutionReview": {
+              "rule": "aspect_aware_native_photo",
+              "longEdge": 2326,
+              "shortEdge": 687,
+              "noUpscaling": true
+            },
+            "extraction": {
+              "method": "native_pdf_image_and_manufacturer_clipping_path",
+              "pdfPage": 2,
+              "imageId": "image_41",
+              "nativeXref": 23,
+              "sourcePdfSha256": "32b06fab539c194e65d6d957a9fdb3a006fbe33a6ff7cc52eb9a32840bdbdef6",
+              "nativeWidth": 2326,
+              "nativeHeight": 687,
+              "colourHandling": "원본 PDF 색상 공간과 제조사 마스크를 적용한 출력. 제품 사진 확대·재생성·임의 색상 보정 없음"
+            }
+          },
+          "usage": null
+        },
+        "quality": {
+          "state": "reviewed",
+          "scope": "manufacturer_information_and_enquiry_only",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "reviewMethod": "native_official_photo_exact_model_and_domestic_rendered_spec_review",
+          "omittedUnconfirmedSpecs": []
+        },
+        "bulkReview": {
+          "batch": "official159-20261108",
+          "reviewedOn": "2026-11-08",
+          "result": "passed",
+          "domesticImage": {
+            "width": 565,
+            "height": 565
+          },
+          "checks": {
+            "identity": true,
+            "classification": true,
+            "domesticSpecs": true,
+            "thumbnail": true,
+            "detail": true
+          },
+          "notes": [
+            "공식 내장 제품 전체 사진과 국내 모델 대조",
+            "제품 원본 해상도 유지·확대 없음",
+            "국내 공식 표기 재확인",
+            "미확인 사용 장면·후기 생략"
+          ],
+          "followupBatch": "remaining115-night-20261108",
+          "research": {
+            "officialUkPage": "https://www.makitauk.com/product/dhw180",
+            "officialThaiPage": "https://www.makita.co.th/V2Products/Details/2175",
+            "officialBrochure": "https://www.makita.co.th/pdf/productv2/638617433235140847LeafletDHW180.pdf",
+            "status": "공식 브로슈어 확보·공개 가능한 제품 전체 사진 미확정"
+          }
+        }
+      },
+      "revision": 4
+    },
+    {
       "id": "makita-uh020g",
       "name": "40Vmax 무선 전정기",
       "brand": "makita",

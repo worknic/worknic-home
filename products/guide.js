@@ -6,7 +6,7 @@ const productId=new URLSearchParams(location.search).get('id')||'';
 let fallback=null;
 function sourceLink(label,url){const a=el('a',label);a.href=https(url);a.target='_blank';a.rel='noopener noreferrer';return a;}
 function render(data){
- const p=data.products?.find(p=>p.id===productId&&p.published!==false),b=p&&data.brands?.find(b=>b.id===p.brand&&b.published!==false);
+ const p=data.products?.find(p=>p.id===productId&&p.published===true),b=p&&data.brands?.find(b=>b.id===p.brand&&b.published===true);
  if(!p||!b||window.WORKNIC_CATEGORIES?.classify(p).group==='unclassified'){$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='공개 중인 상품을 찾을 수 없습니다. ';const a=el('a','상품 목록으로');a.href='/catalog/';$('#product-status').append(a);return;}
  const cached=fallback?.products?.find(x=>x.id===p.id),g=p.guide||(cached?.model===p.model?cached?.guide:null)||{};
  document.title=`${b.name} ${p.name}${p.model?' · '+p.model:''} | WORKNIC`;

@@ -12,12 +12,19 @@ function render(data){
  document.title=`${b.name} ${p.name}${p.model?' · '+p.model:''} | WORKNIC`;
  $('#product-status').hidden=true;$('#product').hidden=false;const kind=window.WORKNIC_CATEGORIES?.classify(p),area=kind&&kind.group!=='tools'?'현장용품':'도구';$('#breadcrumb').replaceChildren();const back=el('a',area);back.href=area==='현장용품'?'/supplies/':'/catalog/';$('#breadcrumb').append(back,document.createTextNode(' / '+b.name+' / '+(p.category||b.category||'')));
  $('#brand').textContent=b.english||b.name;$('#name').textContent=p.name;$('#model').textContent=p.model||'';$('#model').hidden=!p.model;$('#summary').textContent=p.summary||'';$('#overview-copy').textContent=p.summary||'';
- const img=$('#product-photo'),src=https(g.media?.thumbnail?.editedSource||p.images?.[0]);img.src=src;img.alt=`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;img.onerror=()=>{img.hidden=true;$('#photo-caption').textContent='제품 사진은 문의 시 확인해 주세요.'};
+ const img=$('#product-photo'),thumb=g.media?.thumbnail||{},src=https(thumb.editedSource||p.images?.[0]);img.src=src;img.alt=`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;
+ // Keep a square presentation without stretching or recolouring the source photo.
+ img.style.maxWidth=Number(thumb.width)>0?Math.floor(Number(thumb.width))+'px':'100%';
+ img.style.maxHeight=Number(thumb.height)>0?Math.floor(Number(thumb.height))+'px':'100%';
+ img.onerror=()=>{img.hidden=true;$('#photo-caption').textContent='제품 사진은 문의 시 확인해 주세요.'};
  $('#photo-caption').textContent=[b.name,p.model].filter(Boolean).join(' · ');
  const specs=(p.specs||[]).filter(x=>Array.isArray(x)&&x.length===2&&x[0]&&x[1]&&x[0]!=='등록 상품명');
  const highlights=specs.filter(x=>!['모델','제품군','브랜드','등록 제품군','등록 포장 표기'].includes(x[0])).slice(0,3);
  $('#highlights').replaceChildren(...highlights.map(([k,v])=>{const n=el('div');n.append(el('strong',v),el('p',k));return n}));$('#highlights').hidden=!highlights.length;
  $('#configuration').textContent=g.configuration?.text||'포함품·별매품·선택 옵션과 판매 단위는 문의 시 확인해 주세요.';
+ const configuration=g.configuration||{},configurationFields=[['unit','판매 단위'],['quantity','포장 수량'],['included','포함품'],['excluded','별매품'],['options','선택 옵션']];
+ $('#configuration-rows').replaceChildren(...configurationFields.filter(([key])=>typeof configuration[key]==='string'&&configuration[key].trim()).map(([key,label])=>{const row=el('div');row.append(el('dt',label),el('dd',configuration[key]));return row}));
+ $('#configuration-rows').hidden=!$('#configuration-rows').children.length;
  $('#feature-list').replaceChildren(...(g.features||[]).map((f,i)=>{const a=el('article'),d=el('div');d.append(el('h3',f.title),el('p',f.text));a.append(el('span',String(i+1).padStart(2,'0')),d);return a}));
  $('#extra-photos').replaceChildren(...(p.images||[]).slice(1,3).map((url,i)=>{const n=el('figure'),photo=el('img');photo.src=https(url);photo.alt=`${p.name} 상세 사진 ${i+1}`;photo.loading='lazy';n.append(photo);return n}));
  const usage=g.media?.usage,showUsage=!!(usage?.verifiedModel&&usage?.src&&usage?.sourceUrl&&usage?.width>=1000&&usage?.height>=1000);
@@ -30,7 +37,7 @@ function render(data){
  $('#product-enquiry').href='mailto:worknic@worknickorea.com?subject='+encodeURIComponent('[상품 구성 문의] '+b.name+' '+p.name)+'&body='+encodeURIComponent('상품번호: '+p.id+'\n모델: '+(p.model||'')+'\n보유 공구 / 작업 용도:\n필요 수량:\n');
  const reviews=(g.reviews||[]).filter(r=>r.verified===true&&r.model===p.model&&r.text&&https(r.sourceUrl)&&r.checkedOn);
  $('#reviews').hidden=!reviews.length;$('#review-items').replaceChildren(...reviews.map(r=>{const a=el('article');a.append(el('p',r.text),sourceLink('후기 출처 · '+r.checkedOn,r.sourceUrl));return a}));
- $('#sources').replaceChildren(...(g.sources||[]).filter(s=>https(s.url)).map(s=>sourceLink(s.type==='manufacturer'?'제조사 자료':'워크닉 원본 상품',s.url)));
+ $('#sources').replaceChildren(...(g.sources||[]).filter(s=>https(s.url)).map(s=>{const item=el('div');item.append(sourceLink(s.type==='manufacturer'?'제조사 자료':'워크닉 원본 상품',s.url));if(s.scope)item.append(el('span',s.scope));if(s.checkedOn)item.append(el('span','확인 · '+s.checkedOn));return item}));
  $('#checked-date').textContent=g.checkedOn?'상품 정보 확인 · '+g.checkedOn:'';
 }
 async function init(){

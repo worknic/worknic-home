@@ -18,3 +18,5 @@ header img{width:148px;height:auto}header nav a{border-radius:4px;padding:6px 9p
 @media(max-width:780px){.paper{width:calc(100% - 24px);padding-inline:20px}.hero{gap:24px}h1{font-size:28px}.overview,.specs,.in-use{gap:22px}.section{padding:36px 0}.product-photo-frame{padding:18px}.section-nav{gap:4px;flex-wrap:wrap}.section-nav a{flex:1 1 40%;padding:10px 6px}.checks{gap:14px}.checks article{padding:20px}.numbers strong{font-size:18px}.configuration-block{padding:18px}header nav a{padding:5px 3px}}
 
 .enquiry-pricing{margin:24px 0;padding:20px;background:#eceeed;border-radius:6px}.enquiry-pricing strong{font-size:18px;font-weight:500}.enquiry-pricing p{font-size:12px;line-height:1.8;margin:8px 0 14px;color:#50584c}.enquiry-pricing[hidden]{display:none}
+
+.product-photo-frame[data-original-framing]{position:relative;overflow:hidden}

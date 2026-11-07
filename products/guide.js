@@ -12,10 +12,11 @@ function render(data){
  document.title=`${b.name} ${p.name}${p.model?' · '+p.model:''} | WORKNIC`;
  $('#product-status').hidden=true;$('#product').hidden=false;const kind=window.WORKNIC_CATEGORIES?.classify(p),area=kind&&kind.group!=='tools'?'현장용품':'도구';$('#breadcrumb').replaceChildren();const back=el('a',area);back.href=area==='현장용품'?'/supplies/':'/catalog/';$('#breadcrumb').append(back,document.createTextNode(' / '+b.name+' / '+(p.category||b.category||'')));
  $('#brand').textContent=b.english||b.name;$('#name').textContent=p.name;$('#model').textContent=p.model||'';$('#model').hidden=!p.model;$('#summary').textContent=p.summary||'';$('#overview-copy').textContent=p.summary||'';
- const img=$('#product-photo'),thumb=g.media?.thumbnail||{},src=https(thumb.editedSource||p.images?.[0]);img.src=src;img.alt=`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;
+ const img=$('#product-photo');window.WORKNIC_MEDIA?.clear(img);const thumb=g.media?.thumbnail||{},src=https(thumb.editedSource||p.images?.[0]);img.src=src;img.alt=`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;
  // Keep a square presentation without stretching or recolouring the source photo.
  img.style.maxWidth=Number(thumb.width)>0?Math.floor(Number(thumb.width))+'px':'100%';
  img.style.maxHeight=Number(thumb.height)>0?Math.floor(Number(thumb.height))+'px':'100%';
+ window.WORKNIC_MEDIA?.frame(img,thumb);
  img.onerror=()=>{img.hidden=true;$('#photo-caption').textContent='제품 사진은 문의 시 확인해 주세요.'};
  $('#photo-caption').textContent=[b.name,p.model].filter(Boolean).join(' · ');
  const specs=(p.specs||[]).filter(x=>Array.isArray(x)&&x.length===2&&x[0]&&x[1]&&x[0]!=='등록 상품명');

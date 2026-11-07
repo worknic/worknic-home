@@ -1036,7 +1036,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12232450481",
       "sourceTitle": "페스툴 시스테이너3 SYS3-COMBI M 337 577767 시스테이너 콤비 수납 서랍 일체형 이동식 정리함",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1084,7 +1083,8 @@
         },
         "configuration": {
           "status": "seller_confirmation_pending",
-          "text": "실제 포함품과 선택 옵션은 문의 시 확인해 주세요."
+          "text": "실제 포함품과 선택 옵션은 문의 시 확인해 주세요.",
+          "options": "블랙 · 차콜 · 화이트 · 레드 · 오렌지 · 기본·옵션 선택"
         },
         "quality": {
           "state": "content_prepared",
@@ -1092,7 +1092,44 @@
             "판매 구성·옵션·판매 단위 최종 대조"
           ]
         }
-      }
+      },
+      "collections": [
+        "systainer"
+      ],
+      "manufacturerPartNumber": "577767",
+      "variants": [
+        {
+          "sourceId": "13857592250",
+          "sourceUrl": "https://smartstore.naver.com/worknic_festool/products/13857592250",
+          "option": "블랙"
+        },
+        {
+          "sourceId": "13857590269",
+          "sourceUrl": "https://smartstore.naver.com/worknic_festool/products/13857590269",
+          "option": "차콜"
+        },
+        {
+          "sourceId": "13857588254",
+          "sourceUrl": "https://smartstore.naver.com/worknic_festool/products/13857588254",
+          "option": "화이트"
+        },
+        {
+          "sourceId": "13857586608",
+          "sourceUrl": "https://smartstore.naver.com/worknic_festool/products/13857586608",
+          "option": "레드"
+        },
+        {
+          "sourceId": "13838994584",
+          "sourceUrl": "https://smartstore.naver.com/worknic_festool/products/13838994584",
+          "option": "오렌지"
+        },
+        {
+          "sourceId": "13736768102",
+          "sourceUrl": "https://smartstore.naver.com/worknic_festool/products/13736768102",
+          "option": "기본·옵션 선택"
+        }
+      ],
+      "revision": 3
     },
     {
       "id": "13638565751",

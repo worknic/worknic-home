@@ -38,6 +38,7 @@ function render(data){
  const reviews=(g.reviews||[]).filter(r=>r.verified===true&&r.model===p.model&&r.text&&https(r.sourceUrl)&&r.checkedOn);
  $('#reviews').hidden=!reviews.length;$('#review-items').replaceChildren(...reviews.map(r=>{const a=el('article');a.append(el('p',r.text),sourceLink('후기 출처 · '+r.checkedOn,r.sourceUrl));return a}));
  $('#sources').replaceChildren(...(g.sources||[]).filter(s=>https(s.url)).map(s=>{const item=el('div');item.append(sourceLink(s.type==='manufacturer'?'제조사 자료':'워크닉 원본 상품',s.url));if(s.scope)item.append(el('span',s.scope));if(s.checkedOn)item.append(el('span','확인 · '+s.checkedOn));return item}));
+ const enquiry=g.commerce?.mode==='enquiry-only';$('#enquiry-pricing').hidden=!enquiry;if(enquiry){$('#hero-enquiry').href=$('#product-enquiry').href;$('#product-enquiry').textContent='가격·구성 문의하기';}
  $('#checked-date').textContent=g.checkedOn?'상품 정보 확인 · '+g.checkedOn:'';
 }
 async function init(){

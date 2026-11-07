@@ -18,3 +18,5 @@
 .catalog-categories.brand-collections{display:flex;flex-wrap:wrap;gap:8px}.brand-collections .catalog-category{flex:0 0 auto;min-height:40px;padding:10px 14px}.brand-collections .catalog-category strong{font-size:12px;line-height:1.6}@media(max-width:780px){.catalog-categories.brand-collections{gap:7px}.brand-collections .catalog-category{min-height:38px;padding:9px 12px}}
 
 @media(max-width:650px){.catalog-toolbar{flex-wrap:wrap}.catalog-toolbar form{flex:1 0 100%;min-width:0}.catalog-toolbar .catalog-search-label{min-width:0!important}.catalog-toolbar .catalog-view{margin-left:auto}}
+
+.product-price-enquiry{font-size:12px;color:#41483d;margin:10px 0 0;font-weight:500}

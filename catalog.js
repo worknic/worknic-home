@@ -11,7 +11,7 @@ function matchesCollection(p){if(brand==='festool')return collection==='systaine
 function normalizeFilters(){const allowed=isSupply?taxonomy.groups.filter(g=>g.id!=='tools').map(g=>g.id):scope==='brand'?taxonomy.groups.map(g=>g.id):['tools'];if(category&&!allowed.includes(category))category='';if(!taxonomy.groups.find(g=>g.id===category)?.children.some(c=>c[0]===subcategory))subcategory='';if(!isSupply&&scope!=='brand'&&category==='tools'&&!subcategory)category='';}
 normalizeFilters();
 function showCategories(){
- const root=$('#catalog-categories');if(!root)return;root.replaceChildren();
+ const root=$('#catalog-categories');if(!root)return;root.replaceChildren();root.classList.toggle('brand-collections',scope==='brand'&&!!brandCollections[brand]&&!isSupply);
  if(scope==='brand'&&brandCollections[brand]&&!isSupply){root.hidden=false;for(const [id,title]of brandCollections[brand]){const a=make('a',null,'catalog-category'),params=new URLSearchParams({scope:'brand',brand});if(id)params.set('collection',id);a.href='/catalog/?'+params;a.setAttribute('aria-current',collection===id?'page':'false');a.append(make('strong',title));a.onclick=e=>{if(e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();collection=id;category='';subcategory='';render()};root.append(a)}$('#subcategory-label').hidden=true;return;}
  const groups=isSupply?taxonomy.groups.filter(g=>g.id!=='tools'):[];
  const tools=taxonomy.groups.find(g=>g.id==='tools');

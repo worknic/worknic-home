@@ -3,8 +3,8 @@ const $=s=>document.querySelector(s),make=(tag,text,cls)=>{const e=document.crea
 const initial=new URLSearchParams(location.search),isSupply=location.pathname.startsWith('/supplies/');
 let data={brands:[],products:[]},brand=initial.get('brand')||'',query='',view=isSupply?'list':'grid',category=initial.get('category')||'',subcategory=initial.get('subcategory')||'',scope=initial.get('scope')==='brand'||(!isSupply&&initial.has('brand')&&!initial.has('scope'))?'brand':'tools';
 const taxonomy=window.WORKNIC_CATEGORIES||{groups:[],classify:()=>({group:'tools',sub:'hand-tools'}),label:()=>''};
-if(!isSupply&&['consumables','safety'].includes(category)){const url=new URL(location.href);url.pathname='/supplies/';url.searchParams.delete('scope');location.replace(url.href);return;}
-function normalizeFilters(){const allowed=isSupply?['consumables','safety']:scope==='brand'?taxonomy.groups.map(g=>g.id):['tools'];if(category&&!allowed.includes(category))category='';if(!taxonomy.groups.find(g=>g.id===category)?.children.some(c=>c[0]===subcategory))subcategory='';if(!isSupply&&scope!=='brand'&&category==='tools'&&!subcategory)category='';}
+if(!isSupply&&['consumables','safety','factory','pneumatics'].includes(category)){const url=new URL(location.href);url.pathname='/supplies/';url.searchParams.delete('scope');location.replace(url.href);return;}
+function normalizeFilters(){const allowed=isSupply?taxonomy.groups.filter(g=>g.id!=='tools').map(g=>g.id):scope==='brand'?taxonomy.groups.map(g=>g.id):['tools'];if(category&&!allowed.includes(category))category='';if(!taxonomy.groups.find(g=>g.id===category)?.children.some(c=>c[0]===subcategory))subcategory='';if(!isSupply&&scope!=='brand'&&category==='tools'&&!subcategory)category='';}
 normalizeFilters();
 function showCategories(){
  const root=$('#catalog-categories');if(!root)return;root.replaceChildren();
@@ -15,7 +15,7 @@ function showCategories(){
  for(const g of choices){const a=make('a',null,'catalog-category');const params=new URLSearchParams();if(g.id)params.set('category',g.id);if(g.sub)params.set('subcategory',g.sub);if(brand)params.set('brand',brand);if(!isSupply)params.set('scope',scope);a.href=location.pathname+(params.size?'?'+params:'');a.setAttribute('aria-current',category===g.id&&(isSupply||subcategory===(g.sub||''))?'page':'false');a.append(make('strong',g.name));if(g.description)a.append(make('span',g.description));a.onclick=e=>{if(e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();category=g.id;subcategory=g.sub||'';render()};root.append(a)}
  const group=taxonomy.groups.find(g=>g.id===category),select=$('#subcategory-filter');$('#subcategory-label').hidden=!isSupply||!group;select.replaceChildren(new Option('전체 세부 분류',''),...(group?.children||[]).map(([id,name])=>new Option(name,id)));select.value=subcategory;
 }
-function matchesArea(p){const group=taxonomy.classify(p).group;return isSupply?group==='consumables'||group==='safety':scope==='brand'||group==='tools';}
+function matchesArea(p){const group=taxonomy.classify(p).group;if(group==='unclassified'||!data.brands.some(b=>b.id===p.brand))return false;return isSupply?group!=='tools':scope==='brand'||group==='tools';}
 
 function brandCard(b){const a=make('a',null,'brand-tile');a.href='/catalog/?scope=brand&brand='+encodeURIComponent(b.id);if(location.pathname==='/brands/')a.id=b.id;a.setAttribute('aria-label',b.name+' 제품 보기');const frame=make('div',null,'brand-logo');if(safeImage(b.logo)){const img=make('img');img.src=b.logo;img.alt=b.english||b.name;img.loading='lazy';img.decoding='async';frame.append(img)}else frame.append(make('strong',b.english||b.name));a.append(frame,make('span',b.name));return a;}
 function showBrands(){document.querySelectorAll('[data-brand-directory]').forEach(root=>{root.replaceChildren(...data.brands.map(brandCard));});const count=$('[data-brand-count]');if(count)count.textContent=data.brands.length+' BRANDS';}

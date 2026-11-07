@@ -6416,9 +6416,23 @@
             "officialBrochure": "",
             "status": "추가 공식 고해상도 사진 미확보"
           }
-        }
+        },
+        "highlights": [
+          {
+            "label": "사용 전원",
+            "value": "40Vmax"
+          },
+          {
+            "label": "최대 공기량",
+            "value": "3.6 ㎥/min"
+          },
+          {
+            "label": "최대 공기속도",
+            "value": "99 m/s"
+          }
+        ]
       },
-      "revision": 4
+      "revision": 5
     },
     {
       "id": "makita-dua200",
@@ -6605,9 +6619,23 @@
             "officialBrochure": "https://www.makita.co.th/pdf/productv2/638636555071431403LeafletDUA200%20.pdf",
             "status": "체인·헤드 확대 사진만 확보·전체 본체 원본 없음"
           }
-        }
+        },
+        "highlights": [
+          {
+            "label": "사용 전원",
+            "value": "18V"
+          },
+          {
+            "label": "가이드바",
+            "value": "200 mm"
+          },
+          {
+            "label": "헤드 각도 조절",
+            "value": "9단계"
+          }
+        ]
       },
-      "revision": 4
+      "revision": 5
     },
     {
       "id": "makita-dhw180",
@@ -6806,9 +6834,23 @@
             "officialBrochure": "https://www.makita.co.th/pdf/productv2/638617433235140847LeafletDHW180.pdf",
             "status": "공식 브로슈어 확보·공개 가능한 제품 전체 사진 미확정"
           }
-        }
+        },
+        "highlights": [
+          {
+            "label": "사용 전원",
+            "value": "18V"
+          },
+          {
+            "label": "최대 압력",
+            "value": "2.4 MPa"
+          },
+          {
+            "label": "최대 유량",
+            "value": "5.3 L/min"
+          }
+        ]
       },
-      "revision": 4
+      "revision": 5
     },
     {
       "id": "makita-uh020g",
@@ -8793,9 +8835,23 @@
             "officialBrochure": "https://www.makita.co.th/pdf/productv2/638076702513232187LeafletDUR368A.pdf",
             "status": "제품 일부 확대 사진·제품 전체 썸네일 없음"
           }
-        }
+        },
+        "highlights": [
+          {
+            "label": "사용 전원",
+            "value": "18V × 2"
+          },
+          {
+            "label": "최대 회전수",
+            "value": "6,500 rpm"
+          },
+          {
+            "label": "핸들 형식",
+            "value": "바이크 핸들"
+          }
+        ]
       },
-      "revision": 4
+      "revision": 5
     },
     {
       "id": "makita-dlm532",
@@ -10168,9 +10224,23 @@
             "url": "https://www.lkmakita.co.kr/upload/product/gmanual_20220919171017.pdf",
             "page": 1
           }
-        }
+        },
+        "highlights": [
+          {
+            "label": "사용 전원",
+            "value": "40Vmax / 18V"
+          },
+          {
+            "label": "최대 광속",
+            "value": "10,000 lm"
+          },
+          {
+            "label": "밝기 조절",
+            "value": "3단계"
+          }
+        ]
       },
-      "revision": 4
+      "revision": 5
     },
     {
       "id": "makita-dml814",
@@ -10547,9 +10617,23 @@
             "detailModelLabel": "ML005G",
             "registeredModelLabel": "ML005GX"
           }
-        }
+        },
+        "highlights": [
+          {
+            "label": "사용 전원",
+            "value": "40Vmax / 18V"
+          },
+          {
+            "label": "최대 광속",
+            "value": "3,600 lm"
+          },
+          {
+            "label": "밝기 조절",
+            "value": "3단계"
+          }
+        ]
       },
-      "revision": 4
+      "revision": 5
     },
     {
       "id": "makita-ml007g",

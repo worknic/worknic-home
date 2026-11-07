@@ -20,7 +20,8 @@ function render(data){
  img.onerror=()=>{img.hidden=true;$('#photo-caption').textContent='제품 사진은 문의 시 확인해 주세요.'};
  $('#photo-caption').textContent=typeof thumb.caption==='string'&&thumb.caption.trim()?thumb.caption:[b.name,p.model].filter(Boolean).join(' · ');
  const specs=(p.specs||[]).filter(x=>Array.isArray(x)&&x.length===2&&x[0]&&x[1]&&x[0]!=='등록 상품명');
- const highlights=specs.filter(x=>!['모델','제품군','브랜드','등록 제품군','등록 포장 표기','제조사 기본 모델','국내 등록 모델','기본 본체 모델'].includes(x[0])).slice(0,3);
+ const suppliedHighlights=Array.isArray(g.highlights)?g.highlights.filter(x=>x&&typeof x.label==='string'&&typeof x.value==='string'&&x.label.trim()&&x.value.trim()).slice(0,3).map(x=>[x.label,x.value]):[];
+ const highlights=suppliedHighlights.length?suppliedHighlights:specs.filter(x=>!['모델','제품군','브랜드','등록 제품군','등록 포장 표기','제조사 기본 모델','국내 등록 모델','기본 본체 모델'].includes(x[0])).slice(0,3);
  $('#highlights').replaceChildren(...highlights.map(([k,v])=>{const n=el('div');n.append(el('strong',v),el('p',k));return n}));$('#highlights').hidden=!highlights.length;
  $('#configuration').textContent=g.configuration?.text||'포함품·별매품·선택 옵션과 판매 단위는 문의 시 확인해 주세요.';
  const configuration=g.configuration||{},configurationFields=[['unit','판매 단위'],['quantity','포장 수량'],['included','포함품'],['excluded','별매품'],['options','선택 옵션']];

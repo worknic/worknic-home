@@ -20,3 +20,5 @@ header img{width:148px;height:auto}header nav a{border-radius:4px;padding:6px 9p
 .enquiry-pricing{margin:24px 0;padding:20px;background:#eceeed;border-radius:6px}.enquiry-pricing strong{font-size:18px;font-weight:500}.enquiry-pricing p{font-size:12px;line-height:1.8;margin:8px 0 14px;color:#50584c}.enquiry-pricing[hidden]{display:none}
 
 .product-photo-frame[data-original-framing]{position:relative;overflow:hidden}
+
+.trade-notice{margin:24px 0;padding:20px;background:#eceeed;border-radius:6px}.trade-notice h2{margin:0 0 9px;font-size:15px;font-weight:500;line-height:1.5}.trade-notice p{margin:0 0 14px;color:#50584c;font-size:12px;line-height:1.9}.trade-notice .button{font-size:12px}.trade-notice .button:focus-visible{outline:2px solid #30382a;outline-offset:3px}

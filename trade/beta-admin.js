@@ -1,0 +1,608 @@
+import {
+  $,
+  el,
+  call,
+  login,
+  logout,
+  button,
+  link,
+  field,
+  formTask,
+  card,
+  dl,
+  money,
+  date,
+  labels,
+  say,
+} from "./beta-common.js";
+let actor = null,
+  lastPreview = null;
+async function prices() {
+  const root = $("#view"),
+    c = card("판매가 엑셀 일괄 관리");
+  c.append(
+    el(
+      "p",
+      "양식을 내려받아 상품·옵션 번호와 수정번호를 유지하고 판매가·단위·부가세·적용일을 입력하세요. 업로드 후 변경사항을 확인해야 실제로 적용됩니다.",
+    ),
+    link("판매가 엑셀 내려받기", "/api/beta/admin/prices/template"),
+  );
+  const f = el("form"),
+    file = field(f, "file", "판매가 엑셀 파일", "", "file");
+  file.accept = ".xlsx";
+  const preview = el("div");
+  f.append(el("button", "변경 미리보기", "button"));
+  formTask(f, async () => {
+    if (!file.files[0]) throw Error("엑셀 파일을 선택해 주세요.");
+    const r = await fetch("/api/beta/admin/prices/file", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/octet-stream" },
+        body: file.files[0],
+        signal: AbortSignal.timeout(45000),
+      }),
+      j = await r.json();
+    if (!r.ok) throw Error(j.error);
+    lastPreview = j;
+    preview.replaceChildren(
+      el("p", `적용 가능 ${j.valid}개 · 오류 ${j.invalid}개`),
+    );
+    const table = el("table"),
+      head = el("tr");
+    for (const label of [
+      "행",
+      "상품·옵션",
+      "이전 가격",
+      "새 가격",
+      "검증 결과",
+    ])
+      head.append(el("th", label));
+    table.append(head);
+    for (const x of j.rows) {
+      const row = el("tr");
+      for (const text of [
+        x.row,
+        x.after ? x.after.productId + " / " + x.after.optionId : "확인 필요",
+        x.before?.price == null ? "미정" : money(x.before.price),
+        x.after?.price == null ? "미정" : money(x.after.price),
+        x.errors.join(" / ") || "적용 가능",
+      ])
+        row.append(el("td", text));
+      table.append(row);
+    }
+    const wrap = el("div", null, "table-wrap");
+    wrap.append(table);
+    preview.append(wrap);
+    if (!j.invalid)
+      preview.append(
+        button("확인한 가격 일괄 적용", async () => {
+          const r = await call("/admin/prices/apply", { id: lastPreview.id });
+          lastPreview = null;
+          say(
+            r.applied +
+              "개 판매가를 적용했습니다. 기존 견적·주문 금액은 유지됩니다.",
+          );
+          route();
+        }),
+      );
+  });
+  c.append(f, preview);
+  root.append(c);
+  const { history } = await call("/admin/prices/history");
+  for (const h of history) {
+    const item = card("가격 적용 내역 · " + date(h.created_at));
+    item.append(
+      el("p", h.status === "restored" ? "이전 가격 복원됨" : "일괄 적용 완료"),
+    );
+    if (h.status === "applied")
+      item.append(
+        button(
+          "이전 가격으로 복원",
+          async () => {
+            if (
+              !confirm("적용 이후 수정되지 않은 가격을 이전 값으로 복원할까요?")
+            )
+              return;
+            await call("/admin/prices/restore", { id: h.id });
+            say("이전 가격을 복원했습니다.");
+            route();
+          },
+          "button secondary",
+        ),
+      );
+    root.append(item);
+  }
+  const stocks = card("주문 가능 수량");
+  stocks.append(
+    button(
+      "공개 상품 동기화",
+      async () => {
+        const r = await call("/admin/catalog-sync", {});
+        say(
+          r.imported + "개 공개 상품을 동기화했습니다. 가격·수량은 유지됩니다.",
+        );
+        route();
+      },
+      "button secondary",
+    ),
+  );
+  const search = field(stocks, "stockSearch", "상품 검색");
+  search.required = false;
+  const list = el("div", null, "cards");
+  stocks.append(list);
+  const { products } = await call("/admin/products");
+  const render = () => {
+    list.replaceChildren(
+      ...products
+        .filter((p) =>
+          [p.name, p.model, p.id]
+            .join(" ")
+            .toLowerCase()
+            .includes(search.value.toLowerCase()),
+        )
+        .slice(0, 30)
+        .map((p) => {
+          const f = el("form", null, "stock-item");
+          f.append(el("p", p.name + " · " + p.model + " · " + p.optionLabel));
+          field(f, "stock", "주문 가능 수량", p.stock, "number");
+          field(f, "enabled", "수량 확인·주문 가능", p.enabled, "checkbox");
+          f.append(el("button", "수량 저장", "button"));
+          formTask(f, async (d) => {
+            await call("/admin/products/stock", {
+              id: p.id,
+              optionId: p.optionId,
+              revision: p.revision,
+              stock: Number(d.stock),
+              enabled: d.enabled === "on",
+            });
+            say("수량을 저장했습니다.");
+            route();
+          });
+          return f;
+        }),
+    );
+  };
+  search.oninput = render;
+  render();
+  root.append(stocks);
+}
+async function members() {
+  const root = $("#view");
+  root.append(
+    el(
+      "p",
+      "회원 승인은 기존 OS 사업자회원 관리에서 처리합니다. 여기서는 승인된 사업자정보와 계정을 대조하고 실제 담당자 연락처를 확인한 뒤 계정 확인 링크를 준비합니다.",
+      "muted",
+    ),
+    link("OS 사업자 승인 열기", "https://worknic.tools/business-members/"),
+  );
+  const { members } = await call("/admin/members");
+  for (const m of members) {
+    const c = card(m.profile.companyName);
+    c.append(
+      el(
+        "p",
+        m.username + " · " + m.profile.businessNumber + " · " + m.profile.email,
+      ),
+      el("span", labels[m.status] || m.status, "badge"),
+    );
+    const f = el("form");
+    field(
+      f,
+      "checked",
+      "등록된 담당자와 직접 연락하여 계정 사용자를 확인했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    f.append(el("button", "OS 승인 대조·계정 확인 링크 만들기", "button"));
+    formTask(f, async () => {
+      const r = await call("/admin/members/bind", {
+          id: m.id,
+          contactVerified: true,
+        }),
+        url =
+          location.origin +
+          "/trade/#account?activate=" +
+          encodeURIComponent(r.token),
+        box = el("div");
+      box.append(
+        el(
+          "p",
+          "등록된 담당자에게 전달하세요. 30분 동안 한 번만 사용할 수 있습니다.",
+          "muted",
+        ),
+      );
+      const a = el("a", "계정 확인 링크");
+      a.href = url;
+      box.append(a);
+      c.append(box);
+    });
+    c.append(f);
+    root.append(c);
+  }
+}
+async function quotes() {
+  const root = $("#view"),
+    { quotes } = await call("/admin/quotes");
+  for (const q of quotes) {
+    const c = card("견적 " + q.id.slice(0, 8));
+    c.append(
+      el("span", labels[q.status] || q.status, "badge"),
+      el(
+        "p",
+        q.items
+          .map((x) => x.name + " · " + x.optionId + " · " + x.quantity)
+          .join(" / "),
+      ),
+      el("p", q.locationName),
+    );
+    if (q.status === "requested") {
+      const f = el("form");
+      field(f, "pickupFee", "픽업 비용 · 부가세 포함 원", "", "number");
+      field(f, "expiresAt", "견적 유효기간", "", "datetime-local");
+      field(
+        f,
+        "checked",
+        "가격표·규격·포함품·수량·픽업 비용을 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      f.append(el("button", "견적서 발행", "button"));
+      formTask(f, async (d) => {
+        await call("/admin/quotes/issue", {
+          id: q.id,
+          revision: q.revision,
+          pickupFee: Number(d.pickupFee),
+          expiresAt: new Date(d.expiresAt).getTime(),
+          conditionsConfirmed: true,
+        });
+        say("견적서를 발행했습니다.");
+        route();
+      });
+      c.append(f);
+    } else if (q.total)
+      c.append(
+        dl([
+          ["합계", money(q.total)],
+          ["발행", date(q.issuedAt)],
+        ]),
+        link("견적서 보기", "/api/beta/quotes/" + q.id + "/print"),
+      );
+    root.append(c);
+  }
+  await orderList(false);
+}
+async function orderList(pickupOnly) {
+  const root = $("#view"),
+    { orders } = await call("/admin/orders");
+  root.append(el("h2", pickupOnly ? "픽업 주문" : "확정 주문"));
+  for (const o of orders) {
+    const c = card(o.number);
+    c.append(
+      el("span", labels[o.status] || o.status, "badge"),
+      dl([
+        ["거래처", o.buyer.companyName],
+        ["연락처", o.buyer.phone],
+        ["합계", money(o.total)],
+        ["픽업", o.fulfillment?.locationName || "배송"],
+      ]),
+      link("거래명세서", "/api/beta/orders/" + o.id + "/statement"),
+    );
+    if (o.status === "pending_payment") {
+      const f = el("form");
+      field(f, "amount", "실제 입금액", "", "number");
+      field(f, "reference", "입금자 또는 확인번호");
+      field(
+        f,
+        "checked",
+        "실제 은행 내역과 입금액을 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      f.append(el("button", "입금 확인", "button"));
+      formTask(f, async (d) => {
+        await call("/admin/orders/update", {
+          id: o.id,
+          revision: o.revision,
+          action: "confirm_payment",
+          amount: Number(d.amount),
+          reference: d.reference,
+          bankChecked: true,
+        });
+        say("입금을 확인했습니다.");
+        route();
+      });
+      c.append(f);
+    }
+    if (pickupOnly && ["paid", "preparing"].includes(o.status) && !o.pickup) {
+      const { slots } = await call("/admin/slots"),
+        f = el("form"),
+        label = el("label", "보관함"),
+        select = el("select");
+      select.name = "slotId";
+      for (const s of slots.filter(
+        (s) => s.location_id === o.fulfillment?.locationId && s.enabled,
+      )) {
+        const op = el("option", s.label);
+        op.value = s.id;
+        select.append(op);
+      }
+      label.append(select);
+      f.append(label);
+      const pin = field(
+        f,
+        "pin",
+        "실제 잠금장치에 설정한 개별 비밀번호",
+        "",
+        "password",
+      );
+      pin.pattern = "[0-9]{6,12}";
+      pin.autocomplete = "off";
+      field(f, "availableFrom", "수령 시작", "", "datetime-local");
+      field(f, "availableUntil", "수령 마감", "", "datetime-local");
+      field(
+        f,
+        "staged",
+        "상품·수량을 보관함에 배치했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      field(
+        f,
+        "physical",
+        "해당 잠금장치의 개별 비밀번호를 실제로 설정·확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      f.append(el("button", "픽업 준비 완료", "button"));
+      formTask(f, async (d) => {
+        await call("/admin/pickups/ready", {
+          ...d,
+          id: o.id,
+          revision: o.revision,
+          availableFrom: new Date(d.availableFrom).getTime(),
+          availableUntil: new Date(d.availableUntil).getTime(),
+          staged: true,
+          physicalCodeConfigured: true,
+        });
+        f.reset();
+        say(
+          "픽업 준비 완료 상태로 변경했습니다. 고객에게 앱에서 수령 기간과 코드를 확인하도록 안내해 주세요.",
+        );
+        route();
+      });
+      c.append(f);
+    }
+    if (pickupOnly && o.pickup) {
+      c.append(
+        dl([
+          ["보관함", o.pickup.slotLabel],
+          ["수령 마감", date(o.pickup.availableUntil)],
+          ["상태", labels[o.pickup.status] || o.pickup.status],
+        ]),
+      );
+      const f = el("form"),
+        label = el("label", "실제 확인 결과"),
+        s = el("select");
+      s.name = "result";
+      for (const [v, t] of [
+        ["collected", "수령 완료 확인"],
+        ["not_collected", "미수령·담당자 처리"],
+      ]) {
+        const op = el("option", t);
+        op.value = v;
+        s.append(op);
+      }
+      label.append(s);
+      f.append(label);
+      field(
+        f,
+        "compartment",
+        "보관함의 실제 상품·수령 여부를 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      field(
+        f,
+        "revoked",
+        "실제 잠금장치에서 이전 비밀번호를 변경·폐기했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      f.append(el("button", "수령 확인·보관함 사용 종료", "button"));
+      formTask(f, async (d) => {
+        await call("/admin/pickups/close", {
+          id: o.id,
+          revision: o.pickup.revision,
+          result: d.result,
+          physicalCodeRevoked: true,
+          compartmentChecked: true,
+        });
+        say("확인 기록을 저장하고 보관함을 비웠습니다.");
+        route();
+      });
+      c.append(f);
+    }
+    root.append(c);
+  }
+}
+async function pickups() {
+  await orderList(true);
+}
+async function settings() {
+  const root = $("#view"),
+    config = await call("/admin/config"),
+    c = card("베타 접수");
+  const f = el("form");
+  field(
+    f,
+    "registrationEnabled",
+    "계정 신청 열기",
+    config.registrationEnabled,
+    "checkbox",
+  );
+  field(
+    f,
+    "betaEnabled",
+    "견적·픽업 신청 열기",
+    config.betaEnabled,
+    "checkbox",
+  );
+  field(
+    f,
+    "documentsConfirmed",
+    "부가세·문서 양식·개인정보·수령 운영 기준을 확인했습니다.",
+    config.documentsConfirmed,
+    "checkbox",
+  );
+  f.append(el("button", "접수 설정 저장", "button"));
+  formTask(f, async (d) => {
+    await call("/admin/config", {
+      revision: config.revision,
+      registrationEnabled: d.registrationEnabled === "on",
+      betaEnabled: d.betaEnabled === "on",
+      documentsConfirmed: d.documentsConfirmed === "on",
+    });
+    say("접수 설정을 저장했습니다.");
+    route();
+  });
+  c.append(f);
+  root.append(c);
+  const { locations } = await call("/admin/locations");
+  for (const l of locations) {
+    const c = card(l.name),
+      f = el("form");
+    field(f, "address", "확인된 수령 주소", l.address);
+    field(f, "hours", "운영 요일·시간 및 수령 조건", l.hours);
+    field(f, "noticeUrl", "확인한 공식 공지 주소", l.noticeUrl, "url");
+    field(f, "fee", "기본 픽업 비용 · 원", l.fee, "number");
+    field(
+      f,
+      "sourceVerified",
+      "공지 원문·현장 수령 조건·비용을 확인했습니다.",
+      l.sourceVerified,
+      "checkbox",
+    );
+    field(f, "enabled", "이 장소의 신청 열기", l.enabled, "checkbox");
+    f.append(el("button", "장소 설정 저장", "button"));
+    formTask(f, async (d) => {
+      await call("/admin/locations", {
+        ...d,
+        id: l.id,
+        revision: l.revision,
+        fee: d.fee === "" ? null : Number(d.fee),
+        enabled: d.enabled === "on",
+        sourceVerified: d.sourceVerified === "on",
+      });
+      say("장소 설정을 저장했습니다.");
+      route();
+    });
+    c.append(f);
+    root.append(c);
+  }
+  const slot = card("개별 비밀번호 보관함 등록"),
+    sf = el("form");
+  field(sf, "id", "보관함 ID · 영문·숫자");
+  field(sf, "label", "보관함 표시 이름");
+  const label = el("label", "장소"),
+    select = el("select");
+  select.name = "locationId";
+  for (const l of locations) {
+    const o = el("option", l.name);
+    o.value = l.id;
+    select.append(o);
+  }
+  label.append(select);
+  sf.append(label);
+  field(sf, "enabled", "보관함 사용", false, "checkbox");
+  sf.append(el("button", "보관함 등록", "button"));
+  formTask(sf, async (d) => {
+    await call("/admin/slots", { ...d, enabled: d.enabled === "on" });
+    say("보관함을 등록했습니다.");
+    route();
+  });
+  slot.append(sf);
+  root.append(slot);
+}
+function auth() {
+  const c = card("OS 관리자 연결"),
+    f = el("form");
+  c.append(
+    el(
+      "p",
+      "운영에서는 워크닉 OS에서 이 관리 화면을 열어 주세요. 아래 로그인은 검증 환경 또는 운영 담당자용입니다.",
+    ),
+  );
+  field(f, "username", "관리자 아이디");
+  field(f, "password", "비밀번호", "", "password");
+  field(f, "otp", "인증 앱 코드").required = false;
+  f.append(el("button", "로그인", "button"));
+  formTask(f, async () => {
+    await login(f);
+    await load();
+  });
+  c.append(f);
+  $("#view").append(c);
+}
+async function route() {
+  const root = $("#view");
+  root.replaceChildren();
+  if (!actor) {
+    auth();
+    return;
+  }
+  const name = location.hash.slice(1).split("?")[0] || "prices";
+  document
+    .querySelectorAll(".nav a")
+    .forEach((a) =>
+      a.setAttribute("aria-current", a.hash === "#" + name ? "page" : "false"),
+    );
+  try {
+    if (name === "members") await members();
+    else if (name === "quotes") await quotes();
+    else if (name === "pickups") await pickups();
+    else if (name === "settings") await settings();
+    else await prices();
+  } catch (e) {
+    say(e.message, true);
+  }
+}
+async function load() {
+  try {
+    actor = (await call("/me")).member;
+    if (actor.role !== "admin") throw Error("관리자 계정이 필요합니다.");
+    say("관리자 연결 완료 · 운영 원본과 상품자료는 보존됩니다.");
+  } catch (e) {
+    actor = null;
+    say(e.message, true);
+  }
+  route();
+}
+window.addEventListener("hashchange", route);
+window.addEventListener("message", async (e) => {
+  if (e.origin !== "https://worknic.tools" || e.source !== window.opener)
+    return;
+  if (e.data?.type === "WORKNIC_OS_LOGOUT") {
+    actor = null;
+    $("#view").replaceChildren();
+    await logout();
+  }
+  if (
+    e.data?.type === "WORKNIC_OS_SESSION" &&
+    typeof e.data.token === "string"
+  ) {
+    try {
+      await call("/admin/os-connect", { token: e.data.token });
+      history.replaceState(null, "", "/trade/admin#prices");
+      await load();
+    } catch (x) {
+      say(x.message, true);
+    }
+  }
+});
+if (location.hash === "#os-connect" && window.opener)
+  window.opener.postMessage(
+    { type: "WORKNIC_TRADE_READY" },
+    "https://worknic.tools",
+  );
+else load();

@@ -476,7 +476,7 @@ async function settings(root) {
     field(f, "address", "확인된 수령 주소", l.address);
     field(f, "hours", "운영 요일·시간 및 수령 조건", l.hours);
     field(f, "noticeUrl", "확인한 공식 공지 주소", l.noticeUrl, "url");
-    field(f, "fee", "기본 픽업 비용 · 원", l.fee, "number");
+    field(f, "fee", "기본 픽업 비용 · 원", l.fee, "number").required = false;
     field(
       f,
       "sourceVerified",

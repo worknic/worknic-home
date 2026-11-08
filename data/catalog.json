@@ -4,7 +4,7 @@
     "preservesProductMetadata": true,
     "requiresReviewedPublication": true
   },
-  "updatedAt": "2026-11-08T13:24:25.532Z",
+  "updatedAt": "2026-11-08T13:28:55.613Z",
   "brands": [
     {
       "id": "chulma",
@@ -16923,13 +16923,13 @@
       "published": true,
       "order": 218,
       "brand": "tajima",
-      "model": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함",
+      "model": "SFCRX800",
       "summary": "공구의 휴대 위치를 낮추고 장착 공간을 나누는 2단 쿠션벨트입니다. 대응 허리벨트 폭과 쿠션 길이, 기본 홀더 구성을 함께 확인해 주세요.",
       "category": "공구·작업용품 / 보관·휴대",
       "specs": [
         [
           "모델",
-          "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함"
+          "SFCRX800"
         ],
         [
           "JAN",
@@ -16968,7 +16968,7 @@
           },
           {
             "title": "기본 판매 구성",
-            "text": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함 단품 기준입니다. 쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개. 허리벨트·공구·추가 홀더 별매."
+            "text": "SFCRX800 단품 기준입니다. 쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개. 허리벨트·공구·추가 홀더 별매."
           },
           {
             "title": "입고·재판매 전 확인",
@@ -17010,7 +17010,7 @@
               "height": 715
             },
             "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/4bc160bb615a69d29a1e.svg",
-            "caption": "타지마 타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함 · 제조사 공식 사진",
+            "caption": "타지마 SFCRX800 · 제조사 공식 사진",
             "presentation": {
               "background": "#ecedeb",
               "aspectRatio": "1:1",
@@ -17027,7 +17027,7 @@
           "included": "쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개",
           "excluded": "허리벨트·공구·추가 홀더 별매",
           "options": "등록 모델·규격 기준",
-          "text": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함 단품 기준입니다. 쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개. 허리벨트·공구·추가 홀더 별매."
+          "text": "SFCRX800 단품 기준입니다. 쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개. 허리벨트·공구·추가 홀더 별매."
         },
         "quality": {
           "state": "reviewed",
@@ -17037,9 +17037,9 @@
           "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
         },
         "modelCorrespondence": {
-          "registeredModel": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함",
+          "registeredModel": "SFCRX800",
           "manufacturerModel": "SFCRX800",
-          "status": "same_model_formatting_only",
+          "status": "exact_model_extracted_from_store_title",
           "checkedOn": "2026-11-08",
           "source": "https://twn.tajimatool.co.jp/product/4975364268921"
         },
@@ -17063,7 +17063,7 @@
         "store": "worknic_korea",
         "checkedOn": "2026-11-07"
       },
-      "revision": 3
+      "revision": 4
     },
     {
       "id": "11898001352",

@@ -1,6 +1,10 @@
 {
-  "schemaVersion": 2,
-  "updatedAt": "2026-11-07T14:27:43.101Z",
+  "schemaVersion": 1,
+  "capabilities": {
+    "preservesProductMetadata": true,
+    "requiresReviewedPublication": true
+  },
+  "updatedAt": "2026-11-08T00:47:43.129Z",
   "brands": [
     {
       "id": "chulma",
@@ -367,7 +371,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13678473108",
       "sourceTitle": "철마 구두칼 목공용 목재용 세밀작업 나무자루 CK-102",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -418,7 +421,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "11551563001",
@@ -449,7 +453,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11551563001",
       "sourceTitle": "철마 고속도 광폭 끌 100mm",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -501,7 +504,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "7340014024",
@@ -528,7 +532,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/7340014024",
       "sourceTitle": "코메론 프로아츠줄자 KMC-31LT",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -580,7 +583,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13583273899",
@@ -611,7 +615,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13583273899",
       "sourceTitle": "코메론 줄자 네오 KMC-330 50M",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -662,7 +665,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13383153150",
@@ -693,7 +697,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13383153150",
       "sourceTitle": "타지마 고아츠 시그마 줄자 SS25-55 5.5M",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -744,7 +747,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13773047402",
@@ -779,7 +783,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13773047402",
       "sourceTitle": "타지마 트윈 탈착식 코듀라 공구집 파우치 3단 대형파우치 SFKBNC-KG3L2H",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -836,7 +839,8 @@
             "고해상도 대표 이미지 대체"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12135631016",
@@ -863,7 +867,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12135631016",
       "sourceTitle": "하세가와 프로용 스텝사다리 SBL2.0-06",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -915,7 +918,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "11560523993",
@@ -946,7 +950,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11560523993",
       "sourceTitle": "하세가와 아시가루 블랙 사다리 5단 RZB-15B",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -997,7 +1000,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12232450481",
@@ -1197,7 +1201,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13638565751",
       "sourceTitle": "페스툴 신제품 DF 500 RQ Plus 전기 목공 조이너 도미노 세트 578485",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1248,7 +1251,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "9102494027",
@@ -1275,7 +1279,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9102494027",
       "sourceTitle": "훌타포스 타일 해머",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1328,7 +1331,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "10780480661",
@@ -1367,7 +1371,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10780480661",
       "sourceTitle": "훌타포스 끌 HDC 6",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1424,7 +1427,8 @@
             "고해상도 대표 이미지 대체"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12635593910",
@@ -1455,7 +1459,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12635593910",
       "sourceTitle": "세라그립 샌딩블럭 아데방 목공작업 900g 블랙",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1508,7 +1511,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12635591708",
@@ -1539,7 +1543,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12635591708",
       "sourceTitle": "세라그립 샌딩블럭 아데방 목공작업 900g 블루",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1592,7 +1595,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13721375775",
@@ -1643,7 +1647,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13721375775",
       "sourceTitle": "마끼다 18V 임팩트 충전드릴 DTD158Z",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 4,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1723,7 +1726,8 @@
             "text": "6.35mm 육각 연결부를 사용합니다."
           }
         ]
-      }
+      },
+      "revision": 4
     },
     {
       "id": "13853946102",
@@ -1762,7 +1766,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13853946102",
       "sourceTitle": "마끼다 목공용 원형톱날 B-12603 335mm 60T 내경 25mm 1장",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1813,7 +1816,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13506265769",
@@ -1844,7 +1848,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13506265769",
       "sourceTitle": "크니펙스 압착 펜치 뺀치 09-12-240SB",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1896,7 +1899,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12832976801",
@@ -1931,7 +1935,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12832976801",
       "sourceTitle": "크니펙스 슬립조인트 플라이어 82-02-150",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -1988,7 +1991,8 @@
             "고해상도 대표 이미지 대체"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13703066863",
@@ -2019,7 +2023,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13703066863",
       "sourceTitle": "가야라이프 카팀스 펌핏 툴 벨트 KL-7020 L size",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2070,7 +2073,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13703048681",
@@ -2101,7 +2105,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13703048681",
       "sourceTitle": "가야라이프 카팀스 챔피언 툴벨트 KL-7010 M size",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2152,7 +2155,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "9949989859",
@@ -2179,7 +2183,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9949989859",
       "sourceTitle": "마벨 와이어커터 MI-100",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2231,7 +2234,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "9931687339",
@@ -2258,7 +2262,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9931687339",
       "sourceTitle": "마벨 압착펜치 MVA-200",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2310,7 +2313,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "6693845380",
@@ -2337,7 +2341,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6693845380",
       "sourceTitle": "목공클램프 베세이 파이프클램프 BPC-H12",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2389,7 +2392,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13706008778",
@@ -2424,7 +2428,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13706008778",
       "sourceTitle": "베세이 원 핸드 퀵 클램프 600/80mm EZL60-8",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2475,7 +2478,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "10683597130",
@@ -2506,7 +2510,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10683597130",
       "sourceTitle": "베스트맥스 스텐용 톱날 ST-255",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2558,7 +2561,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "10683185871",
@@ -2589,7 +2593,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10683185871",
       "sourceTitle": "베스트맥스 금속용 톱날 BM-255S",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2641,7 +2644,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "10352768362",
@@ -2668,7 +2672,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10352768362",
       "sourceTitle": "모토유키 가치메타 절단석 GM-105 멀티날",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2720,7 +2723,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12901302484",
@@ -2751,7 +2755,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12901302484",
       "sourceTitle": "스타빌라 토피도 자석수평기 225mm",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2804,7 +2807,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12901206928",
@@ -2835,7 +2839,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12901206928",
       "sourceTitle": "스타빌라 포켓용 미니 수평기 70mm",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2888,7 +2891,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13527350830",
@@ -2915,7 +2919,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13527350830",
       "sourceTitle": "UTOKU 유토쿠 미끄럼 방지 소켓 레일 옐로우색상",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -2967,7 +2970,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12717517134",
@@ -2998,7 +3002,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12717517134",
       "sourceTitle": "유토쿠 UTOKU 4-in-1 다기능 멀티 래칫 라쳇 렌치 레드",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3051,7 +3054,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12833986283",
@@ -3086,7 +3090,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12833986283",
       "sourceTitle": "국산 에스비 분도기 NO-19",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3143,7 +3146,8 @@
             "고해상도 대표 이미지 대체"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12833976286",
@@ -3178,7 +3182,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12833976286",
       "sourceTitle": "국산 에스비 분도기 NO-30",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3235,7 +3238,8 @@
             "고해상도 대표 이미지 대체"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13515360763",
@@ -3262,7 +3266,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13515360763",
       "sourceTitle": "툴스타 미니 손커터 TS-MC-08",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3313,7 +3316,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12013907892",
@@ -3344,7 +3348,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12013907892",
       "sourceTitle": "툴스타 커터칼 TC-P98 18mm",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3395,7 +3398,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "10057112332",
@@ -3422,7 +3426,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10057112332",
       "sourceTitle": "코베아 가스랙 안전받침대 KTR-1111",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3473,7 +3476,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "6879356338",
@@ -3504,7 +3508,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6879356338",
       "sourceTitle": "코베아 호스펜토치 정밀작업 납땜 KT-2202",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3556,7 +3559,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12873523843",
@@ -3587,7 +3591,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12873523843",
       "sourceTitle": "제일타카핀 F25 5000pcs 20갑 1박스",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3638,7 +3641,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "6198021113",
@@ -3669,7 +3673,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6198021113",
       "sourceTitle": "제일타카 타카핀 F30 스태플 1갑 5000개",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3721,7 +3724,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "8675153104",
@@ -3752,7 +3756,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/8675153104",
       "sourceTitle": "카멜로 우피 작업용 안전 장갑 707-W",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3803,7 +3806,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "12771968838",
@@ -3834,7 +3838,6 @@
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12771968838",
       "sourceTitle": "카멜로 방한용 작업장갑 700-YK 캠핑장갑",
       "sourceCheckedOn": "2026-11-07",
-      "revision": 2,
       "guide": {
         "version": 2,
         "checkedOn": "2026-11-07",
@@ -3886,7 +3889,8 @@
             "제조사 모델별 사양 추가 대조"
           ]
         }
-      }
+      },
+      "revision": 2
     },
     {
       "id": "13500231381",
@@ -10448,7 +10452,7 @@
         ]
       ],
       "images": [
-        "https://worknic.co.kr/assets/products/official-20261108e/ml005g.png"
+        "https://worknic.tools/.netlify/functions/catalog-media?id=7798da77de59d7c79762ba935630217372aa6f62b25cf4726803e1c85e501a52"
       ],
       "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9464409868",
       "sourceTitle": "마끼다 40V 18V ML005GX 충전 LED랜턴 작업등 본체 3600루멘",
@@ -10491,7 +10495,12 @@
         ],
         "configuration": {
           "status": "enquiry_scope",
-          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다. 사진은 ML005G 기본 본체입니다. 국내 등록 모델 ML005GX의 세부 공급 구성은 견적서에서 확인합니다."
+          "text": "판매가 미정 · 별도 문의 제품입니다. 요청하신 모델·수량·배터리·충전기·부속 구성을 확인해 견적서에 구분하여 안내합니다. 사진 속 배터리·충전기·부속품이 모두 포함되는 것은 아닙니다. 사진은 ML005G 기본 본체입니다. 국내 등록 모델 ML005GX의 세부 공급 구성은 견적서에서 확인합니다.",
+          "options": "",
+          "included": "",
+          "excluded": "",
+          "unit": "",
+          "quantity": ""
         },
         "checks": [
           {
@@ -10527,24 +10536,25 @@
           {
             "type": "manufacturer",
             "url": "https://makitatools.com/products/details/ML005G",
-            "scope": "기본 본체 ML005G의 공식 제품 사진. 국내 판매 구성과 사양은 국내 자료를 기준으로 안내합니다.",
-            "checkedOn": "2026-11-08"
+            "checkedOn": "2026-11-08",
+            "scope": "기본 본체 ML005G의 공식 제품 사진. 국내 판매 구성과 사양은 국내 자료를 기준으로 안내합니다."
           },
           {
             "type": "manufacturer",
             "url": "https://www.lkmakita.co.kr/upload/product/thumbnail/ggdetail_20221027105331_thum.jpg",
-            "scope": "국내 등록명 ML005GX와 기본 본체 ML005G의 연결 확인.",
-            "checkedOn": "2026-11-08"
+            "checkedOn": "2026-11-08",
+            "scope": "국내 등록명 ML005GX와 기본 본체 ML005G의 연결 확인."
           }
         ],
         "reviews": [],
         "media": {
+          "usage": null,
           "thumbnail": {
             "source": "https://cdn.makitatools.com/apps/cms/img/ml0/7d039585-0417-4c64-979a-5c6a9250c35c_ml005g_p_1500px.png",
-            "editedSource": "/assets/products/official-20261108e/ml005g.png",
+            "status": "approved_original_transparent",
+            "editedSource": "https://worknic.tools/.netlify/functions/catalog-media?id=7798da77de59d7c79762ba935630217372aa6f62b25cf4726803e1c85e501a52",
             "width": 1500,
             "height": 1500,
-            "status": "approved_original_transparent",
             "verifiedModel": true,
             "background": "source_transparent",
             "framing": {
@@ -10562,21 +10572,21 @@
               "noResize": true,
               "noRecolour": true
             }
-          },
-          "usage": null
+          }
         },
         "quality": {
           "state": "reviewed",
           "scope": "manufacturer_information_and_enquiry_only",
           "pending": [],
           "reviewedOn": "2026-11-08",
-          "reviewMethod": "domestic_model_correspondence_and_official_native_photo",
+          "reviewMethod": "os_manager_manual_review",
           "omittedUnconfirmedSpecs": [
             {
               "label": "사용시간",
               "reason": "시험 배터리 또는 작동 모드 조건 확인 필요"
             }
-          ]
+          ],
+          "reviewedBy": "영우"
         },
         "bulkReview": {
           "batch": "official159-20261108",
@@ -10633,7 +10643,7 @@
           }
         ]
       },
-      "revision": 5
+      "revision": 7
     },
     {
       "id": "makita-ml007g",

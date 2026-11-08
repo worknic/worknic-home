@@ -4,7 +4,7 @@
     "preservesProductMetadata": true,
     "requiresReviewedPublication": true
   },
-  "updatedAt": "2026-11-08T13:20:56.863Z",
+  "updatedAt": "2026-11-08T13:24:25.532Z",
   "brands": [
     {
       "id": "chulma",
@@ -4859,6 +4859,312 @@
       "revision": 2
     },
     {
+      "id": "13715460141",
+      "name": "워킹자 거리측정기 기계식 카운터 휠메저",
+      "published": true,
+      "order": 99,
+      "brand": "komelon",
+      "model": "MK31MK",
+      "summary": "바퀴를 굴려 이동 거리를 확인하는 측정 도구입니다. 바퀴 지름과 표시 단위, 측정 가능한 거리를 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "MK31MK"
+        ],
+        [
+          "바퀴지름",
+          "250mm(10\")"
+        ],
+        [
+          "최소 표기단위",
+          "10cm"
+        ],
+        [
+          "최대 측정거리",
+          "10km"
+        ],
+        [
+          "제조사 인너박스 수량",
+          "1 pcs"
+        ],
+        [
+          "제조사 카톤박스 수량",
+          "6 pcs"
+        ],
+        [
+          "바코드",
+          "8803005 113100"
+        ]
+      ],
+      "images": [
+        "https://www.komelon.co.kr/UploadFolder/010000_product/20210506135815_738.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13715460141",
+      "sourceTitle": "코메론 워킹자 거리측정기 기계식 카운터 휠메저 MK31MK",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "노면 상태와 표시 단위를 확인하고 바퀴가 미끄러지지 않도록 사용해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "등록 모델에 해당하는 제품을 안내합니다. 사용 예시의 공구·수납품과 별매 홀더는 포함품으로 간주하지 않습니다."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 규격과 수량을 알려주세요. 옵션·포장 단위와 납기, 별도 구성은 견적에서 구분해 안내합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰는 방식부터 함께 살펴봅니다.",
+          "text": "사용하는 자재와 공구, 필요한 규격과 수량을 알려주세요. 모델과 판매 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13715460141",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.komelon.co.kr/html/01_product/02_read.php?idx=62",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.komelon.co.kr/UploadFolder/010000_product/20210506135815_738.jpg",
+            "width": 1200,
+            "height": 1200,
+            "sha256": "2d5ef41861384bd82cc889baa6a113c9e49fbab49fe9954fb06c543f2d158122",
+            "sourceSha256": "2d5ef41861384bd82cc889baa6a113c9e49fbab49fe9954fb06c543f2d158122",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 600,
+              "top": 35,
+              "width": 440,
+              "height": 1145
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/460f543b10f4b6be0559.svg",
+            "caption": "코메론 MK31MK · 제조사 공식 모델별 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4,
+              "modelIsolation": "공식 복수 모델 원본의 해당 모델 전체만 표시 · 원본 미수정"
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "verification_pending",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "MK31MK 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "MK31MK 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 사양표 및 원본의 모델 라벨 대조 · 전체 제품 표시 범위 육안 검수 · 원본 픽셀 보존"
+        },
+        "highlights": [
+          {
+            "label": "바퀴지름",
+            "value": "250mm(10\")"
+          },
+          {
+            "label": "최소 표기단위",
+            "value": "10cm"
+          },
+          {
+            "label": "최대 측정거리",
+            "value": "10km"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "MK31MK",
+          "manufacturerModel": "MK31MK",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://www.komelon.co.kr/html/01_product/02_read.php?idx=62"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220137.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13715453451",
+      "name": "워킹자 거리측정기 기계식 카운터 휠메저",
+      "published": true,
+      "order": 101,
+      "brand": "komelon",
+      "model": "ML12MK",
+      "summary": "바퀴를 굴려 이동 거리를 확인하는 측정 도구입니다. 바퀴 지름과 표시 단위, 측정 가능한 거리를 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "ML12MK"
+        ],
+        [
+          "바퀴지름",
+          "100mm(4\")"
+        ],
+        [
+          "최소 표기단위",
+          "10cm"
+        ],
+        [
+          "최대 측정거리",
+          "10km"
+        ],
+        [
+          "제조사 인너박스 수량",
+          "1 pcs"
+        ],
+        [
+          "제조사 카톤박스 수량",
+          "6 pcs"
+        ],
+        [
+          "바코드",
+          "8803005 111205"
+        ]
+      ],
+      "images": [
+        "https://www.komelon.co.kr/UploadFolder/010000_product/20210506135815_10.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13715453451",
+      "sourceTitle": "코메론 워킹자 거리측정기 기계식 카운터 휠메저 ML12MK",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "노면 상태와 표시 단위를 확인하고 바퀴가 미끄러지지 않도록 사용해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "등록 모델에 해당하는 제품을 안내합니다. 사용 예시의 공구·수납품과 별매 홀더는 포함품으로 간주하지 않습니다."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 규격과 수량을 알려주세요. 옵션·포장 단위와 납기, 별도 구성은 견적에서 구분해 안내합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰는 방식부터 함께 살펴봅니다.",
+          "text": "사용하는 자재와 공구, 필요한 규격과 수량을 알려주세요. 모델과 판매 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13715453451",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.komelon.co.kr/html/01_product/02_read.php?idx=62",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.komelon.co.kr/UploadFolder/010000_product/20210506135815_10.jpg",
+            "width": 1200,
+            "height": 1200,
+            "sha256": "2f0139ecfefa3f278ba31e36535fba5d09bd0a7902d3d011051258d9f151414b",
+            "sourceSha256": "2f0139ecfefa3f278ba31e36535fba5d09bd0a7902d3d011051258d9f151414b",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 90,
+              "top": 15,
+              "width": 490,
+              "height": 1155
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/cd81c6b29cb8922b1352.svg",
+            "caption": "코메론 ML12MK · 제조사 공식 모델별 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4,
+              "modelIsolation": "공식 복수 모델 원본의 해당 모델 전체만 표시 · 원본 미수정"
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "verification_pending",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "ML12MK 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "ML12MK 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 사양표 및 원본의 모델 라벨 대조 · 전체 제품 표시 범위 육안 검수 · 원본 픽셀 보존"
+        },
+        "highlights": [
+          {
+            "label": "바퀴지름",
+            "value": "100mm(4\")"
+          },
+          {
+            "label": "최소 표기단위",
+            "value": "10cm"
+          },
+          {
+            "label": "최대 측정거리",
+            "value": "10km"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "ML12MK",
+          "manufacturerModel": "ML12MK",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://www.komelon.co.kr/html/01_product/02_read.php?idx=62"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220137.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "13715406641",
       "name": "산업용 다용도 스틸 롱 줄자 그립퍼 30M",
       "published": true,
@@ -6763,6 +7069,159 @@
       "revision": 2
     },
     {
+      "id": "6378726519",
+      "name": "워킹메다 기계식 카운터 휠메저",
+      "published": true,
+      "order": 130,
+      "brand": "komelon",
+      "model": "MW18MT",
+      "summary": "바퀴를 굴려 이동 거리를 확인하는 측정 도구입니다. 바퀴 지름과 표시 단위, 측정 가능한 거리를 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "MW18MT"
+        ],
+        [
+          "바퀴지름",
+          "150mm(6\")"
+        ],
+        [
+          "최소 표기단위",
+          "1cm"
+        ],
+        [
+          "최대 측정거리",
+          "1km"
+        ],
+        [
+          "제조사 인너박스 수량",
+          "1 pcs"
+        ],
+        [
+          "제조사 카톤박스 수량",
+          "6 pcs"
+        ],
+        [
+          "바코드",
+          "8803005 111816"
+        ]
+      ],
+      "images": [
+        "https://www.komelon.co.kr/UploadFolder/010000_product/20210506135815_738.jpg"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/6378726519",
+      "sourceTitle": "코메론 워킹메다 기계식 카운터 휠메저 MW18MT",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "노면 상태와 표시 단위를 확인하고 바퀴가 미끄러지지 않도록 사용해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "등록 모델에 해당하는 제품을 안내합니다. 사용 예시의 공구·수납품과 별매 홀더는 포함품으로 간주하지 않습니다."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 규격과 수량을 알려주세요. 옵션·포장 단위와 납기, 별도 구성은 견적에서 구분해 안내합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰는 방식부터 함께 살펴봅니다.",
+          "text": "사용하는 자재와 공구, 필요한 규격과 수량을 알려주세요. 모델과 판매 구성을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/6378726519",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://www.komelon.co.kr/html/01_product/02_read.php?idx=62",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://www.komelon.co.kr/UploadFolder/010000_product/20210506135815_738.jpg",
+            "width": 1200,
+            "height": 1200,
+            "sha256": "2d5ef41861384bd82cc889baa6a113c9e49fbab49fe9954fb06c543f2d158122",
+            "sourceSha256": "2d5ef41861384bd82cc889baa6a113c9e49fbab49fe9954fb06c543f2d158122",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 90,
+              "top": 30,
+              "width": 610,
+              "height": 1150
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/97bae53c0e6e30e829a2.svg",
+            "caption": "코메론 MW18MT · 제조사 공식 모델별 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4,
+              "modelIsolation": "공식 복수 모델 원본의 해당 모델 전체만 표시 · 원본 미수정"
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "verification_pending",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "MW18MT 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "MW18MT 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 사양표 및 원본의 모델 라벨 대조 · 전체 제품 표시 범위 육안 검수 · 원본 픽셀 보존"
+        },
+        "highlights": [
+          {
+            "label": "바퀴지름",
+            "value": "150mm(6\")"
+          },
+          {
+            "label": "최소 표기단위",
+            "value": "1cm"
+          },
+          {
+            "label": "최대 측정거리",
+            "value": "1km"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "MW18MT",
+          "manufacturerModel": "MW18MT",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://www.komelon.co.kr/html/01_product/02_read.php?idx=62"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220137.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "13773042921",
       "name": "트윈 탈착식 코듀라 공구 파우치 2단 중형",
       "published": true,
@@ -8127,6 +8586,182 @@
       "revision": 3
     },
     {
+      "id": "13635190218",
+      "name": "고아츠 더블 자석 줄자 · 5 m · 왼쪽 장착용",
+      "published": true,
+      "order": 151,
+      "brand": "tajima",
+      "model": "GASF-GLWM25-50L",
+      "summary": "작업 치수와 기준선을 확인하는 5 m 줄자입니다. 왼쪽 장착용·왼쪽 기점 눈금 모델로, 오른쪽 기점 LR 모델과 구분해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GASF-GLWM25-50L"
+        ],
+        [
+          "JAN",
+          "4975364125934"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "눈금",
+          "미터 · 양면 눈금"
+        ],
+        [
+          "제품 무게",
+          "390 g"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (구 SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (구 SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ],
+        [
+          "대응 벨트 폭",
+          "53 mm 이내"
+        ],
+        [
+          "대응 벨트 두께",
+          "3 mm 이내"
+        ],
+        [
+          "장착·눈금 방향",
+          "왼쪽 장착 · 왼쪽 기점"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364125934.jpg?v=1792569851"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13635190218",
+      "sourceTitle": "타지마 5M 줄자 고아츠 세이프 더블자석 왼손잡이용 좌측눈금 GASF-GLWM25-50L",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "길이와 눈금 방향",
+            "text": "작업 치수와 기준선을 확인하는 5 m 줄자입니다. 왼쪽 장착용·왼쪽 기점 눈금 모델로, 오른쪽 기점 LR 모델과 구분해 주세요."
+          },
+          {
+            "title": "벨트 장착 조건",
+            "text": "폭 53mm·두께 3mm 이내 벨트에 대응합니다. 작업 중 착탈 조건과 사용 설명을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "줄자 본체 · 기본 세프 벨트 홀더. 추가 홀더·별매 안전줄은 포함하지 않습니다."
+          }
+        ],
+        "note": {
+          "title": "측정과 휴대 조건을 함께 살펴봅니다.",
+          "text": "주로 재는 거리와 눈금 방향, 사용하는 벨트 폭을 알려주세요. 기본 홀더와 추가 부속을 구분해 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13635190218",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364125934",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 일본 공식 모델·사양·홀더 구성·원본 사진 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364125934.jpg?v=1792569851",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "17e7bbc576079784c1a1b772e80fd1e182ba344ecfe2cd64229114d749ba4823",
+            "sourceSha256": "17e7bbc576079784c1a1b772e80fd1e182ba344ecfe2cd64229114d749ba4823",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 328,
+              "top": 349,
+              "width": 2344,
+              "height": 2304
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/17e7bbc576079784c1a1.svg",
+            "caption": "타지마 GASF-GLWM25-50L · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개",
+          "included": "줄자 본체 · 기본 세프 벨트 홀더",
+          "excluded": "추가 홀더·별매 안전줄은 포함하지 않습니다.",
+          "options": "등록 모델·길이 기준",
+          "text": "GASF-GLWM25-50L 단품 기준입니다. 기본 세프 벨트 홀더가 포함됩니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 일본 모델·실제 길이/눈금·기본 구성·고해상도 원본 재대조 및 배경 표시 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GASF-GLWM25-50L",
+          "manufacturerModel": "GASFGLWM2550L",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364125934"
+        },
+        "highlights": [
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "휴대 방식",
+            "value": "왼쪽 장착 세프 홀더"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "13635181184",
       "name": "고아츠 더블 자석 줄자 · 5 m",
       "published": true,
@@ -8428,6 +9063,182 @@
           {
             "label": "테이프 재질",
             "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13635162642",
+      "name": "고아츠 자석 줄자 · 5 m · 왼쪽 장착용",
+      "published": true,
+      "order": 154,
+      "brand": "tajima",
+      "model": "GASF-GLM25-50L",
+      "summary": "작업 치수와 기준선을 확인하는 5 m 줄자입니다. 왼쪽 장착용·왼쪽 기점 눈금 모델로, 오른쪽 기점 LR 모델과 구분해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GASF-GLM25-50L"
+        ],
+        [
+          "JAN",
+          "4975364125910"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "눈금",
+          "미터 · 양면 눈금"
+        ],
+        [
+          "제품 무게",
+          "330 g"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (구 SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (구 SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ],
+        [
+          "대응 벨트 폭",
+          "53 mm 이내"
+        ],
+        [
+          "대응 벨트 두께",
+          "3 mm 이내"
+        ],
+        [
+          "장착·눈금 방향",
+          "왼쪽 장착 · 왼쪽 기점"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364125910.jpg?v=1792569852"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13635162642",
+      "sourceTitle": "타지마 고아츠 G록 자석 줄자 왼손잡이용 좌눈금 GASF-GLM25-50L",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "길이와 눈금 방향",
+            "text": "작업 치수와 기준선을 확인하는 5 m 줄자입니다. 왼쪽 장착용·왼쪽 기점 눈금 모델로, 오른쪽 기점 LR 모델과 구분해 주세요."
+          },
+          {
+            "title": "벨트 장착 조건",
+            "text": "폭 53mm·두께 3mm 이내 벨트에 대응합니다. 작업 중 착탈 조건과 사용 설명을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "줄자 본체 · 기본 세프 벨트 홀더. 추가 홀더·별매 안전줄은 포함하지 않습니다."
+          }
+        ],
+        "note": {
+          "title": "측정과 휴대 조건을 함께 살펴봅니다.",
+          "text": "주로 재는 거리와 눈금 방향, 사용하는 벨트 폭을 알려주세요. 기본 홀더와 추가 부속을 구분해 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13635162642",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364125910",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 일본 공식 모델·사양·홀더 구성·원본 사진 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364125910.jpg?v=1792569852",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "1c41f2504d9dab10767af179ee9fb8d582291ce8de11e0c494296595f80f9c47",
+            "sourceSha256": "1c41f2504d9dab10767af179ee9fb8d582291ce8de11e0c494296595f80f9c47",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 393,
+              "top": 343,
+              "width": 2214,
+              "height": 2314
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/1c41f2504d9dab10767a.svg",
+            "caption": "타지마 GASF-GLM25-50L · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개",
+          "included": "줄자 본체 · 기본 세프 벨트 홀더",
+          "excluded": "추가 홀더·별매 안전줄은 포함하지 않습니다.",
+          "options": "등록 모델·길이 기준",
+          "text": "GASF-GLM25-50L 단품 기준입니다. 기본 세프 벨트 홀더가 포함됩니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 일본 모델·실제 길이/눈금·기본 구성·고해상도 원본 재대조 및 배경 표시 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GASF-GLM25-50L",
+          "manufacturerModel": "GASFGLM2550L",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364125910"
+        },
+        "highlights": [
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "휴대 방식",
+            "value": "왼쪽 장착 세프 홀더"
           }
         ]
       },
@@ -15151,6 +15962,178 @@
       "revision": 2
     },
     {
+      "id": "12040413112",
+      "name": "G7 세프 자석 줄자 · 화이트 · 5 m",
+      "published": true,
+      "order": 209,
+      "brand": "tajima",
+      "model": "SF-G7-LM25-50W",
+      "summary": "작업 치수와 기준선을 확인하는 5 m 줄자입니다. 화이트 테이프의 눈금과 기본 세프 홀더, 사용하는 벨트 폭을 함께 확인해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "SF-G7-LM25-50W"
+        ],
+        [
+          "JAN",
+          "4975364120786"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "눈금",
+          "미터 · 양면 눈금"
+        ],
+        [
+          "제품 무게",
+          "358 g"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (구 SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (구 SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ],
+        [
+          "대응 벨트 폭",
+          "60 mm 이내"
+        ],
+        [
+          "대응 벨트 두께",
+          "5.5 mm 이내"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364120786.jpg?v=1776895216"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12040413112",
+      "sourceTitle": "타지마 고아츠 홀더 줄자 SF-G7-LM25-50W 5M",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "길이와 눈금 방향",
+            "text": "작업 치수와 기준선을 확인하는 5 m 줄자입니다. 화이트 테이프의 눈금과 기본 세프 홀더, 사용하는 벨트 폭을 함께 확인해 주세요."
+          },
+          {
+            "title": "벨트 장착 조건",
+            "text": "폭 60mm·두께 5.5mm 이내 벨트에 대응합니다. 작업 중 착탈 조건과 사용 설명을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "줄자 본체 · 기본 세프 벨트 홀더 · 스트랩. 추가 홀더·별매 안전줄은 포함하지 않습니다."
+          }
+        ],
+        "note": {
+          "title": "측정과 휴대 조건을 함께 살펴봅니다.",
+          "text": "주로 재는 거리와 눈금 방향, 사용하는 벨트 폭을 알려주세요. 기본 홀더와 추가 부속을 구분해 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/12040413112",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364120786",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 일본 공식 모델·사양·홀더 구성·원본 사진 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364120786.jpg?v=1776895216",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "a425d5b51d935d0e933eef322f2d489d2fff9b6d54709be294f691d400a59189",
+            "sourceSha256": "a425d5b51d935d0e933eef322f2d489d2fff9b6d54709be294f691d400a59189",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 431,
+              "top": 444,
+              "width": 2093,
+              "height": 2058
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/a425d5b51d935d0e933e.svg",
+            "caption": "타지마 SF-G7-LM25-50W · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개",
+          "included": "줄자 본체 · 기본 세프 벨트 홀더 · 스트랩",
+          "excluded": "추가 홀더·별매 안전줄은 포함하지 않습니다.",
+          "options": "등록 모델·길이 기준",
+          "text": "SF-G7-LM25-50W 단품 기준입니다. 기본 세프 벨트 홀더가 포함됩니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 일본 모델·실제 길이/눈금·기본 구성·고해상도 원본 재대조 및 배경 표시 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "SF-G7-LM25-50W",
+          "manufacturerModel": "SFG7LM2550W",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364120786"
+        },
+        "highlights": [
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "휴대 방식",
+            "value": "세프 홀더"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "12003214639",
       "name": "목공용 톱날 125x20 40T 초경합금팁",
       "published": true,
@@ -19029,6 +20012,178 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "11394230273",
+      "name": "G3 골드 회전 홀더 더블 자석 줄자 · 5.5 m",
+      "published": true,
+      "order": 249,
+      "brand": "tajima",
+      "model": "CWM3RS2555",
+      "summary": "작업 치수와 기준선을 확인하는 5.5 m 줄자입니다. 회전 세프 홀더의 결합 방식과 테이프 폭, 자석 훅의 쓰임을 함께 확인해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "CWM3RS2555"
+        ],
+        [
+          "JAN",
+          "4975364122384"
+        ],
+        [
+          "측정 길이",
+          "5.5 m"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "눈금",
+          "미터 · 양면 눈금"
+        ],
+        [
+          "제품 무게",
+          "400 g"
+        ],
+        [
+          "테이프 재질",
+          "스틸"
+        ],
+        [
+          "스프링 재질",
+          "스틸"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "훅 재질",
+          "스테인리스"
+        ],
+        [
+          "대응 벨트 폭",
+          "60 mm 이내"
+        ],
+        [
+          "대응 벨트 두께",
+          "5.5 mm 이내"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364122384.jpg?v=1776895219"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11394230273",
+      "sourceTitle": "타지마 줄자 더블자석 CWM3RS2555 5.5M 회전벨트홀더",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "길이와 눈금 방향",
+            "text": "작업 치수와 기준선을 확인하는 5.5 m 줄자입니다. 회전 세프 홀더의 결합 방식과 테이프 폭, 자석 훅의 쓰임을 함께 확인해 주세요."
+          },
+          {
+            "title": "벨트 장착 조건",
+            "text": "폭 60mm·두께 5.5mm 이내 벨트에 대응합니다. 작업 중 착탈 조건과 사용 설명을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "줄자 본체 · 기본 세프 벨트 홀더 · 스트랩. 추가 홀더·별매 안전줄은 포함하지 않습니다."
+          }
+        ],
+        "note": {
+          "title": "측정과 휴대 조건을 함께 살펴봅니다.",
+          "text": "주로 재는 거리와 눈금 방향, 사용하는 벨트 폭을 알려주세요. 기본 홀더와 추가 부속을 구분해 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/11394230273",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364122384",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 일본 공식 모델·사양·홀더 구성·원본 사진 확인"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364122384.jpg?v=1776895219",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "261bbf89bfc49cfb0f14f2efb9135c3e4bd236f94ef491637d5c39ef427d770b",
+            "sourceSha256": "261bbf89bfc49cfb0f14f2efb9135c3e4bd236f94ef491637d5c39ef427d770b",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 120,
+              "top": 444,
+              "width": 2509,
+              "height": 2189
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/261bbf89bfc49cfb0f14.svg",
+            "caption": "타지마 CWM3RS2555 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개",
+          "included": "줄자 본체 · 기본 세프 벨트 홀더 · 스트랩",
+          "excluded": "추가 홀더·별매 안전줄은 포함하지 않습니다.",
+          "options": "등록 모델·길이 기준",
+          "text": "CWM3RS2555 단품 기준입니다. 기본 세프 벨트 홀더는 회전형입니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "공식 일본 모델·실제 길이/눈금·기본 구성·고해상도 원본 재대조 및 배경 표시 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "CWM3RS2555",
+          "manufacturerModel": "CWM3RS2555",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364122384"
+        },
+        "highlights": [
+          {
+            "label": "측정 길이",
+            "value": "5.5 m"
+          },
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "휴대 방식",
+            "value": "회전 세프 홀더"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "11394096226",

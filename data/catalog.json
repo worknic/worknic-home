@@ -4,7 +4,7 @@
     "preservesProductMetadata": true,
     "requiresReviewedPublication": true
   },
-  "updatedAt": "2026-11-08T13:28:55.613Z",
+  "updatedAt": "2026-11-08T13:31:24.781Z",
   "brands": [
     {
       "id": "chulma",
@@ -4967,10 +4967,10 @@
           "usage": null
         },
         "configuration": {
-          "status": "verification_pending",
+          "status": "manufacturer_and_store_checked",
           "unit": "등록 모델 단품",
           "quantity": "단품 기준 · 제조사 박스 수량과 구분",
-          "included": "MK31MK 제품",
+          "included": "거리측정기 본체 1개 · MK31MK",
           "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
           "options": "등록 모델·규격 기준",
           "text": "MK31MK 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
@@ -5009,7 +5009,7 @@
         "store": "worknic_korea",
         "checkedOn": "2026-11-07"
       },
-      "revision": 3
+      "revision": 4
     },
     {
       "id": "13715453451",
@@ -5120,10 +5120,10 @@
           "usage": null
         },
         "configuration": {
-          "status": "verification_pending",
+          "status": "manufacturer_and_store_checked",
           "unit": "등록 모델 단품",
           "quantity": "단품 기준 · 제조사 박스 수량과 구분",
-          "included": "ML12MK 제품",
+          "included": "거리측정기 본체 1개 · ML12MK",
           "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
           "options": "등록 모델·규격 기준",
           "text": "ML12MK 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
@@ -5162,7 +5162,7 @@
         "store": "worknic_korea",
         "checkedOn": "2026-11-07"
       },
-      "revision": 3
+      "revision": 4
     },
     {
       "id": "13715406641",
@@ -7177,10 +7177,10 @@
           "usage": null
         },
         "configuration": {
-          "status": "verification_pending",
+          "status": "manufacturer_and_store_checked",
           "unit": "등록 모델 단품",
           "quantity": "단품 기준 · 제조사 박스 수량과 구분",
-          "included": "MW18MT 제품",
+          "included": "거리측정기 본체 1개 · MW18MT",
           "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
           "options": "등록 모델·규격 기준",
           "text": "MW18MT 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
@@ -7219,7 +7219,7 @@
         "store": "worknic_korea",
         "checkedOn": "2026-11-07"
       },
-      "revision": 3
+      "revision": 4
     },
     {
       "id": "13773042921",

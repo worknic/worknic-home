@@ -1,0 +1,17 @@
+/* Three rows of original brand artwork, with native horizontal scrolling. */
+.brand-directory[data-brand-slider]{display:block;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;overflow-anchor:none;direction:ltr;border-radius:5px;touch-action:pan-x pan-y}
+.brand-directory[data-brand-slider]::-webkit-scrollbar{display:none}
+.brand-slider-track{display:flex;gap:12px;width:max-content;padding:4px 0}
+.brand-slider-set{display:grid;grid-template-rows:repeat(3,94px);grid-auto-flow:column;grid-auto-columns:156px;gap:10px 12px}
+.brand-directory[data-brand-slider] .brand-tile{padding:12px 8px;background:#f4f5f2;border-radius:5px;text-decoration:none!important}
+.brand-directory[data-brand-slider] .brand-tile:hover{background:#e7eae3}
+.brand-directory[data-brand-slider] .brand-logo{height:38px;margin-bottom:7px}
+.brand-directory[data-brand-slider] .brand-logo img{max-width:112px;max-height:32px}
+.brand-directory[data-brand-slider] .brand-tile span{font-size:12px}
+.brand-directory[data-brand-slider] .brand-slider-all{font-size:13px;color:#394231;background:#eceeed}
+.brand-slider-toggle{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-height:36px;padding:8px 13px;border:0;border-radius:4px;background:#eceeed;color:#3d4538;font:inherit;font-size:12px;line-height:1.5;cursor:pointer;white-space:nowrap}
+.brand-slider-toggle:hover{background:#dfe4da}
+.brand-slider-toggle:focus-visible,.brand-directory[data-brand-slider]:focus-visible{outline:2px solid #36412e;outline-offset:3px}
+@media(max-width:650px){.brand-directory-section:has([data-brand-slider]) .brand-directory-head{display:flex;align-items:center;gap:12px}.brand-directory-section:has([data-brand-slider]) .brand-directory-head h2{font-size:19px}.brand-directory-section:has([data-brand-slider]) .brand-directory-head p:not(.brand-directory-note){font-size:12px}.brand-slider-set{grid-template-rows:repeat(3,80px);grid-auto-columns:116px;gap:8px}.brand-slider-track{gap:8px}.brand-directory[data-brand-slider] .brand-tile{padding:9px 6px}.brand-directory[data-brand-slider] .brand-logo{height:31px;margin-bottom:5px}.brand-directory[data-brand-slider] .brand-logo img{max-width:84px;max-height:27px}.brand-directory[data-brand-slider] .brand-tile span{font-size:11px}.brand-slider-toggle{padding:7px 9px;font-size:11px;min-height:34px}}
+@media(prefers-reduced-motion:reduce){.brand-directory[data-brand-slider] .brand-tile{transition:none}}
+@media(max-width:650px){.brand-directory[data-brand-slider] .brand-logo:has(img[src*="bestmax-header"]){height:27px}}

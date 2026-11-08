@@ -342,6 +342,19 @@ test("옵션 수량을 분리하고 기한 만료 시 해당 옵션에 한 번�
     inventory = f.store.beta.inventory(f.admin);
     assert.equal(inventory.find((p) => p.optionId === "small").stock, 2);
     assert.equal(f.store.order(f.buyer, order.id).status, "expired");
+    const second = f.issue(
+      f.store.beta.createQuote(f.buyer, {
+        requestKey: "variant-request-0002",
+        locationId: "jinjeop",
+        items: [{ productId: "v1", optionId: "small", quantity: 1 }],
+      }),
+    );
+    f.store.seedCatalog({
+      brands: [{ id: "test", name: "검증" }],
+      products: [],
+    });
+    assert.throws(() => f.accept(second), /공개/);
+    assert.equal(f.store.beta.priceRows(f.admin).length, 0);
   } finally {
     f.cleanup();
   }

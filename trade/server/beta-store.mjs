@@ -79,6 +79,7 @@ export function installBeta(
   const sku = (id, option) => {
     const p = source(id),
       opts = p.variants || [];
+    if (p.published === false) fail("현재 공개된 상품인지 확인해 주세요.", 409);
     if (opts.length) {
       if (!opts.some((x) => String(x.sourceId || x.id || "") === option))
         fail("등록된 옵션번호를 확인해 주세요.");
@@ -349,12 +350,14 @@ export function installBeta(
       customer(actor);
       return api
         .products(actor)
+        .filter((p) => p.published !== false)
         .map(({ price, stock, ...p }) => ({ ...p, canRequest: true }));
     },
     priceRows(actor) {
       adminOnly(actor);
       return api
         .products(actor)
+        .filter((p) => p.published !== false)
         .flatMap((p) =>
           (p.variants?.length
             ? p.variants.map((v) => String(v.sourceId || v.id))

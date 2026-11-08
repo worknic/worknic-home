@@ -216,6 +216,7 @@ export function openStore(
         const brand = data.brands.find((b) => b.id === p.brand);
         const source = {
           id: p.id,
+          published: true,
           name: text(p.name, 200),
           model: text(p.model, 200),
           brand: text(brand?.name || p.brand, 100),
@@ -239,12 +240,15 @@ export function openStore(
         data.products.filter((p) => p.published === true).map((p) => p.id),
       );
       for (const row of db
-        .prepare("SELECT id FROM products WHERE enabled=1")
+        .prepare("SELECT id,source,enabled FROM products")
         .all()) {
-        if (!publishedIds.has(row.id))
-          db.prepare(
-            "UPDATE products SET enabled=0,revision=revision+1 WHERE id=?",
-          ).run(row.id);
+        if (!publishedIds.has(row.id)) {
+          const old = JSON.parse(row.source);
+          if (old.published !== false || row.enabled)
+            db.prepare(
+              "UPDATE products SET enabled=0,source=?,revision=revision+1 WHERE id=?",
+            ).run(JSON.stringify({ ...old, published: false }), row.id);
+        }
       }
     });
     return {

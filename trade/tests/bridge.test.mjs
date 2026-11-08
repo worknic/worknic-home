@@ -4,6 +4,22 @@ import { createHmac, randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import { createOSAdapter } from "../server/os-adapter.mjs";
+test("시트에서 숫자로 반환한 사업자번호도 문자열 계정과 정확히 대조", async () => {
+  const row = { id: "numeric-sheet-id", businessNumber: 9987412863,
+    email: "QA@example.invalid", status: "approved", revision: 2 };
+  const adapter = createOSAdapter({fetcher: async () => ({ok: true,
+    json: async () => ({ok: true, data: {rows: [row]}})})});
+  const proof = await adapter.find("test-session", {
+    businessNumber: "9987412863", email: "qa@example.invalid" });
+  assert.equal(proof.businessNumber, "9987412863");
+  assert.equal(proof.email, "qa@example.invalid");
+  assert.equal(proof.status, "approved");
+  assert.equal(row.businessNumber, 9987412863);
+  await assert.rejects(adapter.find("test-session", {
+    businessNumber: "9987412864", email: "qa@example.invalid" }), /대조/);
+  await assert.rejects(adapter.find("test-session", {
+    businessNumber: "9987412863", email: "other@example.invalid" }), /대조/);
+});
 test("가입 접수는 OS에 필요한 사업자 연락처만 전달하고 계정 비밀번호를 전송하지 않음", async () => {
   const requests = [],
     adapter = createOSAdapter({

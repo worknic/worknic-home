@@ -70,7 +70,14 @@ export function createOSAdapter({
           "OS의 사업자번호·담당자 이메일을 대조해 주세요.",
           409,
         );
-      return matches[0];
+      const row = matches[0];
+      return {
+        id: row.id,
+        status: row.status,
+        businessNumber: String(row.businessNumber).replace(/[^0-9]/g, ""),
+        email: String(row.email).toLowerCase(),
+        revision: Number(row.revision),
+      };
     },
     async status(profile, requestId) {
       if (sharedSecret.length < 32)

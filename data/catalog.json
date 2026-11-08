@@ -4,7 +4,7 @@
     "preservesProductMetadata": true,
     "requiresReviewedPublication": true
   },
-  "updatedAt": "2026-11-08T01:23:23.806Z",
+  "updatedAt": "2026-11-08T13:14:21.338Z",
   "brands": [
     {
       "id": "chulma",
@@ -7240,6 +7240,150 @@
       "revision": 2
     },
     {
+      "id": "13773007467",
+      "name": "타탁나이프 전용 2구 홀스터",
+      "published": true,
+      "order": 145,
+      "brand": "tajima",
+      "model": "DK-SFHS2",
+      "summary": "타탁나이프와 쇼트 모델을 벨트에 나누어 휴대하는 전용 홀스터입니다. 나이프 본체와 구분해 장착 방식과 벨트 폭을 확인해 주세요.",
+      "category": "공구·작업용품 / 보관·휴대",
+      "specs": [
+        [
+          "모델",
+          "DK-SFHS2"
+        ],
+        [
+          "제품 무게",
+          "150 g"
+        ],
+        [
+          "JAN",
+          "4975364265401"
+        ],
+        [
+          "대응 벨트 폭",
+          "50 mm"
+        ],
+        [
+          "제조사 재질 표기",
+          "ABS / SUS"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364265401.jpg?v=1764885869"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13773007467",
+      "sourceTitle": "타지마 전공칼 나이프 전용 홀더 공구집 2구 공구집홀더 DK-SFHS2",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "타탁나이프/쇼트 전용 홀스터입니다. 사용 중인 나이프와 벨트 폭을 확인해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "홀스터 본체 · 후부착 세프 홀더. 나이프 본체·안전줄 별매."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13773007467",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364265401",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364265401.jpg?v=1764885869",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "f05e5c8bd489db23f10d59456fd85aa35075826f08b8c6d26a4a6b6fe5f55be6",
+            "sourceSha256": "f05e5c8bd489db23f10d59456fd85aa35075826f08b8c6d26a4a6b6fe5f55be6",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 1140,
+              "top": 428,
+              "width": 858,
+              "height": 2136
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/f05e5c8bd489db23f10d.svg",
+            "caption": "타지마 DK-SFHS2 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "홀스터 본체 · 후부착 세프 홀더",
+          "excluded": "나이프 본체·안전줄 별매",
+          "options": "등록 모델·규격 기준",
+          "text": "DK-SFHS2 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "150 g"
+          },
+          {
+            "label": "대응 벨트 폭",
+            "value": "50 mm"
+          },
+          {
+            "label": "제조사 재질 표기",
+            "value": "ABS / SUS"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "DK-SFHS2",
+          "manufacturerModel": "DK-SFHS2",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364265401"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "13772999961",
       "name": "탈착식 공구 파우치 3단 대형",
       "published": true,
@@ -11166,6 +11310,790 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "12870651076",
+      "name": "보드 야스리 180mm · 고운면/거친면",
+      "published": true,
+      "order": 196,
+      "brand": "tajima",
+      "model": "TBY-D180",
+      "summary": "석고보드의 절단면과 모서리를 다듬는 보드 야스리입니다. 고운면과 거친면을 작업 단계에 맞게 구분하고 판 두께를 확인해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "TBY-D180"
+        ],
+        [
+          "제품 무게",
+          "150 g"
+        ],
+        [
+          "JAN",
+          "4975364056481"
+        ],
+        [
+          "본체 재질",
+          "알루미늄"
+        ],
+        [
+          "그립 재질",
+          "엘라스토머 수지"
+        ],
+        [
+          "길이",
+          "180 mm"
+        ],
+        [
+          "거친면 대응 판 두께",
+          "최대 21 mm"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364056481.jpg?v=1790287571"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12870651076",
+      "sourceTitle": "타지마 보드야스리 석고대패 TBY-D180",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "제조사에서 거친면은 판 두께 21mm까지 대응한다고 안내합니다. 작업할 판재의 두께와 모서리 형상을 확인해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "TBY-D180 제품. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/12870651076",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364056481",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364056481.jpg?v=1790287571",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "153959b1e4f6e81e17ce697ebfa04014ec9737d9520f9d2fa6c34d886e408d03",
+            "sourceSha256": "153959b1e4f6e81e17ce697ebfa04014ec9737d9520f9d2fa6c34d886e408d03",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 1133,
+              "top": 531,
+              "width": 789,
+              "height": 2251
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/153959b1e4f6e81e17ce.svg",
+            "caption": "타지마 TBY-D180 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "TBY-D180 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "TBY-D180 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "150 g"
+          },
+          {
+            "label": "본체 재질",
+            "value": "알루미늄"
+          },
+          {
+            "label": "그립 재질",
+            "value": "엘라스토머 수지"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "TBY-D180",
+          "manufacturerModel": "TBY-D180",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364056481"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "12692001995",
+      "name": "세프 파츠박스",
+      "published": true,
+      "order": 197,
+      "brand": "tajima",
+      "model": "TB-PBOX",
+      "summary": "작은 부품과 공구를 칸막이로 나누어 보관하는 파츠박스입니다. 내부 치수와 칸막이 구성, 기존 세프 수납함과의 연결 방식을 비교해 주세요.",
+      "category": "공구·작업용품 / 보관·휴대",
+      "specs": [
+        [
+          "모델",
+          "TB-PBOX"
+        ],
+        [
+          "제품 무게",
+          "3,300 g"
+        ],
+        [
+          "JAN",
+          "4975364361035"
+        ],
+        [
+          "외부 치수",
+          "H128×W502×D325mm"
+        ],
+        [
+          "내부 치수",
+          "H95×W450×D270mm"
+        ],
+        [
+          "세프 장착 총중량 한도",
+          "3.0kg 이하"
+        ],
+        [
+          "최대 적재량(제조사 기준)",
+          "20kg"
+        ],
+        [
+          "뚜껑 재질",
+          "PC"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364361035.jpg?v=1792569850"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12692001995",
+      "sourceTitle": "타지마 탈착식 세이프 칸막이 부품함 TB-PBOX",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "뚜껑 하중 안내는 전용 칸막이가 모두 들어 있고 다른 박스를 위에 적재한 조건입니다. 단품 적재 조건과 구분해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "파츠박스 본체 · 전용 칸막이 세트 TB-PBOXP. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/12692001995",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364361035",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364361035.jpg?v=1792569850",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "d846319ab08ecea32bdf04e797d3c18bf1747b3a9c34c9242b7e412f2dd56b01",
+            "sourceSha256": "d846319ab08ecea32bdf04e797d3c18bf1747b3a9c34c9242b7e412f2dd56b01",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 387,
+              "top": 1033,
+              "width": 2217,
+              "height": 1046
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/d846319ab08ecea32bdf.svg",
+            "caption": "타지마 TB-PBOX · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "파츠박스 본체 · 전용 칸막이 세트 TB-PBOXP",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "TB-PBOX 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "3,300 g"
+          },
+          {
+            "label": "외부 치수",
+            "value": "H128×W502×D325mm"
+          },
+          {
+            "label": "내부 치수",
+            "value": "H95×W450×D270mm"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "TB-PBOX",
+          "manufacturerModel": "TB-PBOX",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364361035"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "12691991674",
+      "name": "세프 파츠박스 L",
+      "published": true,
+      "order": 198,
+      "brand": "tajima",
+      "model": "TB-PBOXL",
+      "summary": "공구와 배관 부품 등을 구분해 담는 높이가 있는 파츠박스입니다. 내부 유효 치수와 칸막이 구성, 연결하는 세프 수납함을 함께 확인해 주세요.",
+      "category": "공구·작업용품 / 보관·휴대",
+      "specs": [
+        [
+          "모델",
+          "TB-PBOXL"
+        ],
+        [
+          "제품 무게",
+          "3,700 g"
+        ],
+        [
+          "JAN",
+          "4975364361042"
+        ],
+        [
+          "외부 치수",
+          "H175×W502×D325mm"
+        ],
+        [
+          "내부 치수",
+          "H142×W450×D270mm"
+        ],
+        [
+          "세프 장착 총중량 한도",
+          "3.0kg 이하"
+        ],
+        [
+          "최대 적재량(제조사 기준)",
+          "20kg"
+        ],
+        [
+          "뚜껑 재질",
+          "PC"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364361042.jpg?v=1792569850"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12691991674",
+      "sourceTitle": "타지마 탈착식 세이프 칸막이 부품함 TB-PBOXL",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "뚜껑 하중 안내는 전용 칸막이가 모두 들어 있고 다른 박스를 위에 적재한 조건입니다. 내부 높이와 수납할 부품의 크기도 확인해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "파츠박스 L 본체 · 전용 칸막이 세트 TB-PBOXLP. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/12691991674",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364361042",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364361042.jpg?v=1792569850",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "653befec497fe60714ae9fe778dc4872379a6b99437a096de7814f0dce78b1da",
+            "sourceSha256": "653befec497fe60714ae9fe778dc4872379a6b99437a096de7814f0dce78b1da",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 384,
+              "top": 965,
+              "width": 2228,
+              "height": 1212
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/653befec497fe60714ae.svg",
+            "caption": "타지마 TB-PBOXL · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "파츠박스 L 본체 · 전용 칸막이 세트 TB-PBOXLP",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "TB-PBOXL 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "3,700 g"
+          },
+          {
+            "label": "외부 치수",
+            "value": "H175×W502×D325mm"
+          },
+          {
+            "label": "내부 치수",
+            "value": "H142×W450×D270mm"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "TB-PBOXL",
+          "manufacturerModel": "TB-PBOXL",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364361042"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "12676352122",
+      "name": "세프 접이식 멀티포켓",
+      "published": true,
+      "order": 199,
+      "brand": "tajima",
+      "model": "TB-MPOR",
+      "summary": "세프 공구함이나 허리 장착 시스템에 연결해 사용하는 접이식 포켓입니다. 사용하는 공간과 담을 공구에 맞춰 펼친 깊이와 접었을 때의 크기를 살펴보세요.",
+      "category": "공구·작업용품 / 보관·휴대",
+      "specs": [
+        [
+          "모델",
+          "TB-MPOR"
+        ],
+        [
+          "제품 무게",
+          "375 g"
+        ],
+        [
+          "JAN",
+          "4975364361264"
+        ],
+        [
+          "세프 장착 총중량 한도",
+          "3.0kg 이하"
+        ],
+        [
+          "본체 재질",
+          "PP"
+        ],
+        [
+          "세프 부품 재질",
+          "나일론"
+        ],
+        [
+          "신축부 재질",
+          "TPE"
+        ],
+        [
+          "사용 시 외형",
+          "H210 × W235 × D157 mm"
+        ],
+        [
+          "접었을 때 깊이",
+          "80 mm"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364361264.jpg?v=1792569850"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12676352122",
+      "sourceTitle": "타지마 세이프 멀티포켓 접이식 TB-MPOR",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "세프 연결부와 공구함·벨트 시스템의 호환 조건, 장착 총중량 한도를 확인해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "TB-MPOR 제품. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/12676352122",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364361264",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364361264.jpg?v=1792569850",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "79ac4d0c1b52e7e79f61259f12c810376d3087e1104ad155c00b02030c26f4cd",
+            "sourceSha256": "79ac4d0c1b52e7e79f61259f12c810376d3087e1104ad155c00b02030c26f4cd",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 748,
+              "top": 737,
+              "width": 1550,
+              "height": 1515
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/79ac4d0c1b52e7e79f61.svg",
+            "caption": "타지마 TB-MPOR · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "TB-MPOR 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "TB-MPOR 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "375 g"
+          },
+          {
+            "label": "세프 장착 총중량 한도",
+            "value": "3.0kg 이하"
+          },
+          {
+            "label": "본체 재질",
+            "value": "PP"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "TB-MPOR",
+          "manufacturerModel": "TB-MPOR",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364361264"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "12613647787",
+      "name": "공구함 차량용 마운트",
+      "published": true,
+      "order": 200,
+      "brand": "tajima",
+      "model": "TB-MT",
+      "summary": "차량 적재함에서 호환 공구함을 고정하는 전용 마운트입니다. 설치면의 두께와 고정 방식, 바닥·벽면·캐스터 사용 시의 하중 조건을 나누어 확인해 주세요.",
+      "category": "공구·작업용품 / 보관·휴대",
+      "specs": [
+        [
+          "모델",
+          "TB-MT"
+        ],
+        [
+          "제품 무게",
+          "1,000 g"
+        ],
+        [
+          "JAN",
+          "4975364361189"
+        ],
+        [
+          "외부 치수",
+          "H29×W485×D328mm"
+        ],
+        [
+          "본체 재질",
+          "PP"
+        ],
+        [
+          "바닥 설치 하중 한도",
+          "50 kg"
+        ],
+        [
+          "벽면 설치 하중 한도",
+          "20 kg"
+        ],
+        [
+          "캐스터 사용 시 적재량",
+          "100 kg · 별매 CT-DHTORCF 사용 시에만 적용"
+        ],
+        [
+          "설치용 목재 두께",
+          "12 mm 이상 · 제조사 설치 조건"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364361189.jpg?v=1792569850"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/12613647787",
+      "sourceTitle": "타지마 세이프 차량용 마운트 TB-MT 달리활용",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "차량 설치 시 제조사 지침을 따르고 두께 12mm 이상 목재에 나사로 고정합니다. 나사가 관통하지 않도록 설치 조건을 확인해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "마운트 본체 · 나사 10개. 공구함·캐스터 CT-DHTORCF 별매."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/12613647787",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364361189",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364361189.jpg?v=1792569850",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "c08c82bf29965f80972811a5f7a7471f828be6c497a52567c02f374b193d2a12",
+            "sourceSha256": "c08c82bf29965f80972811a5f7a7471f828be6c497a52567c02f374b193d2a12",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 420,
+              "top": 1125,
+              "width": 2131,
+              "height": 807
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/c08c82bf29965f809728.svg",
+            "caption": "타지마 TB-MT · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "마운트 본체 · 나사 10개",
+          "excluded": "공구함·캐스터 CT-DHTORCF 별매",
+          "options": "등록 모델·규격 기준",
+          "text": "TB-MT 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "1,000 g"
+          },
+          {
+            "label": "외부 치수",
+            "value": "H29×W485×D328mm"
+          },
+          {
+            "label": "본체 재질",
+            "value": "PP"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "TB-MT",
+          "manufacturerModel": "TB-MT",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364361189"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "12608728637",
@@ -16594,6 +17522,158 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "11205066407",
+      "name": "보드 야스리 130mm · 중간눈",
+      "published": true,
+      "order": 258,
+      "brand": "tajima",
+      "model": "TBY-S130C",
+      "summary": "석고보드의 절단면과 좁은 모서리를 정리하는 130mm 보드 야스리입니다. 중간눈 날의 쓰임과 작업 공간에 맞는 본체 크기를 확인해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "TBY-S130C"
+        ],
+        [
+          "제품 무게",
+          "85 g"
+        ],
+        [
+          "JAN",
+          "4975364056627"
+        ],
+        [
+          "본체 재질",
+          "알루미늄"
+        ],
+        [
+          "길이",
+          "130 mm"
+        ],
+        [
+          "날 구성",
+          "중간눈"
+        ],
+        [
+          "핀 재질",
+          "스테인리스 · 제조사 표기"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364056627.jpg?v=1790287571"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11205066407",
+      "sourceTitle": "타지마 야스리 석고대패 TBY-S130C",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "석고보드의 절단면을 다듬는 용도입니다. 작업 공간과 날의 눈 크기를 확인해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "TBY-S130C 제품. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/11205066407",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364056627",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364056627.jpg?v=1790287571",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "0a3e937a5eeb33cfb945ddd57410a9f0a496b5a3caea950f5a563210426f09e5",
+            "sourceSha256": "0a3e937a5eeb33cfb945ddd57410a9f0a496b5a3caea950f5a563210426f09e5",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 1252,
+              "top": 492,
+              "width": 510,
+              "height": 1943
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/0a3e937a5eeb33cfb945.svg",
+            "caption": "타지마 TBY-S130C · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "TBY-S130C 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "TBY-S130C 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "85 g"
+          },
+          {
+            "label": "본체 재질",
+            "value": "알루미늄"
+          },
+          {
+            "label": "길이",
+            "value": "130 mm"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "TBY-S130C",
+          "manufacturerModel": "TBY-S130C",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364056627"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "11202339408",
@@ -23666,6 +24746,302 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "10918261653",
+      "name": "아라칸 스탠더드 · 둥근 날",
+      "published": true,
+      "order": 308,
+      "brand": "tajima",
+      "model": "AK-STDR",
+      "summary": "석고보드·플라스틱·목재 등의 거친 면과 곡면을 다듬는 수공구입니다. 둥근 날의 형상을 기준으로 가공할 부위와 자재를 비교해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "AK-STDR"
+        ],
+        [
+          "제품 무게",
+          "75 g"
+        ],
+        [
+          "JAN",
+          "4975364050922"
+        ],
+        [
+          "날 재질",
+          "스틸"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "가공 용도",
+          "곡면부 가공"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364050922.jpg?v=1736114959"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10918261653",
+      "sourceTitle": "타지마 둥근날 석고대패 AK-STDR",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "곡면부를 다듬는 둥근 날 제품입니다. 교체날 단품과 본체 포함 상품을 구분해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "AK-STDR 제품. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/10918261653",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364050922",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364050922.jpg?v=1736114959",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "d10079140f00d621255e2aaa9eae5683a49c3d3cb2ff532c88515321aae8e96e",
+            "sourceSha256": "d10079140f00d621255e2aaa9eae5683a49c3d3cb2ff532c88515321aae8e96e",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 636,
+              "top": 549,
+              "width": 1928,
+              "height": 1886
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/d10079140f00d621255e.svg",
+            "caption": "타지마 AK-STDR · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "AK-STDR 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "AK-STDR 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "75 g"
+          },
+          {
+            "label": "날 재질",
+            "value": "스틸"
+          },
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "AK-STDR",
+          "manufacturerModel": "AK-STDR",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364050922"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "10918254260",
+      "name": "아라칸 스틱 · 평날",
+      "published": true,
+      "order": 309,
+      "brand": "tajima",
+      "model": "AK-STKH",
+      "summary": "폭이 좁은 부위와 각진 구멍을 다듬는 스틱형 수공구입니다. 평날의 형상과 접근 가능한 작업 폭을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "AK-STKH"
+        ],
+        [
+          "제품 무게",
+          "44 g"
+        ],
+        [
+          "JAN",
+          "4975364050939"
+        ],
+        [
+          "날 재질",
+          "스틸"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "가공 용도",
+          "폭이 좁은 곳·각진 구멍 가공"
+        ]
+      ],
+      "images": [
+        "https://jpn-assets.tajimatool.co.jp/img/4975364050939.jpg?v=1763589992"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10918254260",
+      "sourceTitle": "타지마 평날 석고대패 AK-STKH",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 장착 조건",
+            "text": "좁은 부위와 각진 구멍을 다듬는 평날 제품입니다. 교체날 단품과 본체 포함 상품을 구분해 주세요."
+          },
+          {
+            "title": "단품과 추가 구성",
+            "text": "AK-STKH 제품. 사용 예시의 공구·수납품과 별매 부속은 별도입니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 물류 박스 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 구성을 구분해 안내합니다.",
+          "text": "현재 사용하는 공구·수납 시스템과 작업할 자재를 알려주세요. 본체와 부속, 필요한 규격과 수량을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/10918254260",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://jpn.tajimatool.co.jp/product/4975364050939",
+            "checkedOn": "2026-11-08",
+            "scope": "정확한 모델·사양표·제품 사진·제조사 구성 안내 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://jpn-assets.tajimatool.co.jp/img/4975364050939.jpg?v=1763589992",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "dee31fb46c3d780e77cdfdfabca22a73db306b308e34825296aae7526ec1d5fc",
+            "sourceSha256": "dee31fb46c3d780e77cdfdfabca22a73db306b308e34825296aae7526ec1d5fc",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 491,
+              "top": 508,
+              "width": 2019,
+              "height": 1979
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/dee31fb46c3d780e77cd.svg",
+            "caption": "타지마 AK-STKH · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "단품 기준 · 제조사 박스 수량과 구분",
+          "included": "AK-STKH 제품",
+          "excluded": "사용 예시의 공구·수납품과 별매 부속은 별도입니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "AK-STKH 단품 기준입니다. 제조사 인너박스·카톤 수량은 물류 포장 정보이며 주문 수량과 구분합니다."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델별 용도·재질·장착 조건·동봉 구성 재대조 및 기존 고해상도 원본/배경 표시 검수"
+        },
+        "highlights": [
+          {
+            "label": "제품 무게",
+            "value": "44 g"
+          },
+          {
+            "label": "날 재질",
+            "value": "스틸"
+          },
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          }
+        ],
+        "modelCorrespondence": {
+          "registeredModel": "AK-STKH",
+          "manufacturerModel": "AK-STKH",
+          "status": "exact_model",
+          "checkedOn": "2026-11-08",
+          "source": "https://jpn.tajimatool.co.jp/product/4975364050939"
+        }
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "10869335937",

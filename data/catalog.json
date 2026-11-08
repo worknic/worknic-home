@@ -4,7 +4,7 @@
     "preservesProductMetadata": true,
     "requiresReviewedPublication": true
   },
-  "updatedAt": "2026-11-08T01:18:13.421Z",
+  "updatedAt": "2026-11-08T01:23:23.806Z",
   "brands": [
     {
       "id": "chulma",
@@ -4265,7 +4265,7 @@
     },
     {
       "id": "13818140992",
-      "name": "광폭줄자 프로아츠 3.5x25mm",
+      "name": "프로아츠 광폭 줄자 3.5m × 25mm",
       "published": true,
       "order": 91,
       "brand": "komelon",
@@ -4405,7 +4405,7 @@
         "store": "worknic_korea",
         "checkedOn": "2026-11-07"
       },
-      "revision": 2
+      "revision": 3
     },
     {
       "id": "13716911128",

@@ -93,18 +93,24 @@ async function prices(root) {
     item.append(
       el("p", h.status === "restored" ? "이전 가격 복원됨" : "일괄 적용 완료"),
     );
+    let restoreConfirmation;
     if (h.status === "applied")
       item.append(
         button(
           "이전 가격으로 복원",
           async () => {
-            if (
-              !confirm("적용 이후 수정되지 않은 가격을 이전 값으로 복원할까요?")
-            )
-              return;
-            await call("/admin/prices/restore", { id: h.id });
-            say("이전 가격을 복원했습니다.");
-            route();
+            if (restoreConfirmation?.isConnected) return;
+            restoreConfirmation = el("div");
+            restoreConfirmation.append(
+              el("p", "적용 이후 수정되지 않은 가격을 이전 값으로 복원할까요?"),
+              button("복원 확인", async () => {
+                await call("/admin/prices/restore", { id: h.id });
+                say("이전 가격을 복원했습니다.");
+                route();
+              }),
+              button("취소", () => restoreConfirmation.remove(), "button secondary"),
+            );
+            item.append(restoreConfirmation);
           },
           "button secondary",
         ),

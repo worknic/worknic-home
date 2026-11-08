@@ -4,7 +4,7 @@
     "preservesProductMetadata": true,
     "requiresReviewedPublication": true
   },
-  "updatedAt": "2026-11-08T13:14:21.338Z",
+  "updatedAt": "2026-11-08T13:20:56.863Z",
   "brands": [
     {
       "id": "chulma",
@@ -653,6 +653,153 @@
         }
       },
       "revision": 3
+    },
+    {
+      "id": "13383153150",
+      "name": "시그마 스톱 줄자 · 5.5 m",
+      "published": true,
+      "order": 5,
+      "brand": "tajima",
+      "model": "SS25-55",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5.5 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "SS25-55"
+        ],
+        [
+          "JAN",
+          "4975364120632"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5.5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364120632.jpg?v=1784854630"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13383153150",
+      "sourceTitle": "타지마 고아츠 시그마 줄자 SS25-55 5.5M",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5.5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "SS25-55 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13383153150",
+            "checkedOn": "2026-11-07",
+            "scope": "등록 상품명·모델·옵션 표기"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364120632",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364120632.jpg?v=1784854630",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "d37b32f5f13b7e7ffcc0af7b12f7fc738c89a9d1a135d8c3973df830dbaf2f55",
+            "sourceSha256": "d37b32f5f13b7e7ffcc0af7b12f7fc738c89a9d1a135d8c3973df830dbaf2f55",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 307,
+              "top": 596,
+              "width": 2316,
+              "height": 1643
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/d37b32f5f13b7e7ffcc0.svg",
+            "caption": "타지마 SS25-55 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "SS25-55 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "SS25-55",
+          "manufacturerModel": "SS2555",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364120632"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5.5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "revision": 4
     },
     {
       "id": "13773047402",
@@ -7824,6 +7971,474 @@
       "revision": 2
     },
     {
+      "id": "13635193414",
+      "name": "고아츠 더블 자석 줄자 · 5 m · 왼쪽 장착용",
+      "published": true,
+      "order": 150,
+      "brand": "tajima",
+      "model": "GASF-GLWM25-50LR",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5 m 줄자입니다. 왼쪽 장착과 오른쪽 기점 눈금의 방향을 먼저 확인해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GASF-GLWM25-50LR"
+        ],
+        [
+          "JAN",
+          "4975364125941"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364125941.jpg?v=1792140304"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13635193414",
+      "sourceTitle": "타지마 5M 줄자 고아츠 세이프 더블자석 왼손잡이용 우측눈금 GASF-GLWM25-50LR",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요. 이 모델은 왼쪽 장착용·오른쪽 기점 눈금 모델입니다. 끝 코드 L 또는 일반형과 구분해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "GASF-GLWM25-50LR 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13635193414",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364125941",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364125941.jpg?v=1792140304",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "2c4faa073d3a1971e223054326970f4069c0ea61bdc7ff85102cfe31d9603cc8",
+            "sourceSha256": "2c4faa073d3a1971e223054326970f4069c0ea61bdc7ff85102cfe31d9603cc8",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 345,
+              "top": 339,
+              "width": 2312,
+              "height": 2322
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/2c4faa073d3a1971e223.svg",
+            "caption": "타지마 GASF-GLWM25-50LR · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개 · 제조사 기본 세프 홀더",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "GASF-GLWM25-50LR 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GASF-GLWM25-50LR",
+          "manufacturerModel": "GASFGLWM2550LR",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364125941"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13635181184",
+      "name": "고아츠 더블 자석 줄자 · 5 m",
+      "published": true,
+      "order": 152,
+      "brand": "tajima",
+      "model": "GASF-GLWM25-50",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GASF-GLWM25-50"
+        ],
+        [
+          "JAN",
+          "4975364121578"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364121578.jpg?v=1746669147"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13635181184",
+      "sourceTitle": "타지마 5M 줄자 고아츠 G 세이프 더블자석 GASF-GLWM25-50",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "GASF-GLWM25-50 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13635181184",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364121578",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364121578.jpg?v=1746669147",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "4db3dbb13b608237ca564236dc07396d37860fb765a2891bf23f69b5e345dbe7",
+            "sourceSha256": "4db3dbb13b608237ca564236dc07396d37860fb765a2891bf23f69b5e345dbe7",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 293,
+              "top": 404,
+              "width": 2295,
+              "height": 2248
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/4db3dbb13b608237ca56.svg",
+            "caption": "타지마 GASF-GLWM25-50 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개 · 제조사 기본 세프 홀더",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "GASF-GLWM25-50 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GASF-GLWM25-50",
+          "manufacturerModel": "GASFGLWM2550",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364121578"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13635169970",
+      "name": "고아츠 자석 줄자 · 5 m · 왼쪽 장착용",
+      "published": true,
+      "order": 153,
+      "brand": "tajima",
+      "model": "GASF-GLM25-50LR",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5 m 줄자입니다. 왼쪽 장착과 오른쪽 기점 눈금의 방향을 먼저 확인해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GASF-GLM25-50LR"
+        ],
+        [
+          "JAN",
+          "4975364125927"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364125927.jpg?v=1792140304"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13635169970",
+      "sourceTitle": "타지마 고아츠 G록 자석 줄자 왼손잡이용 우측눈금 GASF-GLM25-50LR",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요. 이 모델은 왼쪽 장착용·오른쪽 기점 눈금 모델입니다. 끝 코드 L 또는 일반형과 구분해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "GASF-GLM25-50LR 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13635169970",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364125927",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364125927.jpg?v=1792140304",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "5b0f7b3f5e5984811ad4816c605f380a3b7c809567e3a4aaf6fa0f6349c92552",
+            "sourceSha256": "5b0f7b3f5e5984811ad4816c605f380a3b7c809567e3a4aaf6fa0f6349c92552",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 336,
+              "top": 338,
+              "width": 2329,
+              "height": 2325
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/5b0f7b3f5e5984811ad4.svg",
+            "caption": "타지마 GASF-GLM25-50LR · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개 · 제조사 기본 세프 홀더",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "GASF-GLM25-50LR 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GASF-GLM25-50LR",
+          "manufacturerModel": "GASFGLM2550LR",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364125927"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "13504458428",
       "name": "충전용 원형톱날 125mm 1.2T 24P",
       "published": true,
@@ -9980,6 +10595,162 @@
       "revision": 2
     },
     {
+      "id": "13195201552",
+      "name": "G록 줄자 · 10 m",
+      "published": true,
+      "order": 176,
+      "brand": "tajima",
+      "model": "GL25-100BL",
+      "summary": "작업 치수를 재고 기준선을 확인하는 10 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GL25-100BL"
+        ],
+        [
+          "JAN",
+          "4975364025234"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "10 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364025234.jpg?v=1744767646"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13195201552",
+      "sourceTitle": "타지마 G록 줄자 GL25-100BL 10m 25mm 자동잠금 양면눈금",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 10 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "GL25-100BL 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13195201552",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364025234",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364025234.jpg?v=1744767646",
+            "width": 2132,
+            "height": 1859,
+            "sha256": "155792bfde50e01438e49c3b6818e8c77e4ed2bacc70fac802de08959c8547ce",
+            "sourceSha256": "155792bfde50e01438e49c3b6818e8c77e4ed2bacc70fac802de08959c8547ce",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 26,
+              "top": 22,
+              "width": 2081,
+              "height": 1814
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/155792bfde50e01438e4.svg",
+            "caption": "타지마 GL25-100BL · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "GL25-100BL 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GL25-100BL",
+          "manufacturerModel": "GL25100BL",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364025234"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "10 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "13195166146",
       "name": "탈착식 공구집 벨트형 공구파우치 작업용 툴홀더",
       "published": true,
@@ -10870,6 +11641,1190 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "13110703025",
+      "name": "드라이버 커터칼 · 블랙",
+      "published": true,
+      "order": 183,
+      "brand": "tajima",
+      "model": "DFC-510N/GB",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/GB"
+        ],
+        [
+          "JAN",
+          "4975364112231"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "블랙"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112231.jpg?v=1718599400"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13110703025",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/GB 18mm 블랙",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/GB 단품 기준입니다. 커터 본체 1개 · 블랙. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13110703025",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112231",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112231.jpg?v=1718599400",
+            "width": 3979,
+            "height": 3979,
+            "sha256": "8e94a6d8583f82e97144b6e8720bde3a3174964674389cf2540786e31da19a4f",
+            "sourceSha256": "8e94a6d8583f82e97144b6e8720bde3a3174964674389cf2540786e31da19a4f",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 156,
+              "top": 1246,
+              "width": 3688,
+              "height": 2134
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/8e94a6d8583f82e97144.svg",
+            "caption": "타지마 DFC-510N/GB · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 블랙",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 블랙",
+          "text": "DFC-510N/GB 단품 기준입니다. 커터 본체 1개 · 블랙. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/GB",
+          "manufacturerModel": "DFC510N/GB",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112231"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13110686274",
+      "name": "드라이버 커터칼 · 화이트",
+      "published": true,
+      "order": 184,
+      "brand": "tajima",
+      "model": "DFC-510N/GW",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/GW"
+        ],
+        [
+          "JAN",
+          "4975364112224"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "화이트"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112224.jpg?v=1718599400"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13110686274",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/GW 18mm 화이트",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/GW 단품 기준입니다. 커터 본체 1개 · 화이트. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13110686274",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112224",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112224.jpg?v=1718599400",
+            "width": 4060,
+            "height": 4060,
+            "sha256": "e7fde9471f66aac43dbb75609b47e2cc5b1c7f73d4fe274cae69b1f95b2a4c3a",
+            "sourceSha256": "e7fde9471f66aac43dbb75609b47e2cc5b1c7f73d4fe274cae69b1f95b2a4c3a",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 160,
+              "top": 1180,
+              "width": 3761,
+              "height": 2208
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/e7fde9471f66aac43dbb.svg",
+            "caption": "타지마 DFC-510N/GW · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 화이트",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 화이트",
+          "text": "DFC-510N/GW 단품 기준입니다. 커터 본체 1개 · 화이트. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/GW",
+          "manufacturerModel": "DFC510N/GW",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112224"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13110670059",
+      "name": "드라이버 커터칼 · 보라",
+      "published": true,
+      "order": 185,
+      "brand": "tajima",
+      "model": "DFC-510N/KP",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/KP"
+        ],
+        [
+          "JAN",
+          "4975364112217"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "보라"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112217.jpg?v=1718599399"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13110670059",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/KP 18mm 보라",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/KP 단품 기준입니다. 커터 본체 1개 · 보라. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13110670059",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112217",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112217.jpg?v=1718599399",
+            "width": 4043,
+            "height": 3958,
+            "sha256": "15102e16939573987322b9bf2999aee286d5e0e6de6a6239fe793249ceba6a86",
+            "sourceSha256": "15102e16939573987322b9bf2999aee286d5e0e6de6a6239fe793249ceba6a86",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 197,
+              "top": 1159,
+              "width": 3747,
+              "height": 2189
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/15102e16939573987322.svg",
+            "caption": "타지마 DFC-510N/KP · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 보라",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 보라",
+          "text": "DFC-510N/KP 단품 기준입니다. 커터 본체 1개 · 보라. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/KP",
+          "manufacturerModel": "DFC510N/KP",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112217"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13110658000",
+      "name": "드라이버 커터칼 · 파랑",
+      "published": true,
+      "order": 186,
+      "brand": "tajima",
+      "model": "DFC-510N/FB",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/FB"
+        ],
+        [
+          "JAN",
+          "4975364112194"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "파랑"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112194.jpg?v=1718599399"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13110658000",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/FB 18mm 파랑",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/FB 단품 기준입니다. 커터 본체 1개 · 파랑. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13110658000",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112194",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112194.jpg?v=1718599399",
+            "width": 4014,
+            "height": 4014,
+            "sha256": "b0b8a61fed1eb4538ff592394279c863bf9e1a96d3a10e7b04d4964f6046fd02",
+            "sourceSha256": "b0b8a61fed1eb4538ff592394279c863bf9e1a96d3a10e7b04d4964f6046fd02",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 172,
+              "top": 1197,
+              "width": 3746,
+              "height": 2191
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/b0b8a61fed1eb4538ff5.svg",
+            "caption": "타지마 DFC-510N/FB · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 파랑",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 파랑",
+          "text": "DFC-510N/FB 단품 기준입니다. 커터 본체 1개 · 파랑. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/FB",
+          "manufacturerModel": "DFC510N/FB",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112194"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13110623873",
+      "name": "드라이버 커터칼 · 초록",
+      "published": true,
+      "order": 187,
+      "brand": "tajima",
+      "model": "DFC-510N/DG",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/DG"
+        ],
+        [
+          "JAN",
+          "4975364112187"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "초록"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112187.jpg?v=1718599398"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13110623873",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/DG 18mm 초록",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/DG 단품 기준입니다. 커터 본체 1개 · 초록. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13110623873",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112187",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112187.jpg?v=1718599398",
+            "width": 4040,
+            "height": 4040,
+            "sha256": "f339659e6b7effacb455484d964cfff419564726dc1fc456415ff7cbea6e812e",
+            "sourceSha256": "f339659e6b7effacb455484d964cfff419564726dc1fc456415ff7cbea6e812e",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 176,
+              "top": 1253,
+              "width": 3752,
+              "height": 2161
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/f339659e6b7effacb455.svg",
+            "caption": "타지마 DFC-510N/DG · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 초록",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 초록",
+          "text": "DFC-510N/DG 단품 기준입니다. 커터 본체 1개 · 초록. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/DG",
+          "manufacturerModel": "DFC510N/DG",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112187"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13110602499",
+      "name": "드라이버 커터칼 · 연두",
+      "published": true,
+      "order": 188,
+      "brand": "tajima",
+      "model": "DFC-510N/AY",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/AY"
+        ],
+        [
+          "JAN",
+          "4975364112170"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "연두"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112170.jpg?v=1718599397"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13110602499",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/AY 18mm 연두",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/AY 단품 기준입니다. 커터 본체 1개 · 연두. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13110602499",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112170",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112170.jpg?v=1718599397",
+            "width": 3984,
+            "height": 3984,
+            "sha256": "a8592f138c66fdf835f6cb53445c912f4168635846aaec68a1749a845dbaa4be",
+            "sourceSha256": "a8592f138c66fdf835f6cb53445c912f4168635846aaec68a1749a845dbaa4be",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 105,
+              "top": 1172,
+              "width": 3759,
+              "height": 2199
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/a8592f138c66fdf835f6.svg",
+            "caption": "타지마 DFC-510N/AY · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 연두",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 연두",
+          "text": "DFC-510N/AY 단품 기준입니다. 커터 본체 1개 · 연두. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/AY",
+          "manufacturerModel": "DFC510N/AY",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112170"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13107466120",
+      "name": "드라이버 커터칼 · 주황",
+      "published": true,
+      "order": 189,
+      "brand": "tajima",
+      "model": "DFC-510N/AA",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/AA"
+        ],
+        [
+          "JAN",
+          "4975364112163"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "주황"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112163.jpg?v=1718599397"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13107466120",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/AA 18mm 주황",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/AA 단품 기준입니다. 커터 본체 1개 · 주황. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13107466120",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112163",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112163.jpg?v=1718599397",
+            "width": 4046,
+            "height": 4046,
+            "sha256": "bf85360708ce1a36abbda248482fd7186333bead4a392b8c1c190b562d0540e5",
+            "sourceSha256": "bf85360708ce1a36abbda248482fd7186333bead4a392b8c1c190b562d0540e5",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 138,
+              "top": 1275,
+              "width": 3770,
+              "height": 2163
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/bf85360708ce1a36abbd.svg",
+            "caption": "타지마 DFC-510N/AA · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 주황",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 주황",
+          "text": "DFC-510N/AA 단품 기준입니다. 커터 본체 1개 · 주황. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/AA",
+          "manufacturerModel": "DFC510N/AA",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112163"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "13107449499",
+      "name": "드라이버 커터칼 · 빨강",
+      "published": true,
+      "order": 190,
+      "brand": "tajima",
+      "model": "DFC-510N/PR",
+      "summary": "나사식 잠금부와 관통형 금속 홀더를 갖춘 L형 커터 본체입니다. 색상 코드와 날 규격을 확인하고, 제조사에서 별도로 안내하는 교체날을 함께 준비해 주세요.",
+      "category": "공구·작업용품 / 수공구·전동공구",
+      "specs": [
+        [
+          "모델",
+          "DFC-510N/PR"
+        ],
+        [
+          "JAN",
+          "4975364112156"
+        ],
+        [
+          "본체 재질",
+          "ABS 수지"
+        ],
+        [
+          "대응 날 폭",
+          "18 mm"
+        ],
+        [
+          "대응 날 두께",
+          "0.5 mm"
+        ],
+        [
+          "색상",
+          "빨강"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364112156.jpg?v=1718599396"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/13107449499",
+      "sourceTitle": "타지마 드라이버 커터칼 DFC-510N/PR 18mm 빨강",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "18mm 폭·0.5mm 두께 L형 날을 사용합니다. 제조사는 교체날 미동봉으로 안내합니다. 사진의 장착 상태만으로 추가 교체날이 포함되는 것으로 보지 마세요. 색상별 모델 끝 코드를 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "DFC-510N/PR 단품 기준입니다. 커터 본체 1개 · 빨강. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용하는 날 규격과 색상 코드를 알려주세요. 커터 본체와 소모품의 구매 수량을 나누어 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/13107449499",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364112156",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364112156.jpg?v=1718599396",
+            "width": 3992,
+            "height": 3991,
+            "sha256": "fd092ca424c2a60927377aaf994db9abdaba4734243e630fc4ef04beec552bf6",
+            "sourceSha256": "fd092ca424c2a60927377aaf994db9abdaba4734243e630fc4ef04beec552bf6",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 133,
+              "top": 1205,
+              "width": 3742,
+              "height": 2211
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/fd092ca424c2a6092737.svg",
+            "caption": "타지마 DFC-510N/PR · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "커터 본체 1개 · 빨강",
+          "excluded": "추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내",
+          "options": "색상 코드별 개별 등록 · 빨강",
+          "text": "DFC-510N/PR 단품 기준입니다. 커터 본체 1개 · 빨강. 추가 교체날 별도 준비 · 제조사 교체날 미동봉 안내."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "DFC-510N/PR",
+          "manufacturerModel": "DFC510N/PR",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364112156"
+        },
+        "highlights": [
+          {
+            "label": "본체 재질",
+            "value": "ABS 수지"
+          },
+          {
+            "label": "대응 날 폭",
+            "value": "18 mm"
+          },
+          {
+            "label": "대응 날 두께",
+            "value": "0.5 mm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "13107384892",
@@ -13980,6 +15935,154 @@
       "revision": 2
     },
     {
+      "id": "11913241260",
+      "name": "더블 홀더 쿠션벨트 · M",
+      "published": true,
+      "order": 218,
+      "brand": "tajima",
+      "model": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함",
+      "summary": "공구의 휴대 위치를 낮추고 장착 공간을 나누는 2단 쿠션벨트입니다. 대응 허리벨트 폭과 쿠션 길이, 기본 홀더 구성을 함께 확인해 주세요.",
+      "category": "공구·작업용품 / 보관·휴대",
+      "specs": [
+        [
+          "모델",
+          "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함"
+        ],
+        [
+          "JAN",
+          "4975364268921"
+        ],
+        [
+          "규격",
+          "M"
+        ],
+        [
+          "대응 허리벨트 폭",
+          "50 mm 전용"
+        ],
+        [
+          "쿠션벨트 길이",
+          "80 cm"
+        ],
+        [
+          "허리둘레 참고 기준",
+          "약 100 cm 이내 · 제조사 기준"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364268921.jpg?v=1779844195"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11913241260",
+      "sourceTitle": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "50mm 폭 허리벨트 전용입니다. 쿠션 길이와 실제 허리둘레, 공구 장착 위치를 확인해 주세요. 추락 방지용 안전대나 인증 보호구로 안내하지 않습니다."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함 단품 기준입니다. 쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개. 허리벨트·공구·추가 홀더 별매."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "사용 중인 허리벨트 폭과 휴대할 공구를 알려주세요. 기본 홀더와 추가 장착품을 구분해 안내하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/11913241260",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364268921",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364268921.jpg?v=1779844195",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "4bc160bb615a69d29a1e9ea1be81baa1814ac48ef35fbeeecbe667334ea6b7d7",
+            "sourceSha256": "4bc160bb615a69d29a1e9ea1be81baa1814ac48ef35fbeeecbe667334ea6b7d7",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 198,
+              "top": 1267,
+              "width": 2522,
+              "height": 715
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/4bc160bb615a69d29a1e.svg",
+            "caption": "타지마 타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개",
+          "excluded": "허리벨트·공구·추가 홀더 별매",
+          "options": "등록 모델·규격 기준",
+          "text": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함 단품 기준입니다. 쿠션벨트 본체 · 세로 벨트용 세프 홀더 2개. 허리벨트·공구·추가 홀더 별매."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "타지마 더블홀더 쿠션벨트 하단연결 SFCRX800 홀더2개포함",
+          "manufacturerModel": "SFCRX800",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364268921"
+        },
+        "highlights": [
+          {
+            "label": "규격",
+            "value": "M"
+          },
+          {
+            "label": "대응 허리벨트 폭",
+            "value": "50 mm 전용"
+          },
+          {
+            "label": "쿠션벨트 길이",
+            "value": "80 cm"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "11898001352",
       "name": "목재 전지용 스마트 접톱",
       "published": true,
@@ -17082,6 +19185,318 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "11390883719",
+      "name": "G7 줄자 · 6.5 m",
+      "published": true,
+      "order": 253,
+      "brand": "tajima",
+      "model": "G7-L25-65",
+      "summary": "작업 치수를 재고 기준선을 확인하는 6.5 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "G7-L25-65"
+        ],
+        [
+          "JAN",
+          "4975364120731"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "6.5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364120731.jpg?v=1784868100"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11390883719",
+      "sourceTitle": "타지마 고아츠 자동줄자 6.5M G7-L25-65",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 6.5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "G7-L25-65 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/11390883719",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364120731",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364120731.jpg?v=1784868100",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "46a8c9f567a778b6a7696905674ba2474ff6658e2d1808eb4107f154a8804584",
+            "sourceSha256": "46a8c9f567a778b6a7696905674ba2474ff6658e2d1808eb4107f154a8804584",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 196,
+              "top": 524,
+              "width": 2648,
+              "height": 1982
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/46a8c9f567a778b6a769.svg",
+            "caption": "타지마 G7-L25-65 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "G7-L25-65 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "G7-L25-65",
+          "manufacturerModel": "G7L2565",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364120731"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "6.5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
+      "id": "11390881182",
+      "name": "G7 줄자 · 5 m",
+      "published": true,
+      "order": 254,
+      "brand": "tajima",
+      "model": "G7-L25-50",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "G7-L25-50"
+        ],
+        [
+          "JAN",
+          "4975364120700"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364120700.jpg?v=1784868048"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/11390881182",
+      "sourceTitle": "타지마 고아츠 자동줄자 5M G7-L25-50",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "G7-L25-50 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/11390881182",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364120700",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364120700.jpg?v=1784868048",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "b2f5879c83a1b1cb10b46b76f19022deb2ffe09910c3d084bbf21d7108fd4554",
+            "sourceSha256": "b2f5879c83a1b1cb10b46b76f19022deb2ffe09910c3d084bbf21d7108fd4554",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 411,
+              "top": 700,
+              "width": 2122,
+              "height": 1599
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/b2f5879c83a1b1cb10b4.svg",
+            "caption": "타지마 G7-L25-50 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "G7-L25-50 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "G7-L25-50",
+          "manufacturerModel": "G7L2550",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364120700"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "11292687093",
@@ -26440,6 +28855,158 @@
       "revision": 2
     },
     {
+      "id": "10864852311",
+      "name": "고아츠 자석 줄자 · 5 m",
+      "published": true,
+      "order": 325,
+      "brand": "tajima",
+      "model": "GASF-LM25-50",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GASF-LM25-50"
+        ],
+        [
+          "JAN",
+          "4975364120212"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364120212.jpg?v=1746669141"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/10864852311",
+      "sourceTitle": "타지마 줄자 5M GASF-LM25-50 자석 벨트홀더포함",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "GASF-LM25-50 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/10864852311",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364120212",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364120212.jpg?v=1746669141",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "4c84ee67c2a5d28f7519bdc38449ca44ad7a6aa4a665ed1da0c91b93d733cbe5",
+            "sourceSha256": "4c84ee67c2a5d28f7519bdc38449ca44ad7a6aa4a665ed1da0c91b93d733cbe5",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 152,
+              "top": 194,
+              "width": 2598,
+              "height": 2610
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/4c84ee67c2a5d28f7519.svg",
+            "caption": "타지마 GASF-LM25-50 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개 · 제조사 기본 세프 홀더",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "GASF-LM25-50 단품 기준입니다. 줄자 본체 1개 · 제조사 기본 세프 홀더. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GASF-LM25-50",
+          "manufacturerModel": "GASFLM2550",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364120212"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
+    },
+    {
       "id": "10861540963",
       "name": "줄자 G그립 7.5M",
       "published": true,
@@ -27834,6 +30401,162 @@
         "checkedOn": "2026-11-07"
       },
       "revision": 2
+    },
+    {
+      "id": "9102324787",
+      "name": "고아츠 줄자 · 5 m",
+      "published": true,
+      "order": 339,
+      "brand": "tajima",
+      "model": "GAGL25-50",
+      "summary": "작업 치수를 재고 기준선을 확인하는 5 m 줄자입니다. 측정 길이와 테이프 폭, 잠금·휴대 방식을 기준으로 선택해 주세요.",
+      "category": "공구·작업용품 / 측정·표시",
+      "specs": [
+        [
+          "모델",
+          "GAGL25-50"
+        ],
+        [
+          "JAN",
+          "4975364120205"
+        ],
+        [
+          "테이프 폭",
+          "25 mm"
+        ],
+        [
+          "측정 길이",
+          "5 m"
+        ],
+        [
+          "테이프 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "스프링 재질",
+          "SK85 (SK5)"
+        ],
+        [
+          "케이스 재질",
+          "ABS 수지"
+        ],
+        [
+          "커버 재질",
+          "엘라스토머 수지"
+        ]
+      ],
+      "images": [
+        "https://twn-assets.tajimatool.co.jp/img/4975364120205.jpg?v=1784867964"
+      ],
+      "sourceUrl": "https://smartstore.naver.com/worknic_korea/products/9102324787",
+      "sourceTitle": "타지마 줄자 고아츠 G그립 5M GAGL25-50",
+      "sourceCheckedOn": "2026-11-07",
+      "guide": {
+        "version": 2,
+        "checkedOn": "2026-11-08",
+        "checks": [
+          {
+            "title": "용도와 선택 기준",
+            "text": "판매 규격은 5 m × 25 mm입니다. 미터 눈금과 훅·장착 방향을 확인해 주세요."
+          },
+          {
+            "title": "기본 판매 구성",
+            "text": "GAGL25-50 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+          },
+          {
+            "title": "입고·재판매 전 확인",
+            "text": "필요한 모델과 수량을 알려주세요. 제조사 인너박스·카톤 수량은 개별 주문 수량과 구분하고 납기를 함께 확인합니다."
+          }
+        ],
+        "note": {
+          "title": "쓰임과 규격을 함께 확인합니다.",
+          "text": "주로 재는 거리와 장착 방향을 알려주세요. 길이·폭·눈금과 휴대 방식에 맞춰 필요한 규격을 함께 확인하겠습니다."
+        },
+        "sources": [
+          {
+            "type": "store_catalog",
+            "url": "https://smartstore.naver.com/worknic_korea/products/9102324787",
+            "checkedOn": "2026-11-07",
+            "scope": "최신 판매자 상품목록의 상품명·모델·등록 분류"
+          },
+          {
+            "type": "manufacturer",
+            "url": "https://twn.tajimatool.co.jp/product/4975364120205",
+            "checkedOn": "2026-11-08",
+            "scope": "제조사 대만 공식 모델·색상/JAN·사양·기본 구성·고해상도 원본 사진 대조"
+          }
+        ],
+        "reviews": [],
+        "media": {
+          "thumbnail": {
+            "source": "https://twn-assets.tajimatool.co.jp/img/4975364120205.jpg?v=1784867964",
+            "width": 3000,
+            "height": 3000,
+            "sha256": "6123e5e429d4e301c6b6a137e37a3d8e9da109adb0633516d171c8c3feeba0fa",
+            "sourceSha256": "6123e5e429d4e301c6b6a137e37a3d8e9da109adb0633516d171c8c3feeba0fa",
+            "status": "official_original_verified",
+            "checkedOn": "2026-11-08",
+            "framing": {
+              "left": 278,
+              "top": 598,
+              "width": 2334,
+              "height": 1757
+            },
+            "presentationMask": "https://worknic.co.kr/assets/products/brand-20261108/6123e5e429d4e301c6b6.svg",
+            "caption": "타지마 GAGL25-50 · 제조사 공식 사진",
+            "presentation": {
+              "background": "#ecedeb",
+              "aspectRatio": "1:1",
+              "originalPixelsPreserved": true,
+              "maskVersion": 4
+            }
+          },
+          "usage": null
+        },
+        "configuration": {
+          "status": "manufacturer_and_store_checked",
+          "unit": "등록 모델 단품",
+          "quantity": "1개 · 제조사 물류 박스 수량과 구분",
+          "included": "줄자 본체 1개",
+          "excluded": "추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.",
+          "options": "등록 모델·규격 기준",
+          "text": "GAGL25-50 단품 기준입니다. 줄자 본체 1개. 추가 홀더·안전줄 등 별도 판매 부속은 포함하지 않습니다.."
+        },
+        "quality": {
+          "state": "reviewed",
+          "pending": [],
+          "reviewedOn": "2026-11-08",
+          "cohort": "komelon-tajima-round2-20261108",
+          "reviewMethod": "제조사 모델 코드/JAN·사양·기본 구성·원본 해상도 대조 및 썸네일 육안 검수"
+        },
+        "modelCorrespondence": {
+          "registeredModel": "GAGL25-50",
+          "manufacturerModel": "GAGL2550",
+          "status": "same_model_formatting_only",
+          "checkedOn": "2026-11-08",
+          "source": "https://twn.tajimatool.co.jp/product/4975364120205"
+        },
+        "highlights": [
+          {
+            "label": "테이프 폭",
+            "value": "25 mm"
+          },
+          {
+            "label": "측정 길이",
+            "value": "5 m"
+          },
+          {
+            "label": "테이프 재질",
+            "value": "SK85 (SK5)"
+          }
+        ]
+      },
+      "sourceImport": {
+        "file": "Product_20261107_220144.csv",
+        "store": "worknic_korea",
+        "checkedOn": "2026-11-07"
+      },
+      "revision": 3
     },
     {
       "id": "13500231381",

@@ -17,9 +17,8 @@ import {
 } from "./beta-common.js";
 let actor = null,
   lastPreview = null;
-async function prices() {
-  const root = $("#view"),
-    c = card("판매가 엑셀 일괄 관리");
+async function prices(root) {
+  const c = card("판매가 엑셀 일괄 관리");
   c.append(
     el(
       "p",
@@ -166,8 +165,7 @@ async function prices() {
   render();
   root.append(stocks);
 }
-async function members() {
-  const root = $("#view");
+async function members(root) {
   root.append(
     el(
       "p",
@@ -221,9 +219,8 @@ async function members() {
     root.append(c);
   }
 }
-async function quotes() {
-  const root = $("#view"),
-    { quotes } = await call("/admin/quotes");
+async function quotes(root) {
+  const { quotes } = await call("/admin/quotes");
   for (const q of quotes) {
     const c = card("견적 " + q.id.slice(0, 8));
     c.append(
@@ -270,11 +267,10 @@ async function quotes() {
       );
     root.append(c);
   }
-  await orderList(false);
+  await orderList(false, root);
 }
-async function orderList(pickupOnly) {
-  const root = $("#view"),
-    { orders } = await call("/admin/orders");
+async function orderList(pickupOnly, root) {
+  const { orders } = await call("/admin/orders");
   root.append(el("h2", pickupOnly ? "픽업 주문" : "확정 주문"));
   for (const o of orders) {
     const c = card(o.number);
@@ -426,12 +422,11 @@ async function orderList(pickupOnly) {
     root.append(c);
   }
 }
-async function pickups() {
-  await orderList(true);
+async function pickups(root) {
+  await orderList(true, root);
 }
-async function settings() {
-  const root = $("#view"),
-    config = await call("/admin/config"),
+async function settings(root) {
+  const config = await call("/admin/config"),
     c = card("베타 접수");
   const f = el("form");
   field(
@@ -544,9 +539,10 @@ function auth() {
   c.append(f);
   $("#view").append(c);
 }
+let routeRevision = 0;
 async function route() {
-  const root = $("#view");
-  root.replaceChildren();
+  const revision = ++routeRevision, view = $("#view"), root = el("div");
+  view.replaceChildren();
   if (!actor) {
     auth();
     return;
@@ -558,13 +554,14 @@ async function route() {
       a.setAttribute("aria-current", a.hash === "#" + name ? "page" : "false"),
     );
   try {
-    if (name === "members") await members();
-    else if (name === "quotes") await quotes();
-    else if (name === "pickups") await pickups();
-    else if (name === "settings") await settings();
-    else await prices();
+    if (name === "members") await members(root);
+    else if (name === "quotes") await quotes(root);
+    else if (name === "pickups") await pickups(root);
+    else if (name === "settings") await settings(root);
+    else await prices(root);
+    if (revision === routeRevision) view.replaceChildren(...root.childNodes);
   } catch (e) {
-    say(e.message, true);
+    if (revision === routeRevision) say(e.message, true);
   }
 }
 async function load() {
@@ -578,7 +575,17 @@ async function load() {
   }
   route();
 }
-window.addEventListener("hashchange", route);
+function requestOSConnection() {
+  if (location.hash !== "#os-connect" || !window.opener) return false;
+  ++routeRevision;
+  $("#view").replaceChildren();
+  say("OS 관리자 연결을 확인하고 있습니다.");
+  window.opener.postMessage({type: "WORKNIC_TRADE_READY"}, "https://worknic.tools");
+  return true;
+}
+window.addEventListener("hashchange", () => {
+  if (!requestOSConnection()) route();
+});
 window.addEventListener("message", async (e) => {
   if (e.origin !== "https://worknic.tools" || e.source !== window.opener)
     return;
@@ -600,9 +607,4 @@ window.addEventListener("message", async (e) => {
     }
   }
 });
-if (location.hash === "#os-connect" && window.opener)
-  window.opener.postMessage(
-    { type: "WORKNIC_TRADE_READY" },
-    "https://worknic.tools",
-  );
-else load();
+if (!requestOSConnection()) load();

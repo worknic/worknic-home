@@ -44,7 +44,7 @@ function render(data){
  $('#checked-date').textContent=g.checkedOn?'상품 정보 확인 · '+g.checkedOn:'';
 }
 async function init(){
- try{const r=await fetch('/data/catalog.json',{cache:'no-cache'});if(!r.ok)throw Error();fallback=await r.json();render(fallback)}catch{$('#product-status').textContent='상품 정보를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.'}
- try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(j.ok===true&&j.data?.brands)render(j.data);}catch{}
+ $('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하고 있습니다.';
+ try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');render(j.data);}catch{$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
 }
 init();})();

@@ -5,6 +5,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { openStore } from "../server/store.mjs";
 import {
+  inventoryWorkbook,
+  readInventoryWorkbook,
+} from "../server/inventory.mjs";
+import {
   priceWorkbook,
   readPriceWorkbook,
   guardWorkbook,
@@ -133,6 +137,176 @@ function fixture(locationId = "pocheon_after_hours") {
     },
   };
 }
+test("재고 엑셀 미리보기·권한·적용·재사용 차단과 가격·주문·접수 보존", async () => {
+  const f = fixture();
+  try {
+    const config = f.store.beta.config(),
+      prices = f.store.beta.priceRows(f.admin);
+    const rows = await readInventoryWorkbook(
+      await inventoryWorkbook(f.store.beta.inventory(f.admin)),
+    );
+    rows[0].주문가능수량 = 11;
+    rows[0].주문가능 = "아니오";
+    const preview = f.store.beta.previewInventory(f.admin, rows);
+    assert.equal(preview.invalid, 0);
+    assert.equal(f.store.beta.inventory(f.admin)[0].stock, 30);
+    assert.throws(() => f.store.beta.previewInventory(f.buyer, rows), /관리자/);
+    assert.throws(
+      () => f.store.beta.applyInventory(f.buyer, preview.id),
+      /관리자/,
+    );
+    assert.equal(f.store.beta.applyInventory(f.admin, preview.id).applied, 1);
+    assert.equal(f.store.beta.inventory(f.admin)[0].stock, 11);
+    assert.equal(f.store.beta.inventory(f.admin)[0].enabled, false);
+    assert.deepEqual(f.store.beta.priceRows(f.admin), prices);
+    assert.deepEqual(f.store.beta.config(), config);
+    assert.deepEqual(f.store.orders(f.admin), []);
+    assert.throws(
+      () => f.store.beta.applyInventory(f.admin, preview.id),
+      /만료/,
+    );
+    assert.equal(f.store.beta.inventoryHistory(f.admin)[0].count, 1);
+  } finally {
+    f.cleanup();
+  }
+});
+
+test("재고 엑셀 빈칸·음수·중복·미등록·오래된 번호는 전체 적용 거절", async () => {
+  const f = fixture();
+  try {
+    const [row] = await readInventoryWorkbook(
+      await inventoryWorkbook(f.store.beta.inventory(f.admin)),
+    );
+    for (const delta of [
+      { 주문가능수량: "" },
+      { 주문가능수량: -1 },
+      { 주문가능수량: 1.1 },
+      { 주문가능수량: 1000001 },
+      { 주문가능: "" },
+      { 수정번호: "" },
+      { 수정번호: 999 },
+      { 상품번호: "unknown" },
+      { 옵션번호: "unknown" },
+    ]) {
+      const preview = f.store.beta.previewInventory(f.admin, [
+        { ...row, ...delta },
+      ]);
+      assert.equal(preview.invalid, 1);
+      assert.throws(
+        () => f.store.beta.applyInventory(f.admin, preview.id),
+        /오류/,
+      );
+    }
+    const duplicate = f.store.beta.previewInventory(f.admin, [row, row]);
+    assert.ok(duplicate.invalid);
+    assert.throws(
+      () => f.store.beta.applyInventory(f.admin, duplicate.id),
+      /오류/,
+    );
+    assert.equal(f.store.beta.inventory(f.admin)[0].stock, 30);
+  } finally {
+    f.cleanup();
+  }
+});
+
+test("재고 미리보기 후 주문 예약·만료·상품 비공개 전환은 적용 차단", async () => {
+  const f = fixture();
+  try {
+    const [row] = await readInventoryWorkbook(
+      await inventoryWorkbook(f.store.beta.inventory(f.admin)),
+    );
+    const preview = f.store.beta.previewInventory(f.admin, [
+      { ...row, 주문가능수량: 99 },
+    ]);
+    const p = f.store.beta.previewPrices(f.admin, [f.row]);
+    f.store.beta.applyPrices(f.admin, p.id);
+    const order = f.accept(f.issue(f.requested()));
+    assert.throws(
+      () => f.store.beta.applyInventory(f.admin, preview.id),
+      /변경/,
+    );
+    assert.equal(f.store.beta.inventory(f.admin)[0].stock, 28);
+    assert.equal(f.store.order(f.admin, order.id).total, order.total);
+    const fresh = await readInventoryWorkbook(
+      await inventoryWorkbook(f.store.beta.inventory(f.admin)),
+    );
+    const expired = f.store.beta.previewInventory(f.admin, fresh);
+    f.advance(15 * 60000);
+    assert.throws(
+      () => f.store.beta.applyInventory(f.admin, expired.id),
+      /만료/,
+    );
+    const hidden = f.store.beta.previewInventory(f.admin, fresh);
+    f.store.seedCatalog({ brands: [], products: [] });
+    assert.throws(
+      () => f.store.beta.applyInventory(f.admin, hidden.id),
+      /변경/,
+    );
+  } finally {
+    f.cleanup();
+  }
+});
+
+test("옵션별 재고 배치는 작성자 귀속·전체 충돌 검증·가격 보존", async () => {
+  const f = fixture();
+  try {
+    f.store.seedCatalog({
+      brands: [],
+      products: [
+        { id: "p1", name: "검증 상품", published: true, images: [] },
+        {
+          id: "p2",
+          name: "옵션 상품",
+          published: true,
+          images: [],
+          variants: [
+            { id: "small", name: "소형" },
+            { id: "large", name: "대형" },
+          ],
+        },
+      ],
+    });
+    let rows = await readInventoryWorkbook(
+      await inventoryWorkbook(f.store.beta.inventory(f.admin)),
+    );
+    assert.equal(rows.length, 3);
+    const p1Before = f.store.beta.inventory(f.admin).find((p) => p.id === "p1");
+    rows = rows.map((r) => ({
+      ...r,
+      주문가능수량: r.옵션번호 === "small" ? 8 : 4,
+      주문가능: "예",
+    }));
+    const batch = f.store.beta.previewInventory(f.admin, rows);
+    f.store.createAdmin("second_staff", "second staff passphrase");
+    const second = f.store.login("second_staff", "second staff passphrase");
+    assert.throws(() => f.store.beta.applyInventory(second, batch.id), /만료/);
+    f.store.beta.updateInventory(f.admin, "p2", {
+      optionId: "large",
+      stock: 2,
+      enabled: false,
+      revision: 0,
+    });
+    assert.throws(() => f.store.beta.applyInventory(f.admin, batch.id), /변경/);
+    assert.deepEqual(
+      f.store.beta.inventory(f.admin).find((p) => p.id === "p1"),
+      p1Before,
+    );
+    rows = (
+      await readInventoryWorkbook(
+        await inventoryWorkbook(f.store.beta.inventory(f.admin)),
+      )
+    ).map((r) => ({ ...r, 주문가능수량: 6, 주문가능: "아니오" }));
+    const fresh = f.store.beta.previewInventory(f.admin, rows);
+    assert.equal(f.store.beta.applyInventory(f.admin, fresh.id).applied, 3);
+    assert.ok(
+      f.store.beta.inventory(f.admin).every((p) => p.stock === 6 && !p.enabled),
+    );
+    assert.ok(f.store.beta.priceRows(f.admin).every((p) => p.price === null));
+  } finally {
+    f.cleanup();
+  }
+});
+
 test("엑셀 값·오류·중복·일괄 적용·복원·다른 수정 충돌", async () => {
   const f = fixture();
   try {

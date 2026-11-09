@@ -1,6 +1,7 @@
 import { randomBytes } from "node:crypto";
 import { TradeError } from "./store.mjs";
 import { readPriceWorkbook, priceWorkbook } from "./pricing.mjs";
+import { readInventoryWorkbook, inventoryWorkbook } from "./inventory.mjs";
 import { statement } from "./statement.mjs";
 const fail = (m, s = 400) => {
   throw new TradeError(m, s);
@@ -37,15 +38,23 @@ export function createBetaRouter({
         length += c.length;
         if (
           length >
-          (path === "/admin/prices/file" ? 5 * 1024 * 1024 : 1024 * 1024)
+          (["/admin/prices/file", "/admin/inventory/file"].includes(path)
+            ? 5 * 1024 * 1024
+            : 1024 * 1024)
         )
           fail("요청 크기를 줄여 주세요.", 413);
         chunks.push(c);
       }
       const buf = Buffer.concat(chunks);
-      if (path === "/admin/prices/file") {
+      if (["/admin/prices/file", "/admin/inventory/file"].includes(path)) {
         if (!admin) fail("관리자 권한이 필요합니다.", 403);
-        input = { rows: await readPriceWorkbook(buf) };
+        input = {
+          rows: await (
+            path === "/admin/prices/file"
+              ? readPriceWorkbook
+              : readInventoryWorkbook
+          )(buf),
+        };
       } else {
         if (
           !/^application\/json(?:;|$)/i.test(req.headers["content-type"] || "")
@@ -299,6 +308,68 @@ export function createBetaRouter({
     }
     if (path.startsWith("/admin/")) {
       if (!admin) fail("관리자 권한이 필요합니다.", 403);
+      if (path === "/admin/readiness" && method === "GET") {
+        const config = store.beta.config(),
+          products = store.beta.inventory(actor),
+          prices = store.beta.priceRows(actor);
+        return send({
+          checkedAt: Date.now(),
+          intake: {
+            registration: config.registrationEnabled,
+            quotes: config.betaEnabled,
+            documentsConfirmed: config.documentsConfirmed,
+          },
+          inventory: {
+            total: products.length,
+            enabled: products.filter((p) => p.enabled).length,
+            zero: products.filter((p) => p.stock === 0).length,
+          },
+          prices: {
+            total: prices.length,
+            undetermined: prices.filter((p) => p.price == null).length,
+          },
+          operators: {
+            refund: config.refundReviewer?.value || null,
+            transfer: config.refundTransferOperator?.value || null,
+            recovery: config.recoveryOperator?.value || null,
+          },
+          locations: store.beta
+            .locations()
+            .map(({ id, name, enabled, sourceVerified, fee }) => ({
+              id,
+              name,
+              enabled,
+              sourceVerified,
+              fee,
+            })),
+          manualChecks: [
+            "정확한 현장 위치·연락처와 실제 수령·보관함 확인",
+            "거래처별 단가·판매단위·재고·부가세 및 증빙 확인",
+            "환불 기산일의 법정 기준 적용과 공휴일 확인",
+            "개인정보 고지·보관 기준과 비공개 외부 백업·복구 시험",
+          ],
+        });
+      }
+      if (path === "/admin/inventory/template" && method === "GET") {
+        const file = await inventoryWorkbook(
+          store.beta.inventory(actor).filter((p) => p.published !== false),
+        );
+        res.writeHead(200, {
+          "Content-Type":
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Content-Disposition":
+            'attachment; filename="worknic-inventory.xlsx"',
+          "Cache-Control": "no-store",
+        });
+        res.end(file);
+        return true;
+      }
+      if (path === "/admin/inventory/file" && method === "POST")
+        return send(store.beta.previewInventory(actor, input.rows));
+      if (path === "/admin/inventory/apply" && method === "POST")
+        return send(store.beta.applyInventory(actor, input.id));
+      if (path === "/admin/inventory/history" && method === "GET")
+        return send({ history: store.beta.inventoryHistory(actor) });
       if (path === "/admin/recovery" && method === "GET")
         return send({
           requests: store.beta.recoveryRequests(actor),

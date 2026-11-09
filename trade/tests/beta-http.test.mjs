@@ -8,6 +8,10 @@ import ExcelJS from "exceljs";
 import { openStore, TradeError } from "../server/store.mjs";
 import { createTradeServer } from "../server/http.mjs";
 import { priceWorkbook, readPriceWorkbook } from "../server/pricing.mjs";
+import {
+  inventoryWorkbook,
+  readInventoryWorkbook,
+} from "../server/inventory.mjs";
 test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거시 우회/CSRF/비공개 파일 차단", async () => {
   const dir = mkdtempSync(join(tmpdir(), "worknic-http-")),
     store = openStore(join(dir, "db.sqlite"), {
@@ -200,6 +204,85 @@ test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거
         headers: { Cookie: adminCookie },
       })
     ).json();
+    const adminHeaders = { Cookie: adminCookie };
+    assert.equal((await fetch(base + "/api/beta/admin/readiness")).status, 401);
+    assert.equal(
+      (await fetch(base + "/api/beta/admin/inventory/template", { headers }))
+        .status,
+      403,
+    );
+    const readyResponse = await fetch(base + "/api/beta/admin/readiness", {
+      headers: adminHeaders,
+    });
+    assert.equal(readyResponse.status, 200);
+    const readiness = await readyResponse.json();
+    assert.equal(readiness.intake.quotes, false);
+    assert.equal(readiness.intake.registration, false);
+    assert.equal(readiness.members, undefined);
+    const template = await fetch(base + "/api/beta/admin/inventory/template", {
+      headers: adminHeaders,
+    });
+    assert.equal(template.status, 200);
+    assert.equal(template.headers.get("cache-control"), "no-store");
+    assert.equal(
+      (await readInventoryWorkbook(Buffer.from(await template.arrayBuffer())))
+        .length,
+      0,
+    );
+    store.seedCatalog({
+      brands: [],
+      products: [
+        { id: "stock_http", name: "재고 검증", published: true, images: [] },
+      ],
+    });
+    const stockFile = await inventoryWorkbook(
+      store.beta.inventory(store.authenticate(adminCookie.split("=")[1])),
+    );
+    const upload = async (cookie, origin = "http://localhost") =>
+      fetch(base + "/api/beta/admin/inventory/file", {
+        method: "POST",
+        headers: {
+          Origin: origin,
+          Cookie: cookie,
+          "Content-Type": "application/octet-stream",
+        },
+        body: stockFile,
+      });
+    assert.equal(
+      (await upload(adminCookie, "https://example.invalid")).status,
+      403,
+    );
+    assert.equal((await upload(headers.Cookie)).status, 403);
+    const preview = await upload(adminCookie);
+    assert.equal(preview.status, 200);
+    const stockPreview = await preview.json();
+    assert.equal(stockPreview.invalid, 0);
+    assert.equal(
+      (
+        await post(
+          "/admin/inventory/apply",
+          { id: stockPreview.id },
+          adminCookie,
+        )
+      ).status,
+      200,
+    );
+    assert.equal(
+      (
+        await post(
+          "/admin/inventory/apply",
+          { id: stockPreview.id },
+          adminCookie,
+        )
+      ).status,
+      409,
+    );
+    assert.equal(store.beta.config().betaEnabled, false);
+    assert.equal(
+      store.beta.priceRows(store.authenticate(adminCookie.split("=")[1]))[0]
+        .price,
+      null,
+    );
     assert.equal(queue.requests.length, 1);
     assert.equal(queue.requests[0].token, undefined);
     assert.equal(

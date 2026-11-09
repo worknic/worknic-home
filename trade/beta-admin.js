@@ -16,9 +16,11 @@ import {
   say,
 } from "./beta-common.js";
 import { adminRefunds, adminRecovery, orderAftercare } from "./aftercare-ui.js";
+import { inventoryBulk, operationsReadiness } from "./inventory-ui.js";
 let actor = null,
   lastPreview = null;
 async function prices(root) {
+  await inventoryBulk(root, route);
   const c = card("판매가 엑셀 일괄 관리");
   c.append(
     el(
@@ -694,6 +696,7 @@ async function pickups(root) {
   await orderList(true, root);
 }
 async function settings(root) {
+  await operationsReadiness(root);
   const config = await call("/admin/config"),
     c = card("베타 접수");
   const policy = card("확정 운영 기준 · 일반 재고 상품 취소");

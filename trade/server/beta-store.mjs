@@ -8,6 +8,7 @@ import {
 } from "node:crypto";
 import { TradeError, passwordHash } from "./store.mjs";
 import { installAftercare } from "./aftercare.mjs";
+import { installInventoryBulk } from "./inventory.mjs";
 const fail = (m, s = 400) => {
     throw new TradeError(m, s);
   },
@@ -271,6 +272,7 @@ export function installBeta(
   });
   return {
     ...aftercare,
+    ...installInventoryBulk(api, db, { clock, transaction, audit, adminOnly }),
     config,
     locations,
     binding,

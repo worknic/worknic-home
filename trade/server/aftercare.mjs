@@ -1,5 +1,6 @@
 import { randomUUID, createHash } from "node:crypto";
 import { TradeError } from "./store.mjs";
+import { refundDeadline, validDay, kstDay } from "./refund-deadlines.mjs";
 const fail = (message, status = 400) => {
   throw new TradeError(message, status);
 };
@@ -16,6 +17,7 @@ export function installAftercare(
     CREATE TABLE IF NOT EXISTS beta_recovery_requests(id TEXT PRIMARY KEY,member_id TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL,reviewed_at INTEGER);
     CREATE TABLE IF NOT EXISTS beta_procurement(order_id TEXT PRIMARY KEY,value TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
     CREATE TABLE IF NOT EXISTS beta_receipts(order_id TEXT PRIMARY KEY,received_on TEXT NOT NULL,verified_at INTEGER NOT NULL,verified_by TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
+    CREATE TABLE IF NOT EXISTS beta_refund_triggers(refund_id TEXT PRIMARY KEY,value TEXT NOT NULL);
     CREATE UNIQUE INDEX IF NOT EXISTS beta_recovery_open ON beta_recovery_requests(member_id) WHERE status='requested';`);
   const own = (actor, member) => {
     if (actor.role !== "admin" && actor.id !== member)
@@ -36,6 +38,10 @@ export function installAftercare(
     if (!r) fail("환불 요청을 찾을 수 없습니다.", 404);
     own(actor, r.member_id);
     const value = JSON.parse(r.value);
+    const trigger = db
+      .prepare("SELECT value FROM beta_refund_triggers WHERE refund_id=?")
+      .get(id);
+    if (trigger) Object.assign(value, JSON.parse(trigger.value));
     if (
       r.status === "requested" &&
       value.reasonType === "change_of_mind" &&
@@ -45,6 +51,9 @@ export function installAftercare(
     if (actor.role !== "admin") {
       delete value.bankReference;
       delete value.recipientCheck;
+      delete value.triggerNote;
+      delete value.triggerVerifiedBy;
+      delete value.triggerVerifiedAt;
     }
     return {
       ...value,
@@ -53,6 +62,7 @@ export function installAftercare(
       memberId: r.member_id,
       status: r.status,
       revision: r.revision,
+      deadline: refundDeadline({ ...value, status: r.status }, clock()),
     };
   };
   const refunded = (id) =>
@@ -103,6 +113,53 @@ export function installAftercare(
   };
   return {
     returnWindow,
+    recordRefundTrigger(actor, id, input) {
+      adminOnly(actor);
+      if (!api.beta.refundReviewAccess(actor).canReview)
+        fail(
+          "환불 기산일은 지정 담당자 영우의 OS 계정으로 확인해 주세요.",
+          403,
+        );
+      return transaction(() => {
+        const r = refund(actor, id),
+          o = order(actor, r.orderId);
+        const isReturn = ["collected", "shipped"].includes(r.originalStatus);
+        const field = isReturn ? "returnReceivedOn" : "withdrawalReceivedOn";
+        const day = input.triggerOn;
+        if (
+          !["requested", "approved"].includes(r.status) ||
+          r.revision !== input.revision
+        )
+          fail("환불 요청 상태가 변경됐습니다.", 409);
+        if (
+          !validDay(day) ||
+          day > kstDay(clock()) ||
+          day < kstDay(o.created_at) ||
+          input.actualVerified !== true ||
+          !text(input.note)
+        )
+          fail("실제 반환일 또는 취소 접수일과 확인 기록을 입력해 주세요.");
+        const previous = r[field] || (!isReturn ? kstDay(r.requestedAt) : null);
+        if (previous && day > previous)
+          fail(
+            "기존 기산일보다 뒤로 미룰 수 없습니다. 실제 기록을 다시 확인해 주세요.",
+          );
+        const value = {
+          [field]: day,
+          triggerVerifiedAt: clock(),
+          triggerVerifiedBy: actor.username,
+          triggerNote: text(input.note),
+        };
+        db.prepare(
+          "INSERT INTO beta_refund_triggers VALUES(?,?) ON CONFLICT(refund_id) DO UPDATE SET value=excluded.value",
+        ).run(id, JSON.stringify(value));
+        db.prepare(
+          "UPDATE beta_refunds SET revision=revision+1 WHERE id=?",
+        ).run(id);
+        audit(actor, "refund.trigger_verified", id, { basis: field, day });
+        return refund(actor, id);
+      });
+    },
     confirmReceiptDate(actor, id, input) {
       adminOnly(actor);
       return transaction(() => {

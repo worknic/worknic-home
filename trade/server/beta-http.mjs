@@ -3,6 +3,7 @@ import { TradeError } from "./store.mjs";
 import { readPriceWorkbook, priceWorkbook } from "./pricing.mjs";
 import { readInventoryWorkbook, inventoryWorkbook } from "./inventory.mjs";
 import { statement } from "./statement.mjs";
+import { refundCalendar } from "./refund-deadlines.mjs";
 const fail = (m, s = 400) => {
   throw new TradeError(m, s);
 };
@@ -12,6 +13,7 @@ export function createBetaRouter({
   origin,
   demo = false,
   trustProxy = false,
+  backups = null,
 }) {
   const bridges = new Map();
   return async (req, res, url, { json, cookie, getToken }) => {
@@ -333,6 +335,21 @@ export function createBetaRouter({
             transfer: config.refundTransferOperator?.value || null,
             recovery: config.recoveryOperator?.value || null,
           },
+          refundCalendar: {
+            through: refundCalendar.through,
+            checkedOn: refundCalendar.checkedOn,
+          },
+          backup: backups?.status() || {
+            configured: false,
+            externalConfigured: false,
+          },
+          refundDeadlines: store.beta
+            .refunds(actor)
+            .filter((r) => ["requested", "approved"].includes(r.status))
+            .reduce((counts, r) => {
+              counts[r.deadline.status] = (counts[r.deadline.status] || 0) + 1;
+              return counts;
+            }, {}),
           locations: store.beta
             .locations()
             .map(({ id, name, enabled, sourceVerified, fee }) => ({
@@ -405,6 +422,27 @@ export function createBetaRouter({
         return send({
           refund: store.beta.reviewRefund(actor, input.id, input),
         });
+      if (path === "/admin/refunds/trigger" && method === "POST")
+        return send({
+          refund: store.beta.recordRefundTrigger(actor, input.id, input),
+        });
+      if (path === "/admin/backups/export" && method === "POST") {
+        if (
+          store.beta.config().recoveryOperator?.value !== "영우" ||
+          !store.beta.recoveryAccess(actor).canIssue
+        )
+          fail("암호화 백업 내보내기는 영우의 OS 계정으로 처리해 주세요.", 403);
+        if (!backups) fail("백업 설정을 확인해 주세요.", 503);
+        store.limit("backup-export:" + actor.id, 1, 600000);
+        const archive = await backups.run({ force: true, external: false });
+        res.writeHead(200, {
+          "Content-Type": "application/octet-stream",
+          "Content-Disposition": `attachment; filename="${archive.filename}"`,
+          "Cache-Control": "no-store",
+        });
+        res.end(archive.bytes);
+        return true;
+      }
       if (path === "/admin/refunds/complete" && method === "POST")
         return send({
           refund: store.beta.completeRefund(actor, input.id, input),

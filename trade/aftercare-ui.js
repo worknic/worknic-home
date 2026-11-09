@@ -17,6 +17,15 @@ const states = {
   rejected: "환불 요청 반려",
   completed: "환불 완료 기록",
 };
+const deadlineText = (r) => {
+  const d = r.deadline;
+  if (!d) return "";
+  if (!d.dueOn)
+    return d.status === "calendar_unverified"
+      ? "환불 기한: 확인된 달력 범위 밖입니다. 담당자가 즉시 기한을 확인해 주세요."
+      : "환불 기한: 실제 반품 반환일 확인이 필요합니다. 검수 완료일과 구분합니다.";
+  return `환불 처리 목표 ${d.dueOn} · ${d.basis === "goods_return_received" ? "실제 반환일" : "취소 접수일"} ${d.triggerOn} 기준 3영업일 · ${{ overdue: "기한 경과 · 즉시 확인", due_today: "오늘 마감", pending: "처리 대기" }[d.status] || "확인"}${d.settlementStatus === "completed" ? " · 환불 완료 기록" : ""}`;
+};
 export function orderAftercare(root, o, refunds, refresh, admin = false) {
   if (o.defectShippingText) root.append(el("p", o.defectShippingText, "muted"));
   if (o.outboundShippingText)
@@ -118,6 +127,7 @@ export function orderAftercare(root, o, refunds, refresh, admin = false) {
         el("p", "요청 사유: " + r.reason),
       );
       if (r.amount) box.append(el("p", "검토 금액 " + money(r.amount)));
+      if (r.deadline) box.append(el("p", deadlineText(r)));
       if (r.returnWindow)
         box.append(
           el(
@@ -364,6 +374,12 @@ export async function adminRefunds(root, refresh) {
   root.append(
     el(
       "p",
+      "환불 기한은 취소 접수일 또는 실제 반품 반환일을 기준으로 먼저 확인합니다. 검수·승인·계좌 확인으로 기한을 뒤로 미루지 않습니다. 달력 범위 밖·임시공휴일 변경은 담당자가 확인합니다.",
+    ),
+  );
+  root.append(
+    el(
+      "p",
       "검토·환불 승인 담당자: " +
         (reviewAccess?.reviewer || "미정") +
         " · 실제 은행 송금 담당자: " +
@@ -378,6 +394,17 @@ export async function adminRefunds(root, refresh) {
       ),
     );
   if (!refunds.length) root.append(el("p", "접수된 환불 요청이 없습니다."));
+  const urgency = (r) =>
+    ["requested", "approved"].includes(r.status)
+      ? ({
+          overdue: 0,
+          due_today: 1,
+          trigger_missing: 2,
+          calendar_unverified: 2,
+          pending: 3,
+        }[r.deadline?.status] ?? 4)
+      : 5;
+  refunds.sort((a, b) => urgency(a) - urgency(b));
   for (const r of refunds) {
     const o = orders.find((o) => o.id === r.orderId),
       c = card(r.orderNumber + " · " + r.companyName);
@@ -402,13 +429,59 @@ export async function adminRefunds(root, refresh) {
       ),
       el("p", "실제 주문 상태 " + (labels[o.status] || o.status)),
     );
+    if (r.deadline)
+      c.append(
+        el(
+          "p",
+          deadlineText(r),
+          r.deadline.status === "overdue" ? "status error" : "status",
+        ),
+      );
+    if (["requested", "approved"].includes(r.status) && canReview) {
+      const tf = el("form"),
+        isReturn = ["collected", "shipped"].includes(r.originalStatus);
+      field(
+        tf,
+        "triggerOn",
+        isReturn
+          ? "반품 상품을 실제 반환받은 날 · 검수일과 구분"
+          : "실제 취소·철회 접수일 · 기존 접수일보다 이른 기록만 정정",
+        isReturn
+          ? r.returnReceivedOn || ""
+          : r.withdrawalReceivedOn || r.deadline?.triggerOn || "",
+        "date",
+      );
+      field(tf, "note", "기산일 확인 기록 · 내부용");
+      field(
+        tf,
+        "verified",
+        "고객 요청·반환 기록으로 실제 날짜를 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      tf.append(el("button", "실제 기산일 확인 저장", "button secondary"));
+      formTask(tf, async (d) => {
+        await call("/admin/refunds/trigger", {
+          id: r.id,
+          revision: r.revision,
+          triggerOn: d.triggerOn,
+          note: d.note,
+          actualVerified: true,
+        });
+        say(
+          "실제 기산일을 저장했습니다. 검수·승인 시점이 환불 기한을 늦추지 않습니다.",
+        );
+        refresh();
+      });
+      c.append(tf);
+    }
     if (r.refundTransferReadyAt)
       c.append(
         el(
           "p",
           "수령 전 취소 승인·환불 계좌 확인 완료: " +
             date(r.refundTransferReadyAt) +
-            " · 완료 후 3영업일 이내 송금. 공휴일을 확인해 기한을 판단하세요.",
+            " · 내부 처리 기록이며 취소 접수일 기준의 환불 처리 목표를 늦추지 않습니다.",
         ),
       );
     if (r.inspectionCompletedOn)
@@ -417,10 +490,12 @@ export async function adminRefunds(root, refresh) {
           "p",
           "반품 회수·검수 완료일: " +
             r.inspectionCompletedOn +
-            " · 완료 후 3영업일 이내 송금. 공휴일을 확인해 기한을 판단하세요.",
+            " · 내부 검수 기록이며 실제 반품 반환일 기준의 환불 처리 목표를 늦추지 않습니다.",
         ),
       );
     if (r.reviewNote) c.append(el("p", "고객 안내: " + r.reviewNote));
+    if (r.triggerNote)
+      c.append(el("p", "기산일 확인 기록 · 내부용: " + r.triggerNote));
     if (r.returnWindow)
       c.append(
         el(
@@ -470,7 +545,7 @@ export async function adminRefunds(root, refresh) {
         f.append(
           el(
             "p",
-            "승인·계좌 확인 완료 시점을 기준으로 3영업일 이내 송금합니다. 공휴일은 별도 확인하세요.",
+            "승인·계좌 확인은 내부 기록입니다. 취소 접수일부터 계산된 환불 처리 목표가 우선합니다.",
           ),
         );
       }
@@ -496,7 +571,7 @@ export async function adminRefunds(root, refresh) {
         f.append(
           el(
             "p",
-            "회수·검수 완료 후 3영업일 이내 송금합니다. 공휴일을 확인해 기한을 판단하세요.",
+            "검수 완료와 실제 반환일은 구분합니다. 실제 반환일부터 계산된 환불 처리 목표가 우선합니다.",
           ),
         );
       }

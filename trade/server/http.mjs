@@ -33,6 +33,7 @@ export function createTradeServer({
   betaMode = false,
   demo = false,
   os = createOSAdapter(),
+  backups = null,
 }) {
   const allowedOrigin = new URL(origin).origin;
   const cookieName = secure ? "__Host-worknic_trade" : "worknic_trade";
@@ -68,7 +69,14 @@ export function createTradeServer({
       throw new TradeError("입력 내용을 확인해 주세요.");
     }
   };
-  const beta = createBetaRouter({ store, os, origin, demo, trustProxy });
+  const beta = createBetaRouter({
+    store,
+    os,
+    origin,
+    demo,
+    trustProxy,
+    backups,
+  });
   return createServer(async (req, res) => {
     res.setHeader("Content-Security-Policy", CSP);
     res.setHeader("X-Content-Type-Options", "nosniff");

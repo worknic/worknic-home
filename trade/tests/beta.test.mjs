@@ -307,6 +307,150 @@ test("옵션별 재고 배치는 작성자 귀속·전체 충돌 검증·가격 
   }
 });
 
+test("환불 기산일은 영우 신원·실제 기록·수정 충돌을 확인하고 승인 지연으로 연장하지 않음", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested()));
+    f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성",
+      bankChecked: true,
+    });
+    f.advance(2 * 86400000);
+    const r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "deadline-trigger-test-001",
+      reason: "합성 취소",
+    });
+    assert.equal(r.deadline.triggerOn, "2026-11-11");
+    const config = f.store.beta.config();
+    f.store.beta.confirmRefundReviewer(f.admin, {
+      revision: config.revision,
+      value: "영우",
+      confirmed: true,
+    });
+    const yw = f.store.osAdmin(
+        "deadline_yw",
+        "synthetic staff passphrase",
+        "영우",
+      ),
+      nk = f.store.osAdmin("deadline_nk", "synthetic staff passphrase", "나경");
+    const input = {
+      revision: r.revision,
+      triggerOn: "2026-11-10",
+      actualVerified: true,
+      note: "합성 기존 접수 기록 대조",
+    };
+    assert.throws(
+      () => f.store.beta.recordRefundTrigger(f.buyer, r.id, input),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.recordRefundTrigger(
+          { ...nk, profile: { authSource: "worknic_os", osUser: "영우" } },
+          r.id,
+          input,
+        ),
+      /영우/,
+    );
+    const saved = f.store.beta.recordRefundTrigger(yw, r.id, input);
+    assert.equal(saved.deadline.dueOn, "2026-11-13");
+    assert.throws(
+      () => f.store.beta.recordRefundTrigger(yw, r.id, input),
+      /변경/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.recordRefundTrigger(yw, r.id, {
+          ...input,
+          revision: saved.revision,
+          triggerOn: "2026-11-11",
+        }),
+      /뒤로/,
+    );
+    const customer = f.store.beta.refunds(f.buyer)[0];
+    assert.equal(customer.triggerNote, undefined);
+    f.advance(4 * 86400000);
+    const approved = f.store.beta.reviewRefund(yw, r.id, {
+      revision: saved.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "합성 승인",
+      fulfillmentStopped: true,
+    });
+    assert.equal(approved.deadline.dueOn, "2026-11-13");
+    assert.equal(approved.deadline.status, "overdue");
+    assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+  } finally {
+    f.cleanup();
+  }
+});
+
+test("반품 환불은 실제 반환일 확인 전 마감일을 추측하지 않고 검수일과 분리", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested()));
+    const paid = f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성",
+      bankChecked: true,
+    });
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: paid.revision,
+      slotId: "box1",
+      pin: "1234567890",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    f.store.beta.closePickup(f.admin, o.id, {
+      revision: 1,
+      result: "collected",
+      physicalCodeRevoked: true,
+      compartmentChecked: true,
+    });
+    const r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "return-trigger-test-001",
+      reason: "합성 반품",
+    });
+    assert.equal(r.deadline.status, "trigger_missing");
+    const saved = f.store.beta.recordRefundTrigger(f.admin, r.id, {
+      revision: r.revision,
+      triggerOn: "2026-11-09",
+      actualVerified: true,
+      note: "합성 반환 기록",
+    });
+    assert.equal(saved.deadline.dueOn, "2026-11-12");
+    assert.equal(saved.returnReceivedOn, "2026-11-09");
+    assert.equal(saved.inspectionCompletedOn, undefined);
+    assert.throws(
+      () =>
+        f.store.beta.recordRefundTrigger(f.admin, r.id, {
+          revision: saved.revision,
+          triggerOn: "2026-02-30",
+          actualVerified: true,
+          note: "합성",
+        }),
+      /실제/,
+    );
+  } finally {
+    f.cleanup();
+  }
+});
+
 test("엑셀 값·오류·중복·일괄 적용·복원·다른 수정 충돌", async () => {
   const f = fixture();
   try {

@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { openStore } from "./store.mjs";
 import { createTradeServer } from "./http.mjs";
 import { createOSAdapter } from "./os-adapter.mjs";
+import { createBackupService, s3Transport } from "./backup-service.mjs";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
 const port = Number(process.env.PORT || 8080);
@@ -34,8 +35,25 @@ const store = openStore(
     betaOptions: { pickupKey: process.env.TRADE_PICKUP_KEY || "" },
   },
 );
+let backupTransport = null;
+try {
+  backupTransport = s3Transport(process.env);
+} catch {
+  console.error(
+    "외부 백업 설정을 확인해 주세요. 외부 전송은 시작하지 않았습니다.",
+  );
+}
+const backups = createBackupService({
+  dataDir:
+    process.env.TRADE_DATA_DIR ||
+    fileURLToPath(new URL("../.runtime/", import.meta.url)),
+  masterKey: process.env.TRADE_PICKUP_KEY || "",
+  transport: backupTransport,
+});
+const stopBackups = backups.start();
 const server = createTradeServer({
   store,
+  backups,
   root,
   origin,
   secure: production,
@@ -61,6 +79,7 @@ server.listen(port, process.env.HOST || "127.0.0.1", () =>
 );
 for (const signal of ["SIGINT", "SIGTERM"])
   process.on(signal, () => {
+    stopBackups();
     clearInterval(timer);
     server.close(() => {
       store.close();

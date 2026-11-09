@@ -129,6 +129,64 @@ export async function operationsReadiness(root) {
       }),
     ),
   );
+  if (r.refundCalendar)
+    c.append(
+      el(
+        "p",
+        `환불 기한 달력: ${r.refundCalendar.through}까지 · 확인 ${r.refundCalendar.checkedOn} · 기한 경과 ${r.refundDeadlines?.overdue || 0}건 · 오늘 마감 ${r.refundDeadlines?.due_today || 0}건 · 반환일 확인 ${r.refundDeadlines?.trigger_missing || 0}건 · 달력 확인 ${r.refundDeadlines?.calendar_unverified || 0}건`,
+      ),
+    );
+  const backup = r.backup;
+  if (backup) {
+    c.append(
+      el("h3", "암호화 백업"),
+      el(
+        "p",
+        `서버 백업 ${backup.configured ? "설정됨" : "설정 확인 필요"} · 외부 저장소 ${backup.externalConfigured ? "연결됨" : "미연결"}`,
+      ),
+      el(
+        "p",
+        `최근 서버 백업 ${backup.lastLocalAt ? date(backup.lastLocalAt) : "기록 없음"} · 외부 전송 후 검증 ${backup.lastExternalAt ? date(backup.lastExternalAt) : "기록 없음"}${backup.lastErrorAt ? " · 최근 실패 확인 필요" : ""}`,
+      ),
+      el(
+        "p",
+        "서버 내부 백업은 외부 백업 완료를 뜻하지 않습니다. 복구 키는 백업 파일과 분리해 보관합니다. 영우 계정에서 암호화 파일을 내려받아 서버 밖에도 보관할 수 있습니다.",
+      ),
+    );
+    if (backup.configured)
+      c.append(
+        button(
+          "암호화 백업 파일 내려받기",
+          async () => {
+            const response = await fetch("/api/beta/admin/backups/export", {
+              method: "POST",
+              credentials: "same-origin",
+              headers: { "Content-Type": "application/json" },
+              body: "{}",
+              signal: AbortSignal.timeout(120000),
+            });
+            if (!response.ok) {
+              const data = await response.json();
+              throw Error(data.error || "백업 결과를 확인해 주세요.");
+            }
+            const blob = await response.blob(),
+              url = URL.createObjectURL(blob),
+              a = document.createElement("a");
+            a.href = url;
+            a.download =
+              /filename="([^"]+)"/.exec(
+                response.headers.get("content-disposition") || "",
+              )?.[1] || "worknic-backup.wnbk";
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 60000);
+            say(
+              "암호화 파일 다운로드를 요청했습니다. 실제 저장 여부와 복구 키의 별도 보관을 확인하세요.",
+            );
+          },
+          "button secondary",
+        ),
+      );
+  }
   for (const l of r.locations)
     c.append(
       el(
@@ -141,7 +199,7 @@ export async function operationsReadiness(root) {
   c.append(
     el(
       "p",
-      "외부 백업·휴대폰·실제 보관함 검증과 공휴일 자동 계산은 위 상태만으로 완료된 것으로 판단하지 않습니다.",
+      "외부 백업·휴대폰·실제 보관함 검증은 별도입니다. 환불 기한은 확인된 달력 범위에서 계산하며 임시공휴일 변경과 적용 기준은 담당자가 확인합니다.",
     ),
   );
   root.append(c);

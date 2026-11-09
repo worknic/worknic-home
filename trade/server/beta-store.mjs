@@ -327,12 +327,12 @@ export function installBeta(
         preReceiptRefundTiming:
           config().preReceiptRefundTiming?.value ===
           "within_3_business_days_after_approval_and_account"
-            ? "입금 후 수령 전 취소는 취소 승인과 환불 계좌 확인이 완료된 뒤 3영업일 이내에 환불 송금을 처리합니다. 제작·발주가 시작된 상품의 건별 협의 예외는 유지합니다."
+            ? "입금 후 수령 전 취소는 실제 취소·철회 접수일부터 3영업일 이내 처리를 목표로 합니다. 검토·승인·계좌 확인으로 기한을 늦추지 않습니다. 제작·발주가 시작된 상품의 건별 협의는 적용 법령을 우선하여 처리합니다."
             : null,
         returnRefundTiming:
           config().returnRefundTiming?.value ===
           "within_3_business_days_after_inspection"
-            ? "반품 상품의 회수와 검수가 완료된 후 3영업일 이내에 환불 송금을 처리합니다."
+            ? "반품은 상품을 실제 반환받은 날부터 3영업일 이내 처리를 목표로 합니다. 검수·내부 승인으로 기한을 늦추지 않습니다."
             : null,
         refundRecipient:
           config().refundRecipient?.value ===

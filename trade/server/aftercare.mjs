@@ -331,8 +331,26 @@ export function installAftercare(
               .all(actor.id);
       return rows.map((r) => refund(actor, r.id));
     },
+    refundReviewAccess(actor) {
+      adminOnly(actor);
+      const reviewer = api.beta.config().refundReviewer?.value || null;
+      const member = db
+        .prepare("SELECT profile FROM members WHERE id=? AND role='admin'")
+        .get(actor.id);
+      const profile = member ? JSON.parse(member.profile) : {};
+      const canReview =
+        !reviewer ||
+        (profile.authSource === "worknic_os" && profile.osUser === reviewer);
+      return { reviewer, canReview, transferOperatorConfirmed: false };
+    },
     reviewRefund(actor, id, input) {
       adminOnly(actor);
+      const access = api.beta.refundReviewAccess(actor);
+      if (!access.canReview)
+        fail(
+          "취소·반품 검토 및 환불 승인은 지정 담당자 영우의 OS 계정으로 처리해 주세요.",
+          403,
+        );
       return transaction(() => {
         const r = refund(actor, id),
           o = order(actor, r.orderId);

@@ -318,7 +318,10 @@ export function createBetaRouter({
         );
       }
       if (path === "/admin/refunds" && method === "GET")
-        return send({ refunds: store.beta.refunds(actor) });
+        return send({
+          refunds: store.beta.refunds(actor),
+          reviewAccess: store.beta.refundReviewAccess(actor),
+        });
       if (path === "/admin/refunds/request" && method === "POST")
         return send(
           { refund: store.beta.requestRefund(actor, input.orderId, input) },
@@ -405,6 +408,8 @@ export function createBetaRouter({
         return send(store.beta.confirmStandardOutboundShipping(actor, input));
       if (path === "/admin/policies/defect-shipping" && method === "POST")
         return send(store.beta.confirmDefectShipping(actor, input));
+      if (path === "/admin/operators/refund-reviewer" && method === "POST")
+        return send(store.beta.confirmRefundReviewer(actor, input));
       if (path === "/admin/orders/receipt-date" && method === "POST")
         return send(store.beta.confirmReceiptDate(actor, input.id, input));
       if (path === "/admin/orders/special-start" && method === "POST")

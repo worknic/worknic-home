@@ -1867,3 +1867,73 @@ test("불량·오배송 회수비·재발송비 워크닉 부담은 권한·설�
     f.cleanup();
   }
 });
+
+test("환불 검토 담당자 영우는 저장된 OS 신원으로만 검토·승인하며 다른 관리자는 차단", () => {
+  const f = fixture();
+  try {
+    const before = f.store.beta.config();
+    assert.throws(
+      () =>
+        f.store.beta.confirmRefundReviewer(f.buyer, {
+          revision: before.revision,
+          value: "영우",
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmRefundReviewer(f.admin, {
+          revision: before.revision,
+          value: "unknown",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmRefundReviewer(f.admin, {
+      revision: before.revision,
+      value: "영우",
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, before.betaEnabled);
+    assert.throws(
+      () =>
+        f.store.beta.confirmRefundReviewer(f.admin, {
+          revision: before.revision,
+          value: "영우",
+          confirmed: true,
+        }),
+      /변경/,
+    );
+    assert.equal(f.store.beta.refundReviewAccess(f.admin).canReview, false);
+    const yw = f.store.osAdmin("test_yw", "synthetic test passphrase", "영우"),
+      nk = f.store.osAdmin("test_nk", "synthetic test passphrase", "나경");
+    assert.equal(f.store.beta.refundReviewAccess(yw).canReview, true);
+    assert.equal(f.store.beta.refundReviewAccess(nk).canReview, false);
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(
+          { ...nk, profile: { authSource: "worknic_os", osUser: "영우" } },
+          "missing",
+          { decision: "approve" },
+        ),
+      /지정 담당자/,
+    );
+    assert.throws(
+      () => f.store.beta.reviewRefund(nk, "missing", { decision: "reject" }),
+      /지정 담당자/,
+    );
+    assert.throws(
+      () => f.store.beta.reviewRefund(yw, "missing", { decision: "approve" }),
+      /찾을 수/,
+    );
+    f.store.beta.updateConfig(f.admin, {
+      ...saved,
+      betaEnabled: false,
+      registrationEnabled: false,
+    });
+    assert.equal(f.store.beta.config().refundReviewer.value, "영우");
+  } finally {
+    f.cleanup();
+  }
+});

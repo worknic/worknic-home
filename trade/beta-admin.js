@@ -952,6 +952,39 @@ async function settings(root) {
     defectPolicy.append(cf);
   }
   root.append(defectPolicy);
+  const reviewerPolicy = card("운영 담당자 · 취소·반품 검토 및 환불 승인");
+  reviewerPolicy.append(
+    el(
+      "p",
+      "취소·반품 사유와 상품 상태 검토 및 환불 승인 담당자는 영우입니다. 승인·반려·송금 전 승인 철회는 영우의 OS 계정으로 처리합니다. 실제 은행 송금 담당자는 아직 미정입니다.",
+    ),
+  );
+  if (config.refundReviewer?.value === "영우")
+    reviewerPolicy.append(
+      el("p", "확정 저장됨 · " + date(config.refundReviewer.confirmedAt)),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "취소·반품 검토 및 환불 승인 담당자를 영우로 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "환불 검토 담당자 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/operators/refund-reviewer", {
+        revision: config.revision,
+        value: "영우",
+        confirmed: true,
+      });
+      say("환불 검토 및 승인 담당자를 영우로 저장했습니다.");
+      route();
+    });
+    reviewerPolicy.append(cf);
+  }
+  root.append(reviewerPolicy);
   const f = el("form");
   field(
     f,

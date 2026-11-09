@@ -607,6 +607,33 @@ export function installBeta(
         return config();
       });
     },
+    confirmRefundReviewer(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (input.value !== "영우" || input.confirmed !== true)
+          fail("취소·반품 검토 및 환불 승인 담당자 영우 지정을 확인해 주세요.");
+        const next = {
+          ...current,
+          refundReviewer: {
+            value: input.value,
+            scope: "refund_review_and_approval",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "operator.refund_reviewer_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
     catalog(actor) {
       if (actor.role === "admin") return api.products(actor);
       customer(actor);

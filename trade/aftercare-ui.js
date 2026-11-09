@@ -348,10 +348,26 @@ export async function adminRefunds(root, refresh) {
       "이 화면은 은행 송금 기능이 아닙니다. 등록 담당자에게 환불 수취 정보를 별도로 확인하고, 은행에서 실제 송금한 뒤 결과를 기록합니다.",
     ),
   );
-  const [{ refunds }, { orders }] = await Promise.all([
+  const [{ refunds, reviewAccess }, { orders }] = await Promise.all([
     call("/admin/refunds"),
     call("/admin/orders"),
   ]);
+  const canReview = reviewAccess?.canReview !== false;
+  root.append(
+    el(
+      "p",
+      "검토·환불 승인 담당자: " +
+        (reviewAccess?.reviewer || "미정") +
+        " · 실제 은행 송금 담당자: 미정",
+    ),
+  );
+  if (!canReview)
+    root.append(
+      el(
+        "p",
+        "환불 승인·반려·송금 전 승인 철회는 영우의 OS 계정에서 처리합니다.",
+      ),
+    );
   if (!refunds.length) root.append(el("p", "접수된 환불 요청이 없습니다."));
   for (const r of refunds) {
     const o = orders.find((o) => o.id === r.orderId),
@@ -390,7 +406,7 @@ export async function adminRefunds(root, refresh) {
             }[r.returnWindow.status] || "담당자 확인"),
         ),
       );
-    if (r.status === "requested") {
+    if (r.status === "requested" && canReview) {
       const f = el("form");
       f.append(
         el(
@@ -578,7 +594,7 @@ export async function adminRefunds(root, refresh) {
         );
         refresh();
       });
-      c.append(withdraw);
+      if (canReview) c.append(withdraw);
     } else if (r.status === "completed")
       c.append(
         el("p", "환불 완료 " + money(r.amount) + " · " + date(r.completedAt)),

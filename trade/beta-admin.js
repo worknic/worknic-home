@@ -340,7 +340,17 @@ async function orderList(pickupOnly, root) {
       );
       pin.pattern = "[0-9]{6,12}";
       pin.autocomplete = "off";
-      field(f, "availableFrom", "수령 시작", "", "datetime-local");
+      const startNow = field(
+        f, "startNow", "준비 완료 처리 시점부터 수령 가능",
+        o.fulfillment?.locationId !== "jinjeop", "checkbox",
+      );
+      const from = field(f, "availableFrom", "수령 시작", "", "datetime-local");
+      const syncStart = () => {
+        from.disabled = startNow.checked;
+        from.required = !startNow.checked;
+      };
+      startNow.addEventListener("change", syncStart);
+      syncStart();
       field(f, "availableUntil", "수령 마감", "", "datetime-local");
       field(
         f,
@@ -362,7 +372,7 @@ async function orderList(pickupOnly, root) {
           ...d,
           id: o.id,
           revision: o.revision,
-          availableFrom: new Date(d.availableFrom).getTime(),
+          availableFrom: d.startNow === "on" ? Date.now() : new Date(d.availableFrom).getTime(),
           availableUntil: new Date(d.availableUntil).getTime(),
           staged: true,
           physicalCodeConfigured: true,

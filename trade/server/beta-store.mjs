@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        standardOutboundShipping:
+          config().standardOutboundShipping?.value ===
+          "worknic_pays_outbound_full_return"
+            ? "일반 재고 상품을 택배 수령 후 전량 단순 변심 반품할 때 최초 발송 배송비는 무료배송 주문을 포함해 워크닉이 부담합니다. 고객에게 최초 발송 비용을 추가 청구하거나 환불액에서 차감하지 않습니다. 반품 회수 배송비는 고객 부담이며 무료 픽업에는 적용하지 않습니다."
+            : null,
         standardReturnShipping:
           config().standardReturnShipping?.value === "customer_pays_collection"
             ? "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객이 부담합니다. 실제 비용과 정산 방식은 반품 접수 후 안내하며 임의로 자동 공제하지 않습니다. 최초 배송비와 불량·오배송 비용은 별도 기준으로 안내합니다."
@@ -528,6 +533,38 @@ export function installBeta(
           "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
         ).run(JSON.stringify(next));
         audit(actor, "policy.standard_return_shipping_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
+    confirmStandardOutboundShipping(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "worknic_pays_outbound_full_return" ||
+          input.confirmed !== true
+        )
+          fail(
+            "택배 전량 단순 변심 반품의 최초 발송 배송비 워크닉 부담 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          standardOutboundShipping: {
+            value: input.value,
+            scope: "standard_stock_full_return_change_of_mind",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.standard_outbound_shipping_confirmed", "beta", {
           value: input.value,
         });
         return config();
@@ -906,6 +943,12 @@ export function installBeta(
           standardReturnCondition: specialOrder
             ? null
             : config().standardReturnCondition?.value || null,
+          standardOutboundShipping: specialOrder
+            ? null
+            : config().standardOutboundShipping?.value || null,
+          outboundShippingText: specialOrder
+            ? ""
+            : api.beta.runtime().policies.standardOutboundShipping || "",
           standardReturnShipping: specialOrder
             ? null
             : config().standardReturnShipping?.value || null,
@@ -1016,6 +1059,8 @@ export function installBeta(
             standardReturnDays: q.standardReturnDays || null,
             standardReturnCondition: q.standardReturnCondition || null,
             returnConditionText: q.returnConditionText || "",
+            standardOutboundShipping: q.standardOutboundShipping || null,
+            outboundShippingText: q.outboundShippingText || "",
             standardReturnShipping: q.standardReturnShipping || null,
             returnShippingText: q.returnShippingText || "",
             cancellationPolicy: q.cancellationPolicy || "",

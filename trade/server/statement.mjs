@@ -22,6 +22,7 @@ export function statement(o) {
       o.cancellationPolicy,
       o.returnConditionText,
       o.returnShippingText,
+      o.outboundShippingText,
       o.standardReturnDays === 7 && !o.specialOrder
         ? "일반 재고 상품의 단순 변심 반품은 실제 수령 다음날부터 7일 이내 신청합니다."
         : null,

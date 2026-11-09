@@ -848,7 +848,7 @@ async function settings(root) {
   shippingPolicy.append(
     el(
       "p",
-      "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객 부담입니다. 실제 비용·정산 방식은 접수 후 안내하며 자동 공제하지 않습니다. 최초 배송비와 불량·오배송 비용은 별도 확정합니다.",
+      "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객 부담입니다. 실제 비용·정산 방식은 접수 후 안내하며 자동 공제하지 않습니다. 최초 배송비는 아래 별도 기준으로 안내하며 불량·오배송 비용은 별도 확정합니다.",
     ),
   );
   if (config.standardReturnShipping?.value === "customer_pays_collection")
@@ -880,6 +880,45 @@ async function settings(root) {
     shippingPolicy.append(cf);
   }
   root.append(shippingPolicy);
+  const outboundPolicy = card("확정 운영 기준 · 전량 반품 최초 발송 배송비");
+  outboundPolicy.append(
+    el(
+      "p",
+      "일반 재고 상품을 택배 수령 후 전량 단순 변심 반품할 때 최초 발송 배송비는 무료배송 주문을 포함해 워크닉이 부담합니다. 고객에게 최초 발송 비용을 추가 청구하거나 환불액에서 차감하지 않습니다. 반품 회수 배송비는 고객 부담이며 무료 픽업에는 적용하지 않습니다.",
+    ),
+  );
+  if (
+    config.standardOutboundShipping?.value ===
+    "worknic_pays_outbound_full_return"
+  )
+    outboundPolicy.append(
+      el(
+        "p",
+        "확정 저장됨 · " + date(config.standardOutboundShipping.confirmedAt),
+      ),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "택배 전량 단순 변심 반품의 최초 발송 배송비 워크닉 부담 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "최초 발송 배송비 기준 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/standard-outbound-shipping", {
+        revision: config.revision,
+        value: "worknic_pays_outbound_full_return",
+        confirmed: true,
+      });
+      say("전량 반품 최초 발송 배송비 기준을 저장했습니다.");
+      route();
+    });
+    outboundPolicy.append(cf);
+  }
+  root.append(outboundPolicy);
   const f = el("form");
   field(
     f,

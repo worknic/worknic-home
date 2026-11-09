@@ -1,4 +1,4 @@
-const CACHE = "worknic-beta-static-v8",
+const CACHE = "worknic-beta-static-v9",
   OFFLINE = "/trade/offline.html",
   ASSETS = [
     OFFLINE,

@@ -314,6 +314,7 @@ async function ordersView(root) {
       el("p", q.locationName),
     );
     if (q.status === "issued") {
+      if (q.returnShippingText) c.append(el("p", q.returnShippingText));
       if (q.returnConditionText) c.append(el("p", q.returnConditionText));
       if (q.standardReturnDays === 7 && !q.specialOrder)
         c.append(

@@ -844,6 +844,42 @@ async function settings(root) {
     conditionPolicy.append(cf);
   }
   root.append(conditionPolicy);
+  const shippingPolicy = card("확정 운영 기준 · 단순 변심 반품 회수 배송비");
+  shippingPolicy.append(
+    el(
+      "p",
+      "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객 부담입니다. 실제 비용·정산 방식은 접수 후 안내하며 자동 공제하지 않습니다. 최초 배송비와 불량·오배송 비용은 별도 확정합니다.",
+    ),
+  );
+  if (config.standardReturnShipping?.value === "customer_pays_collection")
+    shippingPolicy.append(
+      el(
+        "p",
+        "확정 저장됨 · " + date(config.standardReturnShipping.confirmedAt),
+      ),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "단순 변심 반품 회수 배송비의 고객 부담 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "반품 회수 배송비 기준 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/standard-return-shipping", {
+        revision: config.revision,
+        value: "customer_pays_collection",
+        confirmed: true,
+      });
+      say("단순 변심 반품 회수 배송비 기준을 저장했습니다.");
+      route();
+    });
+    shippingPolicy.append(cf);
+  }
+  root.append(shippingPolicy);
   const f = el("form");
   field(
     f,

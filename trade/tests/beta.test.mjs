@@ -1684,3 +1684,66 @@ test("픽업 비밀번호 기간 밖 접근·만료 보관함 재사용 차단·
     f.cleanup();
   }
 });
+
+test("반품 회수 배송비 고객 부담은 권한·설정 충돌을 확인하고 견적·주문에 고정", () => {
+  const f = fixture();
+  try {
+    const config = f.store.beta.config(),
+      value = "customer_pays_collection";
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardReturnShipping(f.buyer, {
+          revision: config.revision,
+          value,
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardReturnShipping(f.admin, {
+          revision: config.revision,
+          value: "other",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmStandardReturnShipping(f.admin, {
+      revision: config.revision,
+      value,
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, config.betaEnabled);
+    assert.equal(saved.registrationEnabled, config.registrationEnabled);
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardReturnShipping(f.admin, {
+          revision: config.revision,
+          value,
+          confirmed: true,
+        }),
+      /변경/,
+    );
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const q = f.issue(f.requested()),
+      o = f.accept(q);
+    assert.equal(q.standardReturnShipping, value);
+    assert.equal(o.standardReturnShipping, value);
+    assert.match(o.returnShippingText, /고객이 부담/);
+    assert.match(o.returnShippingText, /자동 공제하지/);
+    assert.equal(o.total, q.total);
+    f.store.beta.updateConfig(f.admin, {
+      ...saved,
+      betaEnabled: false,
+      registrationEnabled: false,
+    });
+    assert.equal(f.store.beta.config().standardReturnShipping.value, value);
+  } finally {
+    f.cleanup();
+  }
+});
+
+

@@ -322,6 +322,10 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        standardReturnShipping:
+          config().standardReturnShipping?.value === "customer_pays_collection"
+            ? "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객이 부담합니다. 실제 비용과 정산 방식은 반품 접수 후 안내하며 임의로 자동 공제하지 않습니다. 최초 배송비와 불량·오배송 비용은 별도 기준으로 안내합니다."
+            : null,
         standardReturnCondition:
           config().standardReturnCondition?.value ===
           "unused_complete_outer_box_open_allowed"
@@ -492,6 +496,38 @@ export function installBeta(
           "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
         ).run(JSON.stringify(next));
         audit(actor, "policy.standard_return_condition_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
+    confirmStandardReturnShipping(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "customer_pays_collection" ||
+          input.confirmed !== true
+        )
+          fail(
+            "일반 재고 단순 변심 반품의 회수 배송비 고객 부담 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          standardReturnShipping: {
+            value: input.value,
+            scope: "standard_stock_change_of_mind",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.standard_return_shipping_confirmed", "beta", {
           value: input.value,
         });
         return config();
@@ -870,6 +906,12 @@ export function installBeta(
           standardReturnCondition: specialOrder
             ? null
             : config().standardReturnCondition?.value || null,
+          standardReturnShipping: specialOrder
+            ? null
+            : config().standardReturnShipping?.value || null,
+          returnShippingText: specialOrder
+            ? ""
+            : api.beta.runtime().policies.standardReturnShipping || "",
           returnConditionText: specialOrder
             ? ""
             : api.beta.runtime().policies.standardReturnCondition || "",
@@ -974,6 +1016,8 @@ export function installBeta(
             standardReturnDays: q.standardReturnDays || null,
             standardReturnCondition: q.standardReturnCondition || null,
             returnConditionText: q.returnConditionText || "",
+            standardReturnShipping: q.standardReturnShipping || null,
+            returnShippingText: q.returnShippingText || "",
             cancellationPolicy: q.cancellationPolicy || "",
             note: q.note,
             termsVersion: settings().consentVersion,

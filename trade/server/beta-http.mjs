@@ -414,6 +414,8 @@ export function createBetaRouter({
         return send(store.beta.confirmRefundTransferOperator(actor, input));
       if (path === "/admin/policies/refund-recipient" && method === "POST")
         return send(store.beta.confirmRefundRecipient(actor, input));
+      if (path === "/admin/policies/return-refund-timing" && method === "POST")
+        return send(store.beta.confirmReturnRefundTiming(actor, input));
       if (path === "/admin/orders/receipt-date" && method === "POST")
         return send(store.beta.confirmReceiptDate(actor, input.id, input));
       if (path === "/admin/orders/special-start" && method === "POST")

@@ -2097,3 +2097,92 @@ test("환불 수취계좌는 원입금자 명의 확인과 다른 명의의 영�
     }
   }
 });
+
+test("반품 환불 3영업일 기준은 실제 회수·검수 완료일 확인을 요구하고 날짜를 추측하지 않음", () => {
+  const f = fixture();
+  try {
+    const c = f.store.beta.config();
+    assert.throws(
+      () =>
+        f.store.beta.confirmReturnRefundTiming(f.buyer, {
+          revision: c.revision,
+          value: "within_3_business_days_after_inspection",
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    const saved = f.store.beta.confirmReturnRefundTiming(f.admin, {
+      revision: c.revision,
+      value: "within_3_business_days_after_inspection",
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, c.betaEnabled);
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested()));
+    const paid = f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성",
+      bankChecked: true,
+    });
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: paid.revision,
+      slotId: "box1",
+      pin: "9933445511",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    f.store.beta.closePickup(f.admin, o.id, {
+      revision: 1,
+      result: "collected",
+      physicalCodeRevoked: true,
+      compartmentChecked: true,
+    });
+    const r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "refund-timing-test-01",
+      reason: "합성 검수",
+    });
+    const input = {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "합성 승인",
+      fulfillmentStopped: true,
+    };
+    assert.throws(
+      () => f.store.beta.reviewRefund(f.admin, r.id, input),
+      /검수 완료일/,
+    );
+    for (const day of ["2026-02-30", "2026-11-08", "2026-11-10"]) {
+      assert.throws(
+        () =>
+          f.store.beta.reviewRefund(f.admin, r.id, {
+            ...input,
+            inspectionCompletedOn: day,
+            inspectionVerified: true,
+          }),
+        /검수 완료일/,
+      );
+    }
+    const approved = f.store.beta.reviewRefund(f.admin, r.id, {
+      ...input,
+      inspectionCompletedOn: "2026-11-09",
+      inspectionVerified: true,
+    });
+    assert.equal(approved.inspectionCompletedOn, "2026-11-09");
+    assert.equal(
+      approved.returnRefundTiming,
+      "within_3_business_days_after_inspection",
+    );
+    assert.equal(approved.refundDueAt, undefined);
+    assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+  } finally {
+    f.cleanup();
+  }
+});

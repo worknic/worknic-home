@@ -296,6 +296,8 @@ async function ordersView(root) {
     return;
   }
   root.append(cartView());
+  if (runtime.policies?.returnRefundTiming)
+    root.append(el("p", runtime.policies.returnRefundTiming, "muted"));
   if (runtime.policies?.refundRecipient)
     root.append(el("p", runtime.policies.refundRecipient, "muted"));
   if (runtime.policies?.standardPreReceiptCancellation)

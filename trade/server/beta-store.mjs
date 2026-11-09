@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        returnRefundTiming:
+          config().returnRefundTiming?.value ===
+          "within_3_business_days_after_inspection"
+            ? "반품 상품의 회수와 검수가 완료된 후 3영업일 이내에 환불 송금을 처리합니다."
+            : null,
         refundRecipient:
           config().refundRecipient?.value ===
           "original_payer_else_youngwoo_verified"
@@ -693,6 +698,38 @@ export function installBeta(
           "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
         ).run(JSON.stringify(next));
         audit(actor, "policy.refund_recipient_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
+    confirmReturnRefundTiming(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "within_3_business_days_after_inspection" ||
+          input.confirmed !== true
+        )
+          fail(
+            "반품 회수·검수 완료 후 3영업일 이내 환불 송금 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          returnRefundTiming: {
+            value: input.value,
+            scope: "returned_goods_after_collection_inspection",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.return_refund_timing_confirmed", "beta", {
           value: input.value,
         });
         return config();

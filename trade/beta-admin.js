@@ -1057,6 +1057,42 @@ async function settings(root) {
     recipientPolicy.append(cf);
   }
   root.append(recipientPolicy);
+  const timingPolicy = card("확정 운영 기준 · 반품 후 환불 송금 기한");
+  timingPolicy.append(
+    el(
+      "p",
+      "반품 상품의 회수와 검수가 완료된 후 3영업일 이내에 환불 송금을 처리합니다. 반품 검토 승인 시 실제 회수·검수 완료일을 기록합니다. 공휴일을 반영한 자동 마감일 계산은 아직 연결되지 않아 담당자가 공휴일을 확인해 기한을 판단합니다. 수령 전 취소의 송금 기한은 별도 확정합니다.",
+    ),
+  );
+  if (
+    config.returnRefundTiming?.value ===
+    "within_3_business_days_after_inspection"
+  )
+    timingPolicy.append(
+      el("p", "확정 저장됨 · " + date(config.returnRefundTiming.confirmedAt)),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "반품 회수·검수 완료 후 3영업일 이내 환불 송금 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "반품 환불 송금 기한 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/return-refund-timing", {
+        revision: config.revision,
+        value: "within_3_business_days_after_inspection",
+        confirmed: true,
+      });
+      say("반품 후 환불 송금 기한을 3영업일 이내로 저장했습니다.");
+      route();
+    });
+    timingPolicy.append(cf);
+  }
+  root.append(timingPolicy);
   const f = el("form");
   field(
     f,

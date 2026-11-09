@@ -357,6 +357,7 @@ export function installAftercare(
         canComplete,
         transferOperatorConfirmed: !!transferOperator,
         recipientPolicy: api.beta.config().refundRecipient?.value || null,
+        returnRefundTiming: api.beta.config().returnRefundTiming?.value || null,
       };
     },
     reviewRefund(actor, id, input) {
@@ -394,6 +395,29 @@ export function installAftercare(
           );
         if (r.requiresAgreement) value.agreementConfirmed = true;
         if (input.decision === "approve") {
+          if (
+            r.originalStatus === "collected" &&
+            api.beta.config().returnRefundTiming?.value ===
+              "within_3_business_days_after_inspection"
+          ) {
+            const day = text(input.inspectionCompletedOn, 10);
+            const parsed = new Date(day + "T00:00:00.000Z");
+            if (
+              input.inspectionVerified !== true ||
+              !/^\d{4}-\d{2}-\d{2}$/.test(day) ||
+              !Number.isFinite(parsed.getTime()) ||
+              parsed.toISOString().slice(0, 10) !== day ||
+              day >
+                new Date(clock() + 9 * 3600000).toISOString().slice(0, 10) ||
+              day <
+                new Date(o.created_at + 9 * 3600000).toISOString().slice(0, 10)
+            )
+              fail("실제 반품 회수·검수 완료일과 확인 여부를 확인해 주세요.");
+            value.inspectionCompletedOn = day;
+            value.inspectionVerifiedAt = clock();
+            value.returnRefundTiming =
+              "within_3_business_days_after_inspection";
+          }
           if (
             r.reasonType === "change_of_mind" &&
             r.originalStatus === "collected" &&

@@ -395,6 +395,15 @@ export async function adminRefunds(root, refresh) {
       ),
       el("p", "실제 주문 상태 " + (labels[o.status] || o.status)),
     );
+    if (r.inspectionCompletedOn)
+      c.append(
+        el(
+          "p",
+          "반품 회수·검수 완료일: " +
+            r.inspectionCompletedOn +
+            " · 완료 후 3영업일 이내 송금. 공휴일을 확인해 기한을 판단하세요.",
+        ),
+      );
     if (r.reviewNote) c.append(el("p", "고객 안내: " + r.reviewNote));
     if (r.returnWindow)
       c.append(
@@ -429,6 +438,32 @@ export async function adminRefunds(root, refresh) {
         "number",
       ).min = 1;
       field(f, "note", "고객에게 안내할 검토 내용");
+      if (
+        r.originalStatus === "collected" &&
+        reviewAccess?.returnRefundTiming ===
+          "within_3_business_days_after_inspection"
+      ) {
+        field(
+          f,
+          "inspectionCompletedOn",
+          "실제 반품 회수·검수 완료일",
+          "",
+          "date",
+        );
+        field(
+          f,
+          "inspectionVerified",
+          "반품 상품의 회수와 검수가 해당 날짜에 완료된 것을 확인했습니다.",
+          false,
+          "checkbox",
+        ).required = true;
+        f.append(
+          el(
+            "p",
+            "회수·검수 완료 후 3영업일 이내 송금합니다. 공휴일을 확인해 기한을 판단하세요.",
+          ),
+        );
+      }
       if (
         r.reasonType === "change_of_mind" &&
         r.originalStatus === "collected" &&
@@ -483,6 +518,8 @@ export async function adminRefunds(root, refresh) {
           legacyTermsConfirmed: d.legacyTerms === "on",
           returnConditionVerified: d.returnConditionVerified === "on",
           agreementConfirmed: d.agreement === "on",
+          inspectionCompletedOn: d.inspectionCompletedOn,
+          inspectionVerified: d.inspectionVerified === "on",
         });
         say("환불을 승인했습니다. 실제 송금 후 완료를 기록해 주세요.");
         refresh();

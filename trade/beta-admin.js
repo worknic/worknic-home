@@ -22,7 +22,7 @@ async function prices(root) {
   c.append(
     el(
       "p",
-      "양식을 내려받아 상품·옵션 번호와 수정번호를 유지하고 판매가·단위·부가세·적용일을 입력하세요. 업로드 후 변경사항을 확인해야 실제로 적용됩니다.",
+      "현재 공통 판매가는 미정으로 운영합니다. 업체별 단가는 견적·주문에서 해당 견적에만 입력합니다. 향후 공통 가격표가 확정되면 최신 엑셀 양식으로 관리할 수 있습니다.",
     ),
     link("판매가 엑셀 내려받기", "/api/beta/admin/prices/template"),
   );
@@ -86,6 +86,23 @@ async function prices(root) {
       );
   });
   c.append(f, preview);
+  c.append(
+    button(
+      "공통 판매가 모두 미정으로",
+      async () => {
+        if (
+          !confirm(
+            "공통 판매가를 모두 미정으로 전환할까요? 기존 견적·주문 금액과 재고는 유지됩니다.",
+          )
+        )
+          return;
+        const r = await call("/admin/prices/undetermined", { confirmed: true });
+        say(r.applied + "개 상품·옵션의 공통 판매가를 미정으로 전환했습니다.");
+        route();
+      },
+      "button secondary",
+    ),
+  );
   root.append(c);
   const { history } = await call("/admin/prices/history");
   for (const h of history) {
@@ -108,7 +125,11 @@ async function prices(root) {
                 say("이전 가격을 복원했습니다.");
                 route();
               }),
-              button("취소", () => restoreConfirmation.remove(), "button secondary"),
+              button(
+                "취소",
+                () => restoreConfirmation.remove(),
+                "button secondary",
+              ),
             );
             item.append(restoreConfirmation);
           },
@@ -188,7 +209,13 @@ async function members(root) {
         "p",
         m.username + " · " + m.profile.businessNumber + " · " + m.profile.email,
       ),
-      el("span", labels[m.status] || m.status, "badge"),
+      el(
+        "p",
+        "거래 계정 등록 상태: " +
+          (labels[m.status] || m.status) +
+          " · 실제 거래 권한은 OS 사업자 승인에서 확인합니다.",
+        "muted",
+      ),
     );
     const f = el("form");
     field(
@@ -233,6 +260,13 @@ async function quotes(root) {
       el("span", labels[q.status] || q.status, "badge"),
       el(
         "p",
+        "거래처: " +
+          (q.companyName || "거래 계정 확인 필요") +
+          " · " +
+          (q.businessNumber || ""),
+      ),
+      el(
+        "p",
         q.items
           .map((x) => x.name + " · " + x.optionId + " · " + x.quantity)
           .join(" / "),
@@ -241,7 +275,44 @@ async function quotes(root) {
     );
     if (q.status === "requested") {
       const f = el("form");
-      field(f, "pickupFee", "픽업 비용 · 부가세 포함 원", "", "number");
+      f.append(
+        el(
+          "p",
+          "업체별 단가를 이 견적에만 적용합니다. 공통 판매가와 다른 업체의 견적은 변경되지 않습니다.",
+        ),
+      );
+      const individual = q.items.map((line, i) => {
+        const box = card(
+          line.name +
+            " · " +
+            line.model +
+            " · " +
+            (line.optionLabel || line.optionId) +
+            " · 요청 수량 " +
+            line.quantity,
+        );
+        const amount = field(box, "amount" + i, "개별 단가 · 원", "", "number");
+        amount.min = 1;
+        amount.max = 100000000;
+        const unit = field(box, "unit" + i, "확인한 판매단위");
+        const label = el("label", "부가세 기준"),
+          tax = el("select");
+        tax.required = true;
+        for (const [value, name] of [
+          ["", "선택해 주세요"],
+          ["포함", "부가세 포함"],
+          ["별도", "부가세 별도"],
+        ]) {
+          const o = el("option", name);
+          o.value = value;
+          tax.append(o);
+        }
+        label.append(tax);
+        box.append(label);
+        f.append(box);
+        return { line, amount, unit, tax };
+      });
+      field(f, "pickupFee", "픽업 비용 · 무료", 0, "number").readOnly = true;
       field(f, "expiresAt", "견적 유효기간", "", "datetime-local");
       field(
         f,
@@ -258,6 +329,13 @@ async function quotes(root) {
           pickupFee: Number(d.pickupFee),
           expiresAt: new Date(d.expiresAt).getTime(),
           conditionsConfirmed: true,
+          items: individual.map(({ line, amount, unit, tax }) => ({
+            productId: line.productId,
+            optionId: line.optionId,
+            unitPrice: Number(amount.value),
+            unit: unit.value,
+            taxMode: tax.value,
+          })),
         });
         say("견적서를 발행했습니다.");
         route();
@@ -316,7 +394,62 @@ async function orderList(pickupOnly, root) {
       });
       c.append(f);
     }
-    if (pickupOnly && ["paid", "preparing"].includes(o.status) && !o.pickup) {
+    if (
+      pickupOnly &&
+      ["paid", "preparing"].includes(o.status) &&
+      !o.pickup &&
+      o.fulfillment?.locationId === "jinjeop"
+    ) {
+      const f = el("form");
+      f.append(
+        el("h3", "진접 담당자 대면 전달"),
+        el(
+          "p",
+          "보관함과 비밀번호 없이, 확인된 담당자가 직접 전달합니다. 픽업 비용은 무료입니다.",
+        ),
+      );
+      field(f, "meetingPoint", "정확한 만남 지점", o.fulfillment.address);
+      field(f, "staffContact", "고객에게 안내할 담당자·업무 연락처");
+      field(f, "availableFrom", "수령 시작", "", "datetime-local");
+      field(f, "availableUntil", "수령 마감", "", "datetime-local");
+      field(
+        f,
+        "staged",
+        "상품·수량을 대면 전달용으로 준비했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      field(
+        f,
+        "staffConfirmed",
+        "전달 담당자와 만남 장소·시간을 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      f.append(el("button", "대면 전달 준비 완료", "button"));
+      formTask(f, async (d) => {
+        await call("/admin/handoffs/ready", {
+          ...d,
+          id: o.id,
+          revision: o.revision,
+          availableFrom: new Date(d.availableFrom).getTime(),
+          availableUntil: new Date(d.availableUntil).getTime(),
+          staged: true,
+          staffConfirmed: true,
+        });
+        say(
+          "대면 전달 준비를 저장했습니다. 고객에게 장소·시간을 안내해 주세요.",
+        );
+        route();
+      });
+      c.append(f);
+    }
+    if (
+      pickupOnly &&
+      ["paid", "preparing"].includes(o.status) &&
+      !o.pickup &&
+      o.fulfillment?.locationId !== "jinjeop"
+    ) {
       const { slots } = await call("/admin/slots"),
         f = el("form"),
         label = el("label", "보관함"),
@@ -341,8 +474,11 @@ async function orderList(pickupOnly, root) {
       pin.pattern = "[0-9]{6,12}";
       pin.autocomplete = "off";
       const startNow = field(
-        f, "startNow", "준비 완료 처리 시점부터 수령 가능",
-        o.fulfillment?.locationId !== "jinjeop", "checkbox",
+        f,
+        "startNow",
+        "준비 완료 처리 시점부터 수령 가능",
+        o.fulfillment?.locationId !== "jinjeop",
+        "checkbox",
       );
       const from = field(f, "availableFrom", "수령 시작", "", "datetime-local");
       const syncStart = () => {
@@ -372,7 +508,10 @@ async function orderList(pickupOnly, root) {
           ...d,
           id: o.id,
           revision: o.revision,
-          availableFrom: d.startNow === "on" ? Date.now() : new Date(d.availableFrom).getTime(),
+          availableFrom:
+            d.startNow === "on"
+              ? Date.now()
+              : new Date(d.availableFrom).getTime(),
           availableUntil: new Date(d.availableUntil).getTime(),
           staged: true,
           physicalCodeConfigured: true,
@@ -385,7 +524,52 @@ async function orderList(pickupOnly, root) {
       });
       c.append(f);
     }
-    if (pickupOnly && o.pickup) {
+    if (pickupOnly && o.pickup?.mode === "handoff") {
+      c.append(
+        dl([
+          ["수령 방식", "담당자 대면 전달"],
+          ["만남 지점", o.pickup.meetingPoint],
+          ["담당자·업무 연락처", o.pickup.staffContact],
+          ["수령 시작", date(o.pickup.availableFrom)],
+          ["수령 마감", date(o.pickup.availableUntil)],
+          ["상태", labels[o.pickup.status] || o.pickup.status],
+        ]),
+      );
+      const f = el("form"),
+        label = el("label", "대면 전달 결과"),
+        result = el("select");
+      result.name = "result";
+      for (const [value, name] of [
+        ["collected", "수령자에게 직접 전달 완료"],
+        ["not_collected", "기간 종료·미수령"],
+      ]) {
+        const option = el("option", name);
+        option.value = value;
+        result.append(option);
+      }
+      label.append(result);
+      f.append(label);
+      field(
+        f,
+        "recipientChecked",
+        "실제 수령자·상품·수량 또는 미수령 결과를 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      f.append(el("button", "대면 전달 결과 저장", "button"));
+      formTask(f, async (d) => {
+        await call("/admin/handoffs/close", {
+          id: o.id,
+          revision: o.pickup.revision,
+          result: d.result,
+          recipientChecked: true,
+        });
+        say("대면 전달 결과를 기록했습니다.");
+        route();
+      });
+      c.append(f);
+    }
+    if (pickupOnly && o.pickup && o.pickup.mode !== "handoff") {
       c.append(
         dl([
           ["보관함", o.pickup.slotLabel],
@@ -486,7 +670,7 @@ async function settings(root) {
     field(f, "address", "확인된 수령 주소", l.address);
     field(f, "hours", "운영 요일·시간 및 수령 조건", l.hours);
     field(f, "noticeUrl", "확인한 공식 공지 주소", l.noticeUrl, "url");
-    field(f, "fee", "기본 픽업 비용 · 원", l.fee, "number").required = false;
+    field(f, "fee", "기본 픽업 비용 · 무료", 0, "number").readOnly = true;
     field(
       f,
       "sourceVerified",
@@ -557,7 +741,9 @@ function auth() {
 }
 let routeRevision = 0;
 async function route() {
-  const revision = ++routeRevision, view = $("#view"), root = el("div");
+  const revision = ++routeRevision,
+    view = $("#view"),
+    root = el("div");
   view.replaceChildren();
   if (!actor) {
     auth();
@@ -596,7 +782,10 @@ function requestOSConnection() {
   ++routeRevision;
   $("#view").replaceChildren();
   say("OS 관리자 연결을 확인하고 있습니다.");
-  window.opener.postMessage({type: "WORKNIC_TRADE_READY"}, "https://worknic.tools");
+  window.opener.postMessage(
+    { type: "WORKNIC_TRADE_READY" },
+    "https://worknic.tools",
+  );
   return true;
 }
 window.addEventListener("hashchange", () => {

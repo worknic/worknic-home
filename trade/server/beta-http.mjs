@@ -65,15 +65,24 @@ export function createBetaRouter({
       return true;
     };
     if (path === "/health" && method === "GET") {
-      const publicOrigins = new Set(["https://worknic.co.kr", "https://www.worknic.co.kr"]);
-      return send({
-        ok: true,
-        approvalBridgeConfigured: demo || os.configured(),
-        ...store.beta.runtime(),
-      }, 200, publicOrigins.has(req.headers.origin) ? {
-        "Access-Control-Allow-Origin": req.headers.origin,
-        Vary: "Origin",
-      } : {});
+      const publicOrigins = new Set([
+        "https://worknic.co.kr",
+        "https://www.worknic.co.kr",
+      ]);
+      return send(
+        {
+          ok: true,
+          approvalBridgeConfigured: demo || os.configured(),
+          ...store.beta.runtime(),
+        },
+        200,
+        publicOrigins.has(req.headers.origin)
+          ? {
+              "Access-Control-Allow-Origin": req.headers.origin,
+              Vary: "Origin",
+            }
+          : {},
+      );
     }
     if (path === "/public-catalog" && method === "GET") {
       const d = await os.publicCatalog();
@@ -162,7 +171,12 @@ export function createBetaRouter({
       let member = actor;
       if (!admin && binding?.activated && !demo) {
         const proof = await os.status(actor.profile, binding.request_id);
-        if (proof.id !== binding.request_id || !["approved", "pending", "rejected", "suspended"].includes(proof.status))
+        if (
+          proof.id !== binding.request_id ||
+          !["approved", "pending", "rejected", "suspended"].includes(
+            proof.status,
+          )
+        )
           fail("OS 승인 상태를 확인해 주세요.", 503);
         member = { ...actor, status: proof.status };
       }
@@ -261,6 +275,8 @@ export function createBetaRouter({
       }
       if (path === "/admin/prices/file" && method === "POST")
         return send(store.beta.previewPrices(actor, input.rows));
+      if (path === "/admin/prices/undetermined" && method === "POST")
+        return send(store.beta.markAllPricesUndetermined(actor, input));
       if (path === "/admin/prices/apply" && method === "POST")
         return send(store.beta.applyPrices(actor, input.id));
       if (path === "/admin/prices/history" && method === "GET")
@@ -298,8 +314,20 @@ export function createBetaRouter({
         const d = await os.publicCatalog();
         return send(store.importCatalog(actor, d));
       }
-      if (path === "/admin/quotes" && method === "GET")
-        return send({ quotes: store.beta.quotes(actor) });
+      if (path === "/admin/quotes" && method === "GET") {
+        const members = new Map(
+          store.members(actor).map((m) => [m.id, m.profile]),
+        );
+        return send({
+          quotes: store.beta
+            .quotes(actor)
+            .map((q) => ({
+              ...q,
+              companyName: members.get(q.memberId)?.companyName,
+              businessNumber: members.get(q.memberId)?.businessNumber,
+            })),
+        });
+      }
       if (path === "/admin/quotes/issue" && method === "POST")
         return send({ quote: store.beta.issueQuote(actor, input.id, input) });
       if (path === "/admin/members" && method === "GET")
@@ -341,6 +369,10 @@ export function createBetaRouter({
         return send(store.beta.readyPickup(actor, input.id, input));
       if (path === "/admin/pickups/close" && method === "POST")
         return send(store.beta.closePickup(actor, input.id, input));
+      if (path === "/admin/handoffs/ready" && method === "POST")
+        return send(store.beta.readyHandoff(actor, input.id, input));
+      if (path === "/admin/handoffs/close" && method === "POST")
+        return send(store.beta.closeHandoff(actor, input.id, input));
       if (path === "/admin/products" && method === "GET")
         return send({ products: store.beta.inventory(actor) });
       if (path === "/admin/products/stock" && method === "POST")

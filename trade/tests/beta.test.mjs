@@ -21,7 +21,7 @@ const registration = (name) => ({
   address: "검증 주소",
   consent: true,
 });
-function fixture() {
+function fixture(locationId = "pocheon_after_hours") {
   const dir = mkdtempSync(join(tmpdir(), "worknic-beta-"));
   let now = Date.UTC(2026, 10, 9, 11, 0); // Monday 20:00 KST, within the confirmed pickup window.
   const store = openStore(join(dir, "db.sqlite"), {
@@ -69,7 +69,7 @@ function fixture() {
     registrationEnabled: true,
     documentsConfirmed: true,
   });
-  const l = store.beta.locations()[0];
+  const l = store.beta.locations().find((l) => l.id === locationId);
   store.beta.updateLocation(admin, l.id, {
     ...l,
     address: "검증 장소",
@@ -228,10 +228,10 @@ test("픽업 입금·보관함 충돌·기간·고객 격리·암호화·실제 
         f.store.beta.readyPickup(f.admin, order.id, {
           ...ready,
           revision: paid.revision,
-          availableFrom: f.now() + 6 * 86400000,
-          availableUntil: f.now() + 6 * 86400000 + 3600000,
+          availableFrom: f.now(),
+          availableUntil: f.now(),
         }),
-      /월~금/,
+      /수령 기간/,
     );
     const pickup = f.store.beta.readyPickup(f.admin, order.id, {
       ...ready,
@@ -252,7 +252,7 @@ test("픽업 입금·보관함 충돌·기간·고객 격리·암호화·실제 
       () =>
         f.store.beta.saveSlot(f.admin, {
           id: "box1",
-          locationId: "jinjeop",
+          locationId: "pocheon_after_hours",
           label: "수정",
           enabled: true,
         }),
@@ -275,6 +275,196 @@ test("픽업 입금·보관함 충돌·기간·고객 격리·암호화·실제 
       compartmentChecked: true,
     });
     assert.equal(f.store.order(f.buyer, order.id).status, "collected");
+  } finally {
+    f.cleanup();
+  }
+});
+test("공통 가격 미정에서도 업체별 견적 단가를 격리하고 기존 주문을 보존", () => {
+  const f = fixture();
+  try {
+    const q1 = f.requested(),
+      q2 = f.store.beta.createQuote(f.other, {
+        requestKey: "individual-other-0001",
+        locationId: "pocheon_after_hours",
+        items: [{ productId: "p1", optionId: "default", quantity: 2 }],
+      });
+    const input = (q, amount) => ({
+      revision: q.revision,
+      pickupFee: 0,
+      conditionsConfirmed: true,
+      expiresAt: f.now() + 86400000,
+      items: [
+        {
+          productId: "p1",
+          optionId: "default",
+          unitPrice: amount,
+          unit: "세트",
+          taxMode: "포함",
+        },
+      ],
+    });
+    assert.throws(
+      () => f.store.beta.issueQuote(f.buyer, q1.id, input(q1, 11000)),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.issueQuote(f.admin, q1.id, {
+          ...input(q1, 11000),
+          items: [],
+        }),
+      /단가/,
+    );
+    assert.throws(
+      () => f.store.beta.issueQuote(f.admin, q1.id, input(q1, 0)),
+      /단가/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.issueQuote(f.admin, q1.id, {
+          ...input(q1, 11000),
+          pickupFee: 5000,
+        }),
+      /무료/,
+    );
+    const issued1 = f.store.beta.issueQuote(f.admin, q1.id, input(q1, 11000));
+    const issued2 = f.store.beta.issueQuote(f.admin, q2.id, input(q2, 16500));
+    assert.equal(issued1.total, 22000);
+    assert.equal(issued2.total, 33000);
+    assert.equal(issued1.items[0].priceSource, "individual_quote");
+    assert.equal(f.price().price, null);
+    assert.throws(() => f.store.beta.quote(f.other, q1.id), /찾을/);
+    const order = f.accept(issued1);
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    assert.equal(f.price().price, 11000);
+    assert.throws(
+      () =>
+        f.store.beta.markAllPricesUndetermined(f.buyer, { confirmed: true }),
+      /관리자/,
+    );
+    assert.throws(
+      () => f.store.beta.markAllPricesUndetermined(f.admin, {}),
+      /확인/,
+    );
+    f.store.beta.markAllPricesUndetermined(f.admin, { confirmed: true });
+    assert.equal(f.price().price, null);
+    assert.equal(f.store.order(f.buyer, order.id).total, 22000);
+    assert.equal(f.store.beta.quote(f.other, q2.id).total, 33000);
+    assert.equal(f.store.products(f.admin)[0].stock, 28);
+  } finally {
+    f.cleanup();
+  }
+});
+test("진접 대면 전달은 비밀번호·보관함 없이 입금·요일·시간·수령자를 확인", () => {
+  const f = fixture("jinjeop");
+  try {
+    const request = f.requested(),
+      quote = f.store.beta.issueQuote(f.admin, request.id, {
+        revision: request.revision,
+        pickupFee: 0,
+        conditionsConfirmed: true,
+        expiresAt: f.now() + 86400000,
+        items: [
+          {
+            productId: "p1",
+            optionId: "default",
+            unitPrice: 11000,
+            unit: "개",
+            taxMode: "포함",
+          },
+        ],
+      });
+    const order = f.accept(quote);
+    assert.equal(order.fulfillment.handover, "handoff");
+    const ready = {
+      revision: order.revision,
+      meetingPoint: "진접중학교 정문 앞 검수 지점",
+      staffContact: "합성 담당자 · 010-0000-0000",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      staffConfirmed: true,
+    };
+    assert.throws(
+      () => f.store.beta.readyHandoff(f.admin, order.id, ready),
+      /입금/,
+    );
+    const paid = f.store.updateOrder(f.admin, order.id, {
+      revision: order.revision,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성 확인",
+      bankChecked: true,
+    });
+    ready.revision = paid.revision;
+    assert.throws(
+      () =>
+        f.store.beta.readyPickup(f.admin, order.id, {
+          revision: paid.revision,
+          slotId: "box1",
+        }),
+      /대면 전달/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.readyHandoff(f.admin, order.id, {
+          ...ready,
+          availableFrom: f.now() + 5 * 86400000,
+          availableUntil: f.now() + 5 * 86400000 + 3600000,
+        }),
+      /월~금/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.readyHandoff(f.admin, order.id, {
+          ...ready,
+          staffContact: "",
+        }),
+      /담당자/,
+    );
+    f.store.beta.readyHandoff(f.admin, order.id, ready);
+    const p = f.store.beta.pickup(f.buyer, order.id);
+    assert.equal(p.mode, "handoff");
+    assert.equal(p.slotId, undefined);
+    assert.equal(p.pinDigest, undefined);
+    assert.throws(() => f.store.beta.pickup(f.other, order.id), /찾을/);
+    assert.throws(() => f.store.beta.revealPin(f.buyer, order.id), /비밀번호/);
+    assert.throws(
+      () => f.store.beta.readyHandoff(f.admin, order.id, ready),
+      /입금|이미/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.closeHandoff(f.admin, order.id, {
+          revision: p.revision,
+          result: "collected",
+        }),
+      /확인/,
+    );
+    f.store.beta.reportPickup(f.buyer, order.id, {
+      revision: p.revision,
+      received: true,
+    });
+    assert.equal(f.store.order(f.buyer, order.id).status, "pickup_reported");
+    f.store.beta.closeHandoff(f.admin, order.id, {
+      revision: p.revision + 1,
+      result: "collected",
+      recipientChecked: true,
+    });
+    assert.equal(f.store.order(f.buyer, order.id).status, "collected");
+    assert.equal(f.store.beta.pickup(f.buyer, order.id), null);
+    assert.throws(
+      () =>
+        f.store.beta.closeHandoff(f.admin, order.id, {
+          revision: p.revision + 1,
+          result: "collected",
+          recipientChecked: true,
+        }),
+      /확인/,
+    );
   } finally {
     f.cleanup();
   }
@@ -328,7 +518,7 @@ test("옵션 수량을 분리하고 기한 만료 시 해당 옵션에 한 번�
     );
     let q = f.store.beta.createQuote(f.buyer, {
       requestKey: "variant-request-0001",
-      locationId: "jinjeop",
+      locationId: "pocheon_after_hours",
       items: [{ productId: "v1", optionId: "small", quantity: 2 }],
     });
     q = f.issue(q);
@@ -345,7 +535,7 @@ test("옵션 수량을 분리하고 기한 만료 시 해당 옵션에 한 번�
     const second = f.issue(
       f.store.beta.createQuote(f.buyer, {
         requestKey: "variant-request-0002",
-        locationId: "jinjeop",
+        locationId: "pocheon_after_hours",
         items: [{ productId: "v1", optionId: "small", quantity: 1 }],
       }),
     );
@@ -399,7 +589,7 @@ test("픽업 비밀번호 기간 밖 접근·만료 보관함 재사용 차단·
       () =>
         f.store.beta.saveSlot(f.admin, {
           id: "box1",
-          locationId: "jinjeop",
+          locationId: "pocheon_after_hours",
           label: "다른 주문",
           enabled: true,
         }),

@@ -28,6 +28,7 @@ export function installBeta(
   CREATE TABLE IF NOT EXISTS beta_locations (id TEXT PRIMARY KEY,value TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
   CREATE TABLE IF NOT EXISTS beta_slots (id TEXT PRIMARY KEY,location_id TEXT NOT NULL,label TEXT NOT NULL,enabled INTEGER NOT NULL DEFAULT 0);
   CREATE TABLE IF NOT EXISTS beta_pickups (order_id TEXT PRIMARY KEY,slot_id TEXT UNIQUE NOT NULL,value TEXT NOT NULL,secret TEXT,status TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
+  CREATE TABLE IF NOT EXISTS beta_handoffs (order_id TEXT PRIMARY KEY,value TEXT NOT NULL,status TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
   CREATE TABLE IF NOT EXISTS beta_config (id INTEGER PRIMARY KEY CHECK(id=1),value TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);`);
   db.prepare("INSERT OR IGNORE INTO beta_config VALUES(1,?,1)").run(
     JSON.stringify({
@@ -45,7 +46,7 @@ export function installBeta(
         hours: "월~금 오후 7시~11시 · 토·일 휴무",
         noticeUrl: "https://smartstore.naver.com/worknic_korea",
         enabled: false,
-        fee: null,
+        fee: 0,
         sourceVerified: false,
       },
     ],
@@ -57,7 +58,7 @@ export function installBeta(
         hours: "주문별 준비 완료 안내에서 확인",
         noticeUrl: "https://worknic.co.kr/space/",
         enabled: false,
-        fee: null,
+        fee: 0,
         sourceVerified: false,
       },
     ],
@@ -386,6 +387,27 @@ export function installBeta(
         expiresAt: now + 15 * 60000,
       };
     },
+    markAllPricesUndetermined(actor, input) {
+      adminOnly(actor);
+      if (input.confirmed !== true)
+        fail("공통 판매가 미정 전환을 확인해 주세요.");
+      const rows = api.beta.priceRows(actor);
+      if (!rows.length) return { applied: 0 };
+      const preview = api.beta.previewPrices(
+        actor,
+        rows.map((p) => ({
+          상품번호: p.productId,
+          옵션번호: p.optionId,
+          판매단위: p.unit,
+          판매가: "",
+          부가세기준: p.taxMode,
+          가격상태: "미정",
+          적용일: p.effectiveOn,
+          수정번호: p.revision,
+        })),
+      );
+      return api.beta.applyPrices(actor, preview.id);
+    },
     applyPrices(actor, id) {
       adminOnly(actor);
       return transaction(() => {
@@ -609,8 +631,46 @@ export function installBeta(
           fail("견적 상태가 변경됐습니다.", 409);
         if (!config().documentsConfirmed)
           fail("부가세·문서 운영 기준을 먼저 확인해 주세요.");
+        let individual = null;
+        if (input.items !== undefined) {
+          if (
+            !Array.isArray(input.items) ||
+            input.items.length !== q.items.length
+          )
+            fail("요청된 상품·옵션별 개별 단가를 모두 입력해 주세요.");
+          individual = new Map();
+          for (const item of input.items) {
+            if (!item || typeof item !== "object" || Array.isArray(item))
+              fail("상품별 단가 입력을 확인해 주세요.");
+            const key = keyOf(item.productId, item.optionId);
+            if (
+              individual.has(key) ||
+              !q.items.some(
+                (x) =>
+                  x.productId === item.productId &&
+                  x.optionId === item.optionId,
+              )
+            )
+              fail("견적 상품·옵션이 중복됐거나 요청과 다릅니다.");
+            if (
+              !Number.isSafeInteger(item.unitPrice) ||
+              item.unitPrice < 1 ||
+              item.unitPrice > 100000000 ||
+              !str(item.unit, 80) ||
+              !["포함", "별도"].includes(item.taxMode)
+            )
+              fail("업체별 단가·판매단위·부가세 기준을 확인해 주세요.");
+            individual.set(key, {
+              price: item.unitPrice,
+              unit: str(item.unit, 80),
+              taxMode: item.taxMode,
+            });
+          }
+        }
         const items = q.items.map((line) => {
-          const p = price(line.productId, line.optionId);
+          const p = individual
+            ? individual.get(keyOf(line.productId, line.optionId))
+            : price(line.productId, line.optionId);
           if (!p.price || !p.unit || !["포함", "별도"].includes(p.taxMode))
             fail("확정 판매가·판매단위·부가세 기준을 먼저 등록해 주세요.");
           const total = p.price * line.quantity,
@@ -626,17 +686,13 @@ export function installBeta(
             supplyAmount: p.taxMode === "포함" ? total - vat : total,
             vat,
             amount: p.taxMode === "포함" ? total : total + vat,
-            priceRevision: p.revision,
+            priceRevision: individual ? null : p.revision,
+            priceSource: individual ? "individual_quote" : "catalog",
           };
         });
         const fee = input.pickupFee;
-        if (
-          !Number.isInteger(fee) ||
-          fee < 0 ||
-          fee > 1000000 ||
-          input.conditionsConfirmed !== true
-        )
-          fail("픽업 비용·거래 조건 확인");
+        if (fee !== 0 || input.conditionsConfirmed !== true)
+          fail("픽업은 무료입니다. 비용 0원과 거래 조건을 확인해 주세요.");
         const expiresAt = Number(input.expiresAt);
         if (
           !Number.isSafeInteger(expiresAt) ||
@@ -737,6 +793,7 @@ export function installBeta(
               locationName: location.name,
               address: location.address,
               hours: location.hours,
+              handover: location.id === "jinjeop" ? "handoff" : "locker",
             },
             quoteId: id,
             note: q.note,
@@ -840,6 +897,8 @@ export function installBeta(
           slot = db
             .prepare("SELECT * FROM beta_slots WHERE id=? AND enabled=1")
             .get(input.slotId);
+        if (o.fulfillment.handover === "handoff")
+          fail("진접 주문은 담당자 대면 전달로 준비해 주세요.", 409);
         if (
           !["paid", "preparing"].includes(o.status) ||
           o.revision !== input.revision
@@ -938,6 +997,20 @@ export function installBeta(
     pickup(actor, id) {
       if (actor.role !== "admin") customer(actor);
       activeOrder(actor, id);
+      const handoff = db
+        .prepare("SELECT * FROM beta_handoffs WHERE order_id=?")
+        .get(id);
+      if (handoff && ["ready", "reported"].includes(handoff.status)) {
+        const h = {
+          ...JSON.parse(handoff.value),
+          mode: "handoff",
+          status: handoff.status,
+          revision: handoff.revision,
+        };
+        if (h.status === "ready" && h.availableUntil <= clock())
+          h.status = "expired_handoff";
+        return h;
+      }
       const r = db
           .prepare("SELECT * FROM beta_pickups WHERE order_id=?")
           .get(id),
@@ -970,6 +1043,28 @@ export function installBeta(
       customer(actor);
       return transaction(() => {
         activeOrder(actor, id);
+        const h = db
+          .prepare("SELECT * FROM beta_handoffs WHERE order_id=?")
+          .get(id);
+        if (h) {
+          const v = JSON.parse(h.value);
+          if (
+            h.status !== "ready" ||
+            h.revision !== input.revision ||
+            input.received !== true ||
+            clock() < v.availableFrom ||
+            clock() >= v.availableUntil
+          )
+            fail("대면 수령 상태·기간을 확인해 주세요.", 409);
+          db.prepare(
+            "UPDATE beta_handoffs SET status='reported',value=?,revision=revision+1 WHERE order_id=?",
+          ).run(JSON.stringify({ ...v, reportedAt: clock() }), id);
+          db.prepare(
+            "UPDATE orders SET status='pickup_reported',revision=revision+1 WHERE id=?",
+          ).run(id);
+          audit(actor, "handoff.reported", id);
+          return { ok: true };
+        }
         const r = db
           .prepare("SELECT * FROM beta_pickups WHERE order_id=?")
           .get(id);
@@ -1026,6 +1121,120 @@ export function installBeta(
           result: input.result,
           physicalCodeRevoked: true,
         });
+        return { ok: true };
+      });
+    },
+    readyHandoff(actor, id, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const o = activeOrder(actor, id),
+          from = Number(input.availableFrom),
+          until = Number(input.availableUntil);
+        if (
+          o.fulfillment.locationId !== "jinjeop" ||
+          !["paid", "preparing"].includes(o.status) ||
+          o.revision !== input.revision
+        )
+          fail("진접 입금 확인 주문의 대면 전달 준비만 가능합니다.", 409);
+        if (
+          db
+            .prepare("SELECT order_id FROM beta_pickups WHERE order_id=?")
+            .get(id) ||
+          db
+            .prepare("SELECT order_id FROM beta_handoffs WHERE order_id=?")
+            .get(id)
+        )
+          fail("이미 수령 준비가 등록된 주문입니다.", 409);
+        if (
+          !Number.isSafeInteger(from) ||
+          !Number.isSafeInteger(until) ||
+          from < clock() - 60000 ||
+          until <= from ||
+          until > clock() + 7 * 86400000
+        )
+          fail("대면 수령 시작·마감 시간을 확인해 주세요.");
+        const start = new Date(from + 9 * 3600000),
+          end = new Date(until + 9 * 3600000);
+        if (
+          start.getUTCDay() < 1 ||
+          start.getUTCDay() > 5 ||
+          start.toISOString().slice(0, 10) !== end.toISOString().slice(0, 10) ||
+          start.getUTCHours() < 19 ||
+          end.getUTCHours() * 3600 +
+            end.getUTCMinutes() * 60 +
+            end.getUTCSeconds() >
+            23 * 3600
+        )
+          fail("진접 대면 전달은 월~금 오후 7시~11시 안에서 정해 주세요.");
+        if (
+          input.staged !== true ||
+          input.staffConfirmed !== true ||
+          !str(input.meetingPoint, 300) ||
+          !str(input.staffContact, 100)
+        )
+          fail(
+            "상품 준비·전달 담당자·정확한 만남 지점과 업무 연락처를 확인해 주세요.",
+          );
+        const value = {
+          mode: "handoff",
+          availableFrom: from,
+          availableUntil: until,
+          meetingPoint: str(input.meetingPoint, 300),
+          staffContact: str(input.staffContact, 100),
+          readyAt: clock(),
+          readyBy: actor.username,
+        };
+        db.prepare("INSERT INTO beta_handoffs VALUES(?,?,'ready',1)").run(
+          id,
+          JSON.stringify(value),
+        );
+        db.prepare(
+          "UPDATE orders SET status='pickup_ready',revision=revision+1 WHERE id=?",
+        ).run(id);
+        audit(actor, "handoff.ready", id, {
+          availableFrom: from,
+          availableUntil: until,
+        });
+        return { ok: true };
+      });
+    },
+    closeHandoff(actor, id, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        activeOrder(actor, id);
+        const r = db
+          .prepare("SELECT * FROM beta_handoffs WHERE order_id=?")
+          .get(id);
+        if (
+          !r ||
+          !["ready", "reported"].includes(r.status) ||
+          r.revision !== input.revision ||
+          input.recipientChecked !== true ||
+          !["collected", "not_collected"].includes(input.result)
+        )
+          fail("대면 전달 결과와 수령자·상품·수량 확인이 필요합니다.", 409);
+        const v = JSON.parse(r.value);
+        if (
+          input.result === "collected" &&
+          (clock() < v.availableFrom || clock() >= v.availableUntil)
+        )
+          fail("안내된 대면 수령 기간을 확인해 주세요.", 409);
+        if (input.result === "not_collected" && clock() < v.availableUntil)
+          fail("수령 기간이 남아 있습니다.", 409);
+        db.prepare(
+          "UPDATE beta_handoffs SET status=?,value=?,revision=revision+1 WHERE order_id=?",
+        ).run(
+          input.result,
+          JSON.stringify({ ...v, closedAt: clock(), closedBy: actor.username }),
+          id,
+        );
+        db.prepare(
+          "UPDATE orders SET status=?,revision=revision+1 WHERE id=?",
+        ).run(
+          input.result === "collected" ? "collected" : "pickup_exception",
+          id,
+        );
+        audit(actor, "handoff.closed", id, { result: input.result });
         return { ok: true };
       });
     },

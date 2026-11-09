@@ -32,6 +32,7 @@ export const labels = {
   ready: "수령 가능",
   reported: "수령 확인 중",
   expired_reset_required: "수령기간 만료 · 담당자 확인",
+  expired_handoff: "대면 수령기간 종료 · 담당자 확인",
 };
 export function say(text, error = false) {
   const n = $("#status");

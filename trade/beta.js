@@ -17,7 +17,9 @@ import {
 } from "./beta-common.js";
 import { readTradeEntry, entryProduct } from "./entry-intent.js";
 const entry = readTradeEntry(location.search);
-let focusedProductId = entry.productId, loginReturn = entry.next, routeRevision = 0;
+let focusedProductId = entry.productId,
+  loginReturn = entry.next,
+  routeRevision = 0;
 let member = null,
   bound = false,
   runtime = null,
@@ -137,15 +139,37 @@ function catalogView(root) {
   label.append(brand);
   toolbar.append(label, el("button", "검색", "button"));
   const products = el("div", null, "products");
-  const focused = entryProduct(focusedProductId, catalog.products), selected = card("공식 홈페이지에서 살펴본 제품");
+  const focused = entryProduct(focusedProductId, catalog.products),
+    selected = card("공식 홈페이지에서 살펴본 제품");
   if (focusedProductId && !focused) {
     focusedProductId = "";
-    root.append(el("p", "선택한 제품의 현재 공개 상태를 확인할 수 없습니다. 아래 공개 목록에서 다시 선택해 주세요.", "muted"));
+    root.append(
+      el(
+        "p",
+        "선택한 제품의 현재 공개 상태를 확인할 수 없습니다. 아래 공개 목록에서 다시 선택해 주세요.",
+        "muted",
+      ),
+    );
   }
   if (focused) {
-    selected.append(el("p", focused.name + (focused.model ? " · " + focused.model : "")),
-      el("p", "옵션과 수량을 확인해 견적 목록에 담아 주세요. 이동만으로 견적이나 주문이 접수되지는 않습니다.", "muted"),
-      button("전체 제품 보기", () => { focusedProductId = ""; query.value = ""; brand.value = ""; render(); }, "button secondary"));
+    selected.append(
+      el("p", focused.name + (focused.model ? " · " + focused.model : "")),
+      el(
+        "p",
+        "옵션과 수량을 확인해 견적 목록에 담아 주세요. 이동만으로 견적이나 주문이 접수되지는 않습니다.",
+        "muted",
+      ),
+      button(
+        "전체 제품 보기",
+        () => {
+          focusedProductId = "";
+          query.value = "";
+          brand.value = "";
+          render();
+        },
+        "button secondary",
+      ),
+    );
     root.append(selected);
   }
   const render = () => {
@@ -240,9 +264,15 @@ function cartView() {
     el("button", "견적 요청하기", "button"),
   );
   const submit = f.querySelector('button[type="submit"],button:not([type])');
-  if (!runtime.betaEnabled || !runtime.locations.some(l => l.enabled)) {
+  if (!runtime.betaEnabled || !runtime.locations.some((l) => l.enabled)) {
     submit.disabled = true;
-    c.append(el("p", "신규 견적·픽업 접수는 준비 중입니다. 담은 제품은 이 기기에 보관되며 운영 시작 후 요청할 수 있습니다.", "muted"));
+    c.append(
+      el(
+        "p",
+        "신규 견적·픽업 접수는 준비 중입니다. 담은 제품은 이 기기에 보관되며 운영 시작 후 요청할 수 있습니다.",
+        "muted",
+      ),
+    );
   }
   formTask(f, async (data) => {
     if (!runtime.betaEnabled) throw Error("베타 접수를 준비하고 있습니다.");
@@ -335,6 +365,13 @@ async function pickupView(root) {
       el("span", l.enabled ? "베타 운영" : "준비 중", "badge"),
       el("p", l.address || "스토어 공지 원문 확인 후 안내합니다."),
       el("p", l.hours || "장소·운영시간 확인 중"),
+      el(
+        "p",
+        "픽업 무료 · " +
+          (l.id === "jinjeop"
+            ? "담당자 대면 전달"
+            : "개별 비밀번호 보관함 수령"),
+      ),
     );
     root.append(c);
   }
@@ -352,27 +389,37 @@ async function pickupView(root) {
     if (o.pickup) {
       c.append(
         dl([
-          ["보관함", o.pickup.slotLabel],
+          [
+            o.pickup.mode === "handoff" ? "만남 지점" : "보관함",
+            o.pickup.mode === "handoff"
+              ? o.pickup.meetingPoint
+              : o.pickup.slotLabel,
+          ],
           ["수령 시작", date(o.pickup.availableFrom)],
           ["수령 마감", date(o.pickup.availableUntil)],
         ]),
       );
+      if (o.pickup.mode === "handoff")
+        c.append(el("p", "담당자 대면 전달 · " + o.pickup.staffContact));
       if (o.pickup.status === "ready") {
+        if (o.pickup.mode !== "handoff")
+          c.append(
+            button("개별 비밀번호 확인", async () => {
+              clearPins();
+              const r = await call("/orders/" + o.id + "/code", {}),
+                n = el("output", r.pin, "pin");
+              c.append(
+                n,
+                el(
+                  "p",
+                  "비밀번호는 30초 후 숨겨집니다. 다른 사람에게 공유하지 마세요.",
+                  "muted",
+                ),
+              );
+              pinTimers.push(setTimeout(() => n.remove(), 30000));
+            }),
+          );
         c.append(
-          button("개별 비밀번호 확인", async () => {
-            clearPins();
-            const r = await call("/orders/" + o.id + "/code", {}),
-              n = el("output", r.pin, "pin");
-            c.append(
-              n,
-              el(
-                "p",
-                "비밀번호는 30초 후 숨겨집니다. 다른 사람에게 공유하지 마세요.",
-                "muted",
-              ),
-            );
-            pinTimers.push(setTimeout(() => n.remove(), 30000));
-          }),
           button(
             "상품을 수령했습니다",
             async () => {
@@ -388,16 +435,18 @@ async function pickupView(root) {
           ),
         );
       } else c.append(el("p", labels[o.pickup.status] || o.pickup.status));
-    } else if (o.status === "collected") c.append(el("p", "수령이 완료된 주문입니다."));
-    else if (["cancelled", "expired"].includes(o.status)) c.append(el("p", "종료된 주문입니다. 방문 전 담당자에게 확인해 주세요."));
+    } else if (o.status === "collected")
+      c.append(el("p", "수령이 완료된 주문입니다."));
+    else if (["cancelled", "expired"].includes(o.status))
+      c.append(el("p", "종료된 주문입니다. 방문 전 담당자에게 확인해 주세요."));
     else c.append(el("p", "준비 완료 안내를 받은 뒤 방문해 주세요."));
     root.append(c);
   }
 }
 function accountView(root) {
   const activation = new URLSearchParams(location.hash.split("?")[1] || "").get(
-      "activate",
-    );
+    "activate",
+  );
   if (activation) {
     const c = card("사업자 계정 본인 확인"),
       f = el("form");
@@ -514,7 +563,8 @@ async function route() {
   clearPins();
   const revision = ++routeRevision;
   const name = location.hash.slice(1).split("?")[0] || "catalog",
-    view = $("#view"), root = el("div");
+    view = $("#view"),
+    root = el("div");
   view.replaceChildren();
   document
     .querySelectorAll(".nav a,.bottom-nav a")

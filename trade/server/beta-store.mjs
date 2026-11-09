@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        refundRecipient:
+          config().refundRecipient?.value ===
+          "original_payer_else_youngwoo_verified"
+            ? "환불은 원입금자 명의 계좌를 원칙으로 하며, 다른 명의 계좌 요청은 담당자가 별도로 확인한 뒤 처리합니다."
+            : null,
         defectShipping:
           config().defectShipping?.value ===
           "worknic_pays_collection_reshipment"
@@ -656,6 +661,38 @@ export function installBeta(
           "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
         ).run(JSON.stringify(next));
         audit(actor, "operator.refund_transfer_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
+    confirmRefundRecipient(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "original_payer_else_youngwoo_verified" ||
+          input.confirmed !== true
+        )
+          fail(
+            "원입금자 명의 원칙 및 다른 명의 요청 영우 별도 확인 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          refundRecipient: {
+            value: input.value,
+            scope: "manual_refund_recipient_verification",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.refund_recipient_confirmed", "beta", {
           value: input.value,
         });
         return config();

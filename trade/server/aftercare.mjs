@@ -42,7 +42,10 @@ export function installAftercare(
       value.originalStatus === "collected"
     )
       value.returnWindow = returnWindow(actor, r.order_id, value.requestedAt);
-    if (actor.role !== "admin") delete value.bankReference;
+    if (actor.role !== "admin") {
+      delete value.bankReference;
+      delete value.recipientCheck;
+    }
     return {
       ...value,
       id: r.id,
@@ -353,6 +356,7 @@ export function installAftercare(
         transferOperator,
         canComplete,
         transferOperatorConfirmed: !!transferOperator,
+        recipientPolicy: api.beta.config().refundRecipient?.value || null,
       };
     },
     reviewRefund(actor, id, input) {
@@ -523,6 +527,54 @@ export function installAftercare(
           !text(input.bankReference, 100)
         )
           fail("실제 은행 환불 송금·승인 금액·확인번호를 대조해 주세요.", 409);
+        let recipientCheck;
+        if (
+          api.beta.config().refundRecipient?.value ===
+          "original_payer_else_youngwoo_verified"
+        ) {
+          if (
+            input.recipientVerified !== true ||
+            !["original_payer", "different_name"].includes(input.recipientBasis)
+          )
+            fail("원입금자 명의와 환불 수취계좌 확인 결과를 기록해 주세요.");
+          if (input.recipientBasis === "different_name") {
+            const member = db
+              .prepare(
+                "SELECT profile FROM members WHERE id=? AND role='admin'",
+              )
+              .get(actor.id);
+            const profile = member ? JSON.parse(member.profile) : {};
+            if (
+              profile.authSource !== "worknic_os" ||
+              profile.osUser !== "영우"
+            )
+              fail(
+                "다른 명의 환불 계좌는 영우의 OS 계정에서 별도로 확인해 주세요.",
+                403,
+              );
+            if (
+              input.recipientExceptionConfirmed !== true ||
+              !text(input.recipientExceptionReference, 100)
+            )
+              fail(
+                "명의 변경 요청의 영우 별도 확인과 내부 기록번호를 확인해 주세요.",
+              );
+          }
+          recipientCheck = {
+            basis: input.recipientBasis,
+            verifiedAt: clock(),
+            verifiedBy: actor.username,
+            ...(input.recipientBasis === "different_name"
+              ? {
+                  exceptionReference: text(
+                    input.recipientExceptionReference,
+                    100,
+                  ),
+                  exceptionVerifiedBy: "영우",
+                }
+              : {}),
+          };
+        }
         const totalRefunded = refunded(o.id) + r.amount;
         if (totalRefunded > o.payment.amount)
           fail("확인된 입금액을 초과하여 환불할 수 없습니다.", 409);
@@ -567,6 +619,7 @@ export function installAftercare(
         const value = {
           ...r,
           bankReference: text(input.bankReference, 100),
+          ...(recipientCheck ? { recipientCheck } : {}),
           completedAt: clock(),
           completedBy: actor.username,
           restockedAll: input.restockAll === true,

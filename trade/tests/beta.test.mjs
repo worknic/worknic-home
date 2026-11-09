@@ -2005,3 +2005,95 @@ test("실제 환불 완료 기록 담당자 영우는 저장된 OS 신원으로 
     f.cleanup();
   }
 });
+
+test("환불 수취계좌는 원입금자 명의 확인과 다른 명의의 영우 별도 확인을 요구하고 고객에게 내부 기록을 숨김", () => {
+  for (const basis of ["original_payer", "different_name"]) {
+    const f = fixture();
+    try {
+      const config = f.store.beta.config();
+      assert.throws(
+        () =>
+          f.store.beta.confirmRefundRecipient(f.buyer, {
+            revision: config.revision,
+            value: "original_payer_else_youngwoo_verified",
+            confirmed: true,
+          }),
+        /관리자/,
+      );
+      const saved = f.store.beta.confirmRefundRecipient(f.admin, {
+        revision: config.revision,
+        value: "original_payer_else_youngwoo_verified",
+        confirmed: true,
+      });
+      assert.equal(saved.betaEnabled, config.betaEnabled);
+      f.store.beta.applyPrices(
+        f.admin,
+        f.store.beta.previewPrices(f.admin, [f.row]).id,
+      );
+      const o = f.accept(f.issue(f.requested()));
+      f.store.updateOrder(f.admin, o.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+      const r = f.store.beta.requestRefund(f.buyer, o.id, {
+        requestKey: "recipient-test-0001",
+        reason: "합성 검수",
+      });
+      const approved = f.store.beta.reviewRefund(f.admin, r.id, {
+        revision: r.revision,
+        decision: "approve",
+        amount: 22000,
+        note: "합성 승인",
+        fulfillmentStopped: true,
+      });
+      const complete = {
+        revision: approved.revision,
+        amount: 22000,
+        bankReference: "합성 송금",
+        bankRefundChecked: true,
+      };
+      assert.throws(
+        () => f.store.beta.completeRefund(f.admin, r.id, complete),
+        /명의/,
+      );
+      assert.throws(
+        () =>
+          f.store.beta.completeRefund(f.admin, r.id, {
+            ...complete,
+            recipientBasis: "other",
+            recipientVerified: true,
+          }),
+        /명의/,
+      );
+      let actor = f.admin;
+      const input = {
+        ...complete,
+        recipientBasis: basis,
+        recipientVerified: true,
+      };
+      if (basis === "different_name") {
+        assert.throws(
+          () => f.store.beta.completeRefund(f.admin, r.id, input),
+          /영우/,
+        );
+        actor = f.store.osAdmin("test_yw", "synthetic test passphrase", "영우");
+        assert.throws(
+          () => f.store.beta.completeRefund(actor, r.id, input),
+          /기록번호/,
+        );
+        input.recipientExceptionConfirmed = true;
+        input.recipientExceptionReference = "합성 내부 확인";
+      }
+      const done = f.store.beta.completeRefund(actor, r.id, input);
+      assert.equal(done.status, "completed");
+      assert.equal(done.recipientCheck.basis, basis);
+      assert.equal(f.store.beta.refunds(f.buyer)[0].recipientCheck, undefined);
+      assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+    } finally {
+      f.cleanup();
+    }
+  }
+});

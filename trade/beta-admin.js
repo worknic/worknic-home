@@ -1024,6 +1024,39 @@ async function settings(root) {
     transferPolicy.append(cf);
   }
   root.append(transferPolicy);
+  const recipientPolicy = card("확정 운영 기준 · 환불 수취계좌 확인");
+  recipientPolicy.append(
+    el(
+      "p",
+      "환불 수취계좌는 원입금자 명의를 원칙으로 하고 다른 명의 요청은 영우가 별도로 확인합니다. 송금 전에 확인하고, 실제 송금 완료 기록에 명의 확인 결과와 변경 시 내부 확인번호를 남깁니다. 계좌 전체 번호는 이 화면에 저장하지 않습니다.",
+    ),
+  );
+  if (config.refundRecipient?.value === "original_payer_else_youngwoo_verified")
+    recipientPolicy.append(
+      el("p", "확정 저장됨 · " + date(config.refundRecipient.confirmedAt)),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "원입금자 명의 원칙 및 변경 시 영우 별도 확인 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "환불 수취계좌 기준 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/refund-recipient", {
+        revision: config.revision,
+        value: "original_payer_else_youngwoo_verified",
+        confirmed: true,
+      });
+      say("환불 수취계좌 확인 기준을 저장했습니다.");
+      route();
+    });
+    recipientPolicy.append(cf);
+  }
+  root.append(recipientPolicy);
   const f = el("form");
   field(
     f,

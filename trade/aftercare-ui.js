@@ -513,6 +513,56 @@ export async function adminRefunds(root, refresh) {
     } else if (r.status === "approved") {
       c.append(el("p", "승인 환불액 " + money(r.amount)));
       const f = el("form");
+      if (
+        reviewAccess?.recipientPolicy ===
+        "original_payer_else_youngwoo_verified"
+      ) {
+        f.append(
+          el(
+            "p",
+            "은행 송금 전 원입금자 명의를 대조하세요. 다른 명의 요청은 영우가 별도로 확인합니다.",
+          ),
+        );
+        const label = el("label", "환불 수취계좌 명의 확인"),
+          select = el("select");
+        select.name = "recipientBasis";
+        select.required = true;
+        for (const [value, title] of [
+          ["", "선택해 주세요"],
+          ["original_payer", "원입금자와 동일 명의"],
+          ["different_name", "다른 명의 · 영우 별도 확인"],
+        ]) {
+          const option = el("option", title);
+          option.value = value;
+          select.append(option);
+        }
+        label.append(select);
+        f.append(label);
+        field(
+          f,
+          "recipientVerified",
+          "은행 송금 전에 원입금자와 환불 수취계좌의 명의를 확인했습니다.",
+          false,
+          "checkbox",
+        ).required = true;
+        const exception = field(
+          f,
+          "recipientExceptionConfirmed",
+          "다른 명의 요청에 대해 영우가 별도로 확인했습니다.",
+          false,
+          "checkbox",
+        );
+        const reference = field(
+          f,
+          "recipientExceptionReference",
+          "명의 변경 확인 기록번호 · 계좌번호 입력 금지",
+        );
+        reference.required = false;
+        select.addEventListener("change", () => {
+          exception.required = reference.required =
+            select.value === "different_name";
+        });
+      }
       field(f, "amount", "실제로 환불 송금한 금액 · 원", "", "number");
       field(
         f,
@@ -555,6 +605,10 @@ export async function adminRefunds(root, refresh) {
           amount: Number(d.amount),
           bankReference: d.bankReference,
           bankRefundChecked: true,
+          recipientBasis: d.recipientBasis,
+          recipientVerified: d.recipientVerified === "on",
+          recipientExceptionConfirmed: d.recipientExceptionConfirmed === "on",
+          recipientExceptionReference: d.recipientExceptionReference,
           restockAll: d.restockAll === "on",
           goodsRecovered: d.goodsRecovered === "on",
         });

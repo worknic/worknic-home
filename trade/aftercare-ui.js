@@ -18,6 +18,43 @@ const states = {
   completed: "환불 완료 기록",
 };
 export function orderAftercare(root, o, refunds, refresh, admin = false) {
+  if (o.status === "collected" && !o.specialOrder && o.returnWindow) {
+    const w = o.returnWindow;
+    root.append(
+      el(
+        "p",
+        w.deadlineExclusive
+          ? "단순 변심 반품 신청 마감: " +
+              date(w.deadlineExclusive - 1) +
+              " · 접수 시점을 기준으로 검토합니다."
+          : "단순 변심 반품은 수령 다음날부터 7일 이내입니다. 실제 수령일은 담당자가 확인합니다.",
+      ),
+    );
+    if (admin) {
+      const rf = el("form");
+      field(rf, "receivedOn", "확인한 실제 수령일", w.receivedOn || "", "date");
+      field(
+        rf,
+        "verified",
+        "실제 수령일을 고객·현장 기록으로 확인했습니다.",
+        false,
+        "checkbox",
+      ).required = true;
+      rf.append(el("button", "실제 수령일 확인 저장", "button secondary"));
+      formTask(rf, async (d) => {
+        await call("/admin/orders/receipt-date", {
+          id: o.id,
+          orderRevision: o.revision,
+          receiptRevision: w.receiptRevision || 0,
+          receivedOn: d.receivedOn,
+          actualReceiptVerified: true,
+        });
+        say("확인된 실제 수령일과 반품 신청 마감일을 저장했습니다.");
+        refresh();
+      });
+      root.append(rf);
+    }
+  }
   const rows = (refunds || []).filter((r) => r.orderId === o.id),
     open = rows.some((r) => ["requested", "approved"].includes(r.status));
   const completed = rows
@@ -73,6 +110,18 @@ export function orderAftercare(root, o, refunds, refresh, admin = false) {
         el("p", "요청 사유: " + r.reason),
       );
       if (r.amount) box.append(el("p", "검토 금액 " + money(r.amount)));
+      if (r.returnWindow)
+        box.append(
+          el(
+            "p",
+            "접수기간 확인: " +
+              ({
+                within_period: "기간 내 접수",
+                period_elapsed: "7일 접수기간 경과 · 담당자 확인",
+                receipt_unknown: "실제 수령일 확인 필요",
+              }[r.returnWindow.status] || "담당자 확인"),
+          ),
+        );
       if (r.reviewNote) box.append(el("p", "담당자 안내: " + r.reviewNote));
       if (r.completedAt)
         box.append(el("p", "완료 기록 " + date(r.completedAt)));
@@ -321,6 +370,18 @@ export async function adminRefunds(root, refresh) {
       el("p", "실제 주문 상태 " + (labels[o.status] || o.status)),
     );
     if (r.reviewNote) c.append(el("p", "고객 안내: " + r.reviewNote));
+    if (r.returnWindow)
+      c.append(
+        el(
+          "p",
+          "접수기간 확인: " +
+            ({
+              within_period: "기간 내 접수",
+              period_elapsed: "7일 접수기간 경과",
+              receipt_unknown: "실제 수령일 확인 필요",
+            }[r.returnWindow.status] || "담당자 확인"),
+        ),
+      );
     if (r.status === "requested") {
       const f = el("form");
       f.append(
@@ -342,6 +403,26 @@ export async function adminRefunds(root, refresh) {
         "number",
       ).min = 1;
       field(f, "note", "고객에게 안내할 검토 내용");
+      if (
+        r.reasonType === "change_of_mind" &&
+        r.originalStatus === "collected" &&
+        !o.specialOrder
+      ) {
+        c.append(
+          el(
+            "p",
+            "반품 기간은 실제 수령일과 최초 접수 시점으로 검토합니다. 수령일 확인이 필요하면 견적·주문 화면에서 기록해 주세요.",
+          ),
+        );
+        if (o.returnWindow?.legacy)
+          field(
+            f,
+            "legacyTerms",
+            "기존 주문의 당시 반품 약정과 실제 수령일을 별도로 확인했습니다.",
+            false,
+            "checkbox",
+          ).required = true;
+      }
       if (r.requiresAgreement)
         field(
           f,
@@ -366,6 +447,7 @@ export async function adminRefunds(root, refresh) {
           amount: Number(d.amount),
           note: d.note,
           fulfillmentStopped: true,
+          legacyTermsConfirmed: d.legacyTerms === "on",
           agreementConfirmed: d.agreement === "on",
         });
         say("환불을 승인했습니다. 실제 송금 후 완료를 기록해 주세요.");

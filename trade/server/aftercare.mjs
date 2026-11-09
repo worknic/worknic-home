@@ -15,6 +15,7 @@ export function installAftercare(
     CREATE TABLE IF NOT EXISTS beta_refund_stock(order_id TEXT PRIMARY KEY,value TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS beta_recovery_requests(id TEXT PRIMARY KEY,member_id TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL,reviewed_at INTEGER);
     CREATE TABLE IF NOT EXISTS beta_procurement(order_id TEXT PRIMARY KEY,value TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
+    CREATE TABLE IF NOT EXISTS beta_receipts(order_id TEXT PRIMARY KEY,received_on TEXT NOT NULL,verified_at INTEGER NOT NULL,verified_by TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
     CREATE UNIQUE INDEX IF NOT EXISTS beta_recovery_open ON beta_recovery_requests(member_id) WHERE status='requested';`);
   const own = (actor, member) => {
     if (actor.role !== "admin" && actor.id !== member)
@@ -35,6 +36,12 @@ export function installAftercare(
     if (!r) fail("환불 요청을 찾을 수 없습니다.", 404);
     own(actor, r.member_id);
     const value = JSON.parse(r.value);
+    if (
+      r.status === "requested" &&
+      value.reasonType === "change_of_mind" &&
+      value.originalStatus === "collected"
+    )
+      value.returnWindow = returnWindow(actor, r.order_id, value.requestedAt);
     if (actor.role !== "admin") delete value.bankReference;
     return {
       ...value,
@@ -57,7 +64,73 @@ export function installAftercare(
     message:
       "입력 정보가 등록 정보와 일치하면 담당자가 본인 확인 후 안내합니다.",
   };
+  const returnWindow = (actor, id, at = clock()) => {
+    const o = order(actor, id);
+    if (o.snapshot.specialOrder) return null;
+    const config = JSON.parse(
+      db.prepare("SELECT value FROM beta_config WHERE id=1").get().value,
+    );
+    const days =
+      o.snapshot.standardReturnDays || config.standardReturnPeriod?.days;
+    if (days !== 7) return null;
+    const r = db
+        .prepare("SELECT * FROM beta_receipts WHERE order_id=?")
+        .get(id),
+      legacy = !o.snapshot.standardReturnDays;
+    if (!r)
+      return { days: 7, status: "receipt_unknown", legacy, receiptRevision: 0 };
+    const deadlineExclusive =
+      Date.parse(r.received_on + "T00:00:00+09:00") + 8 * 86400000;
+    return {
+      days: 7,
+      status: at < deadlineExclusive ? "within_period" : "period_elapsed",
+      legacy,
+      receivedOn: r.received_on,
+      deadlineExclusive,
+      receiptRevision: r.revision,
+    };
+  };
   return {
+    returnWindow,
+    confirmReceiptDate(actor, id, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const o = order(actor, id),
+          old = db
+            .prepare("SELECT * FROM beta_receipts WHERE order_id=?")
+            .get(id),
+          day = text(input.receivedOn, 10);
+        if (
+          o.status !== "collected" ||
+          input.actualReceiptVerified !== true ||
+          input.orderRevision !== o.revision ||
+          (old?.revision || 0) !== input.receiptRevision
+        )
+          fail(
+            "실제 수령 완료 주문과 수령일 확인 상태를 다시 확인해 주세요.",
+            409,
+          );
+        const n = Date.parse(day + "T00:00:00Z");
+        if (
+          !/^\d{4}-\d{2}-\d{2}$/.test(day) ||
+          !Number.isFinite(n) ||
+          new Date(n).toISOString().slice(0, 10) !== day ||
+          day > new Date(clock() + 9 * 3600000).toISOString().slice(0, 10) ||
+          day < new Date(o.created_at + 9 * 3600000).toISOString().slice(0, 10)
+        )
+          fail(
+            "주문일 이후의 실제 수령일을 입력해 주세요. 미래 날짜는 사용할 수 없습니다.",
+          );
+        db.prepare(
+          "INSERT INTO beta_receipts VALUES(?,?,?,?,1) ON CONFLICT(order_id) DO UPDATE SET received_on=excluded.received_on,verified_at=excluded.verified_at,verified_by=excluded.verified_by,revision=beta_receipts.revision+1",
+        ).run(id, day, clock(), actor.username);
+        audit(actor, "receipt.date_confirmed", id, {
+          receivedOn: day,
+          previous: old?.received_on || null,
+        });
+        return returnWindow(actor, id);
+      });
+    },
     procurementStage(actor, id) {
       const o = order(actor, id);
       if (!o.snapshot.specialOrder) return null;
@@ -212,6 +285,10 @@ export function installAftercare(
             orderNumber: o.number,
             companyName: o.snapshot.buyer.companyName,
             originalStatus: o.status,
+            returnWindow:
+              input.reasonType === "change_of_mind" && o.status === "collected"
+                ? returnWindow(actor, id)
+                : null,
             reasonType: ["change_of_mind", "defect_or_wrong", "other"].includes(
               input.reasonType,
             )
@@ -275,6 +352,27 @@ export function installAftercare(
           );
         if (r.requiresAgreement) value.agreementConfirmed = true;
         if (input.decision === "approve") {
+          if (
+            r.reasonType === "change_of_mind" &&
+            r.originalStatus === "collected" &&
+            !o.snapshot.specialOrder
+          ) {
+            const w = returnWindow(actor, o.id, r.requestedAt);
+            if (w?.status === "receipt_unknown")
+              fail(
+                "실제 수령일을 확인·저장한 뒤 반품 접수기간을 검토해 주세요.",
+              );
+            if (w?.status === "period_elapsed")
+              fail(
+                "수령 다음날부터 7일 접수기간이 지난 단순 변심 요청입니다. 정상 반품 승인 대신 담당자가 별도 문의로 확인해 주세요.",
+              );
+            if (w?.legacy && input.legacyTermsConfirmed !== true)
+              fail("기존 주문의 당시 반품 약정과 실제 수령일을 확인해 주세요.");
+            if (w) {
+              value.returnWindow = w;
+              value.legacyTermsConfirmed = input.legacyTermsConfirmed === true;
+            }
+          }
           const remaining = o.payment.amount - refunded(o.id),
             amount = input.amount;
           if (!Number.isSafeInteger(amount) || amount < 1 || amount > remaining)

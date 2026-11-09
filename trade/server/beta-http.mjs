@@ -256,6 +256,7 @@ export function createBetaRouter({
           ...o,
           refundHold: store.beta.hasRefundHold(o.id),
           procurement: store.beta.procurementStage(actor, o.id),
+          returnWindow: store.beta.returnWindow(actor, o.id),
           pickup:
             o.fulfillment?.method === "pickup"
               ? store.beta.pickup(actor, o.id)
@@ -382,6 +383,13 @@ export function createBetaRouter({
         return send(store.beta.confirmStandardCancellation(actor, input));
       if (path === "/admin/policies/special-cancellation" && method === "POST")
         return send(store.beta.confirmSpecialCancellation(actor, input));
+      if (
+        path === "/admin/policies/standard-return-period" &&
+        method === "POST"
+      )
+        return send(store.beta.confirmStandardReturnPeriod(actor, input));
+      if (path === "/admin/orders/receipt-date" && method === "POST")
+        return send(store.beta.confirmReceiptDate(actor, input.id, input));
       if (path === "/admin/orders/special-start" && method === "POST")
         return send(store.beta.markSpecialStarted(actor, input.id, input));
       if (path === "/admin/catalog-sync" && method === "POST") {
@@ -428,6 +436,7 @@ export function createBetaRouter({
             ...o,
             refundHold: store.beta.hasRefundHold(o.id),
             procurement: store.beta.procurementStage(actor, o.id),
+            returnWindow: store.beta.returnWindow(actor, o.id),
             pickup:
               o.fulfillment?.method === "pickup"
                 ? store.beta.pickup(actor, o.id)

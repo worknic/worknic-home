@@ -314,6 +314,13 @@ async function ordersView(root) {
       el("p", q.locationName),
     );
     if (q.status === "issued") {
+      if (q.standardReturnDays === 7 && !q.specialOrder)
+        c.append(
+          el(
+            "p",
+            "일반 재고 상품의 단순 변심 반품은 실제 수령 다음날부터 7일 이내 신청합니다.",
+          ),
+        );
       if (
         q.cancellationPolicy ||
         runtime.policies?.standardPreReceiptCancellation

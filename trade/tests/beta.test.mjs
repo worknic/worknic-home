@@ -1171,6 +1171,214 @@ test("단순 변심 예외를 불량·오배송에 적용하지 않고 일반 �
     f.cleanup();
   }
 });
+test("일반 재고 반품은 수령 다음날부터 7일째 KST 자정 경계와 접수 시점으로 판단", () => {
+  const f = fixture();
+  try {
+    let c = f.store.beta.config();
+    f.store.beta.confirmStandardReturnPeriod(f.admin, {
+      revision: c.revision,
+      days: 7,
+      confirmed: true,
+    });
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const collect = () => {
+      const o = f.accept(f.issue(f.requested())),
+        p = f.store.updateOrder(f.admin, o.id, {
+          revision: 1,
+          action: "confirm_payment",
+          amount: 22000,
+          reference: "합성",
+          bankChecked: true,
+        });
+      f.store.beta.readyPickup(f.admin, o.id, {
+        revision: p.revision,
+        slotId: "box1",
+        pin: "7654112233",
+        availableFrom: f.now(),
+        availableUntil: f.now() + 3600000,
+        staged: true,
+        physicalCodeConfigured: true,
+      });
+      f.store.beta.closePickup(f.admin, o.id, {
+        revision: 1,
+        result: "collected",
+        physicalCodeRevoked: true,
+        compartmentChecked: true,
+      });
+      const latest = f.store.order(f.admin, o.id);
+      f.store.beta.confirmReceiptDate(f.admin, o.id, {
+        orderRevision: latest.revision,
+        receiptRevision: 0,
+        receivedOn: "2026-11-09",
+        actualReceiptVerified: true,
+      });
+      return latest;
+    };
+    const first = collect();
+    f.advance(1);
+    const second = collect();
+    assert.equal(first.standardReturnDays, 7);
+    const deadline = Date.parse("2026-11-16T15:00:00Z");
+    assert.equal(
+      f.store.beta.returnWindow(f.buyer, first.id).deadlineExclusive,
+      deadline,
+    );
+    f.advance(deadline - 1 - f.now());
+    const onTime = f.store.beta.requestRefund(f.buyer, first.id, {
+      requestKey: "return-day-seven-0001",
+      reasonType: "change_of_mind",
+      reason: "7일째 접수",
+    });
+    assert.equal(onTime.returnWindow.status, "within_period");
+    f.advance(1);
+    const late = f.store.beta.requestRefund(f.buyer, second.id, {
+      requestKey: "return-day-eight-0001",
+      reasonType: "change_of_mind",
+      reason: "8일째 접수",
+    });
+    assert.equal(late.returnWindow.status, "period_elapsed");
+    f.advance(3 * 86400000);
+    f.store.beta.reviewRefund(f.admin, onTime.id, {
+      revision: onTime.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "접수 시점 기간 내 확인",
+      fulfillmentStopped: true,
+    });
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, late.id, {
+          revision: late.revision,
+          decision: "approve",
+          amount: 22000,
+          note: "기간 초과",
+          fulfillmentStopped: true,
+        }),
+      /7일/,
+    );
+    f.store.beta.reviewRefund(f.admin, late.id, {
+      revision: late.revision,
+      decision: "reject",
+      note: "기간 초과 단순 변심 문의 안내",
+    });
+    const defect = f.store.beta.requestRefund(f.buyer, second.id, {
+      requestKey: "return-defect-late-001",
+      reasonType: "defect_or_wrong",
+      reason: "불량·오배송 확인 요청",
+    });
+    assert.equal(defect.returnWindow, null);
+    f.store.beta.reviewRefund(f.admin, defect.id, {
+      revision: defect.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "단순 변심 기간 적용 제외",
+      fulfillmentStopped: true,
+    });
+  } finally {
+    f.cleanup();
+  }
+});
+test("수령일·과거 약정 미확인 주문은 추측하지 않고 담당자의 실물·약정 확인을 요구", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested())),
+      p = f.store.updateOrder(f.admin, o.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: p.revision,
+      slotId: "box1",
+      pin: "9988776611",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    f.store.beta.closePickup(f.admin, o.id, {
+      revision: 1,
+      result: "collected",
+      physicalCodeRevoked: true,
+      compartmentChecked: true,
+    });
+    const c = f.store.beta.config();
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardReturnPeriod(f.buyer, {
+          revision: c.revision,
+          days: 7,
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    f.store.beta.confirmStandardReturnPeriod(f.admin, {
+      revision: c.revision,
+      days: 7,
+      confirmed: true,
+    });
+    const r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "legacy-return-check-01",
+      reasonType: "change_of_mind",
+      reason: "기존 주문 확인",
+    });
+    assert.equal(r.returnWindow.status, "receipt_unknown");
+    const review = {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "반품 검토",
+      fulfillmentStopped: true,
+    };
+    assert.throws(
+      () => f.store.beta.reviewRefund(f.admin, r.id, review),
+      /수령일/,
+    );
+    const latest = f.store.order(f.admin, o.id),
+      input = {
+        orderRevision: latest.revision,
+        receiptRevision: 0,
+        receivedOn: "2026-11-09",
+        actualReceiptVerified: true,
+      };
+    assert.throws(
+      () => f.store.beta.confirmReceiptDate(f.other, o.id, input),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmReceiptDate(f.admin, o.id, {
+          ...input,
+          receivedOn: "2026-11-10",
+        }),
+      /미래/,
+    );
+    f.store.beta.confirmReceiptDate(f.admin, o.id, input);
+    assert.throws(
+      () => f.store.beta.reviewRefund(f.admin, r.id, review),
+      /약정/,
+    );
+    f.store.beta.reviewRefund(f.admin, r.id, {
+      ...review,
+      legacyTermsConfirmed: true,
+    });
+    assert.equal(
+      f.store.beta.returnWindow(f.buyer, o.id).verifiedBy,
+      undefined,
+    );
+  } finally {
+    f.cleanup();
+  }
+});
 test("견적 유효기간·미정 가격 차단", () => {
   const f = fixture();
   try {

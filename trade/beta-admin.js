@@ -772,6 +772,39 @@ async function settings(root) {
     specialPolicy.append(sf);
   }
   root.append(specialPolicy);
+  const returnPolicy = card("확정 운영 기준 · 일반 재고 단순 변심 반품 기간");
+  returnPolicy.append(
+    el(
+      "p",
+      "실제 수령 다음날을 1일째로 계산하여 7일째 한국 시간 23:59까지 신청합니다. 사용·포장 상태 조건과 반품 비용은 별도 확정합니다.",
+    ),
+  );
+  if (config.standardReturnPeriod?.days === 7)
+    returnPolicy.append(
+      el("p", "확정 저장됨 · " + date(config.standardReturnPeriod.confirmedAt)),
+    );
+  else {
+    const rf = el("form");
+    field(
+      rf,
+      "confirmed",
+      "일반 재고 상품의 수령 다음날부터 7일 이내 반품 접수 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    rf.append(el("button", "반품 접수기간 확정 저장", "button"));
+    formTask(rf, async () => {
+      await call("/admin/policies/standard-return-period", {
+        revision: config.revision,
+        days: 7,
+        confirmed: true,
+      });
+      say("일반 재고 상품의 단순 변심 반품 접수기간을 7일로 저장했습니다.");
+      route();
+    });
+    returnPolicy.append(rf);
+  }
+  root.append(returnPolicy);
   const f = el("form");
   field(
     f,

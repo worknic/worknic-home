@@ -15,6 +15,9 @@ import {
   labels,
   say,
 } from "./beta-common.js";
+import { readTradeEntry, entryProduct } from "./entry-intent.js";
+const entry = readTradeEntry(location.search);
+let focusedProductId = entry.productId, loginReturn = entry.next, routeRevision = 0;
 let member = null,
   bound = false,
   runtime = null,
@@ -52,14 +55,15 @@ async function identity() {
     bound = false;
   }
 }
-function authNotice() {
+function authNotice(destination = "orders") {
+  loginReturn = destination;
   const c = card("사업자 확인 후 이용할 수 있습니다.");
   c.append(
     el(
       "p",
       "워크닉의 승인을 받고 담당자가 전달한 계정 확인 링크에서 본인 확인을 완료해 주세요.",
     ),
-    link("계정 확인", "#account"),
+    link("로그인·계정 확인", "#account"),
   );
   return c;
 }
@@ -98,6 +102,7 @@ function productCard(p) {
     ),
     button("견적에 담기", () => {
       if (!allowed()) {
+        loginReturn = "catalog";
         say("사업자 승인과 계정 확인 후 이용해 주세요.");
         location.hash = "account";
         return;
@@ -115,9 +120,8 @@ function productCard(p) {
   c.append(actions);
   return c;
 }
-function catalogView() {
-  const root = $("#view"),
-    toolbar = el("form", null, "toolbar"),
+function catalogView(root) {
+  const toolbar = el("form", null, "toolbar"),
     query = field(toolbar, "query", "제품·모델 검색"),
     brand = el("select");
   query.required = false;
@@ -133,25 +137,40 @@ function catalogView() {
   label.append(brand);
   toolbar.append(label, el("button", "검색", "button"));
   const products = el("div", null, "products");
+  const focused = entryProduct(focusedProductId, catalog.products), selected = card("공식 홈페이지에서 살펴본 제품");
+  if (focusedProductId && !focused) {
+    focusedProductId = "";
+    root.append(el("p", "선택한 제품의 현재 공개 상태를 확인할 수 없습니다. 아래 공개 목록에서 다시 선택해 주세요.", "muted"));
+  }
+  if (focused) {
+    selected.append(el("p", focused.name + (focused.model ? " · " + focused.model : "")),
+      el("p", "옵션과 수량을 확인해 견적 목록에 담아 주세요. 이동만으로 견적이나 주문이 접수되지는 않습니다.", "muted"),
+      button("전체 제품 보기", () => { focusedProductId = ""; query.value = ""; brand.value = ""; render(); }, "button secondary"));
+    root.append(selected);
+  }
   const render = () => {
     const q = query.value.toLowerCase();
+    selected.hidden = !focusedProductId;
     products.replaceChildren(
       ...catalog.products
         .filter(
           (p) =>
+            (!focusedProductId || p.id === focusedProductId) &&
             (!brand.value || p.brand === brand.value) &&
-            (!q || [p.name, p.model].join(" ").toLowerCase().includes(q)),
+            (!q || [p.id, p.name, p.model].join(" ").toLowerCase().includes(q)),
         )
         .map(productCard),
     );
   };
   toolbar.onsubmit = (e) => {
     e.preventDefault();
+    focusedProductId = "";
     render();
   };
   root.append(
     toolbar,
     el("p", "가격과 공급 조건은 승인 후 견적서로 안내합니다.", "muted"),
+    link("견적 목록·주문 내역", "#orders", "button secondary"),
     products,
   );
   render();
@@ -164,7 +183,7 @@ function cartView() {
   }
   for (const x of cart) {
     const p = catalog.products.find((p) => p.id === x.productId),
-      row = el("div", null, "stock-item");
+      row = el("div", null, "stock-item cart-item");
     row.append(
       el(
         "p",
@@ -220,6 +239,11 @@ function cartView() {
     el("p", "견적 요청만으로 주문이나 입금이 확정되지 않습니다.", "muted"),
     el("button", "견적 요청하기", "button"),
   );
+  const submit = f.querySelector('button[type="submit"],button:not([type])');
+  if (!runtime.betaEnabled || !runtime.locations.some(l => l.enabled)) {
+    submit.disabled = true;
+    c.append(el("p", "신규 견적·픽업 접수는 준비 중입니다. 담은 제품은 이 기기에 보관되며 운영 시작 후 요청할 수 있습니다.", "muted"));
+  }
   formTask(f, async (data) => {
     if (!runtime.betaEnabled) throw Error("베타 접수를 준비하고 있습니다.");
     await call("/quotes", {
@@ -235,12 +259,11 @@ function cartView() {
   c.append(f);
   return c;
 }
-async function ordersView() {
+async function ordersView(root) {
   if (!allowed()) {
-    $("#view").append(authNotice());
+    root.append(authNotice("orders"));
     return;
   }
-  const root = $("#view");
   root.append(cartView());
   const { quotes } = await call("/quotes"),
     { orders } = await call("/orders"),
@@ -297,8 +320,7 @@ async function ordersView() {
   }
   root.append(el("h2", "견적·주문 내역"), list);
 }
-async function pickupView() {
-  const root = $("#view");
+async function pickupView(root) {
   root.append(el("h2", "픽업 안내"));
   root.append(
     el(
@@ -317,7 +339,7 @@ async function pickupView() {
     root.append(c);
   }
   if (!allowed()) {
-    root.append(authNotice());
+    root.append(authNotice("pickup"));
     return;
   }
   const { orders } = await call("/orders");
@@ -370,9 +392,8 @@ async function pickupView() {
     root.append(c);
   }
 }
-function accountView() {
-  const root = $("#view"),
-    activation = new URLSearchParams(location.hash.split("?")[1] || "").get(
+function accountView(root) {
+  const activation = new URLSearchParams(location.hash.split("?")[1] || "").get(
       "activate",
     );
   if (activation) {
@@ -428,7 +449,8 @@ function accountView() {
     await login(lf);
     await identity();
     say("계정에 연결했습니다.");
-    route();
+    if (allowed() && loginReturn !== "account") location.hash = loginReturn;
+    else route();
   });
   lc.append(lf);
   grid.append(lc);
@@ -488,21 +510,23 @@ function accountView() {
 }
 async function route() {
   clearPins();
+  const revision = ++routeRevision;
   const name = location.hash.slice(1).split("?")[0] || "catalog",
-    root = $("#view");
-  root.replaceChildren();
+    view = $("#view"), root = el("div");
+  view.replaceChildren();
   document
     .querySelectorAll(".nav a,.bottom-nav a")
     .forEach((a) =>
       a.setAttribute("aria-current", a.hash === "#" + name ? "page" : "false"),
     );
   try {
-    if (name === "catalog") catalogView();
-    else if (name === "orders") await ordersView();
-    else if (name === "pickup") await pickupView();
-    else accountView();
+    if (name === "catalog") catalogView(root);
+    else if (name === "orders") await ordersView(root);
+    else if (name === "pickup") await pickupView(root);
+    else accountView(root);
+    if (revision === routeRevision) view.replaceChildren(...root.childNodes);
   } catch (e) {
-    say(e.message, true);
+    if (revision === routeRevision) say(e.message, true);
   }
 }
 window.addEventListener("hashchange", route);

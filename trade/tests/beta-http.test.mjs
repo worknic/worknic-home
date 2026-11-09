@@ -63,11 +63,29 @@ test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거
     await new Promise((r) => server.listen(0, "127.0.0.1", r));
     const base = "http://127.0.0.1:" + server.address().port,
       headers = { Cookie: "worknic_trade=" + session.token };
+    const officialHealth = await fetch(base + "/api/beta/health", {
+      headers: { Origin: "https://worknic.co.kr" },
+    });
+    assert.equal(officialHealth.headers.get("access-control-allow-origin"), "https://worknic.co.kr");
+    assert.equal(officialHealth.headers.get("access-control-allow-credentials"), null);
+    assert.equal((await officialHealth.json()).member, undefined);
+    assert.equal((await fetch(base + "/api/beta/health", {
+      headers: { Origin: "https://other.invalid" },
+    })).headers.get("access-control-allow-origin"), null);
+    const me = await fetch(base + "/api/beta/me", {
+      headers: { ...headers, Origin: "https://worknic.co.kr" },
+    });
+    assert.equal(me.headers.get("access-control-allow-origin"), null);
+    assert.equal((await me.json()).member.status, "approved");
+    assert.equal((await fetch(base + "/api/beta/quotes", {
+      method: "POST", headers: { ...headers, Origin: "https://worknic.co.kr", "Content-Type": "application/json" }, body: "{}",
+    })).status, 403);
     assert.equal(
       (await fetch(base + "/api/beta/catalog", { headers })).status,
       200,
     );
     status = "suspended";
+    assert.equal((await (await fetch(base + "/api/beta/me", { headers })).json()).member.status, "suspended");
     assert.equal(
       (await fetch(base + "/api/beta/catalog", { headers })).status,
       403,
@@ -106,6 +124,7 @@ test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거
       "application/manifest+json",
     );
     assert.equal((await manifest.json()).scope, "/trade/");
+    assert.equal((await fetch(base + "/trade/entry-intent.js")).status, 200);
     const code = await fetch(
       base + "/api/beta/orders/00000000-0000-0000-0000-000000000000/code",
       {

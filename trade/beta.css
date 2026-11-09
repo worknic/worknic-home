@@ -370,6 +370,7 @@ th {
 .stock-item input:not([type="checkbox"]) {
   width: 100%;
 }
+.stock-item.cart-item{grid-template-columns:minmax(0,1fr) 110px auto}
 @media (max-width: 800px) {
   .products {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -413,6 +414,7 @@ th {
   .stock-item {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
+  .stock-item.cart-item{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .stock-item p {
     grid-column: 1/-1;
   }

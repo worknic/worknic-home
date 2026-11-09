@@ -64,12 +64,17 @@ export function createBetaRouter({
       json(res, v, s, headers);
       return true;
     };
-    if (path === "/health" && method === "GET")
+    if (path === "/health" && method === "GET") {
+      const publicOrigins = new Set(["https://worknic.co.kr", "https://www.worknic.co.kr"]);
       return send({
         ok: true,
         approvalBridgeConfigured: demo || os.configured(),
         ...store.beta.runtime(),
-      });
+      }, 200, publicOrigins.has(req.headers.origin) ? {
+        "Access-Control-Allow-Origin": req.headers.origin,
+        Vary: "Origin",
+      } : {});
+    }
     if (path === "/public-catalog" && method === "GET") {
       const d = await os.publicCatalog();
       return send({
@@ -152,11 +157,20 @@ export function createBetaRouter({
       if (proof.status !== "approved" || proof.id !== b.request_id)
         fail("사업자 거래 승인이 유효하지 않습니다.", 403);
     }
-    if (path === "/me" && method === "GET")
+    if (path === "/me" && method === "GET") {
+      const binding = store.beta.binding(actor);
+      let member = actor;
+      if (!admin && binding?.activated && !demo) {
+        const proof = await os.status(actor.profile, binding.request_id);
+        if (proof.id !== binding.request_id || !["approved", "pending", "rejected", "suspended"].includes(proof.status))
+          fail("OS 승인 상태를 확인해 주세요.", 503);
+        member = { ...actor, status: proof.status };
+      }
       return send({
-        member: actor,
-        bound: !!store.beta.binding(actor)?.activated,
+        member,
+        bound: !!binding?.activated,
       });
+    }
     if (path === "/receipt-retry" && method === "POST") {
       store.limit("receipt:" + actor.id, 3, 3600000);
       await os.apply(actor.profile);

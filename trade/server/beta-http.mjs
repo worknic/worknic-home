@@ -388,6 +388,11 @@ export function createBetaRouter({
         method === "POST"
       )
         return send(store.beta.confirmStandardReturnPeriod(actor, input));
+      if (
+        path === "/admin/policies/standard-return-condition" &&
+        method === "POST"
+      )
+        return send(store.beta.confirmStandardReturnCondition(actor, input));
       if (path === "/admin/orders/receipt-date" && method === "POST")
         return send(store.beta.confirmReceiptDate(actor, input.id, input));
       if (path === "/admin/orders/special-start" && method === "POST")

@@ -18,16 +18,20 @@ const states = {
   completed: "환불 완료 기록",
 };
 export function orderAftercare(root, o, refunds, refresh, admin = false) {
+  if (o.returnConditionText)
+    root.append(el("p", o.returnConditionText, "muted"));
   if (o.status === "collected" && !o.specialOrder && o.returnWindow) {
     const w = o.returnWindow;
     root.append(
       el(
         "p",
-        w.deadlineExclusive
-          ? "단순 변심 반품 신청 마감: " +
+        w.legacy
+          ? "이전 주문은 당시 반품 약정과 실제 수령일을 담당자가 별도로 확인합니다."
+          : w.deadlineExclusive
+            ? "단순 변심 반품 신청 마감: " +
               date(w.deadlineExclusive - 1) +
               " · 접수 시점을 기준으로 검토합니다."
-          : "단순 변심 반품은 수령 다음날부터 7일 이내입니다. 실제 수령일은 담당자가 확인합니다.",
+            : "단순 변심 반품은 수령 다음날부터 7일 이내입니다. 실제 수령일은 담당자가 확인합니다.",
       ),
     );
     if (admin) {
@@ -414,7 +418,7 @@ export async function adminRefunds(root, refresh) {
             "반품 기간은 실제 수령일과 최초 접수 시점으로 검토합니다. 수령일 확인이 필요하면 견적·주문 화면에서 기록해 주세요.",
           ),
         );
-        if (o.returnWindow?.legacy)
+        if (o.returnWindow?.legacy || !o.standardReturnCondition)
           field(
             f,
             "legacyTerms",
@@ -422,6 +426,13 @@ export async function adminRefunds(root, refresh) {
             false,
             "checkbox",
           ).required = true;
+        field(
+          f,
+          "returnConditionVerified",
+          "반품 제품의 미사용 상태와 구성품·라벨·포장 보존을 확인했습니다. 외부 박스 개봉만으로 반려하지 않습니다.",
+          false,
+          "checkbox",
+        ).required = !!o.standardReturnCondition;
       }
       if (r.requiresAgreement)
         field(
@@ -448,6 +459,7 @@ export async function adminRefunds(root, refresh) {
           note: d.note,
           fulfillmentStopped: true,
           legacyTermsConfirmed: d.legacyTerms === "on",
+          returnConditionVerified: d.returnConditionVerified === "on",
           agreementConfirmed: d.agreement === "on",
         });
         say("환불을 승인했습니다. 실제 송금 후 완료를 기록해 주세요.");

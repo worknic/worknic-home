@@ -79,6 +79,14 @@ export function installAftercare(
       legacy = !o.snapshot.standardReturnDays;
     if (!r)
       return { days: 7, status: "receipt_unknown", legacy, receiptRevision: 0 };
+    if (legacy)
+      return {
+        days: null,
+        status: "legacy_terms_review",
+        legacy: true,
+        receivedOn: r.received_on,
+        receiptRevision: r.revision,
+      };
     const deadlineExclusive =
       Date.parse(r.received_on + "T00:00:00+09:00") + 8 * 86400000;
     return {
@@ -352,6 +360,39 @@ export function installAftercare(
           );
         if (r.requiresAgreement) value.agreementConfirmed = true;
         if (input.decision === "approve") {
+          if (
+            r.reasonType === "change_of_mind" &&
+            r.originalStatus === "collected" &&
+            !o.snapshot.specialOrder
+          ) {
+            const config = JSON.parse(
+              db.prepare("SELECT value FROM beta_config WHERE id=1").get()
+                .value,
+            );
+            const condition =
+              o.snapshot.standardReturnCondition ||
+              config.standardReturnCondition?.value;
+            if (condition === "unused_complete_outer_box_open_allowed") {
+              if (
+                o.snapshot.standardReturnCondition &&
+                input.returnConditionVerified !== true
+              )
+                fail(
+                  "반품 제품의 미사용 상태와 구성품·라벨·포장 보존을 확인해 주세요. 외부 박스 개봉만으로 반려하지 않습니다.",
+                );
+              if (
+                !o.snapshot.standardReturnCondition &&
+                input.legacyTermsConfirmed !== true
+              )
+                fail("기존 주문의 당시 반품 상태 조건도 확인해 주세요.");
+              if (input.returnConditionVerified === true) {
+                value.returnConditionVerified = true;
+                value.returnCondition = condition;
+              }
+              if (!o.snapshot.standardReturnCondition)
+                value.legacyConditionReviewed = true;
+            }
+          }
           if (
             r.reasonType === "change_of_mind" &&
             r.originalStatus === "collected" &&

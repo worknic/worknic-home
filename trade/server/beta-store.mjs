@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        standardReturnCondition:
+          config().standardReturnCondition?.value ===
+          "unused_complete_outer_box_open_allowed"
+            ? "일반 재고 상품은 제품 미사용, 구성품·라벨·포장이 온전히 보존된 경우 외부 박스 개봉만으로 단순 변심 반품을 제한하지 않습니다."
+            : null,
         standardReturnPeriod:
           config().standardReturnPeriod?.days === 7
             ? "일반 재고 상품의 단순 변심 반품은 실제 수령 다음날부터 7일 이내에 신청합니다."
@@ -456,6 +461,38 @@ export function installBeta(
         ).run(JSON.stringify(next));
         audit(actor, "policy.standard_return_period_confirmed", "beta", {
           days: 7,
+        });
+        return config();
+      });
+    },
+    confirmStandardReturnCondition(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "unused_complete_outer_box_open_allowed" ||
+          input.confirmed !== true
+        )
+          fail(
+            "제품 미사용·구성품·라벨·포장 보존 및 외부 박스 개봉 허용 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          standardReturnCondition: {
+            value: input.value,
+            scope: "standard_stock_change_of_mind",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.standard_return_condition_confirmed", "beta", {
+          value: input.value,
         });
         return config();
       });
@@ -830,6 +867,12 @@ export function installBeta(
           standardReturnDays: specialOrder
             ? null
             : config().standardReturnPeriod?.days || null,
+          standardReturnCondition: specialOrder
+            ? null
+            : config().standardReturnCondition?.value || null,
+          returnConditionText: specialOrder
+            ? ""
+            : api.beta.runtime().policies.standardReturnCondition || "",
           cancellationPolicy: specialOrder
             ? "주문제작·별도 발주 상품의 단순 변심 취소는 제작·발주 전 전액 환불, 시작 후 건별 협의로 처리합니다."
             : api.beta.runtime().policies.standardPreReceiptCancellation || "",
@@ -929,6 +972,8 @@ export function installBeta(
             quoteId: id,
             specialOrder: q.specialOrder === true,
             standardReturnDays: q.standardReturnDays || null,
+            standardReturnCondition: q.standardReturnCondition || null,
+            returnConditionText: q.returnConditionText || "",
             cancellationPolicy: q.cancellationPolicy || "",
             note: q.note,
             termsVersion: settings().consentVersion,

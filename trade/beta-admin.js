@@ -776,7 +776,7 @@ async function settings(root) {
   returnPolicy.append(
     el(
       "p",
-      "실제 수령 다음날을 1일째로 계산하여 7일째 한국 시간 23:59까지 신청합니다. 사용·포장 상태 조건과 반품 비용은 별도 확정합니다.",
+      "실제 수령 다음날을 1일째로 계산하여 7일째 한국 시간 23:59까지 신청합니다. 반품 비용은 별도 확정합니다.",
     ),
   );
   if (config.standardReturnPeriod?.days === 7)
@@ -805,6 +805,45 @@ async function settings(root) {
     returnPolicy.append(rf);
   }
   root.append(returnPolicy);
+  const conditionPolicy = card("확정 운영 기준 · 단순 변심 반품의 상품 상태");
+  conditionPolicy.append(
+    el(
+      "p",
+      "제품이 미사용이고 구성품·라벨·포장이 온전히 보존된 경우 외부 박스 개봉을 허용합니다. 반품 비용은 별도 확정합니다.",
+    ),
+  );
+  if (
+    config.standardReturnCondition?.value ===
+    "unused_complete_outer_box_open_allowed"
+  )
+    conditionPolicy.append(
+      el(
+        "p",
+        "확정 저장됨 · " + date(config.standardReturnCondition.confirmedAt),
+      ),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "미사용·구성품·라벨·포장 보존 시 외부 박스 개봉 허용 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "반품 상품 상태 기준 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/standard-return-condition", {
+        revision: config.revision,
+        value: "unused_complete_outer_box_open_allowed",
+        confirmed: true,
+      });
+      say("단순 변심 반품의 상품 상태 기준을 저장했습니다.");
+      route();
+    });
+    conditionPolicy.append(cf);
+  }
+  root.append(conditionPolicy);
   const f = el("form");
   field(
     f,

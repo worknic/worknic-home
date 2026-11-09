@@ -1326,6 +1326,7 @@ test("수령일·과거 약정 미확인 주문은 추측하지 않고 담당자
       days: 7,
       confirmed: true,
     });
+    f.advance(8 * 86400000);
     const r = f.store.beta.requestRefund(f.buyer, o.id, {
       requestKey: "legacy-return-check-01",
       reasonType: "change_of_mind",
@@ -1358,7 +1359,7 @@ test("수령일·과거 약정 미확인 주문은 추측하지 않고 담당자
       () =>
         f.store.beta.confirmReceiptDate(f.admin, o.id, {
           ...input,
-          receivedOn: "2026-11-10",
+          receivedOn: "2026-11-18",
         }),
       /미래/,
     );
@@ -1375,6 +1376,173 @@ test("수령일·과거 약정 미확인 주문은 추측하지 않고 담당자
       f.store.beta.returnWindow(f.buyer, o.id).verifiedBy,
       undefined,
     );
+  } finally {
+    f.cleanup();
+  }
+});
+test("일반 재고 단순 변심 상태 조건은 견적에 고정하고 상태 확인 뒤 승인", () => {
+  const f = fixture();
+  try {
+    const config = f.store.beta.config(),
+      value = "unused_complete_outer_box_open_allowed";
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardReturnCondition(f.buyer, {
+          revision: config.revision,
+          value,
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardReturnCondition(f.admin, {
+          revision: config.revision,
+          value: "other",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmStandardReturnCondition(f.admin, {
+      revision: config.revision,
+      value,
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, config.betaEnabled);
+    assert.equal(f.price().price, null);
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const q = f.issue(f.requested()),
+      o = f.accept(q);
+    assert.equal(q.standardReturnCondition, value);
+    assert.equal(o.standardReturnCondition, value);
+    assert.match(o.returnConditionText, /외부 박스 개봉/);
+    const p = f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성",
+      bankChecked: true,
+    });
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: p.revision,
+      slotId: "box1",
+      pin: "1234987655",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    f.store.beta.closePickup(f.admin, o.id, {
+      revision: 1,
+      result: "collected",
+      physicalCodeRevoked: true,
+      compartmentChecked: true,
+    });
+    const r = f.store.beta.requestRefund(f.buyer, o.id, {
+        requestKey: "condition-standard-001",
+        reasonType: "change_of_mind",
+        reason: "미사용·외부 박스만 개봉",
+      }),
+      review = {
+        revision: r.revision,
+        decision: "approve",
+        amount: 22000,
+        note: "회수 상품 상태 확인",
+        fulfillmentStopped: true,
+      };
+    assert.throws(
+      () => f.store.beta.reviewRefund(f.admin, r.id, review),
+      /미사용/,
+    );
+    const result = f.store.beta.reviewRefund(f.admin, r.id, {
+      ...review,
+      returnConditionVerified: true,
+    });
+    assert.equal(result.returnConditionVerified, true);
+    assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+  } finally {
+    f.cleanup();
+  }
+});
+test("이전 상태 조건은 따로 확인하고 불량·오배송에 미사용 조건을 적용하지 않음", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested())),
+      p = f.store.updateOrder(f.admin, o.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: p.revision,
+      slotId: "box1",
+      pin: "6677889900",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    f.store.beta.closePickup(f.admin, o.id, {
+      revision: 1,
+      result: "collected",
+      physicalCodeRevoked: true,
+      compartmentChecked: true,
+    });
+    const config = f.store.beta.config();
+    f.store.beta.confirmStandardReturnCondition(f.admin, {
+      revision: config.revision,
+      value: "unused_complete_outer_box_open_allowed",
+      confirmed: true,
+    });
+    let r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "condition-legacy-0001",
+      reasonType: "change_of_mind",
+      reason: "이전 주문 조건 확인",
+    });
+    const review = {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "당시 약정·실물 확인",
+      fulfillmentStopped: true,
+      returnConditionVerified: false,
+    };
+    assert.throws(
+      () => f.store.beta.reviewRefund(f.admin, r.id, review),
+      /당시/,
+    );
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      ...review,
+      legacyTermsConfirmed: true,
+    });
+    f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "reject",
+      note: "송금 전 재검토 합성",
+      bankNotSent: true,
+    });
+    r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "condition-defect-0001",
+      reasonType: "defect_or_wrong",
+      reason: "불량·오배송 확인",
+    });
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "단순 변심 조건 미적용",
+      fulfillmentStopped: true,
+    });
+    assert.equal(r.returnConditionVerified, undefined);
   } finally {
     f.cleanup();
   }

@@ -351,11 +351,23 @@ th {
 }
 .stock-item {
   display: grid;
-  grid-template-columns: 1fr 100px auto;
+  grid-template-columns: minmax(0, 1fr) 110px minmax(180px, 230px) auto;
   gap: 12px;
   align-items: end;
 }
-.stock-item input {
+.stock-item p {
+  min-width: 0;
+  margin: 0;
+}
+.stock-item .check {
+  align-self: center;
+  line-height: 1.5;
+}
+.stock-item button {
+  width: auto;
+  white-space: nowrap;
+}
+.stock-item input:not([type="checkbox"]) {
   width: 100%;
 }
 @media (max-width: 800px) {
@@ -399,7 +411,10 @@ th {
     font-size: 10px;
   }
   .stock-item {
-    grid-template-columns: 1fr 90px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .stock-item p {
+    grid-column: 1/-1;
   }
   .stock-item button {
     grid-column: 1/-1;

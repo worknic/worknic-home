@@ -317,6 +317,20 @@ async function quotes(root) {
       field(f, "expiresAt", "견적 유효기간", "", "datetime-local");
       field(
         f,
+        "specialOrder",
+        "견적 전체가 주문제작·별도 발주 상품이며, 일반 재고 상품을 섞지 않았습니다.",
+        false,
+        "checkbox",
+      );
+      f.append(
+        el(
+          "p",
+          "주문제작·별도 발주 상품은 취소 기준을 견적에 명시합니다. 일반 재고 상품은 별도 견적으로 나누세요.",
+          "muted",
+        ),
+      );
+      field(
+        f,
         "checked",
         "가격표·규격·포함품·수량·픽업 비용을 확인했습니다.",
         false,
@@ -330,6 +344,8 @@ async function quotes(root) {
           pickupFee: Number(d.pickupFee),
           expiresAt: new Date(d.expiresAt).getTime(),
           conditionsConfirmed: true,
+          specialOrder: d.specialOrder === "on",
+          specialOrderAcknowledged: d.specialOrder === "on",
           items: individual.map(({ line, amount, unit, tax }) => ({
             productId: line.productId,
             optionId: line.optionId,
@@ -374,6 +390,50 @@ async function orderList(pickupOnly, root) {
       link("거래명세서", "/api/beta/orders/" + o.id + "/statement"),
     );
     orderAftercare(c, o, refunds, route, true);
+    if (o.specialOrder) {
+      c.append(
+        el("p", o.cancellationPolicy),
+        el(
+          "p",
+          o.procurement?.state === "started"
+            ? "제작·발주 시작 기록: " + date(o.procurement.startedAt)
+            : "제작·발주 전",
+        ),
+      );
+      if (
+        !refundHold &&
+        ["paid", "preparing"].includes(o.status) &&
+        o.procurement?.state !== "started"
+      ) {
+        const sf = el("form");
+        field(
+          sf,
+          "reference",
+          "실제 제작·발주 시작 내부 확인번호 · 고객에게 공개하지 않음",
+        );
+        field(
+          sf,
+          "confirmed",
+          "실제 제작·발주를 시작했으며, 이 화면은 공급사 발주를 대신하지 않음을 확인했습니다.",
+          false,
+          "checkbox",
+        ).required = true;
+        sf.append(el("button", "제작·발주 시작 기록", "button secondary"));
+        formTask(sf, async (d) => {
+          await call("/admin/orders/special-start", {
+            id: o.id,
+            orderRevision: o.revision,
+            reference: d.reference,
+            actualStartConfirmed: true,
+          });
+          say(
+            "실제 제작·발주 시작을 기록했습니다. 이후 단순 변심 취소는 건별 협의합니다.",
+          );
+          route();
+        });
+        c.append(sf);
+      }
+    }
     if (o.status === "pending_payment") {
       const f = el("form");
       field(f, "amount", "실제 입금액", "", "number");
@@ -640,7 +700,7 @@ async function settings(root) {
   policy.append(
     el(
       "p",
-      "수령 전 취소 시 남은 입금액 전액 환불. 담당자가 상품 준비·전달을 중단한 뒤 처리합니다. 주문제작·별도 발주 상품 예외는 별도 확정합니다.",
+      "일반 재고 상품은 수령 전 취소 시 남은 입금액 전액 환불. 담당자가 상품 준비·전달을 중단한 뒤 처리합니다.",
     ),
   );
   if (config.standardPreReceiptCancellation?.value === "full_refund")
@@ -673,6 +733,45 @@ async function settings(root) {
     policy.append(pf);
   }
   root.append(policy);
+  const specialPolicy = card("확정 운영 기준 · 주문제작·별도 발주 상품");
+  specialPolicy.append(
+    el(
+      "p",
+      "단순 변심 취소는 제작·발주 전 전액 환불, 시작 후 건별 협의로 처리합니다. 견적에 해당 상품임을 명시하고 실제 시작 기록을 남깁니다.",
+    ),
+  );
+  if (
+    config.specialOrderCancellation?.value ===
+    "full_before_start_agreement_after"
+  )
+    specialPolicy.append(
+      el(
+        "p",
+        "확정 저장됨 · " + date(config.specialOrderCancellation.confirmedAt),
+      ),
+    );
+  else {
+    const sf = el("form");
+    field(
+      sf,
+      "confirmed",
+      "주문제작·별도 발주 상품의 시작 전 전액 환불·시작 후 건별 협의 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    sf.append(el("button", "특수 상품 취소 기준 확정 저장", "button"));
+    formTask(sf, async () => {
+      await call("/admin/policies/special-cancellation", {
+        revision: config.revision,
+        value: "full_before_start_agreement_after",
+        confirmed: true,
+      });
+      say("주문제작·별도 발주 상품의 취소 기준을 저장했습니다.");
+      route();
+    });
+    specialPolicy.append(sf);
+  }
+  root.append(specialPolicy);
   const f = el("form");
   field(
     f,

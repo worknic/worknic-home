@@ -26,6 +26,7 @@ export const labels = {
   expired: "입금기한 만료",
   cancelled: "취소",
   refunded: "전액 환불 완료",
+  cancelled_settled: "협의 취소 정산 완료",
   pending: "승인 대기",
   approved: "승인",
   suspended: "거래 정지",

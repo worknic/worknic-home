@@ -954,6 +954,223 @@ test("취소 기준 확정은 접수·가격·재고를 변경하지 않고 일�
     f.cleanup();
   }
 });
+test("특수 상품은 견적에 기준을 고정하고 시작 전 전액·시작 후 협의 취소로 구분", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const request = f.requested(),
+      input = {
+        revision: request.revision,
+        pickupFee: 0,
+        conditionsConfirmed: true,
+        expiresAt: f.now() + 86400000,
+        specialOrder: true,
+        specialOrderAcknowledged: true,
+      };
+    assert.throws(
+      () => f.store.beta.issueQuote(f.admin, request.id, input),
+      /취소 기준/,
+    );
+    let config = f.store.beta.config();
+    assert.throws(
+      () =>
+        f.store.beta.confirmSpecialCancellation(f.buyer, {
+          revision: config.revision,
+          value: "full_before_start_agreement_after",
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    f.store.beta.confirmSpecialCancellation(f.admin, {
+      revision: config.revision,
+      value: "full_before_start_agreement_after",
+      confirmed: true,
+    });
+    assert.throws(
+      () =>
+        f.store.beta.issueQuote(f.admin, request.id, {
+          ...input,
+          specialOrderAcknowledged: false,
+        }),
+      /확인/,
+    );
+    const quote = f.store.beta.issueQuote(f.admin, request.id, input),
+      o = f.accept(quote);
+    assert.equal(o.specialOrder, true);
+    assert.match(o.cancellationPolicy, /시작 후 건별 협의/);
+    const paid = f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성",
+      bankChecked: true,
+    });
+    let r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "special-before-00001",
+      reasonType: "change_of_mind",
+      reason: "시작 전 취소",
+    });
+    assert.equal(r.requiresAgreement, false);
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, r.id, {
+          revision: r.revision,
+          decision: "approve",
+          amount: 10000,
+          note: "일부 환불",
+          fulfillmentStopped: true,
+        }),
+      /전액/,
+    );
+    const start = {
+      orderRevision: paid.revision,
+      actualStartConfirmed: true,
+      reference: "비공개 공급사 검수 번호",
+    };
+    assert.throws(
+      () => f.store.beta.markSpecialStarted(f.admin, o.id, start),
+      /검토 중/,
+    );
+    f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "reject",
+      note: "고객이 취소 철회·주문 진행",
+    });
+    assert.throws(
+      () => f.store.beta.markSpecialStarted(f.buyer, o.id, start),
+      /관리자/,
+    );
+    f.store.beta.markSpecialStarted(f.admin, o.id, start);
+    assert.equal(
+      f.store.beta.procurementStage(f.buyer, o.id).reference,
+      undefined,
+    );
+    assert.equal(
+      f.store.beta.procurementStage(f.admin, o.id).reference,
+      start.reference,
+    );
+    assert.throws(
+      () => f.store.beta.markSpecialStarted(f.admin, o.id, start),
+      /상태/,
+    );
+    r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "special-after-000001",
+      reasonType: "change_of_mind",
+      reason: "시작 후 협의 요청",
+    });
+    assert.equal(r.requiresAgreement, true);
+    const review = {
+      revision: r.revision,
+      decision: "approve",
+      amount: 7000,
+      note: "고객과 7,000원 환불·15,000원 비용·주문 취소 협의",
+      fulfillmentStopped: true,
+    };
+    assert.throws(
+      () => f.store.beta.reviewRefund(f.admin, r.id, review),
+      /협의/,
+    );
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      ...review,
+      agreementConfirmed: true,
+    });
+    f.store.beta.completeRefund(f.admin, r.id, {
+      revision: r.revision,
+      amount: 7000,
+      bankReference: "합성",
+      bankRefundChecked: true,
+    });
+    assert.equal(f.store.order(f.buyer, o.id).status, "cancelled_settled");
+    assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+    assert.equal(f.store.products(f.admin)[0].stock, 28);
+  } finally {
+    f.cleanup();
+  }
+});
+test("단순 변심 예외를 불량·오배송에 적용하지 않고 일반 재고 주문의 시작 기록도 차단", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const standard = f.accept(f.issue(f.requested())),
+      paidStandard = f.store.updateOrder(f.admin, standard.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+    assert.throws(
+      () =>
+        f.store.beta.markSpecialStarted(f.admin, standard.id, {
+          orderRevision: paidStandard.revision,
+          actualStartConfirmed: true,
+          reference: "잘못된 분류",
+        }),
+      /특수 상품/,
+    );
+    const c = f.store.beta.config();
+    f.store.beta.confirmSpecialCancellation(f.admin, {
+      revision: c.revision,
+      value: "full_before_start_agreement_after",
+      confirmed: true,
+    });
+    f.advance(1);
+    const q = f.requested(),
+      issued = f.store.beta.issueQuote(f.admin, q.id, {
+        revision: q.revision,
+        pickupFee: 0,
+        conditionsConfirmed: true,
+        expiresAt: f.now() + 86400000,
+        specialOrder: true,
+        specialOrderAcknowledged: true,
+      }),
+      o = f.accept(issued);
+    const paid = f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성",
+      bankChecked: true,
+    });
+    f.store.beta.markSpecialStarted(f.admin, o.id, {
+      orderRevision: paid.revision,
+      actualStartConfirmed: true,
+      reference: "합성 시작",
+    });
+    const r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "special-defect-00001",
+      reasonType: "defect_or_wrong",
+      reason: "불량·오배송 확인 요청",
+    });
+    assert.equal(r.requiresAgreement, false);
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, r.id, {
+          revision: r.revision,
+          decision: "approve",
+          amount: 7000,
+          note: "잘못된 예외 적용",
+          fulfillmentStopped: true,
+        }),
+      /전액/,
+    );
+    f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "전액 확인",
+      fulfillmentStopped: true,
+    });
+  } finally {
+    f.cleanup();
+  }
+});
 test("견적 유효기간·미정 가격 차단", () => {
   const f = fixture();
   try {
@@ -1091,4 +1308,3 @@ test("픽업 비밀번호 기간 밖 접근·만료 보관함 재사용 차단·
     f.cleanup();
   }
 });
-

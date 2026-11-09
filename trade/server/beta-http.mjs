@@ -255,6 +255,7 @@ export function createBetaRouter({
         orders: store.orders(actor).map((o) => ({
           ...o,
           refundHold: store.beta.hasRefundHold(o.id),
+          procurement: store.beta.procurementStage(actor, o.id),
           pickup:
             o.fulfillment?.method === "pickup"
               ? store.beta.pickup(actor, o.id)
@@ -379,6 +380,10 @@ export function createBetaRouter({
       }
       if (path === "/admin/policies/standard-cancellation" && method === "POST")
         return send(store.beta.confirmStandardCancellation(actor, input));
+      if (path === "/admin/policies/special-cancellation" && method === "POST")
+        return send(store.beta.confirmSpecialCancellation(actor, input));
+      if (path === "/admin/orders/special-start" && method === "POST")
+        return send(store.beta.markSpecialStarted(actor, input.id, input));
       if (path === "/admin/catalog-sync" && method === "POST") {
         const d = await os.publicCatalog();
         return send(store.importCatalog(actor, d));
@@ -422,6 +427,7 @@ export function createBetaRouter({
           orders: store.orders(actor).map((o) => ({
             ...o,
             refundHold: store.beta.hasRefundHold(o.id),
+            procurement: store.beta.procurementStage(actor, o.id),
             pickup:
               o.fulfillment?.method === "pickup"
                 ? store.beta.pickup(actor, o.id)

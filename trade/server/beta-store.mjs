@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        specialOrderCancellation:
+          config().specialOrderCancellation?.value ===
+          "full_before_start_agreement_after"
+            ? "주문제작·별도 발주 상품의 단순 변심 취소는 제작·발주 전 전액 환불, 시작 후 건별 협의로 처리합니다."
+            : null,
         standardPreReceiptCancellation:
           config().standardPreReceiptCancellation?.value === "full_refund"
             ? "일반 재고 상품은 수령 전 취소 시 남은 입금액 전액을 환불합니다. 담당자가 상품 준비·전달을 중단한 뒤 처리합니다."
@@ -388,6 +393,36 @@ export function installBeta(
         audit(actor, "policy.standard_pre_receipt_confirmed", "beta", {
           value: "full_refund",
           scope: "standard_stock",
+        });
+        return config();
+      });
+    },
+    confirmSpecialCancellation(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "full_before_start_agreement_after" ||
+          input.confirmed !== true
+        )
+          fail("주문제작·별도 발주 상품의 취소 기준을 확인해 주세요.");
+        const next = {
+          ...current,
+          specialOrderCancellation: {
+            value: input.value,
+            scope: "special_order_change_of_mind",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.special_order_confirmed", "beta", {
+          value: input.value,
         });
         return config();
       });
@@ -677,6 +712,16 @@ export function installBeta(
           fail("견적 상태가 변경됐습니다.", 409);
         if (!config().documentsConfirmed)
           fail("부가세·문서 운영 기준을 먼저 확인해 주세요.");
+        const specialOrder = input.specialOrder === true;
+        if (
+          specialOrder &&
+          (config().specialOrderCancellation?.value !==
+            "full_before_start_agreement_after" ||
+            input.specialOrderAcknowledged !== true)
+        )
+          fail(
+            "확정된 특수 상품 취소 기준과 견적 전체의 주문제작·별도 발주 여부를 확인해 주세요.",
+          );
         let individual = null;
         if (input.items !== undefined) {
           if (
@@ -748,6 +793,10 @@ export function installBeta(
           fail("견적 유효기간은 최대 14일");
         const value = {
           ...q,
+          specialOrder,
+          cancellationPolicy: specialOrder
+            ? "주문제작·별도 발주 상품의 단순 변심 취소는 제작·발주 전 전액 환불, 시작 후 건별 협의로 처리합니다."
+            : api.beta.runtime().policies.standardPreReceiptCancellation || "",
           items,
           pickupFee: fee,
           subtotal: items.reduce((s, x) => s + x.amount, 0),
@@ -842,6 +891,8 @@ export function installBeta(
               handover: location.id === "jinjeop" ? "handoff" : "locker",
             },
             quoteId: id,
+            specialOrder: q.specialOrder === true,
+            cancellationPolicy: q.cancellationPolicy || "",
             note: q.note,
             termsVersion: settings().consentVersion,
           };

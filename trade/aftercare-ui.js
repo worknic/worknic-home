@@ -91,7 +91,9 @@ export function orderAftercare(root, o, refunds, refresh, admin = false) {
   if (
     o.payment &&
     !open &&
-    !["refunded", "cancelled", "expired"].includes(o.status) &&
+    !["refunded", "cancelled", "expired", "cancelled_settled"].includes(
+      o.status,
+    ) &&
     completed < o.payment.amount
   ) {
     const f = el("form");
@@ -103,6 +105,22 @@ export function orderAftercare(root, o, refunds, refresh, admin = false) {
       ),
     );
     field(f, "reason", "취소·반품 요청 사유");
+    const reasonLabel = el("label", "요청 구분"),
+      reasonType = el("select");
+    reasonType.name = "reasonType";
+    reasonType.required = true;
+    for (const [value, label] of [
+      ["", "선택해 주세요"],
+      ["change_of_mind", "단순 변심"],
+      ["defect_or_wrong", "불량·오배송"],
+      ["other", "기타 문의"],
+    ]) {
+      const option = el("option", label);
+      option.value = value;
+      reasonType.append(option);
+    }
+    reasonLabel.append(reasonType);
+    f.append(reasonLabel);
     f.append(el("button", "환불 검토 요청", "button secondary"));
     if (admin)
       field(
@@ -118,6 +136,7 @@ export function orderAftercare(root, o, refunds, refresh, admin = false) {
         orderId: o.id,
         requestKey,
         reason: d.reason,
+        reasonType: d.reasonType,
         customerRequested: admin,
       });
       say("환불 검토 요청을 접수했습니다. 담당자가 확인합니다.");
@@ -125,7 +144,9 @@ export function orderAftercare(root, o, refunds, refresh, admin = false) {
     });
     root.append(f);
   }
-  if (["cancelled", "expired", "refunded"].includes(o.status))
+  if (
+    ["cancelled", "expired", "refunded", "cancelled_settled"].includes(o.status)
+  )
     root.append(
       el(
         "p",
@@ -283,6 +304,15 @@ export async function adminRefunds(root, refresh) {
       el("p", "요청 사유: " + r.reason),
       el(
         "p",
+        "요청 구분: " +
+          ({
+            change_of_mind: "단순 변심",
+            defect_or_wrong: "불량·오배송",
+            other: "기타 문의",
+          }[r.reasonType] || "기타 문의"),
+      ),
+      el(
+        "p",
         "원주문 " +
           money(o.total) +
           " · 확인된 입금 " +
@@ -296,7 +326,9 @@ export async function adminRefunds(root, refresh) {
       f.append(
         el(
           "p",
-          "수령 전 취소는 남은 입금액 전액 환불입니다. 수령 완료 후에는 검토한 부분 환불도 기록할 수 있습니다.",
+          r.requiresAgreement
+            ? "제작·발주가 시작된 특수 상품입니다. 고객과 환불액·공제액·물품 처리를 건별 협의하고 결과를 기록하세요."
+            : "제작·발주 전 또는 일반 재고의 수령 전 취소는 남은 입금액 전액 환불입니다. 수령 후에는 부분 환불도 검토할 수 있습니다.",
         ),
       );
       const approvedSoFar = refunds
@@ -310,6 +342,14 @@ export async function adminRefunds(root, refresh) {
         "number",
       ).min = 1;
       field(f, "note", "고객에게 안내할 검토 내용");
+      if (r.requiresAgreement)
+        field(
+          f,
+          "agreement",
+          "고객과 환불액·공제액·주문 취소 결과를 협의했습니다.",
+          false,
+          "checkbox",
+        ).required = true;
       field(
         f,
         "stopped",
@@ -326,12 +366,21 @@ export async function adminRefunds(root, refresh) {
           amount: Number(d.amount),
           note: d.note,
           fulfillmentStopped: true,
+          agreementConfirmed: d.agreement === "on",
         });
         say("환불을 승인했습니다. 실제 송금 후 완료를 기록해 주세요.");
         refresh();
       });
       const reject = el("form");
       field(reject, "note", "반려 사유 · 고객에게 안내");
+      if (r.requiresAgreement)
+        field(
+          reject,
+          "agreement",
+          "고객과 협의한 반려·주문 지속 결과를 기록합니다.",
+          false,
+          "checkbox",
+        ).required = true;
       reject.append(el("button", "환불 요청 반려", "button secondary"));
       formTask(reject, async (d) => {
         await call("/admin/refunds/review", {
@@ -339,6 +388,7 @@ export async function adminRefunds(root, refresh) {
           revision: r.revision,
           decision: "reject",
           note: d.note,
+          agreementConfirmed: d.agreement === "on",
         });
         say("반려 사유를 기록했습니다. 고객에게 안내해 주세요.");
         refresh();
@@ -397,6 +447,14 @@ export async function adminRefunds(root, refresh) {
       });
       c.append(f);
       const withdraw = el("form");
+      if (r.requiresAgreement)
+        field(
+          withdraw,
+          "agreement",
+          "고객과 송금 전 승인 철회 결과를 협의했습니다.",
+          false,
+          "checkbox",
+        ).required = true;
       field(withdraw, "note", "송금 전 승인 철회 사유 · 고객 안내");
       field(
         withdraw,
@@ -415,6 +473,7 @@ export async function adminRefunds(root, refresh) {
           decision: "reject",
           note: d.note,
           bankNotSent: true,
+          agreementConfirmed: d.agreement === "on",
         });
         say(
           "송금 전 환불 승인을 철회했습니다. 필요하면 수령 준비와 고객 안내를 다시 확인해 주세요.",

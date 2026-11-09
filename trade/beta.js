@@ -314,8 +314,17 @@ async function ordersView(root) {
       el("p", q.locationName),
     );
     if (q.status === "issued") {
-      if (runtime.policies?.standardPreReceiptCancellation)
-        c.append(el("p", runtime.policies.standardPreReceiptCancellation));
+      if (
+        q.cancellationPolicy ||
+        runtime.policies?.standardPreReceiptCancellation
+      )
+        c.append(
+          el(
+            "p",
+            q.cancellationPolicy ||
+              runtime.policies.standardPreReceiptCancellation,
+          ),
+        );
       c.append(
         dl([
           ["합계", money(q.total)],
@@ -357,6 +366,16 @@ async function ordersView(root) {
       link("거래명세서 보기", "/api/beta/orders/" + o.id + "/statement"),
     );
     orderAftercare(c, o, refunds, route);
+    if (o.specialOrder)
+      c.append(
+        el("p", o.cancellationPolicy),
+        el(
+          "p",
+          o.procurement?.state === "started"
+            ? "제작·발주 시작됨 · " + date(o.procurement.startedAt)
+            : "제작·발주 전",
+        ),
+      );
     list.append(c);
   }
   root.append(el("h2", "견적·주문 내역"), list);
@@ -455,7 +474,11 @@ async function pickupView(root) {
       } else c.append(el("p", labels[o.pickup.status] || o.pickup.status));
     } else if (o.status === "collected")
       c.append(el("p", "수령이 완료된 주문입니다."));
-    else if (["cancelled", "expired", "refunded"].includes(o.status))
+    else if (
+      ["cancelled", "expired", "refunded", "cancelled_settled"].includes(
+        o.status,
+      )
+    )
       c.append(el("p", "종료된 주문입니다. 방문 전 담당자에게 확인해 주세요."));
     else c.append(el("p", "준비 완료 안내를 받은 뒤 방문해 주세요."));
     root.append(c);

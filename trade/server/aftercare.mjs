@@ -14,6 +14,7 @@ export function installAftercare(
     CREATE UNIQUE INDEX IF NOT EXISTS beta_refund_open ON beta_refunds(order_id) WHERE status IN ('requested','approved');
     CREATE TABLE IF NOT EXISTS beta_refund_stock(order_id TEXT PRIMARY KEY,value TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS beta_recovery_requests(id TEXT PRIMARY KEY,member_id TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL,reviewed_at INTEGER);
+    CREATE TABLE IF NOT EXISTS beta_procurement(order_id TEXT PRIMARY KEY,value TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1);
     CREATE UNIQUE INDEX IF NOT EXISTS beta_recovery_open ON beta_recovery_requests(member_id) WHERE status='requested';`);
   const own = (actor, member) => {
     if (actor.role !== "admin" && actor.id !== member)
@@ -57,6 +58,63 @@ export function installAftercare(
       "입력 정보가 등록 정보와 일치하면 담당자가 본인 확인 후 안내합니다.",
   };
   return {
+    procurementStage(actor, id) {
+      const o = order(actor, id);
+      if (!o.snapshot.specialOrder) return null;
+      const r = db
+        .prepare("SELECT * FROM beta_procurement WHERE order_id=?")
+        .get(id);
+      if (!r) return { state: "not_started", revision: 0 };
+      const value = JSON.parse(r.value);
+      return actor.role === "admin"
+        ? { ...value, revision: r.revision }
+        : {
+            state: value.state,
+            startedAt: value.startedAt,
+            revision: r.revision,
+          };
+    },
+    markSpecialStarted(actor, id, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const o = order(actor, id),
+          r = db
+            .prepare("SELECT * FROM beta_procurement WHERE order_id=?")
+            .get(id);
+        if (
+          !o.snapshot.specialOrder ||
+          !["paid", "preparing"].includes(o.status) ||
+          o.revision !== input.orderRevision ||
+          r
+        )
+          fail(
+            "입금 확인된 특수 상품의 제작·발주 전 주문 상태를 확인해 주세요.",
+            409,
+          );
+        if (
+          db
+            .prepare(
+              "SELECT id FROM beta_refunds WHERE order_id=? AND status IN ('requested','approved')",
+            )
+            .get(id)
+        )
+          fail("취소·환불 검토 중에는 제작·발주를 시작할 수 없습니다.", 409);
+        if (input.actualStartConfirmed !== true || !text(input.reference, 100))
+          fail("실제 제작·발주 시작과 내부 확인번호를 입력해 주세요.");
+        db.prepare("INSERT INTO beta_procurement VALUES(?,?,1)").run(
+          id,
+          JSON.stringify({
+            state: "started",
+            startedAt: clock(),
+            startedBy: actor.username,
+            reference: text(input.reference, 100),
+          }),
+        );
+        db.prepare("UPDATE orders SET revision=revision+1 WHERE id=?").run(id);
+        audit(actor, "procurement.started", id);
+        return { ok: true };
+      });
+    },
     hasRefundHold(id) {
       return !!db
         .prepare(
@@ -154,6 +212,19 @@ export function installAftercare(
             orderNumber: o.number,
             companyName: o.snapshot.buyer.companyName,
             originalStatus: o.status,
+            reasonType: ["change_of_mind", "defect_or_wrong", "other"].includes(
+              input.reasonType,
+            )
+              ? input.reasonType
+              : "other",
+            requiresAgreement:
+              input.reasonType === "change_of_mind" &&
+              o.snapshot.specialOrder === true &&
+              !!db
+                .prepare(
+                  "SELECT order_id FROM beta_procurement WHERE order_id=?",
+                )
+                .get(id),
           };
         db.prepare(
           "INSERT INTO beta_refunds VALUES(?,?,?,?,'requested',?,1)",
@@ -198,6 +269,11 @@ export function installAftercare(
           reviewedBy: actor.username,
           reviewedAt: clock(),
         };
+        if (r.requiresAgreement && input.agreementConfirmed !== true)
+          fail(
+            "제작·발주 시작 후에는 고객과 협의한 결과를 확인하고 기록해 주세요.",
+          );
+        if (r.requiresAgreement) value.agreementConfirmed = true;
         if (input.decision === "approve") {
           const remaining = o.payment.amount - refunded(o.id),
             amount = input.amount;
@@ -205,6 +281,7 @@ export function installAftercare(
             fail("확인된 입금 잔액 이내의 환불액을 입력해 주세요.");
           if (
             !["collected", "shipped"].includes(r.originalStatus) &&
+            !r.requiresAgreement &&
             amount !== remaining
           )
             fail(
@@ -325,7 +402,15 @@ export function installAftercare(
         ).run(JSON.stringify(value), id);
         db.prepare(
           "UPDATE orders SET status=?,revision=revision+1 WHERE id=?",
-        ).run(totalRefunded === o.payment.amount ? "refunded" : o.status, o.id);
+        ).run(
+          totalRefunded === o.payment.amount
+            ? "refunded"
+            : r.requiresAgreement &&
+                !["collected", "shipped"].includes(r.originalStatus)
+              ? "cancelled_settled"
+              : o.status,
+          o.id,
+        );
         audit(actor, "refund.completed", o.id, {
           refundId: id,
           amount: r.amount,

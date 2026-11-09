@@ -388,7 +388,9 @@ async function pickupView(root) {
           ),
         );
       } else c.append(el("p", labels[o.pickup.status] || o.pickup.status));
-    } else c.append(el("p", "준비 완료 안내를 받은 뒤 방문해 주세요."));
+    } else if (o.status === "collected") c.append(el("p", "수령이 완료된 주문입니다."));
+    else if (["cancelled", "expired"].includes(o.status)) c.append(el("p", "종료된 주문입니다. 방문 전 담당자에게 확인해 주세요."));
+    else c.append(el("p", "준비 완료 안내를 받은 뒤 방문해 주세요."));
     root.append(c);
   }
 }

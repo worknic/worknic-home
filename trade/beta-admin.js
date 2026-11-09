@@ -956,7 +956,10 @@ async function settings(root) {
   reviewerPolicy.append(
     el(
       "p",
-      "취소·반품 사유와 상품 상태 검토 및 환불 승인 담당자는 영우입니다. 승인·반려·송금 전 승인 철회는 영우의 OS 계정으로 처리합니다. 실제 은행 송금 담당자는 아직 미정입니다.",
+      "취소·반품 사유와 상품 상태 검토 및 환불 승인 담당자는 영우입니다. 승인·반려·송금 전 승인 철회는 영우의 OS 계정으로 처리합니다." +
+        (config.refundTransferOperator?.value
+          ? " 실제 환불 송금 담당자: " + config.refundTransferOperator.value
+          : " 실제 은행 송금 담당자는 아직 미정입니다."),
     ),
   );
   if (config.refundReviewer?.value === "영우")
@@ -985,6 +988,42 @@ async function settings(root) {
     reviewerPolicy.append(cf);
   }
   root.append(reviewerPolicy);
+  const transferPolicy = card("운영 담당자 · 실제 환불 송금 및 완료 기록");
+  transferPolicy.append(
+    el(
+      "p",
+      "실제 환불 송금과 OS 송금 완료 기록 담당자는 영우입니다. 영우가 환불 승인 내역·수취인·금액을 확인하고 은행에서 직접 송금한 뒤 OS에 기록합니다. OS는 자동으로 송금하지 않습니다.",
+    ),
+  );
+  if (config.refundTransferOperator?.value === "영우")
+    transferPolicy.append(
+      el(
+        "p",
+        "확정 저장됨 · " + date(config.refundTransferOperator.confirmedAt),
+      ),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "실제 환불 송금 및 완료 기록 담당자를 영우로 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "환불 송금 담당자 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/operators/refund-transfer", {
+        revision: config.revision,
+        value: "영우",
+        confirmed: true,
+      });
+      say("실제 환불 송금 및 완료 기록 담당자를 영우로 저장했습니다.");
+      route();
+    });
+    transferPolicy.append(cf);
+  }
+  root.append(transferPolicy);
   const f = el("form");
   field(
     f,

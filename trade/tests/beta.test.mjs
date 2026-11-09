@@ -1937,3 +1937,71 @@ test("환불 검토 담당자 영우는 저장된 OS 신원으로만 검토·승
     f.cleanup();
   }
 });
+
+test("실제 환불 완료 기록 담당자 영우는 저장된 OS 신원으로 제한하고 승인 담당자와 분리", () => {
+  const f = fixture();
+  try {
+    const before = f.store.beta.config();
+    assert.throws(
+      () =>
+        f.store.beta.confirmRefundTransferOperator(f.buyer, {
+          revision: before.revision,
+          value: "영우",
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmRefundTransferOperator(f.admin, {
+          revision: before.revision,
+          value: "other",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmRefundTransferOperator(f.admin, {
+      revision: before.revision,
+      value: "영우",
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, before.betaEnabled);
+    assert.equal(saved.registrationEnabled, before.registrationEnabled);
+    assert.equal(saved.refundReviewer, undefined);
+    assert.throws(
+      () =>
+        f.store.beta.confirmRefundTransferOperator(f.admin, {
+          revision: before.revision,
+          value: "영우",
+          confirmed: true,
+        }),
+      /변경/,
+    );
+    const yw = f.store.osAdmin("test_yw", "synthetic test passphrase", "영우"),
+      nk = f.store.osAdmin("test_nk", "synthetic test passphrase", "나경");
+    assert.equal(f.store.beta.refundReviewAccess(yw).canComplete, true);
+    assert.equal(f.store.beta.refundReviewAccess(nk).canComplete, false);
+    assert.equal(f.store.beta.refundReviewAccess(yw).transferOperator, "영우");
+    assert.throws(
+      () =>
+        f.store.beta.completeRefund(
+          { ...nk, profile: { authSource: "worknic_os", osUser: "영우" } },
+          "missing",
+          {},
+        ),
+      /지정 담당자/,
+    );
+    assert.throws(
+      () => f.store.beta.completeRefund(yw, "missing", {}),
+      /찾을 수/,
+    );
+    f.store.beta.updateConfig(f.admin, {
+      ...saved,
+      betaEnabled: false,
+      registrationEnabled: false,
+    });
+    assert.equal(f.store.beta.config().refundTransferOperator.value, "영우");
+  } finally {
+    f.cleanup();
+  }
+});

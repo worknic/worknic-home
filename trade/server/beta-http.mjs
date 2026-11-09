@@ -410,6 +410,8 @@ export function createBetaRouter({
         return send(store.beta.confirmDefectShipping(actor, input));
       if (path === "/admin/operators/refund-reviewer" && method === "POST")
         return send(store.beta.confirmRefundReviewer(actor, input));
+      if (path === "/admin/operators/refund-transfer" && method === "POST")
+        return send(store.beta.confirmRefundTransferOperator(actor, input));
       if (path === "/admin/orders/receipt-date" && method === "POST")
         return send(store.beta.confirmReceiptDate(actor, input.id, input));
       if (path === "/admin/orders/special-start" && method === "POST")

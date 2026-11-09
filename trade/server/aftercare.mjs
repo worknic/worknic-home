@@ -341,7 +341,19 @@ export function installAftercare(
       const canReview =
         !reviewer ||
         (profile.authSource === "worknic_os" && profile.osUser === reviewer);
-      return { reviewer, canReview, transferOperatorConfirmed: false };
+      const transferOperator =
+        api.beta.config().refundTransferOperator?.value || null;
+      const canComplete =
+        !transferOperator ||
+        (profile.authSource === "worknic_os" &&
+          profile.osUser === transferOperator);
+      return {
+        reviewer,
+        canReview,
+        transferOperator,
+        canComplete,
+        transferOperatorConfirmed: !!transferOperator,
+      };
     },
     reviewRefund(actor, id, input) {
       adminOnly(actor);
@@ -494,6 +506,11 @@ export function installAftercare(
     },
     completeRefund(actor, id, input) {
       adminOnly(actor);
+      if (!api.beta.refundReviewAccess(actor).canComplete)
+        fail(
+          "실제 환불 송금 완료 기록은 지정 담당자 영우의 OS 계정으로 처리해 주세요.",
+          403,
+        );
       return transaction(() => {
         const r = refund(actor, id),
           o = order(actor, r.orderId);

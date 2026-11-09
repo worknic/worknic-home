@@ -353,12 +353,14 @@ export async function adminRefunds(root, refresh) {
     call("/admin/orders"),
   ]);
   const canReview = reviewAccess?.canReview !== false;
+  const canComplete = reviewAccess?.canComplete !== false;
   root.append(
     el(
       "p",
       "검토·환불 승인 담당자: " +
         (reviewAccess?.reviewer || "미정") +
-        " · 실제 은행 송금 담당자: 미정",
+        " · 실제 은행 송금 담당자: " +
+        (reviewAccess?.transferOperator || "미정"),
     ),
   );
   if (!canReview)
@@ -559,7 +561,11 @@ export async function adminRefunds(root, refresh) {
         say("실제 환불 완료를 기록했습니다. 원주문·견적 금액은 보존됩니다.");
         refresh();
       });
-      c.append(f);
+      if (canComplete) c.append(f);
+      else
+        c.append(
+          el("p", "실제 송금 완료 기록은 영우의 OS 계정에서 처리합니다."),
+        );
       const withdraw = el("form");
       if (r.requiresAgreement)
         field(

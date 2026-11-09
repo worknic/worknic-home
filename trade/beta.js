@@ -296,6 +296,10 @@ async function ordersView(root) {
     return;
   }
   root.append(cartView());
+  if (runtime.policies?.standardPreReceiptCancellation)
+    root.append(
+      el("p", runtime.policies.standardPreReceiptCancellation, "muted"),
+    );
   const [{ quotes }, { orders }, { refunds }] = await Promise.all([
     call("/quotes"),
     call("/orders"),
@@ -310,6 +314,8 @@ async function ordersView(root) {
       el("p", q.locationName),
     );
     if (q.status === "issued") {
+      if (runtime.policies?.standardPreReceiptCancellation)
+        c.append(el("p", runtime.policies.standardPreReceiptCancellation));
       c.append(
         dl([
           ["합계", money(q.total)],

@@ -377,6 +377,8 @@ export function createBetaRouter({
             : store.beta.config(),
         );
       }
+      if (path === "/admin/policies/standard-cancellation" && method === "POST")
+        return send(store.beta.confirmStandardCancellation(actor, input));
       if (path === "/admin/catalog-sync" && method === "POST") {
         const d = await os.publicCatalog();
         return send(store.importCatalog(actor, d));

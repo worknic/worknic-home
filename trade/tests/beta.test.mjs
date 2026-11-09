@@ -884,6 +884,76 @@ test("송금 전 승인 철회 후 진접 대면 전달을 새로 준비할 수 
     f.cleanup();
   }
 });
+test("취소 기준 확정은 접수·가격·재고를 변경하지 않고 일반 설정 저장에도 보존", () => {
+  const f = fixture();
+  try {
+    const before = f.store.beta.config(),
+      stock = f.store.products(f.admin)[0].stock;
+    assert.equal(
+      f.store.beta.runtime().policies.standardPreReceiptCancellation,
+      null,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardCancellation(f.buyer, {
+          revision: before.revision,
+          value: "full_refund",
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardCancellation(f.admin, {
+          revision: before.revision,
+          value: "other",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmStandardCancellation(f.admin, {
+      revision: before.revision,
+      value: "full_refund",
+      confirmed: true,
+    });
+    assert.equal(saved.standardPreReceiptCancellation.scope, "standard_stock");
+    assert.equal(saved.betaEnabled, before.betaEnabled);
+    assert.equal(saved.registrationEnabled, before.registrationEnabled);
+    assert.equal(saved.documentsConfirmed, before.documentsConfirmed);
+    assert.equal(f.price().price, null);
+    assert.equal(f.store.products(f.admin)[0].stock, stock);
+    assert.throws(
+      () =>
+        f.store.beta.confirmStandardCancellation(f.admin, {
+          revision: before.revision,
+          value: "full_refund",
+          confirmed: true,
+        }),
+      /변경/,
+    );
+    f.store.beta.updateConfig(f.admin, {
+      ...saved,
+      betaEnabled: false,
+      registrationEnabled: false,
+    });
+    assert.equal(
+      f.store.beta.config().standardPreReceiptCancellation.value,
+      "full_refund",
+    );
+    assert.match(
+      f.store.beta.runtime().policies.standardPreReceiptCancellation,
+      /일반 재고 상품/,
+    );
+    assert.equal(
+      f.store.beta
+        .runtime()
+        .policies.standardPreReceiptCancellation.includes("confirmedBy"),
+      false,
+    );
+  } finally {
+    f.cleanup();
+  }
+});
 test("견적 유효기간·미정 가격 차단", () => {
   const f = fixture();
   try {
@@ -1021,3 +1091,4 @@ test("픽업 비밀번호 기간 밖 접근·만료 보관함 재사용 차단·
     f.cleanup();
   }
 });
+

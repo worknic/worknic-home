@@ -321,6 +321,12 @@ export function installBeta(
     runtime: () => ({
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
+      policies: {
+        standardPreReceiptCancellation:
+          config().standardPreReceiptCancellation?.value === "full_refund"
+            ? "일반 재고 상품은 수령 전 취소 시 남은 입금액 전액을 환불합니다. 담당자가 상품 준비·전달을 중단한 뒤 처리합니다."
+            : null,
+      },
       locations: locations().map(
         ({ id, name, address, hours, enabled, fee }) => ({
           id,
@@ -346,15 +352,45 @@ export function installBeta(
       if (input.betaEnabled && (!input.documentsConfirmed || !vault))
         fail("문서·부가세·픽업 비밀번호 보관 설정 확인 후 접수를 열어 주세요.");
       const next = {
+        ...old,
         betaEnabled: input.betaEnabled,
         registrationEnabled: input.registrationEnabled,
         documentsConfirmed: input.documentsConfirmed === true,
       };
+      delete next.revision;
       db.prepare(
         "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
       ).run(JSON.stringify(next));
       audit(actor, "beta.config", "beta");
       return config();
+    },
+    confirmStandardCancellation(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (input.value !== "full_refund" || input.confirmed !== true)
+          fail("일반 재고 상품의 수령 전 전액 환불 기준을 확인해 주세요.");
+        const next = {
+          ...current,
+          standardPreReceiptCancellation: {
+            value: "full_refund",
+            scope: "standard_stock",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.standard_pre_receipt_confirmed", "beta", {
+          value: "full_refund",
+          scope: "standard_stock",
+        });
+        return config();
+      });
     },
     catalog(actor) {
       if (actor.role === "admin") return api.products(actor);

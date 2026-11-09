@@ -636,6 +636,43 @@ async function pickups(root) {
 async function settings(root) {
   const config = await call("/admin/config"),
     c = card("베타 접수");
+  const policy = card("확정 운영 기준 · 일반 재고 상품 취소");
+  policy.append(
+    el(
+      "p",
+      "수령 전 취소 시 남은 입금액 전액 환불. 담당자가 상품 준비·전달을 중단한 뒤 처리합니다. 주문제작·별도 발주 상품 예외는 별도 확정합니다.",
+    ),
+  );
+  if (config.standardPreReceiptCancellation?.value === "full_refund")
+    policy.append(
+      el(
+        "p",
+        "확정 저장됨 · " +
+          date(config.standardPreReceiptCancellation.confirmedAt),
+      ),
+    );
+  else {
+    const pf = el("form");
+    field(
+      pf,
+      "confirmed",
+      "일반 재고 상품의 수령 전 전액 환불 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    pf.append(el("button", "취소 기준 확정 저장", "button"));
+    formTask(pf, async () => {
+      await call("/admin/policies/standard-cancellation", {
+        revision: config.revision,
+        value: "full_refund",
+        confirmed: true,
+      });
+      say("일반 재고 상품의 수령 전 전액 환불 기준을 저장했습니다.");
+      route();
+    });
+    policy.append(pf);
+  }
+  root.append(policy);
   const f = el("form");
   field(
     f,

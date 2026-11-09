@@ -110,6 +110,23 @@ export function createBetaRouter({
     }
     if (path === "/activate" && method === "POST")
       return send(store.beta.activate(input.token, input.password));
+    if (path === "/password/forgot" && method === "POST") {
+      store.limit("recovery-ip:" + remoteIp, 5, 3600000);
+      store.limit(
+        "recovery-name:" +
+          String(input.username || "")
+            .trim()
+            .toLowerCase()
+            .slice(0, 80),
+        3,
+        3600000,
+      );
+      return send(store.beta.requestRecovery(input));
+    }
+    if (path === "/password/reset" && method === "POST") {
+      store.limit("recovery-reset:" + remoteIp, 10, 3600000);
+      return send(store.beta.resetPassword(input.token, input.password));
+    }
     if (path === "/register" && method === "POST") {
       if (!store.beta.config().registrationEnabled)
         fail("베타 회원 접수를 준비하고 있습니다.", 409);
@@ -237,12 +254,29 @@ export function createBetaRouter({
       return send({
         orders: store.orders(actor).map((o) => ({
           ...o,
+          refundHold: store.beta.hasRefundHold(o.id),
           pickup:
             o.fulfillment?.method === "pickup"
               ? store.beta.pickup(actor, o.id)
               : null,
         })),
       });
+    }
+    const cancellation = path.match(/^\/orders\/([a-f0-9-]{36})\/cancel$/);
+    if (cancellation && method === "POST") {
+      await approve();
+      return send({
+        order: store.beta.cancelUnpaid(actor, cancellation[1], input),
+      });
+    }
+    if (path === "/refunds") {
+      await approve();
+      return send(
+        method === "GET"
+          ? { refunds: store.beta.refunds(actor) }
+          : { refund: store.beta.requestRefund(actor, input.orderId, input) },
+        method === "GET" ? 200 : 201,
+      );
     }
     const document = path.match(/^\/orders\/([a-f0-9-]{36})\/statement$/);
     if (document && method === "GET") {
@@ -263,6 +297,39 @@ export function createBetaRouter({
     }
     if (path.startsWith("/admin/")) {
       if (!admin) fail("관리자 권한이 필요합니다.", 403);
+      if (path === "/admin/recovery" && method === "GET")
+        return send({ requests: store.beta.recoveryRequests(actor) });
+      if (path === "/admin/recovery/issue" && method === "POST") {
+        const request = store.beta
+          .recoveryRequests(actor)
+          .find((r) => r.id === input.id);
+        if (!request) fail("복구 요청을 찾을 수 없습니다.", 404);
+        const binding = store.beta.binding({ id: request.member_id });
+        const proof = demo
+          ? { id: binding?.request_id }
+          : await os.find(bridges.get(actor.id).token, request.profile);
+        return send(
+          store.beta.issueRecovery(actor, input.id, {
+            ...input,
+            osRequestId: proof.id,
+          }),
+        );
+      }
+      if (path === "/admin/refunds" && method === "GET")
+        return send({ refunds: store.beta.refunds(actor) });
+      if (path === "/admin/refunds/request" && method === "POST")
+        return send(
+          { refund: store.beta.requestRefund(actor, input.orderId, input) },
+          201,
+        );
+      if (path === "/admin/refunds/review" && method === "POST")
+        return send({
+          refund: store.beta.reviewRefund(actor, input.id, input),
+        });
+      if (path === "/admin/refunds/complete" && method === "POST")
+        return send({
+          refund: store.beta.completeRefund(actor, input.id, input),
+        });
       if (path === "/admin/prices/template" && method === "GET") {
         const file = await priceWorkbook(store.beta.priceRows(actor));
         res.writeHead(200, {
@@ -319,13 +386,11 @@ export function createBetaRouter({
           store.members(actor).map((m) => [m.id, m.profile]),
         );
         return send({
-          quotes: store.beta
-            .quotes(actor)
-            .map((q) => ({
-              ...q,
-              companyName: members.get(q.memberId)?.companyName,
-              businessNumber: members.get(q.memberId)?.businessNumber,
-            })),
+          quotes: store.beta.quotes(actor).map((q) => ({
+            ...q,
+            companyName: members.get(q.memberId)?.companyName,
+            businessNumber: members.get(q.memberId)?.businessNumber,
+          })),
         });
       }
       if (path === "/admin/quotes/issue" && method === "POST")
@@ -354,6 +419,7 @@ export function createBetaRouter({
         return send({
           orders: store.orders(actor).map((o) => ({
             ...o,
+            refundHold: store.beta.hasRefundHold(o.id),
             pickup:
               o.fulfillment?.method === "pickup"
                 ? store.beta.pickup(actor, o.id)
@@ -363,6 +429,8 @@ export function createBetaRouter({
       if (path === "/admin/orders/update" && method === "POST") {
         if (!["confirm_payment", "prepare"].includes(input.action))
           fail("올바른 준비 작업 선택");
+        if (input.action === "prepare")
+          store.beta.assertFulfillmentAllowed(input.id);
         return send({ order: store.updateOrder(actor, input.id, input) });
       }
       if (path === "/admin/pickups/ready" && method === "POST")

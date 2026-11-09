@@ -15,6 +15,7 @@ import {
   labels,
   say,
 } from "./beta-common.js";
+import { adminRefunds, adminRecovery, orderAftercare } from "./aftercare-ui.js";
 let actor = null,
   lastPreview = null;
 async function prices(root) {
@@ -355,8 +356,12 @@ async function quotes(root) {
 }
 async function orderList(pickupOnly, root) {
   const { orders } = await call("/admin/orders");
+  const { refunds = [] } = await call("/admin/refunds");
   root.append(el("h2", pickupOnly ? "픽업 주문" : "확정 주문"));
   for (const o of orders) {
+    const refundHold = refunds.some(
+      (r) => r.orderId === o.id && ["requested", "approved"].includes(r.status),
+    );
     const c = card(o.number);
     c.append(
       el("span", labels[o.status] || o.status, "badge"),
@@ -368,6 +373,7 @@ async function orderList(pickupOnly, root) {
       ]),
       link("거래명세서", "/api/beta/orders/" + o.id + "/statement"),
     );
+    orderAftercare(c, o, refunds, route, true);
     if (o.status === "pending_payment") {
       const f = el("form");
       field(f, "amount", "실제 입금액", "", "number");
@@ -396,6 +402,7 @@ async function orderList(pickupOnly, root) {
     }
     if (
       pickupOnly &&
+      !refundHold &&
       ["paid", "preparing"].includes(o.status) &&
       !o.pickup &&
       o.fulfillment?.locationId === "jinjeop"
@@ -446,6 +453,7 @@ async function orderList(pickupOnly, root) {
     }
     if (
       pickupOnly &&
+      !refundHold &&
       ["paid", "preparing"].includes(o.status) &&
       !o.pickup &&
       o.fulfillment?.locationId !== "jinjeop"
@@ -524,7 +532,7 @@ async function orderList(pickupOnly, root) {
       });
       c.append(f);
     }
-    if (pickupOnly && o.pickup?.mode === "handoff") {
+    if (pickupOnly && !refundHold && o.pickup?.mode === "handoff") {
       c.append(
         dl([
           ["수령 방식", "담당자 대면 전달"],
@@ -569,7 +577,7 @@ async function orderList(pickupOnly, root) {
       });
       c.append(f);
     }
-    if (pickupOnly && o.pickup && o.pickup.mode !== "handoff") {
+    if (pickupOnly && !refundHold && o.pickup && o.pickup.mode !== "handoff") {
       c.append(
         dl([
           ["보관함", o.pickup.slotLabel],
@@ -756,7 +764,9 @@ async function route() {
       a.setAttribute("aria-current", a.hash === "#" + name ? "page" : "false"),
     );
   try {
-    if (name === "members") await members(root);
+    if (name === "refunds") await adminRefunds(root, route);
+    else if (name === "recovery") await adminRecovery(root, route);
+    else if (name === "members") await members(root);
     else if (name === "quotes") await quotes(root);
     else if (name === "pickups") await pickups(root);
     else if (name === "settings") await settings(root);

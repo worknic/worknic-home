@@ -7,6 +7,7 @@ import {
   createDecipheriv,
 } from "node:crypto";
 import { TradeError, passwordHash } from "./store.mjs";
+import { installAftercare } from "./aftercare.mjs";
 const fail = (m, s = 400) => {
     throw new TradeError(m, s);
   },
@@ -16,7 +17,7 @@ const fail = (m, s = 400) => {
 export function installBeta(
   api,
   db,
-  { clock, transaction, audit, adminOnly, customerOnly, settings },
+  { clock, transaction, audit, adminOnly, customerOnly, settings, release },
   { pickupKey = "", approvalRequired = true } = {},
 ) {
   db.exec(`CREATE TABLE IF NOT EXISTS beta_sku_stock (key TEXT PRIMARY KEY,stock INTEGER NOT NULL DEFAULT 0,enabled INTEGER NOT NULL DEFAULT 0,revision INTEGER NOT NULL DEFAULT 1);
@@ -260,7 +261,16 @@ export function installBeta(
       return { row: r.row || i + 2, before, after, errors };
     });
   }
+  const aftercare = installAftercare(api, db, {
+    clock,
+    transaction,
+    audit,
+    adminOnly,
+    customerOnly,
+    release,
+  });
   return {
+    ...aftercare,
     config,
     locations,
     binding,
@@ -892,6 +902,7 @@ export function installBeta(
     },
     readyPickup(actor, orderId, input) {
       adminOnly(actor);
+      aftercare.assertFulfillmentAllowed(orderId);
       return transaction(() => {
         const o = activeOrder(actor, orderId),
           slot = db
@@ -1024,6 +1035,7 @@ export function installBeta(
     revealPin(actor, id) {
       customer(actor);
       activeOrder(actor, id);
+      aftercare.assertFulfillmentAllowed(id);
       const r = db
         .prepare("SELECT * FROM beta_pickups WHERE order_id=?")
         .get(id);
@@ -1041,6 +1053,7 @@ export function installBeta(
     },
     reportPickup(actor, id, input) {
       customer(actor);
+      aftercare.assertFulfillmentAllowed(id);
       return transaction(() => {
         activeOrder(actor, id);
         const h = db
@@ -1090,6 +1103,7 @@ export function installBeta(
     },
     closePickup(actor, id, input) {
       adminOnly(actor);
+      if (input.result === "collected") aftercare.assertFulfillmentAllowed(id);
       return transaction(() => {
         const r = db
           .prepare("SELECT * FROM beta_pickups WHERE order_id=?")
@@ -1126,6 +1140,7 @@ export function installBeta(
     },
     readyHandoff(actor, id, input) {
       adminOnly(actor);
+      aftercare.assertFulfillmentAllowed(id);
       return transaction(() => {
         const o = activeOrder(actor, id),
           from = Number(input.availableFrom),
@@ -1141,7 +1156,9 @@ export function installBeta(
             .prepare("SELECT order_id FROM beta_pickups WHERE order_id=?")
             .get(id) ||
           db
-            .prepare("SELECT order_id FROM beta_handoffs WHERE order_id=?")
+            .prepare(
+              "SELECT order_id FROM beta_handoffs WHERE order_id=? AND status IN ('ready','reported')",
+            )
             .get(id)
         )
           fail("이미 수령 준비가 등록된 주문입니다.", 409);
@@ -1184,10 +1201,9 @@ export function installBeta(
           readyAt: clock(),
           readyBy: actor.username,
         };
-        db.prepare("INSERT INTO beta_handoffs VALUES(?,?,'ready',1)").run(
-          id,
-          JSON.stringify(value),
-        );
+        db.prepare(
+          "INSERT INTO beta_handoffs VALUES(?,?,'ready',1) ON CONFLICT(order_id) DO UPDATE SET value=excluded.value,status='ready',revision=beta_handoffs.revision+1",
+        ).run(id, JSON.stringify(value));
         db.prepare(
           "UPDATE orders SET status='pickup_ready',revision=revision+1 WHERE id=?",
         ).run(id);
@@ -1200,6 +1216,7 @@ export function installBeta(
     },
     closeHandoff(actor, id, input) {
       adminOnly(actor);
+      aftercare.assertFulfillmentAllowed(id);
       return transaction(() => {
         activeOrder(actor, id);
         const r = db

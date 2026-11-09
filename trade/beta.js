@@ -16,6 +16,7 @@ import {
   say,
 } from "./beta-common.js";
 import { readTradeEntry, entryProduct } from "./entry-intent.js";
+import { orderAftercare, recoveryForm, resetForm } from "./aftercare-ui.js";
 const entry = readTradeEntry(location.search);
 let focusedProductId = entry.productId,
   loginReturn = entry.next,
@@ -295,9 +296,12 @@ async function ordersView(root) {
     return;
   }
   root.append(cartView());
-  const { quotes } = await call("/quotes"),
-    { orders } = await call("/orders"),
-    list = el("div", null, "cards");
+  const [{ quotes }, { orders }, { refunds }] = await Promise.all([
+    call("/quotes"),
+    call("/orders"),
+    call("/refunds"),
+  ]);
+  const list = el("div", null, "cards");
   for (const q of quotes) {
     const c = card("견적 " + q.id.slice(0, 8));
     c.append(
@@ -339,13 +343,14 @@ async function ordersView(root) {
     c.append(
       el("span", labels[o.status] || o.status, "badge"),
       dl([
-        ["합계 입금액", money(o.total)],
+        ["원주문 금액", money(o.total)],
         ["입금계좌", o.bank.name + " " + o.bank.account],
         ["예금주", o.bank.holder],
         ["수령 장소", o.fulfillment?.locationName || "담당자 안내"],
       ]),
       link("거래명세서 보기", "/api/beta/orders/" + o.id + "/statement"),
     );
+    orderAftercare(c, o, refunds, route);
     list.append(c);
   }
   root.append(el("h2", "견적·주문 내역"), list);
@@ -386,7 +391,14 @@ async function pickupView(root) {
       el("span", labels[o.status] || o.status, "badge"),
       el("p", o.fulfillment.locationName),
     );
-    if (o.pickup) {
+    if (o.refundHold)
+      c.append(
+        el(
+          "p",
+          "취소·환불 검토 중입니다. 방문과 수령을 중단하고 담당자 안내를 기다려 주세요.",
+        ),
+      );
+    else if (o.pickup) {
       c.append(
         dl([
           [
@@ -437,13 +449,31 @@ async function pickupView(root) {
       } else c.append(el("p", labels[o.pickup.status] || o.pickup.status));
     } else if (o.status === "collected")
       c.append(el("p", "수령이 완료된 주문입니다."));
-    else if (["cancelled", "expired"].includes(o.status))
+    else if (["cancelled", "expired", "refunded"].includes(o.status))
       c.append(el("p", "종료된 주문입니다. 방문 전 담당자에게 확인해 주세요."));
     else c.append(el("p", "준비 완료 안내를 받은 뒤 방문해 주세요."));
     root.append(c);
   }
 }
 function accountView(root) {
+  const resetToken = new URLSearchParams(location.hash.split("?")[1] || "").get(
+    "reset",
+  );
+  if (resetToken) {
+    resetForm(root, resetToken, () => {
+      history.replaceState(null, "", "/trade/#account");
+      member = null;
+      bound = false;
+      clearPins();
+      cart = [];
+      save();
+      say(
+        "비밀번호를 변경하고 기존 로그인을 모두 종료했습니다. 새 비밀번호로 로그인해 주세요.",
+      );
+      route();
+    });
+    return;
+  }
   const activation = new URLSearchParams(location.hash.split("?")[1] || "").get(
     "activate",
   );
@@ -504,6 +534,7 @@ function accountView(root) {
     else route();
   });
   lc.append(lf);
+  recoveryForm(lc);
   grid.append(lc);
   const rc = card("사업자 계정 신청");
   if (!runtime.registrationEnabled)

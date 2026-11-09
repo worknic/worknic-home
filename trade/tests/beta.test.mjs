@@ -469,6 +469,421 @@ test("진접 대면 전달은 비밀번호·보관함 없이 입금·요일·시
     f.cleanup();
   }
 });
+test("미입금 취소는 자기 주문만 한 번 처리하고 예약 재고를 반환", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested()));
+    assert.equal(f.store.products(f.admin)[0].stock, 28);
+    assert.throws(
+      () =>
+        f.store.beta.cancelUnpaid(f.other, o.id, {
+          revision: 1,
+          noPaymentSent: true,
+        }),
+      /찾을/,
+    );
+    assert.throws(
+      () => f.store.beta.cancelUnpaid(f.buyer, o.id, { revision: 1 }),
+      /입금/,
+    );
+    assert.equal(
+      f.store.beta.cancelUnpaid(f.buyer, o.id, {
+        revision: 1,
+        noPaymentSent: true,
+      }).status,
+      "cancelled",
+    );
+    assert.equal(f.store.products(f.admin)[0].stock, 30);
+    assert.throws(
+      () =>
+        f.store.beta.cancelUnpaid(f.buyer, o.id, {
+          revision: 1,
+          noPaymentSent: true,
+        }),
+      /변경/,
+    );
+    assert.equal(f.store.products(f.admin)[0].stock, 30);
+  } finally {
+    f.cleanup();
+  }
+});
+test("전액 환불은 수령·코드 열람을 보류하고 실제 송금·실물 확인 후 한 번만 재고 복원", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested()));
+    const paid = f.store.updateOrder(f.admin, o.id, {
+      revision: 1,
+      action: "confirm_payment",
+      amount: 22000,
+      reference: "합성 입금",
+      bankChecked: true,
+    });
+    assert.throws(
+      () =>
+        f.store.beta.cancelUnpaid(f.buyer, o.id, {
+          revision: paid.revision,
+          noPaymentSent: true,
+        }),
+      /환불/,
+    );
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: paid.revision,
+      slotId: "box1",
+      pin: "1122334455",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    const input = {
+      requestKey: "refund-test-0000001",
+      reason: "합성 취소 요청",
+    };
+    const r = f.store.beta.requestRefund(f.buyer, o.id, input);
+    assert.equal(f.store.beta.requestRefund(f.buyer, o.id, input).id, r.id);
+    assert.throws(
+      () =>
+        f.store.beta.requestRefund(f.other, o.id, {
+          ...input,
+          requestKey: "refund-test-0000002",
+        }),
+      /찾을/,
+    );
+    assert.equal(f.store.beta.refunds(f.other).length, 0);
+    assert.throws(() => f.store.beta.revealPin(f.buyer, o.id), /검토/);
+    assert.throws(
+      () =>
+        f.store.beta.reportPickup(f.buyer, o.id, {
+          revision: 1,
+          received: true,
+        }),
+      /검토/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.buyer, r.id, {
+          revision: 1,
+          decision: "approve",
+        }),
+      /관리자/,
+    );
+    const review = {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "취소 검토 승인",
+      fulfillmentStopped: true,
+    };
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, r.id, { ...review, amount: 11000 }),
+      /전액/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, r.id, {
+          ...review,
+          fulfillmentStopped: false,
+        }),
+      /중단/,
+    );
+    const approved = f.store.beta.reviewRefund(f.admin, r.id, review);
+    assert.equal(f.store.beta.pickup(f.buyer, o.id), null);
+    assert.equal(f.store.products(f.admin)[0].stock, 28);
+    const complete = {
+      revision: approved.revision,
+      amount: 22000,
+      bankReference: "합성 환불 확인",
+      bankRefundChecked: true,
+      restockAll: true,
+      goodsRecovered: true,
+    };
+    assert.throws(
+      () =>
+        f.store.beta.completeRefund(f.admin, r.id, {
+          ...complete,
+          bankRefundChecked: false,
+        }),
+      /송금/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.completeRefund(f.admin, r.id, { ...complete, amount: 1 }),
+      /송금/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.completeRefund(f.admin, r.id, {
+          ...complete,
+          goodsRecovered: false,
+        }),
+      /회수/,
+    );
+    f.store.beta.completeRefund(f.admin, r.id, complete);
+    f.store.beta.completeRefund(f.admin, r.id, complete);
+    assert.equal(f.store.products(f.admin)[0].stock, 30);
+    assert.equal(f.store.order(f.buyer, o.id).status, "refunded");
+    assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+    assert.equal(f.store.beta.refunds(f.buyer)[0].bankReference, undefined);
+  } finally {
+    f.cleanup();
+  }
+});
+test("수령 후 부분 환불은 누적 입금액을 넘지 않으며 자동 재고 복원 없이 기록", () => {
+  const f = fixture();
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested())),
+      paid = f.store.updateOrder(f.admin, o.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+    f.store.beta.readyPickup(f.admin, o.id, {
+      revision: paid.revision,
+      slotId: "box1",
+      pin: "9933445511",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      physicalCodeConfigured: true,
+    });
+    f.store.beta.closePickup(f.admin, o.id, {
+      revision: 1,
+      result: "collected",
+      physicalCodeRevoked: true,
+      compartmentChecked: true,
+    });
+    let r = f.store.beta.requestRefund(f.admin, o.id, {
+      requestKey: "partial-refund-00001",
+      reason: "전화 접수 합성",
+      customerRequested: true,
+    });
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "reject",
+      note: "합성 반려",
+    });
+    assert.equal(f.store.beta.hasRefundHold(o.id), false);
+    r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "partial-refund-00002",
+      reason: "부분 반품",
+    });
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "approve",
+      note: "부분 반품 확인",
+      amount: 5000,
+      fulfillmentStopped: true,
+    });
+    assert.throws(
+      () =>
+        f.store.beta.completeRefund(f.admin, r.id, {
+          revision: r.revision,
+          amount: 5000,
+          bankReference: "합성",
+          bankRefundChecked: true,
+          restockAll: true,
+          goodsRecovered: true,
+        }),
+      /전액/,
+    );
+    f.store.beta.completeRefund(f.admin, r.id, {
+      revision: r.revision,
+      amount: 5000,
+      bankReference: "합성",
+      bankRefundChecked: true,
+    });
+    assert.equal(f.store.products(f.admin)[0].stock, 28);
+    assert.equal(f.store.order(f.buyer, o.id).status, "collected");
+    r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "partial-refund-00003",
+      reason: "잔액 검수",
+    });
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, r.id, {
+          revision: r.revision,
+          decision: "approve",
+          note: "초과 검수",
+          amount: 18000,
+          fulfillmentStopped: true,
+        }),
+      /잔액/,
+    );
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "approve",
+      note: "잔액 확인",
+      amount: 17000,
+      fulfillmentStopped: true,
+    });
+    f.store.beta.completeRefund(f.admin, r.id, {
+      revision: r.revision,
+      amount: 17000,
+      bankReference: "합성",
+      bankRefundChecked: true,
+    });
+    assert.equal(f.store.order(f.buyer, o.id).status, "refunded");
+    assert.equal(f.store.products(f.admin)[0].stock, 28);
+  } finally {
+    f.cleanup();
+  }
+});
+test("분실 복구는 계정 존재 비노출·관리자 본인 확인·일회용 만료·기존 세션 폐기", () => {
+  const f = fixture();
+  try {
+    const known = f.store.beta.requestRecovery({
+        username: "buyer",
+        email: "buyer@example.invalid",
+      }),
+      unknown = f.store.beta.requestRecovery({
+        username: "missing",
+        email: "nobody@example.invalid",
+      });
+    assert.deepEqual(known, unknown);
+    assert.throws(() => f.store.beta.recoveryRequests(f.buyer), /관리자/);
+    const request = f.store.beta.recoveryRequests(f.admin)[0];
+    assert.throws(
+      () => f.store.beta.issueRecovery(f.admin, request.id, {}),
+      /본인 확인/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.issueRecovery(f.admin, request.id, {
+          contactVerified: true,
+          osRequestId: "wrong",
+        }),
+      /대조/,
+    );
+    const first = f.store.beta.issueRecovery(f.admin, request.id, {
+      contactVerified: true,
+      osRequestId: "os-buyer",
+    });
+    const second = f.store.beta.issueRecovery(f.admin, request.id, {
+      contactVerified: true,
+      osRequestId: "os-buyer",
+    });
+    assert.throws(
+      () => f.store.beta.resetPassword(first.token, "new synthetic password"),
+      /만료|올바르/,
+    );
+    const session = f.store.session(f.buyer);
+    assert.ok(f.store.authenticate(session.token));
+    f.store.beta.resetPassword(second.token, "new synthetic password");
+    assert.equal(f.store.authenticate(session.token), null);
+    assert.throws(
+      () =>
+        f.store.beta.resetPassword(second.token, "another synthetic password"),
+      /만료|올바르/,
+    );
+    assert.equal(
+      f.store.login("buyer", "new synthetic password").id,
+      f.buyer.id,
+    );
+    assert.throws(
+      () => f.store.login("buyer", "test beta passphrase"),
+      /비밀번호|아이디/,
+    );
+    assert.equal(f.store.beta.recoveryRequests(f.admin)[0].status, "resolved");
+    assert.equal(f.store.beta.binding(f.buyer).activated, 1);
+    f.store.beta.requestRecovery({
+      username: "buyer",
+      email: "buyer@example.invalid",
+    });
+    const next = f.store.beta
+      .recoveryRequests(f.admin)
+      .find((r) => r.status === "requested");
+    const expired = f.store.beta.issueRecovery(f.admin, next.id, {
+      contactVerified: true,
+      osRequestId: "os-buyer",
+    });
+    f.advance(30 * 60000 + 1);
+    assert.throws(
+      () =>
+        f.store.beta.resetPassword(expired.token, "final synthetic password"),
+      /만료|올바르/,
+    );
+  } finally {
+    f.cleanup();
+  }
+});
+test("송금 전 승인 철회 후 진접 대면 전달을 새로 준비할 수 있음", () => {
+  const f = fixture("jinjeop");
+  try {
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const o = f.accept(f.issue(f.requested())),
+      paid = f.store.updateOrder(f.admin, o.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+    const ready = {
+      revision: paid.revision,
+      meetingPoint: "합성 지점",
+      staffContact: "합성 연락처",
+      availableFrom: f.now(),
+      availableUntil: f.now() + 3600000,
+      staged: true,
+      staffConfirmed: true,
+    };
+    f.store.beta.readyHandoff(f.admin, o.id, ready);
+    let r = f.store.beta.requestRefund(f.buyer, o.id, {
+      requestKey: "withdraw-refund-0001",
+      reason: "검토 요청",
+    });
+    r = f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "approve",
+      amount: 22000,
+      note: "합성 승인",
+      fulfillmentStopped: true,
+    });
+    assert.throws(
+      () =>
+        f.store.beta.reviewRefund(f.admin, r.id, {
+          revision: r.revision,
+          decision: "reject",
+          note: "철회",
+        }),
+      /상태/,
+    );
+    f.store.beta.reviewRefund(f.admin, r.id, {
+      revision: r.revision,
+      decision: "reject",
+      note: "송금 전 철회",
+      bankNotSent: true,
+    });
+    assert.equal(f.store.beta.hasRefundHold(o.id), false);
+    const resumed = f.store.order(f.admin, o.id);
+    assert.equal(resumed.status, "preparing");
+    f.store.beta.readyHandoff(f.admin, o.id, {
+      ...ready,
+      revision: resumed.revision,
+    });
+    assert.equal(f.store.beta.pickup(f.buyer, o.id).mode, "handoff");
+  } finally {
+    f.cleanup();
+  }
+});
 test("견적 유효기간·미정 가격 차단", () => {
   const f = fixture();
   try {

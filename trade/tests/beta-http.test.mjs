@@ -51,6 +51,7 @@ test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거
           return { id: "os-test", status };
         },
         authorize: async () => ({ actor: "검증", role: "admin" }),
+        find: async () => ({ id: "os-test", status: "approved" }),
       };
     server = createTradeServer({
       store,
@@ -66,26 +67,52 @@ test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거
     const officialHealth = await fetch(base + "/api/beta/health", {
       headers: { Origin: "https://worknic.co.kr" },
     });
-    assert.equal(officialHealth.headers.get("access-control-allow-origin"), "https://worknic.co.kr");
-    assert.equal(officialHealth.headers.get("access-control-allow-credentials"), null);
+    assert.equal(
+      officialHealth.headers.get("access-control-allow-origin"),
+      "https://worknic.co.kr",
+    );
+    assert.equal(
+      officialHealth.headers.get("access-control-allow-credentials"),
+      null,
+    );
     assert.equal((await officialHealth.json()).member, undefined);
-    assert.equal((await fetch(base + "/api/beta/health", {
-      headers: { Origin: "https://other.invalid" },
-    })).headers.get("access-control-allow-origin"), null);
+    assert.equal(
+      (
+        await fetch(base + "/api/beta/health", {
+          headers: { Origin: "https://other.invalid" },
+        })
+      ).headers.get("access-control-allow-origin"),
+      null,
+    );
     const me = await fetch(base + "/api/beta/me", {
       headers: { ...headers, Origin: "https://worknic.co.kr" },
     });
     assert.equal(me.headers.get("access-control-allow-origin"), null);
     assert.equal((await me.json()).member.status, "approved");
-    assert.equal((await fetch(base + "/api/beta/quotes", {
-      method: "POST", headers: { ...headers, Origin: "https://worknic.co.kr", "Content-Type": "application/json" }, body: "{}",
-    })).status, 403);
+    assert.equal(
+      (
+        await fetch(base + "/api/beta/quotes", {
+          method: "POST",
+          headers: {
+            ...headers,
+            Origin: "https://worknic.co.kr",
+            "Content-Type": "application/json",
+          },
+          body: "{}",
+        })
+      ).status,
+      403,
+    );
     assert.equal(
       (await fetch(base + "/api/beta/catalog", { headers })).status,
       200,
     );
     status = "suspended";
-    assert.equal((await (await fetch(base + "/api/beta/me", { headers })).json()).member.status, "suspended");
+    assert.equal(
+      (await (await fetch(base + "/api/beta/me", { headers })).json()).member
+        .status,
+      "suspended",
+    );
     assert.equal(
       (await fetch(base + "/api/beta/catalog", { headers })).status,
       403,
@@ -138,6 +165,80 @@ test("베타 HTTP: 승인 취소 즉시 차단·연동 장애 시 거절·레거
     );
     assert.equal(code.status, 401);
     assert.equal(code.headers.get("cache-control"), "no-store");
+    const post = async (path, input, cookie = "") =>
+      fetch(base + "/api/beta" + path, {
+        method: "POST",
+        headers: {
+          Origin: "http://localhost",
+          "Content-Type": "application/json",
+          ...(cookie ? { Cookie: cookie } : {}),
+        },
+        body: JSON.stringify(input),
+      });
+    for (const path of ["/refunds", "/admin/refunds", "/admin/recovery"])
+      assert.equal((await fetch(base + "/api/beta" + path)).status, 401);
+    assert.equal(
+      (await fetch(base + "/api/beta/admin/refunds", { headers })).status,
+      403,
+    );
+    const recoveryKnown = await post("/password/forgot", {
+      username: "buyer",
+      email: "test@example.invalid",
+    });
+    const recoveryUnknown = await post("/password/forgot", {
+      username: "missing",
+      email: "none@example.invalid",
+    });
+    assert.equal(recoveryKnown.status, 200);
+    assert.deepEqual(await recoveryKnown.json(), await recoveryUnknown.json());
+    const connected = await post("/admin/os-connect", {
+        token: "synthetic-os-token",
+      }),
+      adminCookie = connected.headers.get("set-cookie").split(";")[0];
+    const queue = await (
+      await fetch(base + "/api/beta/admin/recovery", {
+        headers: { Cookie: adminCookie },
+      })
+    ).json();
+    assert.equal(queue.requests.length, 1);
+    assert.equal(queue.requests[0].token, undefined);
+    assert.equal(
+      (
+        await post(
+          "/admin/recovery/issue",
+          { id: queue.requests[0].id },
+          adminCookie,
+        )
+      ).status,
+      400,
+    );
+    const issued = await post(
+      "/admin/recovery/issue",
+      { id: queue.requests[0].id, contactVerified: true },
+      adminCookie,
+    );
+    assert.equal(issued.status, 200);
+    const recovery = await issued.json();
+    assert.ok(recovery.token);
+    assert.equal(
+      (
+        await post("/password/reset", {
+          token: recovery.token,
+          password: "new synthetic passphrase",
+        })
+      ).status,
+      200,
+    );
+    assert.equal((await fetch(base + "/api/beta/me", { headers })).status, 401);
+    assert.equal(
+      (
+        await post("/password/reset", {
+          token: recovery.token,
+          password: "another synthetic passphrase",
+        })
+      ).status,
+      400,
+    );
   } finally {
     if (server) await new Promise((r) => server.close(r));
     store.close();

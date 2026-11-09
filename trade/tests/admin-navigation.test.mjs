@@ -21,6 +21,7 @@ function harness() {
     $: () => view,
     el: node,
     say() {},
+    orderAftercare() {},
     location: { hash: "#prices" },
     document: { querySelectorAll: () => [] },
     window: {
@@ -117,6 +118,7 @@ async function pickupForm(locationId) {
         ],
       };
     if (path === "/admin/slots") return { slots: [] };
+    if (path === "/admin/refunds") return { refunds: [] };
     calls.push({ path, input });
     return {};
   };

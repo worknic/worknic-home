@@ -1,0 +1,410 @@
+import { randomUUID, createHash } from "node:crypto";
+import { TradeError } from "./store.mjs";
+const fail = (message, status = 400) => {
+  throw new TradeError(message, status);
+};
+const text = (value, max = 500) =>
+  typeof value === "string" ? value.trim().slice(0, max) : "";
+export function installAftercare(
+  api,
+  db,
+  { clock, transaction, audit, adminOnly, customerOnly, release },
+) {
+  db.exec(`CREATE TABLE IF NOT EXISTS beta_refunds(id TEXT PRIMARY KEY,order_id TEXT NOT NULL,member_id TEXT NOT NULL,request_key TEXT NOT NULL,status TEXT NOT NULL,value TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 1,UNIQUE(member_id,request_key));
+    CREATE UNIQUE INDEX IF NOT EXISTS beta_refund_open ON beta_refunds(order_id) WHERE status IN ('requested','approved');
+    CREATE TABLE IF NOT EXISTS beta_refund_stock(order_id TEXT PRIMARY KEY,value TEXT NOT NULL);
+    CREATE TABLE IF NOT EXISTS beta_recovery_requests(id TEXT PRIMARY KEY,member_id TEXT NOT NULL,status TEXT NOT NULL,created_at INTEGER NOT NULL,reviewed_at INTEGER);
+    CREATE UNIQUE INDEX IF NOT EXISTS beta_recovery_open ON beta_recovery_requests(member_id) WHERE status='requested';`);
+  const own = (actor, member) => {
+    if (actor.role !== "admin" && actor.id !== member)
+      fail("해당 내역을 찾을 수 없습니다.", 404);
+  };
+  const order = (actor, id) => {
+    const r = db.prepare("SELECT * FROM orders WHERE id=?").get(id);
+    if (!r) fail("주문을 찾을 수 없습니다.", 404);
+    own(actor, r.member_id);
+    return {
+      ...r,
+      snapshot: JSON.parse(r.snapshot),
+      payment: r.payment ? JSON.parse(r.payment) : null,
+    };
+  };
+  const refund = (actor, id) => {
+    const r = db.prepare("SELECT * FROM beta_refunds WHERE id=?").get(id);
+    if (!r) fail("환불 요청을 찾을 수 없습니다.", 404);
+    own(actor, r.member_id);
+    const value = JSON.parse(r.value);
+    if (actor.role !== "admin") delete value.bankReference;
+    return {
+      ...value,
+      id: r.id,
+      orderId: r.order_id,
+      memberId: r.member_id,
+      status: r.status,
+      revision: r.revision,
+    };
+  };
+  const refunded = (id) =>
+    db
+      .prepare(
+        "SELECT value FROM beta_refunds WHERE order_id=? AND status='completed'",
+      )
+      .all(id)
+      .reduce((sum, r) => sum + JSON.parse(r.value).amount, 0);
+  const generic = {
+    ok: true,
+    message:
+      "입력 정보가 등록 정보와 일치하면 담당자가 본인 확인 후 안내합니다.",
+  };
+  return {
+    hasRefundHold(id) {
+      return !!db
+        .prepare(
+          "SELECT id FROM beta_refunds WHERE order_id=? AND status IN ('requested','approved')",
+        )
+        .get(id);
+    },
+    assertFulfillmentAllowed(id) {
+      if (
+        db
+          .prepare(
+            "SELECT id FROM beta_refunds WHERE order_id=? AND status IN ('requested','approved')",
+          )
+          .get(id)
+      )
+        fail(
+          "취소·환불 검토 중에는 수령 준비와 비밀번호 열람을 진행할 수 없습니다.",
+          409,
+        );
+    },
+    cancelUnpaid(actor, id, input) {
+      if (actor.role !== "admin") customerOnly(actor);
+      else adminOnly(actor);
+      if (
+        actor.role === "admin"
+          ? input.bankChecked !== true
+          : input.noPaymentSent !== true
+      )
+        fail(
+          "이미 입금한 경우 담당자에게 입금 확인을 요청해 주세요. 미입금 여부를 확인해야 취소할 수 있습니다.",
+        );
+      const o = order(actor, id);
+      if (o.payment) fail("입금 확인 주문은 환불 요청으로 처리해 주세요.", 409);
+      return api.updateOrder(actor, id, {
+        action: "cancel",
+        revision: input.revision,
+      });
+    },
+    requestRefund(actor, id, input) {
+      if (actor.role === "admin") {
+        adminOnly(actor);
+        if (input.customerRequested !== true)
+          fail("고객의 취소·환불 요청을 확인해 주세요.");
+      } else customerOnly(actor);
+      if (
+        !/^[A-Za-z0-9_-]{16,100}$/.test(input.requestKey || "") ||
+        !text(input.reason)
+      )
+        fail("환불 요청 사유를 입력해 주세요.");
+      return transaction(() => {
+        const memberId =
+          actor.role === "admin" ? order(actor, id).member_id : actor.id;
+        const previous = db
+          .prepare(
+            "SELECT id FROM beta_refunds WHERE member_id=? AND request_key=?",
+          )
+          .get(memberId, input.requestKey);
+        if (previous) {
+          const old = refund(actor, previous.id);
+          if (old.orderId !== id)
+            fail("요청번호가 다른 주문에 사용됐습니다.", 409);
+          return old;
+        }
+        const o = order(actor, id);
+        if (
+          !o.payment ||
+          ![
+            "paid",
+            "preparing",
+            "pickup_ready",
+            "pickup_reported",
+            "pickup_exception",
+            "collected",
+            "shipped",
+          ].includes(o.status)
+        )
+          fail(
+            "입금 확인된 주문만 환불을 요청할 수 있습니다. 미확인 입금은 담당자에게 문의해 주세요.",
+            409,
+          );
+        if (refunded(id) >= o.payment.amount)
+          fail("이미 전액 환불된 주문입니다.", 409);
+        if (
+          db
+            .prepare(
+              "SELECT id FROM beta_refunds WHERE order_id=? AND status IN ('requested','approved')",
+            )
+            .get(id)
+        )
+          fail("이미 검토 중인 환불 요청이 있습니다.", 409);
+        const key = randomUUID(),
+          value = {
+            reason: text(input.reason),
+            requestedAt: clock(),
+            orderNumber: o.number,
+            companyName: o.snapshot.buyer.companyName,
+            originalStatus: o.status,
+          };
+        db.prepare(
+          "INSERT INTO beta_refunds VALUES(?,?,?,?,'requested',?,1)",
+        ).run(key, id, memberId, input.requestKey, JSON.stringify(value));
+        audit(actor, "refund.requested", id, { refundId: key });
+        return refund(actor, key);
+      });
+    },
+    refunds(actor) {
+      if (actor.role === "admin") adminOnly(actor);
+      else customerOnly(actor);
+      const rows =
+        actor.role === "admin"
+          ? db.prepare("SELECT id FROM beta_refunds ORDER BY rowid DESC").all()
+          : db
+              .prepare(
+                "SELECT id FROM beta_refunds WHERE member_id=? ORDER BY rowid DESC",
+              )
+              .all(actor.id);
+      return rows.map((r) => refund(actor, r.id));
+    },
+    reviewRefund(actor, id, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const r = refund(actor, id),
+          o = order(actor, r.orderId);
+        if (
+          !(
+            r.status === "requested" ||
+            (r.status === "approved" &&
+              input.decision === "reject" &&
+              input.bankNotSent === true)
+          ) ||
+          r.revision !== input.revision ||
+          !text(input.note) ||
+          !["approve", "reject"].includes(input.decision)
+        )
+          fail("환불 검토 상태·사유를 확인해 주세요.", 409);
+        const value = {
+          ...r,
+          reviewNote: text(input.note),
+          reviewedBy: actor.username,
+          reviewedAt: clock(),
+        };
+        if (input.decision === "approve") {
+          const remaining = o.payment.amount - refunded(o.id),
+            amount = input.amount;
+          if (!Number.isSafeInteger(amount) || amount < 1 || amount > remaining)
+            fail("확인된 입금 잔액 이내의 환불액을 입력해 주세요.");
+          if (
+            !["collected", "shipped"].includes(r.originalStatus) &&
+            amount !== remaining
+          )
+            fail(
+              "수령 전 취소는 남은 입금액 전액을 환불합니다. 부분 반품은 실제 수령 후 검토해 주세요.",
+            );
+          const locker = db
+            .prepare("SELECT * FROM beta_pickups WHERE order_id=?")
+            .get(o.id);
+          const handoff = db
+            .prepare(
+              "SELECT * FROM beta_handoffs WHERE order_id=? AND status IN ('ready','reported')",
+            )
+            .get(o.id);
+          if (input.fulfillmentStopped !== true)
+            fail(
+              "실제 출고·전달 중단과 잠금 비밀번호 폐기 여부를 확인해 주세요.",
+            );
+          if (locker) {
+            db.prepare("DELETE FROM beta_pickups WHERE order_id=?").run(o.id);
+            audit(actor, "pickup.refund_stopped", o.id, {
+              slotId: locker.slot_id,
+              physicalCodeRevoked: true,
+            });
+          }
+          if (handoff) {
+            db.prepare(
+              "UPDATE beta_handoffs SET status='cancelled',revision=revision+1 WHERE order_id=?",
+            ).run(o.id);
+            audit(actor, "handoff.refund_stopped", o.id);
+          }
+          if (!["collected", "shipped"].includes(o.status))
+            db.prepare(
+              "UPDATE orders SET status='preparing',revision=revision+1 WHERE id=?",
+            ).run(o.id);
+          value.amount = amount;
+          value.fulfillmentStopped = true;
+        }
+        db.prepare(
+          "UPDATE beta_refunds SET status=?,value=?,revision=revision+1 WHERE id=?",
+        ).run(
+          input.decision === "approve" ? "approved" : "rejected",
+          JSON.stringify(value),
+          id,
+        );
+        audit(
+          actor,
+          "refund." + (input.decision === "approve" ? "approved" : "rejected"),
+          o.id,
+          { refundId: id, amount: value.amount },
+        );
+        return refund(actor, id);
+      });
+    },
+    completeRefund(actor, id, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const r = refund(actor, id),
+          o = order(actor, r.orderId);
+        if (r.status === "completed") return r;
+        if (
+          r.status !== "approved" ||
+          r.revision !== input.revision ||
+          input.bankRefundChecked !== true ||
+          input.amount !== r.amount ||
+          !text(input.bankReference, 100)
+        )
+          fail("실제 은행 환불 송금·승인 금액·확인번호를 대조해 주세요.", 409);
+        const totalRefunded = refunded(o.id) + r.amount;
+        if (totalRefunded > o.payment.amount)
+          fail("확인된 입금액을 초과하여 환불할 수 없습니다.", 409);
+        if (
+          db
+            .prepare("SELECT order_id FROM beta_pickups WHERE order_id=?")
+            .get(o.id) ||
+          db
+            .prepare(
+              "SELECT order_id FROM beta_handoffs WHERE order_id=? AND status IN ('ready','reported')",
+            )
+            .get(o.id)
+        )
+          fail("수령 준비를 먼저 중단해 주세요.", 409);
+        if (input.restockAll === true) {
+          if (refunded(o.id) > 0)
+            fail(
+              "부분 환불 이력이 있는 주문은 전체 자동 복원 대신 확인된 옵션별 반품 수량만 재고 화면에 반영해 주세요.",
+            );
+          if (
+            totalRefunded !== o.payment.amount ||
+            input.goodsRecovered !== true
+          )
+            fail(
+              "전액 환불과 주문 전체 상품의 회수·재판매 가능 여부를 확인해야 전체 재고를 복원할 수 있습니다.",
+            );
+          if (
+            !db
+              .prepare(
+                "SELECT order_id FROM beta_refund_stock WHERE order_id=?",
+              )
+              .get(o.id)
+          ) {
+            release({ ...o, snapshot: JSON.stringify(o.snapshot) });
+            db.prepare("INSERT INTO beta_refund_stock VALUES(?,?)").run(
+              o.id,
+              JSON.stringify({ at: clock(), by: actor.username }),
+            );
+            audit(actor, "refund.stock_restored", o.id);
+          }
+        }
+        const value = {
+          ...r,
+          bankReference: text(input.bankReference, 100),
+          completedAt: clock(),
+          completedBy: actor.username,
+          restockedAll: input.restockAll === true,
+        };
+        db.prepare(
+          "UPDATE beta_refunds SET status='completed',value=?,revision=revision+1 WHERE id=?",
+        ).run(JSON.stringify(value), id);
+        db.prepare(
+          "UPDATE orders SET status=?,revision=revision+1 WHERE id=?",
+        ).run(totalRefunded === o.payment.amount ? "refunded" : o.status, o.id);
+        audit(actor, "refund.completed", o.id, {
+          refundId: id,
+          amount: r.amount,
+          totalRefunded,
+        });
+        return refund(actor, id);
+      });
+    },
+    requestRecovery(input) {
+      const username = text(input.username, 80).toLowerCase(),
+        email = text(input.email, 200).toLowerCase();
+      const m = db
+        .prepare(
+          "SELECT id,profile FROM members WHERE username=? AND role='customer'",
+        )
+        .get(username);
+      if (
+        !m ||
+        JSON.parse(m.profile).email.toLowerCase() !== email ||
+        !db
+          .prepare(
+            "SELECT member_id FROM beta_bindings WHERE member_id=? AND activated=1",
+          )
+          .get(m.id)
+      )
+        return generic;
+      db.prepare(
+        "INSERT OR IGNORE INTO beta_recovery_requests VALUES(?,?,'requested',?,NULL)",
+      ).run(randomUUID(), m.id, clock());
+      return generic;
+    },
+    recoveryRequests(actor) {
+      adminOnly(actor);
+      return db
+        .prepare(
+          "SELECT r.*,m.username,m.profile FROM beta_recovery_requests r JOIN members m ON m.id=r.member_id ORDER BY r.created_at DESC",
+        )
+        .all()
+        .map((r) => ({ ...r, profile: JSON.parse(r.profile) }));
+    },
+    issueRecovery(actor, id, input) {
+      adminOnly(actor);
+      if (input.contactVerified !== true)
+        fail("등록 담당자에게 직접 연락하여 본인 확인을 완료해 주세요.");
+      const r = db
+        .prepare(
+          "SELECT * FROM beta_recovery_requests WHERE id=? AND status IN ('requested','issued')",
+        )
+        .get(id);
+      if (!r) fail("복구 요청을 확인해 주세요.", 404);
+      const m = db
+        .prepare(
+          "SELECT id,role,status,profile FROM members WHERE id=? AND role='customer'",
+        )
+        .get(r.member_id);
+      const binding = db
+        .prepare(
+          "SELECT * FROM beta_bindings WHERE member_id=? AND activated=1",
+        )
+        .get(r.member_id);
+      if (!m || !binding || input.osRequestId !== binding.request_id)
+        fail("OS의 기존 거래 계정 연결을 대조해 주세요.", 409);
+      const token = api.resetToken(actor, m.id);
+      db.prepare("DELETE FROM beta_activations WHERE member_id=?").run(m.id);
+      db.prepare(
+        "UPDATE beta_recovery_requests SET status='issued',reviewed_at=? WHERE id=?",
+      ).run(clock(), id);
+      audit(actor, "recovery.verified", m.id, { requestId: id });
+      return token;
+    },
+    resetPassword(token, password) {
+      const hash = createHash("sha256").update(text(token, 100)).digest("hex"),
+        r = db.prepare("SELECT member_id FROM resets WHERE hash=?").get(hash);
+      const result = api.resetPassword(token, password);
+      if (r)
+        db.prepare(
+          "UPDATE beta_recovery_requests SET status='resolved',reviewed_at=? WHERE member_id=? AND status IN ('requested','issued')",
+        ).run(clock(), r.member_id);
+      return result;
+    },
+  };
+}

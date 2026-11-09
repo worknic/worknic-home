@@ -58,6 +58,7 @@ export const STATUS = {
   pickup_exception: "담당자 확인 필요",
   shipped: "발송 완료",
   cancelled: "주문 취소",
+  refunded: "전액 환불 완료",
   expired: "입금기한 만료",
 };
 export const DEFAULT_SETTINGS = {
@@ -805,7 +806,7 @@ export function openStore(
   api.beta = installBeta(
     api,
     db,
-    { clock, transaction, audit, adminOnly, customerOnly, settings },
+    { clock, transaction, audit, adminOnly, customerOnly, settings, release },
     betaOptions,
   );
   return api;

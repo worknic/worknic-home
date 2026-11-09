@@ -716,8 +716,26 @@ export function installAftercare(
         .all()
         .map((r) => ({ ...r, profile: JSON.parse(r.profile) }));
     },
+    recoveryAccess(actor) {
+      adminOnly(actor);
+      const operator = api.beta.config().recoveryOperator?.value || null;
+      const row = db
+        .prepare("SELECT profile FROM members WHERE id=? AND role='admin'")
+        .get(actor.id);
+      const p = row ? JSON.parse(row.profile) : {};
+      return {
+        operator,
+        canIssue:
+          !operator || (p.authSource === "worknic_os" && p.osUser === operator),
+      };
+    },
     issueRecovery(actor, id, input) {
       adminOnly(actor);
+      if (!api.beta.recoveryAccess(actor).canIssue)
+        fail(
+          "계정 복구 링크는 지정 담당자 영우의 OS 계정에서 발급해 주세요.",
+          403,
+        );
       if (input.contactVerified !== true)
         fail("등록 담당자에게 직접 연락하여 본인 확인을 완료해 주세요.");
       const r = db

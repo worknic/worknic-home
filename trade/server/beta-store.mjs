@@ -772,6 +772,35 @@ export function installBeta(
         return config();
       });
     },
+    confirmRecoveryOperator(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (input.value !== "영우" || input.confirmed !== true)
+          fail(
+            "계정 복구 본인 확인 및 링크 발급 담당자 영우 지정을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          recoveryOperator: {
+            value: input.value,
+            scope: "verified_account_recovery",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "operator.recovery_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
     catalog(actor) {
       if (actor.role === "admin") return api.products(actor);
       customer(actor);

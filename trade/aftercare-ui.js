@@ -272,7 +272,14 @@ export async function adminRecovery(root, refresh) {
       "신청자가 적은 연락처가 아니라 OS에 등록된 연락처로 직접 본인 확인합니다. 복구는 사업자 승인 상태를 변경하지 않습니다.",
     ),
   );
-  const { requests } = await call("/admin/recovery");
+  const { requests, access } = await call("/admin/recovery");
+  root.append(
+    el("p", "본인 확인·링크 발급 담당자: " + (access?.operator || "미정")),
+  );
+  if (access?.canIssue === false)
+    root.append(
+      el("p", "복구 링크 발급·재발급은 영우의 OS 계정에서 처리합니다."),
+    );
   if (!requests.length) root.append(el("p", "접수된 복구 요청이 없습니다."));
   for (const r of requests) {
     const c = card(r.profile.companyName);
@@ -297,7 +304,7 @@ export async function adminRecovery(root, refresh) {
           }[r.status] || r.status),
       ),
     );
-    if (r.status !== "resolved") {
+    if (r.status !== "resolved" && access?.canIssue !== false) {
       const f = el("form");
       field(
         f,

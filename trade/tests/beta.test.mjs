@@ -2280,3 +2280,61 @@ test("수령 전 취소 3영업일은 승인·계좌 확인 완료 시점에 기
     }
   }
 });
+
+test("계정 복구 담당자 영우는 저장된 OS 신원으로 링크 발급하며 기존 다른 관리자 조회는 유지", () => {
+  const f = fixture();
+  try {
+    const c = f.store.beta.config();
+    assert.throws(
+      () =>
+        f.store.beta.confirmRecoveryOperator(f.buyer, {
+          revision: c.revision,
+          value: "영우",
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmRecoveryOperator(f.admin, {
+          revision: c.revision,
+          value: "other",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmRecoveryOperator(f.admin, {
+      revision: c.revision,
+      value: "영우",
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, c.betaEnabled);
+    const yw = f.store.osAdmin("test_yw", "synthetic passphrase", "영우"),
+      nk = f.store.osAdmin("test_nk", "synthetic passphrase", "나경");
+    assert.equal(f.store.beta.recoveryAccess(yw).canIssue, true);
+    assert.equal(f.store.beta.recoveryAccess(nk).canIssue, false);
+    assert.ok(Array.isArray(f.store.beta.recoveryRequests(nk)));
+    assert.throws(
+      () =>
+        f.store.beta.issueRecovery(
+          { ...nk, profile: { authSource: "worknic_os", osUser: "영우" } },
+          "missing",
+          { contactVerified: true },
+        ),
+      /지정 담당자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.issueRecovery(yw, "missing", { contactVerified: true }),
+      /복구 요청/,
+    );
+    f.store.beta.updateConfig(f.admin, {
+      ...saved,
+      betaEnabled: false,
+      registrationEnabled: false,
+    });
+    assert.equal(f.store.beta.config().recoveryOperator.value, "영우");
+  } finally {
+    f.cleanup();
+  }
+});

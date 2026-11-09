@@ -1024,6 +1024,39 @@ async function settings(root) {
     transferPolicy.append(cf);
   }
   root.append(transferPolicy);
+  const recoveryPolicy = card("운영 담당자 · 계정 복구 본인 확인 및 링크 발급");
+  recoveryPolicy.append(
+    el(
+      "p",
+      "계정 복구 담당자는 영우입니다. 기존 OS 등록 연락처로 본인을 확인하고 30분 일회용 링크를 발급합니다. 등록 담당자나 연락처가 바뀐 경우 기존 연락처 확인과 사업자 권한 확인을 마친 뒤 처리합니다.",
+    ),
+  );
+  if (config.recoveryOperator?.value === "영우")
+    recoveryPolicy.append(
+      el("p", "확정 저장됨 · " + date(config.recoveryOperator.confirmedAt)),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "계정 복구 본인 확인 및 링크 발급 담당자를 영우로 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "계정 복구 담당자 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/operators/recovery", {
+        revision: config.revision,
+        value: "영우",
+        confirmed: true,
+      });
+      say("계정 복구 담당자를 영우로 저장했습니다.");
+      route();
+    });
+    recoveryPolicy.append(cf);
+  }
+  root.append(recoveryPolicy);
   const recipientPolicy = card("확정 운영 기준 · 환불 수취계좌 확인");
   recipientPolicy.append(
     el(

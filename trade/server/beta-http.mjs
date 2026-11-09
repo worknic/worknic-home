@@ -300,7 +300,10 @@ export function createBetaRouter({
     if (path.startsWith("/admin/")) {
       if (!admin) fail("관리자 권한이 필요합니다.", 403);
       if (path === "/admin/recovery" && method === "GET")
-        return send({ requests: store.beta.recoveryRequests(actor) });
+        return send({
+          requests: store.beta.recoveryRequests(actor),
+          access: store.beta.recoveryAccess(actor),
+        });
       if (path === "/admin/recovery/issue" && method === "POST") {
         const request = store.beta
           .recoveryRequests(actor)
@@ -421,6 +424,8 @@ export function createBetaRouter({
         method === "POST"
       )
         return send(store.beta.confirmPreReceiptRefundTiming(actor, input));
+      if (path === "/admin/operators/recovery" && method === "POST")
+        return send(store.beta.confirmRecoveryOperator(actor, input));
       if (path === "/admin/orders/receipt-date" && method === "POST")
         return send(store.beta.confirmReceiptDate(actor, input.id, input));
       if (path === "/admin/orders/special-start" && method === "POST")

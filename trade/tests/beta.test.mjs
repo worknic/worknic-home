@@ -1806,3 +1806,64 @@ test("전량 반품 최초 발송 배송비 워크닉 부담은 권한·설정 �
     f.cleanup();
   }
 });
+
+test("불량·오배송 회수비·재발송비 워크닉 부담은 권한·설정 충돌을 확인하고 견적·주문에 고정", () => {
+  const f = fixture();
+  try {
+    const config = f.store.beta.config(),
+      value = "worknic_pays_collection_reshipment";
+    assert.throws(
+      () =>
+        f.store.beta.confirmDefectShipping(f.buyer, {
+          revision: config.revision,
+          value,
+          confirmed: true,
+        }),
+      /관리자/,
+    );
+    assert.throws(
+      () =>
+        f.store.beta.confirmDefectShipping(f.admin, {
+          revision: config.revision,
+          value: "other",
+          confirmed: true,
+        }),
+      /확인/,
+    );
+    const saved = f.store.beta.confirmDefectShipping(f.admin, {
+      revision: config.revision,
+      value,
+      confirmed: true,
+    });
+    assert.equal(saved.betaEnabled, config.betaEnabled);
+    assert.equal(saved.registrationEnabled, config.registrationEnabled);
+    assert.throws(
+      () =>
+        f.store.beta.confirmDefectShipping(f.admin, {
+          revision: config.revision,
+          value,
+          confirmed: true,
+        }),
+      /변경/,
+    );
+    f.store.beta.applyPrices(
+      f.admin,
+      f.store.beta.previewPrices(f.admin, [f.row]).id,
+    );
+    const q = f.issue(f.requested()),
+      o = f.accept(q);
+    assert.equal(q.defectShipping, value);
+    assert.equal(o.defectShipping, value);
+    assert.match(o.defectShippingText, /워크닉이 부담/);
+    assert.match(o.defectShippingText, /차감하지/);
+    assert.equal(o.total, q.total);
+    f.store.beta.updateConfig(f.admin, {
+      ...saved,
+      betaEnabled: false,
+      registrationEnabled: false,
+    });
+    assert.equal(f.store.beta.config().defectShipping.value, value);
+  } finally {
+    f.cleanup();
+  }
+});

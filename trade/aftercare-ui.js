@@ -18,6 +18,7 @@ const states = {
   completed: "환불 완료 기록",
 };
 export function orderAftercare(root, o, refunds, refresh, admin = false) {
+  if (o.defectShippingText) root.append(el("p", o.defectShippingText, "muted"));
   if (o.outboundShippingText)
     root.append(el("p", o.outboundShippingText, "muted"));
   if (o.returnShippingText) root.append(el("p", o.returnShippingText, "muted"));

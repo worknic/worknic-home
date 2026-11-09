@@ -848,7 +848,7 @@ async function settings(root) {
   shippingPolicy.append(
     el(
       "p",
-      "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객 부담입니다. 실제 비용·정산 방식은 접수 후 안내하며 자동 공제하지 않습니다. 최초 배송비는 아래 별도 기준으로 안내하며 불량·오배송 비용은 별도 확정합니다.",
+      "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객 부담입니다. 실제 비용·정산 방식은 접수 후 안내하며 자동 공제하지 않습니다. 최초 배송비는 아래 별도 기준으로 안내하며 불량·오배송 비용은 아래 별도 기준으로 안내합니다.",
     ),
   );
   if (config.standardReturnShipping?.value === "customer_pays_collection")
@@ -919,6 +919,39 @@ async function settings(root) {
     outboundPolicy.append(cf);
   }
   root.append(outboundPolicy);
+  const defectPolicy = card("확정 운영 기준 · 불량·오배송 회수·재발송 비용");
+  defectPolicy.append(
+    el(
+      "p",
+      "상품 불량이나 오배송이 확인된 경우 교환·반품에 필요한 회수비와 재발송비는 모두 워크닉이 부담합니다. 단순 변심 비용 기준과 구분하며 고객에게 해당 배송비를 청구하거나 환불액에서 차감하지 않습니다.",
+    ),
+  );
+  if (config.defectShipping?.value === "worknic_pays_collection_reshipment")
+    defectPolicy.append(
+      el("p", "확정 저장됨 · " + date(config.defectShipping.confirmedAt)),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "불량·오배송 확인 시 회수비·재발송비 워크닉 부담 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "불량·오배송 배송비 기준 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/defect-shipping", {
+        revision: config.revision,
+        value: "worknic_pays_collection_reshipment",
+        confirmed: true,
+      });
+      say("불량·오배송 회수·재발송 비용 기준을 저장했습니다.");
+      route();
+    });
+    defectPolicy.append(cf);
+  }
+  root.append(defectPolicy);
   const f = el("form");
   field(
     f,

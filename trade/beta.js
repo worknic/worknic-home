@@ -314,6 +314,7 @@ async function ordersView(root) {
       el("p", q.locationName),
     );
     if (q.status === "issued") {
+      if (q.defectShippingText) c.append(el("p", q.defectShippingText));
       if (q.outboundShippingText) c.append(el("p", q.outboundShippingText));
       if (q.returnShippingText) c.append(el("p", q.returnShippingText));
       if (q.returnConditionText) c.append(el("p", q.returnConditionText));

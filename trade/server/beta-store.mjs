@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        defectShipping:
+          config().defectShipping?.value ===
+          "worknic_pays_collection_reshipment"
+            ? "상품 불량이나 오배송이 확인된 경우 교환·반품에 필요한 회수비와 재발송비는 모두 워크닉이 부담합니다. 단순 변심 비용 기준과 구분하며 고객에게 해당 배송비를 청구하거나 환불액에서 차감하지 않습니다."
+            : null,
         standardOutboundShipping:
           config().standardOutboundShipping?.value ===
           "worknic_pays_outbound_full_return"
@@ -565,6 +570,38 @@ export function installBeta(
           "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
         ).run(JSON.stringify(next));
         audit(actor, "policy.standard_outbound_shipping_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
+    confirmDefectShipping(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "worknic_pays_collection_reshipment" ||
+          input.confirmed !== true
+        )
+          fail(
+            "불량·오배송 확인 시 회수비·재발송비 워크닉 부담 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          defectShipping: {
+            value: input.value,
+            scope: "confirmed_defect_or_wrong_item",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.defect_shipping_confirmed", "beta", {
           value: input.value,
         });
         return config();
@@ -943,6 +980,8 @@ export function installBeta(
           standardReturnCondition: specialOrder
             ? null
             : config().standardReturnCondition?.value || null,
+          defectShipping: config().defectShipping?.value || null,
+          defectShippingText: api.beta.runtime().policies.defectShipping || "",
           standardOutboundShipping: specialOrder
             ? null
             : config().standardOutboundShipping?.value || null,
@@ -1059,6 +1098,8 @@ export function installBeta(
             standardReturnDays: q.standardReturnDays || null,
             standardReturnCondition: q.standardReturnCondition || null,
             returnConditionText: q.returnConditionText || "",
+            defectShipping: q.defectShipping || null,
+            defectShippingText: q.defectShippingText || "",
             standardOutboundShipping: q.standardOutboundShipping || null,
             outboundShippingText: q.outboundShippingText || "",
             standardReturnShipping: q.standardReturnShipping || null,

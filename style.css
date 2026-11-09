@@ -114,3 +114,7 @@ a:hover{color:#555d4d}
 .map-links{display:flex;flex-wrap:wrap;gap:8px}
 .footer .map-links .button{display:inline-flex;min-height:36px;padding:8px 12px;margin:0;font-size:12px;line-height:1.5;background:#4b4e47;color:#f7f7f5;border-radius:6px}
 .footer .map-links .button:hover,.footer .map-links .button:focus-visible{background:#f7f7f5;color:#252823}
+
+
+/* Business actions remain separate from the three product categories. */
+.business-apply-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.business-account-entry{background:#f3f4f0;padding:24px;margin:28px 0}.business-account-entry h2{font-size:20px;margin:0 0 12px}.business-account-entry p{line-height:1.8;margin:0 0 18px}

@@ -358,6 +358,8 @@ export function installAftercare(
         transferOperatorConfirmed: !!transferOperator,
         recipientPolicy: api.beta.config().refundRecipient?.value || null,
         returnRefundTiming: api.beta.config().returnRefundTiming?.value || null,
+        preReceiptRefundTiming:
+          api.beta.config().preReceiptRefundTiming?.value || null,
       };
     },
     reviewRefund(actor, id, input) {
@@ -395,6 +397,18 @@ export function installAftercare(
           );
         if (r.requiresAgreement) value.agreementConfirmed = true;
         if (input.decision === "approve") {
+          if (
+            r.originalStatus !== "collected" &&
+            !r.requiresAgreement &&
+            api.beta.config().preReceiptRefundTiming?.value ===
+              "within_3_business_days_after_approval_and_account"
+          ) {
+            if (input.preReceiptAccountVerified !== true)
+              fail("고객의 미수령과 환불 계좌 확인 완료를 확인해 주세요.");
+            value.preReceiptRefundTiming =
+              "within_3_business_days_after_approval_and_account";
+            value.refundTransferReadyAt = clock();
+          }
           if (
             r.originalStatus === "collected" &&
             api.beta.config().returnRefundTiming?.value ===

@@ -322,6 +322,11 @@ export function installBeta(
       betaEnabled: config().betaEnabled,
       registrationEnabled: config().registrationEnabled,
       policies: {
+        preReceiptRefundTiming:
+          config().preReceiptRefundTiming?.value ===
+          "within_3_business_days_after_approval_and_account"
+            ? "입금 후 수령 전 취소는 취소 승인과 환불 계좌 확인이 완료된 뒤 3영업일 이내에 환불 송금을 처리합니다. 제작·발주가 시작된 상품의 건별 협의 예외는 유지합니다."
+            : null,
         returnRefundTiming:
           config().returnRefundTiming?.value ===
           "within_3_business_days_after_inspection"
@@ -730,6 +735,38 @@ export function installBeta(
           "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
         ).run(JSON.stringify(next));
         audit(actor, "policy.return_refund_timing_confirmed", "beta", {
+          value: input.value,
+        });
+        return config();
+      });
+    },
+    confirmPreReceiptRefundTiming(actor, input) {
+      adminOnly(actor);
+      return transaction(() => {
+        const current = config();
+        if (input.revision !== current.revision)
+          fail("운영 설정이 변경됐습니다. 다시 확인해 주세요.", 409);
+        if (
+          input.value !== "within_3_business_days_after_approval_and_account" ||
+          input.confirmed !== true
+        )
+          fail(
+            "수령 전 취소 승인·환불 계좌 확인 완료 후 3영업일 이내 송금 기준을 확인해 주세요.",
+          );
+        const next = {
+          ...current,
+          preReceiptRefundTiming: {
+            value: input.value,
+            scope: "pre_receipt_cancellation_after_approval_and_account",
+            confirmedAt: clock(),
+            confirmedBy: actor.username,
+          },
+        };
+        delete next.revision;
+        db.prepare(
+          "UPDATE beta_config SET value=?,revision=revision+1 WHERE id=1",
+        ).run(JSON.stringify(next));
+        audit(actor, "policy.pre_receipt_refund_timing_confirmed", "beta", {
           value: input.value,
         });
         return config();

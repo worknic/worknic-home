@@ -395,6 +395,15 @@ export async function adminRefunds(root, refresh) {
       ),
       el("p", "실제 주문 상태 " + (labels[o.status] || o.status)),
     );
+    if (r.refundTransferReadyAt)
+      c.append(
+        el(
+          "p",
+          "수령 전 취소 승인·환불 계좌 확인 완료: " +
+            date(r.refundTransferReadyAt) +
+            " · 완료 후 3영업일 이내 송금. 공휴일을 확인해 기한을 판단하세요.",
+        ),
+      );
     if (r.inspectionCompletedOn)
       c.append(
         el(
@@ -438,6 +447,26 @@ export async function adminRefunds(root, refresh) {
         "number",
       ).min = 1;
       field(f, "note", "고객에게 안내할 검토 내용");
+      if (
+        r.originalStatus !== "collected" &&
+        !r.requiresAgreement &&
+        reviewAccess?.preReceiptRefundTiming ===
+          "within_3_business_days_after_approval_and_account"
+      ) {
+        field(
+          f,
+          "preReceiptAccountVerified",
+          "고객이 아직 상품을 받지 않았고 환불 계좌 확인도 완료했습니다. 다른 명의 요청은 영우가 별도로 확인했습니다.",
+          false,
+          "checkbox",
+        ).required = true;
+        f.append(
+          el(
+            "p",
+            "승인·계좌 확인 완료 시점을 기준으로 3영업일 이내 송금합니다. 공휴일은 별도 확인하세요.",
+          ),
+        );
+      }
       if (
         r.originalStatus === "collected" &&
         reviewAccess?.returnRefundTiming ===
@@ -520,6 +549,7 @@ export async function adminRefunds(root, refresh) {
           agreementConfirmed: d.agreement === "on",
           inspectionCompletedOn: d.inspectionCompletedOn,
           inspectionVerified: d.inspectionVerified === "on",
+          preReceiptAccountVerified: d.preReceiptAccountVerified === "on",
         });
         say("환불을 승인했습니다. 실제 송금 후 완료를 기록해 주세요.");
         refresh();

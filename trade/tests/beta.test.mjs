@@ -2186,3 +2186,97 @@ test("반품 환불 3영업일 기준은 실제 회수·검수 완료일 확인�
     f.cleanup();
   }
 });
+
+test("수령 전 취소 3영업일은 승인·계좌 확인 완료 시점에 기록하고 시작된 특수 상품 협의는 유지", () => {
+  for (const special of [false, true]) {
+    const f = fixture();
+    try {
+      const c = f.store.beta.config();
+      assert.throws(
+        () =>
+          f.store.beta.confirmPreReceiptRefundTiming(f.buyer, {
+            revision: c.revision,
+            value: "within_3_business_days_after_approval_and_account",
+            confirmed: true,
+          }),
+        /관리자/,
+      );
+      const saved = f.store.beta.confirmPreReceiptRefundTiming(f.admin, {
+        revision: c.revision,
+        value: "within_3_business_days_after_approval_and_account",
+        confirmed: true,
+      });
+      assert.equal(saved.betaEnabled, c.betaEnabled);
+      f.store.beta.applyPrices(
+        f.admin,
+        f.store.beta.previewPrices(f.admin, [f.row]).id,
+      );
+      if (special)
+        f.store.beta.confirmSpecialCancellation(f.admin, {
+          revision: f.store.beta.config().revision,
+          value: "full_before_start_agreement_after",
+          confirmed: true,
+        });
+      const request = f.requested();
+      const q = special
+        ? f.store.beta.issueQuote(f.admin, request.id, {
+            revision: request.revision,
+            pickupFee: 0,
+            conditionsConfirmed: true,
+            expiresAt: f.now() + 86400000,
+            specialOrder: true,
+            specialOrderAcknowledged: true,
+          })
+        : f.issue(request);
+      const o = f.accept(q);
+      const paid = f.store.updateOrder(f.admin, o.id, {
+        revision: 1,
+        action: "confirm_payment",
+        amount: 22000,
+        reference: "합성",
+        bankChecked: true,
+      });
+      if (special)
+        f.store.beta.markSpecialStarted(f.admin, o.id, {
+          orderRevision: paid.revision,
+          actualStartConfirmed: true,
+          reference: "합성 공급사 기록",
+        });
+      const r = f.store.beta.requestRefund(f.buyer, o.id, {
+        requestKey: "pre-receipt-time-0001",
+        reasonType: "change_of_mind",
+        reason: "합성 취소",
+      });
+      const input = {
+        revision: r.revision,
+        decision: "approve",
+        amount: special ? 7000 : 22000,
+        note: "합성 협의 승인",
+        fulfillmentStopped: true,
+        agreementConfirmed: special,
+      };
+      if (!special)
+        assert.throws(
+          () => f.store.beta.reviewRefund(f.admin, r.id, input),
+          /계좌 확인/,
+        );
+      const approved = f.store.beta.reviewRefund(f.admin, r.id, {
+        ...input,
+        preReceiptAccountVerified: !special,
+      });
+      assert.equal(
+        approved.preReceiptRefundTiming,
+        special
+          ? undefined
+          : "within_3_business_days_after_approval_and_account",
+      );
+      assert.equal(
+        approved.refundTransferReadyAt,
+        special ? undefined : f.now(),
+      );
+      assert.equal(f.store.order(f.buyer, o.id).total, 22000);
+    } finally {
+      f.cleanup();
+    }
+  }
+});

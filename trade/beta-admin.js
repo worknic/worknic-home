@@ -1061,7 +1061,7 @@ async function settings(root) {
   timingPolicy.append(
     el(
       "p",
-      "반품 상품의 회수와 검수가 완료된 후 3영업일 이내에 환불 송금을 처리합니다. 반품 검토 승인 시 실제 회수·검수 완료일을 기록합니다. 공휴일을 반영한 자동 마감일 계산은 아직 연결되지 않아 담당자가 공휴일을 확인해 기한을 판단합니다. 수령 전 취소의 송금 기한은 별도 확정합니다.",
+      "반품 상품의 회수와 검수가 완료된 후 3영업일 이내에 환불 송금을 처리합니다. 반품 검토 승인 시 실제 회수·검수 완료일을 기록합니다. 공휴일을 반영한 자동 마감일 계산은 아직 연결되지 않아 담당자가 공휴일을 확인해 기한을 판단합니다. 수령 전 취소의 송금 기한은 아래 별도 기준으로 안내합니다.",
     ),
   );
   if (
@@ -1093,6 +1093,47 @@ async function settings(root) {
     timingPolicy.append(cf);
   }
   root.append(timingPolicy);
+  const cancelTimingPolicy = card(
+    "확정 운영 기준 · 수령 전 취소 환불 송금 기한",
+  );
+  cancelTimingPolicy.append(
+    el(
+      "p",
+      "입금 후 수령 전 취소는 취소 승인과 환불 계좌 확인이 완료된 뒤 3영업일 이내에 환불 송금을 처리합니다. 제작·발주가 시작된 상품의 건별 협의 예외는 유지합니다. 취소 승인 시 미수령과 환불 계좌 확인을 함께 완료하고 그 시점을 기록합니다. 공휴일 자동 마감일 계산은 아직 연결되지 않아 담당자가 공휴일을 확인해 기한을 판단합니다.",
+    ),
+  );
+  if (
+    config.preReceiptRefundTiming?.value ===
+    "within_3_business_days_after_approval_and_account"
+  )
+    cancelTimingPolicy.append(
+      el(
+        "p",
+        "확정 저장됨 · " + date(config.preReceiptRefundTiming.confirmedAt),
+      ),
+    );
+  else {
+    const cf = el("form");
+    field(
+      cf,
+      "confirmed",
+      "수령 전 취소 승인·계좌 확인 완료 후 3영업일 이내 송금 기준을 확정했습니다.",
+      false,
+      "checkbox",
+    ).required = true;
+    cf.append(el("button", "수령 전 취소 송금 기한 확정 저장", "button"));
+    formTask(cf, async () => {
+      await call("/admin/policies/pre-receipt-refund-timing", {
+        revision: config.revision,
+        value: "within_3_business_days_after_approval_and_account",
+        confirmed: true,
+      });
+      say("수령 전 취소 환불 송금 기한을 3영업일 이내로 저장했습니다.");
+      route();
+    });
+    cancelTimingPolicy.append(cf);
+  }
+  root.append(cancelTimingPolicy);
   const f = el("form");
   field(
     f,

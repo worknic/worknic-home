@@ -1,16 +1,17 @@
 (()=>{'use strict';
 const endpoint='https://script.google.com/macros/s/AKfycbzMH4qy5GOqUsmyNTPOfyk1W2giY1A_ZjUpFsMD3rLAOs4dP4uVDya7bywaIlQOVi8F9g/exec';
 const $=s=>document.querySelector(s),el=(tag,text)=>{const n=document.createElement(tag);if(text!=null)n.textContent=text;return n};
-const https=value=>{try{const u=new URL(value,location.origin);return (u.protocol==='https:'||u.origin===location.origin)&&!u.username&&!u.password?u.href:''}catch{return ''}};
-const productId=new URLSearchParams(location.search).get('id')||'';
+const https=value=>{if(typeof value!=='string'||!value.trim())return '';try{const u=new URL(value,location.origin);return (u.protocol==='https:'||u.origin===location.origin)&&!u.username&&!u.password?u.href:''}catch{return ''}};
+const routeMatch=location.pathname.match(/^\/products\/([a-zA-Z0-9_-]+)\/$/);
+const productId=routeMatch?routeMatch[1]:new URLSearchParams(location.search).get('id')||'';
 let fallback=null;
 function sourceLink(label,url){const a=el('a',label);a.href=https(url);a.target='_blank';a.rel='noopener noreferrer';return a;}
 function render(data){
  const p=data.products?.find(p=>p.id===productId&&p.published===true),b=p&&data.brands?.find(b=>b.id===p.brand&&b.published===true);
- if(!p||!b||window.WORKNIC_CATEGORIES?.classify(p).group==='unclassified'){$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='공개 중인 상품을 찾을 수 없습니다. ';const a=el('a','상품 목록으로');a.href='/catalog/';$('#product-status').append(a);return;}
+ if(!p||!b||window.WORKNIC_CATEGORIES?.classify(p).group==='unclassified'){document.querySelectorAll('script[data-product-schema]').forEach(n=>n.remove());let robots=document.querySelector('meta[name=robots]');if(!robots){robots=document.createElement('meta');robots.name='robots';document.head.append(robots);}robots.content='noindex,follow';$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='공개 중인 상품을 찾을 수 없습니다. ';const a=el('a','상품 목록으로');a.href='/catalog/';$('#product-status').append(a);return;}
  const cached=fallback?.products?.find(x=>x.id===p.id),g=p.guide||(cached?.model===p.model?cached?.guide:null)||{};
  document.title=`${b.name} ${p.name}${p.model?' · '+p.model:''} | WORKNIC`;
- $('#product-status').hidden=true;$('#product').hidden=false;const kind=window.WORKNIC_CATEGORIES?.classify(p),area=kind&&kind.group!=='tools'?'현장용품':'도구';$('#breadcrumb').replaceChildren();const back=el('a',area);back.href=area==='현장용품'?'/supplies/':'/catalog/';$('#breadcrumb').append(back,document.createTextNode(' / '+b.name+' / '+(p.category||b.category||'')));
+ $('#product-status').hidden=true;$('#product').hidden=false;const kind=window.WORKNIC_CATEGORIES?.classify(p),area=kind&&kind.group!=='tools'?'현장용품':'도구';$('#breadcrumb').replaceChildren();const back=el('a',area);back.href=area==='현장용품'?'/supplies/':'/catalog/';const home=el('a','홈');home.href='/';const brandLink=el('a',b.name);brandLink.href='/brands/'+encodeURIComponent(b.id)+'/';$('#breadcrumb').append(home,document.createTextNode(' / '),back,document.createTextNode(' / '),brandLink,document.createTextNode(' / '+p.name));
  if($('#product-quote'))$('#product-quote').href='/business/portal/?product='+encodeURIComponent(p.id);$('#brand').textContent=b.english||b.name;$('#name').textContent=p.name;$('#model').textContent=p.model||'';$('#model').hidden=!p.model;$('#summary').textContent=p.summary||'';$('#overview-copy').textContent=p.summary||'';
  const img=$('#product-photo');window.WORKNIC_MEDIA?.clear(img);const thumb=g.media?.thumbnail||{},src=https(thumb.editedSource||p.images?.[0]);img.src=src;img.alt=`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;
  // Keep a square presentation without stretching or recolouring the source photo.
@@ -44,8 +45,13 @@ function render(data){
  $('#checked-date').textContent=g.checkedOn?'상품 정보 확인 · '+g.checkedOn:'';
 }
 async function init(){
- $('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하고 있습니다.';
- try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');render(j.data);}catch{$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
+ const staticPage=!!routeMatch&&$('#product').getAttribute('data-static-id')===productId;
+ if(!routeMatch&&productId){
+  try{const r=await fetch('/products/routes.json',{credentials:'same-origin',signal:AbortSignal.timeout(5000)});if(r.ok){const manifest=await r.json(),entry=manifest.products?.find(p=>p.id===productId);if(entry&&entry.path==='/products/'+productId+'/'&&/^[a-zA-Z0-9_-]+$/.test(productId)){location.replace(entry.path);return;}}}catch{}
+ }
+ if(!staticPage){$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하고 있습니다.';}
+
+ try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');render(j.data);}catch{$('#product').hidden=!staticPage;$('#product-status').hidden=false;$('#product-status').textContent=staticPage?'최신 상품 정보를 확인하지 못했습니다. 아래는 마지막으로 공개 확인된 정보입니다. 현재 공개 여부·구성과 공급 조건은 문의해 주세요.':'최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
 }
-init();})();
+if(window.WORKNIC_BUILD){window.WORKNIC_RENDER=render;window.WORKNIC_INIT=init;}else init();})();
 

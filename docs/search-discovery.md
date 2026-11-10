@@ -41,3 +41,11 @@ The robots files of both worknic.co.kr and worknic.work returned HTTP 200 and al
 ## Rollback
 
 The pre-change production commit is `0b2e2d51e4add36585129b249b33b358276e6ec4`. Revert this search-discovery commit to restore its predecessor without modifying catalog records or business-transaction services. Do not force-reset over later unrelated changes.
+
+## Purpose correction — 2026-11-10
+
+The official site introduces WORKNIC's handled brands/products and its philosophy. Retail-store procurement goes through business verification and WORKNIC approval. It is not a direct consumer checkout site.
+
+The homepage/about metadata and copy now reflect that purpose. Product detail pages distinguish business procurement from general product-information enquiries. The legacy "판매가 미정" presentation and general email price CTA were removed. Pricing is described as information on an issued quotation after business verification/approval, not an instantly unlocked price list. The public trade interface and scripts confirm this process; unauthenticated quote and order requests returned HTTP 401 during verification. At verification, the public health endpoint reported new quote/pickup beta intake disabled. No account, authorization, transaction or operating setting was changed.
+
+Smartstore source links are intentionally retained for product-source confirmation, with their original URLs, scope and check dates. All 276 model/specification records and the public catalog source data remain unchanged. Product information, source fidelity, search/filter flows, privacy boundaries and final static output were checked again before publication.

@@ -47,7 +47,7 @@ for(const p of products){
  const article=doc.querySelector('#product');article.attrs['data-static-id']=p.id;
  doc.head.children=doc.head.children.filter(n=>n.attrs.name!=='robots');
  const title=`${b.name} ${p.name}${p.model?' · '+p.model:''} | WORKNIC`;
- const description=[b.name,p.name,p.model,p.summary||'규격과 판매 단위·구성, 구매 전 확인사항과 출처를 확인하세요.'].filter(Boolean).join(' ').replace(/\s+/g,' ').trim();
+ const description=[b.name,p.name,p.model,p.summary||'규격과 판매 단위·구성, 제품 선택·사용 전 확인사항과 출처를 확인하세요.'].filter(Boolean).join(' ').replace(/\s+/g,' ').trim();
  for(const n of doc.head.children)if(n.attrs.name==='description')n.content=description;
  const canonical=new Node('link');canonical.rel='canonical';canonical.href=url;doc.head.append(canonical);
  for(const [property,content] of Object.entries({'og:type':'product','og:locale':'ko_KR','og:site_name':'WORKNIC','og:title':title,'og:description':description,'og:url':url,'twitter:card':'summary_large_image'})){const n=new Node('meta');n.attrs[property.startsWith('twitter:')?'name':'property']=property;n.content=content;doc.head.append(n);}

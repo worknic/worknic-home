@@ -1,15 +1,21 @@
-# Brand discovery metadata review — 2026-11-10
+# Brand discovery and website purpose review — 2026-11-10
 
-Scope: homepage and about page. These changes support clearer indexing and entity interpretation; they do not guarantee ranking, traffic, AI citations or inclusion in search results.
+Scope: homepage and about page. These changes clarify indexing and entity interpretation; they do not guarantee ranking, traffic, AI citations or inclusion in search results.
 
-- Replaced the location-first homepage title with `워크닉 WORKNIC | 전동공구·수공구 공구매장과 도구 문화 브랜드`.
-- Added distinct Korean descriptions and matching Open Graph/Twitter metadata, Korean locale, site name and existing share-image references.
-- Linked Organization, WebSite, HardwareStore and page entities with stable absolute identifiers. The about page uses AboutPage. Existing company name, contact details, store address and hours remain unchanged. Official channels come from existing footer links; logo and store image use existing assets. No unsupported search action, delivery area, price, rating, award or founding-date claim was added.
-- Kept the homepage slogan and visual classes while clarifying the short introduction: tool store, tool-culture brand, electric/hand tools, field supplies and online browsing. About copy connects the physical shop to the existing online store and tool journal.
-- Preserved the Pocheon shop's identity, footer text, all navigation destinations, scripts and brand-directory container. Nationwide relevance is conveyed through accessible online information, not a claim of nationwide delivery or additional locations.
+## Current purpose, incorporating the owner's correction
 
-## Checks
+The official site introduces handled brands and products, communicates WORKNIC's philosophy and direction to individuals, and connects retail businesses seeking procurement. It is not presented as a consumer shopping venue. Retailers undergo business-information verification and WORKNIC approval; a representative provides prices and supply terms in a quotation. Verification alone does not promise an immediate price unlock.
 
-Passed: JSON parsing of both structured-data graphs; one title and H1 per page; unique description and Twitter card/title/description/image fields; exact preservation of store address, hours, phone and email; unchanged footer and navigation destinations; unchanged brand-directory container; `git diff --check`.
+- Homepage title: `WORKNIC 워크닉 | 취급 브랜드·제품 소개와 도구 문화`.
+- About title: `워크닉 소개 | 도구를 고르는 철학과 방향성 · WORKNIC`.
+- Updated descriptions, matching Open Graph/Twitter metadata, Organization description and page structured-data names/descriptions to reflect this purpose.
+- Kept the homepage slogan, styling and compact introduction; the introduction now explains philosophy, handled brands/products and the retailer quotation path.
+- About text explains the site's individual and retailer audiences explicitly.
+- Removed online-store promotion from SEO descriptions and introductory copy. All existing official-channel/source links remain unchanged, as requested.
+- Preserved stable Organization, WebSite, HardwareStore and page identifiers, physical-store facts, logo/image references, navigation, footer, scripts and brand-directory container. No offers, prices or transaction actions were added.
 
-Not run in this focused review: rendered desktop/mobile visual QA, external rich-result validation, Search Console/Naver inspection or live deployment verification. Metadata alone cannot establish actual search visibility; these checks and indexing measurements remain separate.
+## Checks for this purpose correction
+
+Passed: both JSON-LD graphs parse; title/description match page schema and OG/Twitter values; no online-store promotion in meta descriptions; every href and footer unchanged; `git diff --check`.
+
+The earlier deployed version passed desktop browser checks for homepage layout, catalog search/reset/product roundtrip and Festool collection/brand switching. Those checks predate this copy correction and are not a visual verification of its final text. Mobile checks, external rich-result validation and indexing measurements remain separate.

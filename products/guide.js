@@ -58,3 +58,6 @@ async function init(){
 }
 if(window.WORKNIC_BUILD){window.WORKNIC_RENDER=render;window.WORKNIC_INIT=init;}else init();})();
 
+
+// Shared official channel shortcuts.
+(()=>{if(document.querySelector('script[data-worknic-channels-loader]'))return;const s=document.createElement('script');s.src='/floating-channels.js?v=20261112';s.dataset.worknicChannelsLoader='';document.head.append(s);})();

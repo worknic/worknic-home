@@ -28,3 +28,18 @@ img[src*="/assets/brands/dogyu."]{filter:brightness(0)!important}
 img[src*="/assets/brands/toughbuilt."]{filter:brightness(0)!important}
 img[src*="/assets/brands/shapton."]{filter:brightness(0)!important}
 img[src*="/assets/brands/little-giant."]{filter:brightness(0)!important}
+
+/* Keep the new wide wordmarks inside narrow brand cards. */
+.brand-logo img[src="/assets/brands/star-m.png"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/gyokucho.png"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/z-saw.svg"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/ktc.svg"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/dogyu.svg"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/little-giant.png"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/toughbuilt.webp"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/chesco.webp"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/ch-hanson.png"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/shapton.png"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/adler.png"]{max-width:100%!important}
+.brand-logo img[src="/assets/brands/narex.svg"]{max-width:100%!important}
+

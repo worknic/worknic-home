@@ -1,0 +1,170 @@
+[
+  {
+    "id": "star-m",
+    "name": "스타엠",
+    "english": "STAR-M",
+    "category": "목공 드릴",
+    "published": true,
+    "order": 100,
+    "logo": "/assets/brands/star-m.png",
+    "logoSource": "https://www.starminfo.com/jp/img/logo.png",
+    "aliases": [
+      "스타엠",
+      "STAR-M"
+    ]
+  },
+  {
+    "id": "gyokucho",
+    "name": "교쿠쵸",
+    "english": "GYOKUCHO",
+    "category": "목공 톱",
+    "published": true,
+    "order": 101,
+    "logo": "/assets/brands/gyokucho.png",
+    "logoSource": "https://www.gyokucho.co.jp/wp-content/themes/gyokucho/images/logo.png",
+    "aliases": [
+      "교쿠쵸",
+      "GYOKUCHO"
+    ]
+  },
+  {
+    "id": "z-saw",
+    "name": "제트쏘",
+    "english": "Z-SAW",
+    "category": "목공 톱",
+    "published": true,
+    "order": 102,
+    "logo": "/assets/brands/z-saw.svg",
+    "logoSource": "https://www.z-saw.co.jp/wp-content/themes/z-saw_2026_theme/images/company/logo_z-saw.svg",
+    "aliases": [
+      "제트쏘",
+      "Z-SAW"
+    ]
+  },
+  {
+    "id": "ktc",
+    "name": "KTC",
+    "english": "KTC",
+    "category": "수공구",
+    "published": true,
+    "order": 103,
+    "logo": "/assets/brands/ktc.svg",
+    "logoSource": "https://ktc.jp/assets/images/common/logo.svg",
+    "aliases": [
+      "KTC",
+      "KTC"
+    ]
+  },
+  {
+    "id": "dogyu",
+    "name": "도규",
+    "english": "DOGYU",
+    "category": "작업 수공구",
+    "published": true,
+    "order": 104,
+    "logo": "/assets/brands/dogyu.svg",
+    "logoSource": "https://www.dogyu.jp/wp-content/themes/dogyu/markup/public/images/logo.svg",
+    "aliases": [
+      "도규",
+      "DOGYU"
+    ]
+  },
+  {
+    "id": "little-giant",
+    "name": "리틀자이언트",
+    "english": "LITTLE GIANT",
+    "category": "사다리·작업대",
+    "published": true,
+    "order": 105,
+    "logo": "/assets/brands/little-giant.png",
+    "logoSource": "https://www.littlegiantladders.com/cdn/shop/files/logo-foot_1.png?v=1655319900&width=760",
+    "aliases": [
+      "리틀자이언트",
+      "LITTLE GIANT"
+    ]
+  },
+  {
+    "id": "toughbuilt",
+    "name": "터프빌트",
+    "english": "TOUGHBUILT",
+    "category": "작업 수납·공구",
+    "published": true,
+    "order": 106,
+    "logo": "/assets/brands/toughbuilt.webp",
+    "logoSource": "https://images.squarespace-cdn.com/content/v1/569eb318dc5cb40e1bc88956/1604169562944-DFCPKGGR97125WC0MRHR/Correct+Logo.png?format=1500w",
+    "aliases": [
+      "터프빌트",
+      "TOUGHBUILT"
+    ]
+  },
+  {
+    "id": "chesco",
+    "name": "체스코",
+    "english": "CHESCO",
+    "category": "수공구",
+    "published": true,
+    "order": 107,
+    "logo": "/assets/brands/chesco.webp",
+    "logoSource": "https://www.chesco-tools.com/archive/image/weblogo/logo.webp",
+    "aliases": [
+      "체스코",
+      "CHESCO"
+    ]
+  },
+  {
+    "id": "ch-hanson",
+    "name": "핸슨",
+    "english": "C.H. HANSON",
+    "category": "측정·마킹",
+    "published": true,
+    "order": 108,
+    "logo": "/assets/brands/ch-hanson.png",
+    "logoSource": "https://cdn.featuredcustomers.com/Company.logo_medium/ch-hanson_443346.webp",
+    "aliases": [
+      "핸슨",
+      "C.H. HANSON"
+    ]
+  },
+  {
+    "id": "shapton",
+    "name": "샤프톤",
+    "english": "SHAPTON",
+    "category": "연마·숫돌",
+    "published": true,
+    "order": 109,
+    "logo": "/assets/brands/shapton.png",
+    "logoSource": "https://shapton.co.jp/asset/images/common/shapton_logo.png",
+    "aliases": [
+      "샤프톤",
+      "SHAPTON"
+    ]
+  },
+  {
+    "id": "adler",
+    "name": "아들러",
+    "english": "ADLER",
+    "category": "도끼·수공구",
+    "published": true,
+    "order": 110,
+    "logo": "/assets/brands/adler.png",
+    "logoSource": "https://www.adler1919.eu/cdn/shop/files/Adler_Logo_complete_black_transparent.png?v=1668609288&width=600",
+    "aliases": [
+      "아들러",
+      "ADLER"
+    ]
+  },
+  {
+    "id": "narex",
+    "name": "나렉스",
+    "english": "NAREX BYSTŘICE",
+    "category": "목공 수공구",
+    "published": true,
+    "order": 111,
+    "logo": "/assets/brands/narex.svg",
+    "logoSource": "https://www.mikov.cz/system-images/logo-narex.svg",
+    "aliases": [
+      "나렉스",
+      "NAREX BYSTŘICE"
+    ]
+  }
+]

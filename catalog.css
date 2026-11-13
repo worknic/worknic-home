@@ -43,3 +43,9 @@ img[src*="/assets/brands/little-giant."]{filter:brightness(0)!important}
 .brand-logo img[src="/assets/brands/adler.png"]{max-width:100%!important}
 .brand-logo img[src="/assets/brands/narex.svg"]{max-width:100%!important}
 
+/* Fit every partner wordmark inside its card at every grid width. */
+.brand-directory .brand-tile{box-sizing:border-box}
+.brand-directory .brand-logo{min-width:0;max-width:100%}
+.brand-directory .brand-logo img:not([src*="bestmax-header"]){display:block;max-width:100%!important;object-fit:contain}
+.brand-directory .brand-logo:has(img[src*="bestmax-header"]){width:min(145px,100%);height:auto;aspect-ratio:145/43}
+.brand-directory .brand-logo img[src*="bestmax-header"]{width:179.31%!important;max-width:none!important;height:auto!important;left:-39.31%;top:-16.28%}

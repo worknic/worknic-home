@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: worknic-trade-beta
+    runtime: docker
+    plan: 0.5c-512mb
+    region: singapore
+    dockerfilePath: ./trade/Dockerfile
+    dockerContext: .
+    numInstances: 1
+    healthCheckPath: /api/beta/health
+    autoDeployTrigger: "off"
+    disk:
+      name: worknic-trade-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: TRADE_DATA_DIR
+        value: /data
+      - key: TRADE_ADMIN_TOTP_SECRET
+        sync: false
+      - key: TRADE_OS_BRIDGE_SECRET
+        sync: false
+      - key: TRADE_PICKUP_KEY
+        sync: false

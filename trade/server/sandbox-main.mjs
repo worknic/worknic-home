@@ -35,5 +35,5 @@ const timer=setInterval(async()=>{if(busy||!configured||process.env.WORKNIC_SAND
  await store.enrollment.dispatchOne(provider,{requestId:allowedId});
  for(const row of store.enrollment.pendingResults())if(row.request_id===allowedId)await store.enrollment.refreshMessage(provider,row.event_key);
 }catch{console.error('Sandbox notification check required')}finally{busy=false}},15000);timer.unref();
-server.listen(port,process.env.HOST||'127.0.0.1',()=>console.log('Isolated account sandbox ready; WORKNIC production is not connected'));
+server.listen(port,process.env.HOST||(process.env.RENDER_EXTERNAL_URL?'0.0.0.0':'127.0.0.1'),()=>console.log('Isolated account sandbox ready; WORKNIC production is not connected'));
 for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{clearInterval(timer);server.close(()=>{store.close();process.exit(0)})});

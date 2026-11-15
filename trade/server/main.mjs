@@ -42,7 +42,7 @@ try {
   backupTransport = s3Transport(process.env);
 } catch {
   console.error(
-    "�ܺ� ��� ������ Ȯ���� �ּ���. �ܺ� ������ �������� �ʾҽ��ϴ�.",
+    "외부 백업 설정을 확인해 주세요. 외부 전송은 시작하지 않았습니다.",
   );
 }
 const backups = createBackupService({

@@ -15,7 +15,7 @@ export function createBusinessSolapi({key,secret,from,fetcher=fetch,clock=()=>ne
   async send({to,text,eventKey}){
    if(!allowSend)throw Error('Live sending disabled');
    if(!/^010\d{8}$/.test(to||'')||typeof text!=='string'||text.length>900||typeof eventKey!=='string')throw Error('Message scope invalid');
-   const r=await request('/messages/v4/send-many/detail',{messages:[{to,from,text,type:'LMS',subject:'WORKNIC ����� �ȳ�',customFields:{worknicBusinessEvent:eventKey}}],allowDuplicates:false,showMessageList:true});
+   const r=await request('/messages/v4/send-many/detail',{messages:[{to,from,text,type:'LMS',subject:'WORKNIC 사업자 안내',customFields:{worknicBusinessEvent:eventKey}}],allowDuplicates:false,showMessageList:true});
    if(r.status>=400)return {status:r.status<500?'failed':'unknown',code:String(r.status)};
    const failed=r.data?.failedMessageList?.[0];if(failed)return {status:'failed',messageId:failed.messageId,code:String(failed.statusCode||'')};
    const m=r.data?.messageList?.[0];if(!m?.messageId)return {status:'unknown'};

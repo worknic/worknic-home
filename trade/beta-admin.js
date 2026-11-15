@@ -22,21 +22,21 @@ let actor = null,
   lastPreview = null;
 async function prices(root) {
   await inventoryBulk(root, route);
-  const c = card("�ǸŰ� ���� �ϰ� ����");
+  const c = card("판매가 엑셀 일괄 관리");
   c.append(
     el(
       "p",
-      "���� ���� �ǸŰ��� �������� ��մϴ�. ��ü�� �ܰ��� �������ֹ����� �ش� �������� �Է��մϴ�. ���� ���� ����ǥ�� Ȯ���Ǹ� �ֽ� ���� ������� ������ �� �ֽ��ϴ�.",
+      "현재 공통 판매가는 미정으로 운영합니다. 업체별 단가는 견적·주문에서 해당 견적에만 입력합니다. 향후 공통 가격표가 확정되면 최신 엑셀 양식으로 관리할 수 있습니다.",
     ),
-    link("�ǸŰ� ���� �����ޱ�", "/api/beta/admin/prices/template"),
+    link("판매가 엑셀 내려받기", "/api/beta/admin/prices/template"),
   );
   const f = el("form"),
-    file = field(f, "file", "�ǸŰ� ���� ����", "", "file");
+    file = field(f, "file", "판매가 엑셀 파일", "", "file");
   file.accept = ".xlsx";
   const preview = el("div");
-  f.append(el("button", "���� �̸�����", "button"));
+  f.append(el("button", "변경 미리보기", "button"));
   formTask(f, async () => {
-    if (!file.files[0]) throw Error("���� ������ ������ �ּ���.");
+    if (!file.files[0]) throw Error("엑셀 파일을 선택해 주세요.");
     const r = await fetch("/api/beta/admin/prices/file", {
         method: "POST",
         credentials: "same-origin",
@@ -48,16 +48,16 @@ async function prices(root) {
     if (!r.ok) throw Error(j.error);
     lastPreview = j;
     preview.replaceChildren(
-      el("p", `���� ���� ${j.valid}�� �� ���� ${j.invalid}��`),
+      el("p", `적용 가능 ${j.valid}개 · 오류 ${j.invalid}개`),
     );
     const table = el("table"),
       head = el("tr");
     for (const label of [
-      "��",
-      "��ǰ���ɼ�",
-      "���� ����",
-      "�� ����",
-      "���� ���",
+      "행",
+      "상품·옵션",
+      "이전 가격",
+      "새 가격",
+      "검증 결과",
     ])
       head.append(el("th", label));
     table.append(head);
@@ -65,10 +65,10 @@ async function prices(root) {
       const row = el("tr");
       for (const text of [
         x.row,
-        x.after ? x.after.productId + " / " + x.after.optionId : "Ȯ�� �ʿ�",
-        x.before?.price == null ? "����" : money(x.before.price),
-        x.after?.price == null ? "����" : money(x.after.price),
-        x.errors.join(" / ") || "���� ����",
+        x.after ? x.after.productId + " / " + x.after.optionId : "확인 필요",
+        x.before?.price == null ? "미정" : money(x.before.price),
+        x.after?.price == null ? "미정" : money(x.after.price),
+        x.errors.join(" / ") || "적용 가능",
       ])
         row.append(el("td", text));
       table.append(row);
@@ -78,12 +78,12 @@ async function prices(root) {
     preview.append(wrap);
     if (!j.invalid)
       preview.append(
-        button("Ȯ���� ���� �ϰ� ����", async () => {
+        button("확인한 가격 일괄 적용", async () => {
           const r = await call("/admin/prices/apply", { id: lastPreview.id });
           lastPreview = null;
           say(
             r.applied +
-              "�� �ǸŰ��� �����߽��ϴ�. ���� �������ֹ� �ݾ��� �����˴ϴ�.",
+              "개 판매가를 적용했습니다. 기존 견적·주문 금액은 유지됩니다.",
           );
           route();
         }),
@@ -92,16 +92,16 @@ async function prices(root) {
   c.append(f, preview);
   c.append(
     button(
-      "���� �ǸŰ� ��� ��������",
+      "공통 판매가 모두 미정으로",
       async () => {
         if (
           !confirm(
-            "���� �ǸŰ��� ��� �������� ��ȯ�ұ��? ���� �������ֹ� �ݾװ� ����� �����˴ϴ�.",
+            "공통 판매가를 모두 미정으로 전환할까요? 기존 견적·주문 금액과 재고는 유지됩니다.",
           )
         )
           return;
         const r = await call("/admin/prices/undetermined", { confirmed: true });
-        say(r.applied + "�� ��ǰ���ɼ��� ���� �ǸŰ��� �������� ��ȯ�߽��ϴ�.");
+        say(r.applied + "개 상품·옵션의 공통 판매가를 미정으로 전환했습니다.");
         route();
       },
       "button secondary",
@@ -110,27 +110,27 @@ async function prices(root) {
   root.append(c);
   const { history } = await call("/admin/prices/history");
   for (const h of history) {
-    const item = card("���� ���� ���� �� " + date(h.created_at));
+    const item = card("가격 적용 내역 · " + date(h.created_at));
     item.append(
-      el("p", h.status === "restored" ? "���� ���� ������" : "�ϰ� ���� �Ϸ�"),
+      el("p", h.status === "restored" ? "이전 가격 복원됨" : "일괄 적용 완료"),
     );
     let restoreConfirmation;
     if (h.status === "applied")
       item.append(
         button(
-          "���� �������� ����",
+          "이전 가격으로 복원",
           async () => {
             if (restoreConfirmation?.isConnected) return;
             restoreConfirmation = el("div");
             restoreConfirmation.append(
-              el("p", "���� ���� �������� ���� ������ ���� ������ �����ұ��?"),
-              button("���� Ȯ��", async () => {
+              el("p", "적용 이후 수정되지 않은 가격을 이전 값으로 복원할까요?"),
+              button("복원 확인", async () => {
                 await call("/admin/prices/restore", { id: h.id });
-                say("���� ������ �����߽��ϴ�.");
+                say("이전 가격을 복원했습니다.");
                 route();
               }),
               button(
-                "���",
+                "취소",
                 () => restoreConfirmation.remove(),
                 "button secondary",
               ),
@@ -142,21 +142,21 @@ async function prices(root) {
       );
     root.append(item);
   }
-  const stocks = card("�ֹ� ���� ����");
+  const stocks = card("주문 가능 수량");
   stocks.append(
     button(
-      "���� ��ǰ ����ȭ",
+      "공개 상품 동기화",
       async () => {
         const r = await call("/admin/catalog-sync", {});
         say(
-          r.imported + "�� ���� ��ǰ�� ����ȭ�߽��ϴ�. ���ݡ������� �����˴ϴ�.",
+          r.imported + "개 공개 상품을 동기화했습니다. 가격·수량은 유지됩니다.",
         );
         route();
       },
       "button secondary",
     ),
   );
-  const search = field(stocks, "stockSearch", "��ǰ �˻�");
+  const search = field(stocks, "stockSearch", "상품 검색");
   search.required = false;
   const list = el("div", null, "cards");
   stocks.append(list);
@@ -173,10 +173,10 @@ async function prices(root) {
         .slice(0, 30)
         .map((p) => {
           const f = el("form", null, "stock-item");
-          f.append(el("p", p.name + " �� " + p.model + " �� " + p.optionLabel));
-          field(f, "stock", "�ֹ� ���� ����", p.stock, "number");
-          field(f, "enabled", "���� Ȯ�Ρ��ֹ� ����", p.enabled, "checkbox");
-          f.append(el("button", "���� ����", "button"));
+          f.append(el("p", p.name + " · " + p.model + " · " + p.optionLabel));
+          field(f, "stock", "주문 가능 수량", p.stock, "number");
+          field(f, "enabled", "수량 확인·주문 가능", p.enabled, "checkbox");
+          f.append(el("button", "수량 저장", "button"));
           formTask(f, async (d) => {
             await call("/admin/products/stock", {
               id: p.id,
@@ -185,7 +185,7 @@ async function prices(root) {
               stock: Number(d.stock),
               enabled: d.enabled === "on",
             });
-            say("������ �����߽��ϴ�.");
+            say("수량을 저장했습니다.");
             route();
           });
           return f;
@@ -201,10 +201,10 @@ async function members(root) {
   root.append(
     el(
       "p",
-      "ȸ�� ������ ���� OS �����ȸ�� �������� ó���մϴ�. ���⼭�� ���ε� ����������� ������ �����ϰ� ���� ����� ����ó�� Ȯ���� �� ���� Ȯ�� ��ũ�� �غ��մϴ�.",
+      "회원 승인은 기존 OS 사업자회원 관리에서 처리합니다. 여기서는 승인된 사업자정보와 계정을 대조하고 실제 담당자 연락처를 확인한 뒤 계정 확인 링크를 준비합니다.",
       "muted",
     ),
-    link("OS ����� ���� ����", "https://worknic.tools/business-members/"),
+    link("OS 사업자 승인 열기", "https://worknic.tools/business-members/"),
   );
   const { members } = await call("/admin/members");
   for (const m of members) {
@@ -212,13 +212,13 @@ async function members(root) {
     c.append(
       el(
         "p",
-        m.username + " �� " + m.profile.businessNumber + " �� " + m.profile.email,
+        m.username + " · " + m.profile.businessNumber + " · " + m.profile.email,
       ),
       el(
         "p",
-        "�ŷ� ���� ��� ����: " +
+        "거래 계정 등록 상태: " +
           (labels[m.status] || m.status) +
-          " �� ���� �ŷ� ������ OS ����� ���ο��� Ȯ���մϴ�.",
+          " · 실제 거래 권한은 OS 사업자 승인에서 확인합니다.",
         "muted",
       ),
     );
@@ -226,11 +226,11 @@ async function members(root) {
     field(
       f,
       "checked",
-      "��ϵ� ����ڿ� ���� �����Ͽ� ���� ����ڸ� Ȯ���߽��ϴ�.",
+      "등록된 담당자와 직접 연락하여 계정 사용자를 확인했습니다.",
       false,
       "checkbox",
     ).required = true;
-    f.append(el("button", "OS ���� ���������� Ȯ�� ��ũ �����", "button"));
+    f.append(el("button", "OS 승인 대조·계정 확인 링크 만들기", "button"));
     formTask(f, async () => {
       const r = await call("/admin/members/bind", {
           id: m.id,
@@ -244,11 +244,11 @@ async function members(root) {
       box.append(
         el(
           "p",
-          "��ϵ� ����ڿ��� �����ϼ���. 30�� ���� �� ���� ����� �� �ֽ��ϴ�.",
+          "등록된 담당자에게 전달하세요. 30분 동안 한 번만 사용할 수 있습니다.",
           "muted",
         ),
       );
-      const a = el("a", "���� Ȯ�� ��ũ");
+      const a = el("a", "계정 확인 링크");
       a.href = url;
       box.append(a);
       c.append(box);
@@ -260,20 +260,20 @@ async function members(root) {
 async function quotes(root) {
   const { quotes } = await call("/admin/quotes");
   for (const q of quotes) {
-    const c = card("���� " + q.id.slice(0, 8));
+    const c = card("견적 " + q.id.slice(0, 8));
     c.append(
       el("span", labels[q.status] || q.status, "badge"),
       el(
         "p",
-        "�ŷ�ó: " +
-          (q.companyName || "�ŷ� ���� Ȯ�� �ʿ�") +
-          " �� " +
+        "거래처: " +
+          (q.companyName || "거래 계정 확인 필요") +
+          " · " +
           (q.businessNumber || ""),
       ),
       el(
         "p",
         q.items
-          .map((x) => x.name + " �� " + x.optionId + " �� " + x.quantity)
+          .map((x) => x.name + " · " + x.optionId + " · " + x.quantity)
           .join(" / "),
       ),
       el("p", q.locationName),
@@ -283,30 +283,30 @@ async function quotes(root) {
       f.append(
         el(
           "p",
-          "��ü�� �ܰ��� �� �������� �����մϴ�. ���� �ǸŰ��� �ٸ� ��ü�� ������ ������� �ʽ��ϴ�.",
+          "업체별 단가를 이 견적에만 적용합니다. 공통 판매가와 다른 업체의 견적은 변경되지 않습니다.",
         ),
       );
       const individual = q.items.map((line, i) => {
         const box = card(
           line.name +
-            " �� " +
+            " · " +
             line.model +
-            " �� " +
+            " · " +
             (line.optionLabel || line.optionId) +
-            " �� ��û ���� " +
+            " · 요청 수량 " +
             line.quantity,
         );
-        const amount = field(box, "amount" + i, "���� �ܰ� �� ��", "", "number");
+        const amount = field(box, "amount" + i, "개별 단가 · 원", "", "number");
         amount.min = 1;
         amount.max = 100000000;
-        const unit = field(box, "unit" + i, "Ȯ���� �ǸŴ���");
-        const label = el("label", "�ΰ��� ����"),
+        const unit = field(box, "unit" + i, "확인한 판매단위");
+        const label = el("label", "부가세 기준"),
           tax = el("select");
         tax.required = true;
         for (const [value, name] of [
-          ["", "������ �ּ���"],
-          ["����", "�ΰ��� ����"],
-          ["����", "�ΰ��� ����"],
+          ["", "선택해 주세요"],
+          ["포함", "부가세 포함"],
+          ["별도", "부가세 별도"],
         ]) {
           const o = el("option", name);
           o.value = value;
@@ -317,30 +317,30 @@ async function quotes(root) {
         f.append(box);
         return { line, amount, unit, tax };
       });
-      field(f, "pickupFee", "�Ⱦ� ��� �� ����", 0, "number").readOnly = true;
-      field(f, "expiresAt", "���� ��ȿ�Ⱓ", "", "datetime-local");
+      field(f, "pickupFee", "픽업 비용 · 무료", 0, "number").readOnly = true;
+      field(f, "expiresAt", "견적 유효기간", "", "datetime-local");
       field(
         f,
         "specialOrder",
-        "���� ��ü�� �ֹ����ۡ����� ���� ��ǰ�̸�, �Ϲ� ��� ��ǰ�� ���� �ʾҽ��ϴ�.",
+        "견적 전체가 주문제작·별도 발주 상품이며, 일반 재고 상품을 섞지 않았습니다.",
         false,
         "checkbox",
       );
       f.append(
         el(
           "p",
-          "�ֹ����ۡ����� ���� ��ǰ�� ��� ������ ������ �����մϴ�. �Ϲ� ��� ��ǰ�� ���� �������� ��������.",
+          "주문제작·별도 발주 상품은 취소 기준을 견적에 명시합니다. 일반 재고 상품은 별도 견적으로 나누세요.",
           "muted",
         ),
       );
       field(
         f,
         "checked",
-        "����ǥ���԰ݡ�����ǰ���������Ⱦ� ����� Ȯ���߽��ϴ�.",
+        "가격표·규격·포함품·수량·픽업 비용을 확인했습니다.",
         false,
         "checkbox",
       ).required = true;
-      f.append(el("button", "������ ����", "button"));
+      f.append(el("button", "견적서 발행", "button"));
       formTask(f, async (d) => {
         await call("/admin/quotes/issue", {
           id: q.id,
@@ -358,17 +358,17 @@ async function quotes(root) {
             taxMode: tax.value,
           })),
         });
-        say("�������� �����߽��ϴ�.");
+        say("견적서를 발행했습니다.");
         route();
       });
       c.append(f);
     } else if (q.total)
       c.append(
         dl([
-          ["�հ�", money(q.total)],
-          ["����", date(q.issuedAt)],
+          ["합계", money(q.total)],
+          ["발행", date(q.issuedAt)],
         ]),
-        link("������ ����", "/api/beta/quotes/" + q.id + "/print"),
+        link("견적서 보기", "/api/beta/quotes/" + q.id + "/print"),
       );
     root.append(c);
   }
@@ -377,7 +377,7 @@ async function quotes(root) {
 async function orderList(pickupOnly, root) {
   const { orders } = await call("/admin/orders");
   const { refunds = [] } = await call("/admin/refunds");
-  root.append(el("h2", pickupOnly ? "�Ⱦ� �ֹ�" : "Ȯ�� �ֹ�"));
+  root.append(el("h2", pickupOnly ? "픽업 주문" : "확정 주문"));
   for (const o of orders) {
     const refundHold = refunds.some(
       (r) => r.orderId === o.id && ["requested", "approved"].includes(r.status),
@@ -386,12 +386,12 @@ async function orderList(pickupOnly, root) {
     c.append(
       el("span", labels[o.status] || o.status, "badge"),
       dl([
-        ["�ŷ�ó", o.buyer.companyName],
-        ["����ó", o.buyer.phone],
-        ["�հ�", money(o.total)],
-        ["�Ⱦ�", o.fulfillment?.locationName || "���"],
+        ["거래처", o.buyer.companyName],
+        ["연락처", o.buyer.phone],
+        ["합계", money(o.total)],
+        ["픽업", o.fulfillment?.locationName || "배송"],
       ]),
-      link("�ŷ�������", "/api/beta/orders/" + o.id + "/statement"),
+      link("거래명세서", "/api/beta/orders/" + o.id + "/statement"),
     );
     orderAftercare(c, o, refunds, route, true);
     if (o.specialOrder) {
@@ -400,8 +400,8 @@ async function orderList(pickupOnly, root) {
         el(
           "p",
           o.procurement?.state === "started"
-            ? "���ۡ����� ���� ���: " + date(o.procurement.startedAt)
-            : "���ۡ����� ��",
+            ? "제작·발주 시작 기록: " + date(o.procurement.startedAt)
+            : "제작·발주 전",
         ),
       );
       if (
@@ -413,16 +413,16 @@ async function orderList(pickupOnly, root) {
         field(
           sf,
           "reference",
-          "���� ���ۡ����� ���� ���� Ȯ�ι�ȣ �� �������� �������� ����",
+          "실제 제작·발주 시작 내부 확인번호 · 고객에게 공개하지 않음",
         );
         field(
           sf,
           "confirmed",
-          "���� ���ۡ����ָ� ����������, �� ȭ���� ���޻� ���ָ� ������� ������ Ȯ���߽��ϴ�.",
+          "실제 제작·발주를 시작했으며, 이 화면은 공급사 발주를 대신하지 않음을 확인했습니다.",
           false,
           "checkbox",
         ).required = true;
-        sf.append(el("button", "���ۡ����� ���� ���", "button secondary"));
+        sf.append(el("button", "제작·발주 시작 기록", "button secondary"));
         formTask(sf, async (d) => {
           await call("/admin/orders/special-start", {
             id: o.id,
@@ -431,7 +431,7 @@ async function orderList(pickupOnly, root) {
             actualStartConfirmed: true,
           });
           say(
-            "���� ���ۡ����� ������ ����߽��ϴ�. ���� �ܼ� ���� ��Ҵ� �Ǻ� �����մϴ�.",
+            "실제 제작·발주 시작을 기록했습니다. 이후 단순 변심 취소는 건별 협의합니다.",
           );
           route();
         });
@@ -440,16 +440,16 @@ async function orderList(pickupOnly, root) {
     }
     if (o.status === "pending_payment") {
       const f = el("form");
-      field(f, "amount", "���� �Աݾ�", "", "number");
-      field(f, "reference", "�Ա��� �Ǵ� Ȯ�ι�ȣ");
+      field(f, "amount", "실제 입금액", "", "number");
+      field(f, "reference", "입금자 또는 확인번호");
       field(
         f,
         "checked",
-        "���� ���� ������ �Աݾ��� Ȯ���߽��ϴ�.",
+        "실제 은행 내역과 입금액을 확인했습니다.",
         false,
         "checkbox",
       ).required = true;
-      f.append(el("button", "�Ա� Ȯ��", "button"));
+      f.append(el("button", "입금 확인", "button"));
       formTask(f, async (d) => {
         await call("/admin/orders/update", {
           id: o.id,
@@ -459,7 +459,7 @@ async function orderList(pickupOnly, root) {
           reference: d.reference,
           bankChecked: true,
         });
-        say("�Ա��� Ȯ���߽��ϴ�.");
+        say("입금을 확인했습니다.");
         route();
       });
       c.append(f);
@@ -473,31 +473,31 @@ async function orderList(pickupOnly, root) {
     ) {
       const f = el("form");
       f.append(
-        el("h3", "���� ����� ��� ����"),
+        el("h3", "진접 담당자 대면 전달"),
         el(
           "p",
-          "�����԰� ��й�ȣ ����, Ȯ�ε� ����ڰ� ���� �����մϴ�. �Ⱦ� ����� �����Դϴ�.",
+          "보관함과 비밀번호 없이, 확인된 담당자가 직접 전달합니다. 픽업 비용은 무료입니다.",
         ),
       );
-      field(f, "meetingPoint", "��Ȯ�� ���� ����", o.fulfillment.address);
-      field(f, "staffContact", "�������� �ȳ��� ����ڡ����� ����ó");
-      field(f, "availableFrom", "���� ����", "", "datetime-local");
-      field(f, "availableUntil", "���� ����", "", "datetime-local");
+      field(f, "meetingPoint", "정확한 만남 지점", o.fulfillment.address);
+      field(f, "staffContact", "고객에게 안내할 담당자·업무 연락처");
+      field(f, "availableFrom", "수령 시작", "", "datetime-local");
+      field(f, "availableUntil", "수령 마감", "", "datetime-local");
       field(
         f,
         "staged",
-        "��ǰ�������� ��� ���޿����� �غ��߽��ϴ�.",
+        "상품·수량을 대면 전달용으로 준비했습니다.",
         false,
         "checkbox",
       ).required = true;
       field(
         f,
         "staffConfirmed",
-        "���� ����ڿ� ���� ��ҡ��ð��� Ȯ���߽��ϴ�.",
+        "전달 담당자와 만남 장소·시간을 확인했습니다.",
         false,
         "checkbox",
       ).required = true;
-      f.append(el("button", "��� ���� �غ� �Ϸ�", "button"));
+      f.append(el("button", "대면 전달 준비 완료", "button"));
       formTask(f, async (d) => {
         await call("/admin/handoffs/ready", {
           ...d,
@@ -509,7 +509,7 @@ async function orderList(pickupOnly, root) {
           staffConfirmed: true,
         });
         say(
-          "��� ���� �غ� �����߽��ϴ�. �������� ��ҡ��ð��� �ȳ��� �ּ���.",
+          "대면 전달 준비를 저장했습니다. 고객에게 장소·시간을 안내해 주세요.",
         );
         route();
       });
@@ -524,7 +524,7 @@ async function orderList(pickupOnly, root) {
     ) {
       const { slots } = await call("/admin/slots"),
         f = el("form"),
-        label = el("label", "������"),
+        label = el("label", "보관함"),
         select = el("select");
       select.name = "slotId";
       for (const s of slots.filter(
@@ -539,7 +539,7 @@ async function orderList(pickupOnly, root) {
       const pin = field(
         f,
         "pin",
-        "���� �����ġ�� ������ ���� ��й�ȣ",
+        "실제 잠금장치에 설정한 개별 비밀번호",
         "",
         "password",
       );
@@ -548,33 +548,33 @@ async function orderList(pickupOnly, root) {
       const startNow = field(
         f,
         "startNow",
-        "�غ� �Ϸ� ó�� �������� ���� ����",
+        "준비 완료 처리 시점부터 수령 가능",
         o.fulfillment?.locationId !== "jinjeop",
         "checkbox",
       );
-      const from = field(f, "availableFrom", "���� ����", "", "datetime-local");
+      const from = field(f, "availableFrom", "수령 시작", "", "datetime-local");
       const syncStart = () => {
         from.disabled = startNow.checked;
         from.required = !startNow.checked;
       };
       startNow.addEventListener("change", syncStart);
       syncStart();
-      field(f, "availableUntil", "���� ����", "", "datetime-local");
+      field(f, "availableUntil", "수령 마감", "", "datetime-local");
       field(
         f,
         "staged",
-        "��ǰ�������� �����Կ� ��ġ�߽��ϴ�.",
+        "상품·수량을 보관함에 배치했습니다.",
         false,
         "checkbox",
       ).required = true;
       field(
         f,
         "physical",
-        "�ش� �����ġ�� ���� ��й�ȣ�� ������ ������Ȯ���߽��ϴ�.",
+        "해당 잠금장치의 개별 비밀번호를 실제로 설정·확인했습니다.",
         false,
         "checkbox",
       ).required = true;
-      f.append(el("button", "�Ⱦ� �غ� �Ϸ�", "button"));
+      f.append(el("button", "픽업 준비 완료", "button"));
       formTask(f, async (d) => {
         await call("/admin/pickups/ready", {
           ...d,
@@ -590,7 +590,7 @@ async function orderList(pickupOnly, root) {
         });
         f.reset();
         say(
-          "�Ⱦ� �غ� �Ϸ� ���·� �����߽��ϴ�. �������� �ۿ��� ���� �Ⱓ�� �ڵ带 Ȯ���ϵ��� �ȳ��� �ּ���.",
+          "픽업 준비 완료 상태로 변경했습니다. 고객에게 앱에서 수령 기간과 코드를 확인하도록 안내해 주세요.",
         );
         route();
       });
@@ -599,21 +599,21 @@ async function orderList(pickupOnly, root) {
     if (pickupOnly && !refundHold && o.pickup?.mode === "handoff") {
       c.append(
         dl([
-          ["���� ���", "����� ��� ����"],
-          ["���� ����", o.pickup.meetingPoint],
-          ["����ڡ����� ����ó", o.pickup.staffContact],
-          ["���� ����", date(o.pickup.availableFrom)],
-          ["���� ����", date(o.pickup.availableUntil)],
-          ["����", labels[o.pickup.status] || o.pickup.status],
+          ["수령 방식", "담당자 대면 전달"],
+          ["만남 지점", o.pickup.meetingPoint],
+          ["담당자·업무 연락처", o.pickup.staffContact],
+          ["수령 시작", date(o.pickup.availableFrom)],
+          ["수령 마감", date(o.pickup.availableUntil)],
+          ["상태", labels[o.pickup.status] || o.pickup.status],
         ]),
       );
       const f = el("form"),
-        label = el("label", "��� ���� ���"),
+        label = el("label", "대면 전달 결과"),
         result = el("select");
       result.name = "result";
       for (const [value, name] of [
-        ["collected", "�����ڿ��� ���� ���� �Ϸ�"],
-        ["not_collected", "�Ⱓ ���ᡤ�̼���"],
+        ["collected", "수령자에게 직접 전달 완료"],
+        ["not_collected", "기간 종료·미수령"],
       ]) {
         const option = el("option", name);
         option.value = value;
@@ -624,11 +624,11 @@ async function orderList(pickupOnly, root) {
       field(
         f,
         "recipientChecked",
-        "���� �����ڡ���ǰ������ �Ǵ� �̼��� ����� Ȯ���߽��ϴ�.",
+        "실제 수령자·상품·수량 또는 미수령 결과를 확인했습니다.",
         false,
         "checkbox",
       ).required = true;
-      f.append(el("button", "��� ���� ��� ����", "button"));
+      f.append(el("button", "대면 전달 결과 저장", "button"));
       formTask(f, async (d) => {
         await call("/admin/handoffs/close", {
           id: o.id,
@@ -636,7 +636,7 @@ async function orderList(pickupOnly, root) {
           result: d.result,
           recipientChecked: true,
         });
-        say("��� ���� ����� ����߽��ϴ�.");
+        say("대면 전달 결과를 기록했습니다.");
         route();
       });
       c.append(f);
@@ -644,18 +644,18 @@ async function orderList(pickupOnly, root) {
     if (pickupOnly && !refundHold && o.pickup && o.pickup.mode !== "handoff") {
       c.append(
         dl([
-          ["������", o.pickup.slotLabel],
-          ["���� ����", date(o.pickup.availableUntil)],
-          ["����", labels[o.pickup.status] || o.pickup.status],
+          ["보관함", o.pickup.slotLabel],
+          ["수령 마감", date(o.pickup.availableUntil)],
+          ["상태", labels[o.pickup.status] || o.pickup.status],
         ]),
       );
       const f = el("form"),
-        label = el("label", "���� Ȯ�� ���"),
+        label = el("label", "실제 확인 결과"),
         s = el("select");
       s.name = "result";
       for (const [v, t] of [
-        ["collected", "���� �Ϸ� Ȯ��"],
-        ["not_collected", "�̼��ɡ������ ó��"],
+        ["collected", "수령 완료 확인"],
+        ["not_collected", "미수령·담당자 처리"],
       ]) {
         const op = el("option", t);
         op.value = v;
@@ -666,18 +666,18 @@ async function orderList(pickupOnly, root) {
       field(
         f,
         "compartment",
-        "�������� ���� ��ǰ������ ���θ� Ȯ���߽��ϴ�.",
+        "보관함의 실제 상품·수령 여부를 확인했습니다.",
         false,
         "checkbox",
       ).required = true;
       field(
         f,
         "revoked",
-        "���� �����ġ���� ���� ��й�ȣ�� ���桤����߽��ϴ�.",
+        "실제 잠금장치에서 이전 비밀번호를 변경·폐기했습니다.",
         false,
         "checkbox",
       ).required = true;
-      f.append(el("button", "���� Ȯ�Ρ������� ��� ����", "button"));
+      f.append(el("button", "수령 확인·보관함 사용 종료", "button"));
       formTask(f, async (d) => {
         await call("/admin/pickups/close", {
           id: o.id,
@@ -686,7 +686,7 @@ async function orderList(pickupOnly, root) {
           physicalCodeRevoked: true,
           compartmentChecked: true,
         });
-        say("Ȯ�� ����� �����ϰ� �������� ������ϴ�.");
+        say("확인 기록을 저장하고 보관함을 비웠습니다.");
         route();
       });
       c.append(f);
@@ -700,19 +700,19 @@ async function pickups(root) {
 async function settings(root) {
   await operationsReadiness(root);
   const config = await call("/admin/config"),
-    c = card("��Ÿ ����");
-  const policy = card("Ȯ�� � ���� �� �Ϲ� ��� ��ǰ ���");
+    c = card("베타 접수");
+  const policy = card("확정 운영 기준 · 일반 재고 상품 취소");
   policy.append(
     el(
       "p",
-      "�Ϲ� ��� ��ǰ�� ���� �� ��� �� ���� �Աݾ� ���� ȯ��. ����ڰ� ��ǰ �غ������� �ߴ��� �� ó���մϴ�.",
+      "일반 재고 상품은 수령 전 취소 시 남은 입금액 전액 환불. 담당자가 상품 준비·전달을 중단한 뒤 처리합니다.",
     ),
   );
   if (config.standardPreReceiptCancellation?.value === "full_refund")
     policy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " +
+        "확정 저장됨 · " +
           date(config.standardPreReceiptCancellation.confirmedAt),
       ),
     );
@@ -721,28 +721,28 @@ async function settings(root) {
     field(
       pf,
       "confirmed",
-      "�Ϲ� ��� ��ǰ�� ���� �� ���� ȯ�� ������ Ȯ���߽��ϴ�.",
+      "일반 재고 상품의 수령 전 전액 환불 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    pf.append(el("button", "��� ���� Ȯ�� ����", "button"));
+    pf.append(el("button", "취소 기준 확정 저장", "button"));
     formTask(pf, async () => {
       await call("/admin/policies/standard-cancellation", {
         revision: config.revision,
         value: "full_refund",
         confirmed: true,
       });
-      say("�Ϲ� ��� ��ǰ�� ���� �� ���� ȯ�� ������ �����߽��ϴ�.");
+      say("일반 재고 상품의 수령 전 전액 환불 기준을 저장했습니다.");
       route();
     });
     policy.append(pf);
   }
   root.append(policy);
-  const specialPolicy = card("Ȯ�� � ���� �� �ֹ����ۡ����� ���� ��ǰ");
+  const specialPolicy = card("확정 운영 기준 · 주문제작·별도 발주 상품");
   specialPolicy.append(
     el(
       "p",
-      "�ܼ� ���� ��Ҵ� ���ۡ����� �� ���� ȯ��, ���� �� �Ǻ� ���Ƿ� ó���մϴ�. ������ �ش� ��ǰ���� �����ϰ� ���� ���� ����� ����ϴ�.",
+      "단순 변심 취소는 제작·발주 전 전액 환불, 시작 후 건별 협의로 처리합니다. 견적에 해당 상품임을 명시하고 실제 시작 기록을 남깁니다.",
     ),
   );
   if (
@@ -752,7 +752,7 @@ async function settings(root) {
     specialPolicy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " + date(config.specialOrderCancellation.confirmedAt),
+        "확정 저장됨 · " + date(config.specialOrderCancellation.confirmedAt),
       ),
     );
   else {
@@ -760,61 +760,61 @@ async function settings(root) {
     field(
       sf,
       "confirmed",
-      "�ֹ����ۡ����� ���� ��ǰ�� ���� �� ���� ȯ�ҡ����� �� �Ǻ� ���� ������ Ȯ���߽��ϴ�.",
+      "주문제작·별도 발주 상품의 시작 전 전액 환불·시작 후 건별 협의 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    sf.append(el("button", "Ư�� ��ǰ ��� ���� Ȯ�� ����", "button"));
+    sf.append(el("button", "특수 상품 취소 기준 확정 저장", "button"));
     formTask(sf, async () => {
       await call("/admin/policies/special-cancellation", {
         revision: config.revision,
         value: "full_before_start_agreement_after",
         confirmed: true,
       });
-      say("�ֹ����ۡ����� ���� ��ǰ�� ��� ������ �����߽��ϴ�.");
+      say("주문제작·별도 발주 상품의 취소 기준을 저장했습니다.");
       route();
     });
     specialPolicy.append(sf);
   }
   root.append(specialPolicy);
-  const returnPolicy = card("Ȯ�� � ���� �� �Ϲ� ��� �ܼ� ���� ��ǰ �Ⱓ");
+  const returnPolicy = card("확정 운영 기준 · 일반 재고 단순 변심 반품 기간");
   returnPolicy.append(
     el(
       "p",
-      "���� ���� �������� 1��°�� ����Ͽ� 7��° �ѱ� �ð� 23:59���� ��û�մϴ�. ��ǰ ����� ���� Ȯ���մϴ�.",
+      "실제 수령 다음날을 1일째로 계산하여 7일째 한국 시간 23:59까지 신청합니다. 반품 비용은 별도 확정합니다.",
     ),
   );
   if (config.standardReturnPeriod?.days === 7)
     returnPolicy.append(
-      el("p", "Ȯ�� ����� �� " + date(config.standardReturnPeriod.confirmedAt)),
+      el("p", "확정 저장됨 · " + date(config.standardReturnPeriod.confirmedAt)),
     );
   else {
     const rf = el("form");
     field(
       rf,
       "confirmed",
-      "�Ϲ� ��� ��ǰ�� ���� ���������� 7�� �̳� ��ǰ ���� ������ Ȯ���߽��ϴ�.",
+      "일반 재고 상품의 수령 다음날부터 7일 이내 반품 접수 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    rf.append(el("button", "��ǰ �����Ⱓ Ȯ�� ����", "button"));
+    rf.append(el("button", "반품 접수기간 확정 저장", "button"));
     formTask(rf, async () => {
       await call("/admin/policies/standard-return-period", {
         revision: config.revision,
         days: 7,
         confirmed: true,
       });
-      say("�Ϲ� ��� ��ǰ�� �ܼ� ���� ��ǰ �����Ⱓ�� 7�Ϸ� �����߽��ϴ�.");
+      say("일반 재고 상품의 단순 변심 반품 접수기간을 7일로 저장했습니다.");
       route();
     });
     returnPolicy.append(rf);
   }
   root.append(returnPolicy);
-  const conditionPolicy = card("Ȯ�� � ���� �� �ܼ� ���� ��ǰ�� ��ǰ ����");
+  const conditionPolicy = card("확정 운영 기준 · 단순 변심 반품의 상품 상태");
   conditionPolicy.append(
     el(
       "p",
-      "��ǰ�� �̻���̰� ����ǰ���󺧡������� ������ ������ ��� �ܺ� �ڽ� ������ ����մϴ�. ��ǰ ����� ���� Ȯ���մϴ�.",
+      "제품이 미사용이고 구성품·라벨·포장이 온전히 보존된 경우 외부 박스 개봉을 허용합니다. 반품 비용은 별도 확정합니다.",
     ),
   );
   if (
@@ -824,7 +824,7 @@ async function settings(root) {
     conditionPolicy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " + date(config.standardReturnCondition.confirmedAt),
+        "확정 저장됨 · " + date(config.standardReturnCondition.confirmedAt),
       ),
     );
   else {
@@ -832,35 +832,35 @@ async function settings(root) {
     field(
       cf,
       "confirmed",
-      "�̻�롤����ǰ���󺧡����� ���� �� �ܺ� �ڽ� ���� ��� ������ Ȯ���߽��ϴ�.",
+      "미사용·구성품·라벨·포장 보존 시 외부 박스 개봉 허용 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "��ǰ ��ǰ ���� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "반품 상품 상태 기준 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/standard-return-condition", {
         revision: config.revision,
         value: "unused_complete_outer_box_open_allowed",
         confirmed: true,
       });
-      say("�ܼ� ���� ��ǰ�� ��ǰ ���� ������ �����߽��ϴ�.");
+      say("단순 변심 반품의 상품 상태 기준을 저장했습니다.");
       route();
     });
     conditionPolicy.append(cf);
   }
   root.append(conditionPolicy);
-  const shippingPolicy = card("Ȯ�� � ���� �� �ܼ� ���� ��ǰ ȸ�� ��ۺ�");
+  const shippingPolicy = card("확정 운영 기준 · 단순 변심 반품 회수 배송비");
   shippingPolicy.append(
     el(
       "p",
-      "�Ϲ� ��� ��ǰ�� �ܼ� ���� ��ǰ ȸ�� ��ۺ�� ���� �δ��Դϴ�. ���� ��롤���� ����� ���� �� �ȳ��ϸ� �ڵ� �������� �ʽ��ϴ�. ���� ��ۺ�� �Ʒ� ���� �������� �ȳ��ϸ� �ҷ�������� ����� �Ʒ� ���� �������� �ȳ��մϴ�.",
+      "일반 재고 상품의 단순 변심 반품 회수 배송비는 고객 부담입니다. 실제 비용·정산 방식은 접수 후 안내하며 자동 공제하지 않습니다. 최초 배송비는 아래 별도 기준으로 안내하며 불량·오배송 비용은 아래 별도 기준으로 안내합니다.",
     ),
   );
   if (config.standardReturnShipping?.value === "customer_pays_collection")
     shippingPolicy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " + date(config.standardReturnShipping.confirmedAt),
+        "확정 저장됨 · " + date(config.standardReturnShipping.confirmedAt),
       ),
     );
   else {
@@ -868,28 +868,28 @@ async function settings(root) {
     field(
       cf,
       "confirmed",
-      "�ܼ� ���� ��ǰ ȸ�� ��ۺ��� ���� �δ� ������ Ȯ���߽��ϴ�.",
+      "단순 변심 반품 회수 배송비의 고객 부담 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "��ǰ ȸ�� ��ۺ� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "반품 회수 배송비 기준 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/standard-return-shipping", {
         revision: config.revision,
         value: "customer_pays_collection",
         confirmed: true,
       });
-      say("�ܼ� ���� ��ǰ ȸ�� ��ۺ� ������ �����߽��ϴ�.");
+      say("단순 변심 반품 회수 배송비 기준을 저장했습니다.");
       route();
     });
     shippingPolicy.append(cf);
   }
   root.append(shippingPolicy);
-  const outboundPolicy = card("Ȯ�� � ���� �� ���� ��ǰ ���� �߼� ��ۺ�");
+  const outboundPolicy = card("확정 운영 기준 · 전량 반품 최초 발송 배송비");
   outboundPolicy.append(
     el(
       "p",
-      "�Ϲ� ��� ��ǰ�� �ù� ���� �� ���� �ܼ� ���� ��ǰ�� �� ���� �߼� ��ۺ�� ������ �ֹ��� ������ ��ũ���� �δ��մϴ�. �������� ���� �߼� ����� �߰� û���ϰų� ȯ�Ҿ׿��� �������� �ʽ��ϴ�. ��ǰ ȸ�� ��ۺ�� ���� �δ��̸� ���� �Ⱦ����� �������� �ʽ��ϴ�.",
+      "일반 재고 상품을 택배 수령 후 전량 단순 변심 반품할 때 최초 발송 배송비는 무료배송 주문을 포함해 워크닉이 부담합니다. 고객에게 최초 발송 비용을 추가 청구하거나 환불액에서 차감하지 않습니다. 반품 회수 배송비는 고객 부담이며 무료 픽업에는 적용하지 않습니다.",
     ),
   );
   if (
@@ -899,7 +899,7 @@ async function settings(root) {
     outboundPolicy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " + date(config.standardOutboundShipping.confirmedAt),
+        "확정 저장됨 · " + date(config.standardOutboundShipping.confirmedAt),
       ),
     );
   else {
@@ -907,104 +907,104 @@ async function settings(root) {
     field(
       cf,
       "confirmed",
-      "�ù� ���� �ܼ� ���� ��ǰ�� ���� �߼� ��ۺ� ��ũ�� �δ� ������ Ȯ���߽��ϴ�.",
+      "택배 전량 단순 변심 반품의 최초 발송 배송비 워크닉 부담 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "���� �߼� ��ۺ� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "최초 발송 배송비 기준 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/standard-outbound-shipping", {
         revision: config.revision,
         value: "worknic_pays_outbound_full_return",
         confirmed: true,
       });
-      say("���� ��ǰ ���� �߼� ��ۺ� ������ �����߽��ϴ�.");
+      say("전량 반품 최초 발송 배송비 기준을 저장했습니다.");
       route();
     });
     outboundPolicy.append(cf);
   }
   root.append(outboundPolicy);
-  const defectPolicy = card("Ȯ�� � ���� �� �ҷ�������� ȸ������߼� ���");
+  const defectPolicy = card("확정 운영 기준 · 불량·오배송 회수·재발송 비용");
   defectPolicy.append(
     el(
       "p",
-      "��ǰ �ҷ��̳� ������� Ȯ�ε� ��� ��ȯ����ǰ�� �ʿ��� ȸ����� ��߼ۺ�� ��� ��ũ���� �δ��մϴ�. �ܼ� ���� ��� ���ذ� �����ϸ� �������� �ش� ��ۺ� û���ϰų� ȯ�Ҿ׿��� �������� �ʽ��ϴ�.",
+      "상품 불량이나 오배송이 확인된 경우 교환·반품에 필요한 회수비와 재발송비는 모두 워크닉이 부담합니다. 단순 변심 비용 기준과 구분하며 고객에게 해당 배송비를 청구하거나 환불액에서 차감하지 않습니다.",
     ),
   );
   if (config.defectShipping?.value === "worknic_pays_collection_reshipment")
     defectPolicy.append(
-      el("p", "Ȯ�� ����� �� " + date(config.defectShipping.confirmedAt)),
+      el("p", "확정 저장됨 · " + date(config.defectShipping.confirmedAt)),
     );
   else {
     const cf = el("form");
     field(
       cf,
       "confirmed",
-      "�ҷ�������� Ȯ�� �� ȸ������߼ۺ� ��ũ�� �δ� ������ Ȯ���߽��ϴ�.",
+      "불량·오배송 확인 시 회수비·재발송비 워크닉 부담 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "�ҷ�������� ��ۺ� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "불량·오배송 배송비 기준 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/defect-shipping", {
         revision: config.revision,
         value: "worknic_pays_collection_reshipment",
         confirmed: true,
       });
-      say("�ҷ�������� ȸ������߼� ��� ������ �����߽��ϴ�.");
+      say("불량·오배송 회수·재발송 비용 기준을 저장했습니다.");
       route();
     });
     defectPolicy.append(cf);
   }
   root.append(defectPolicy);
-  const reviewerPolicy = card("� ����� �� ��ҡ���ǰ ���� �� ȯ�� ����");
+  const reviewerPolicy = card("운영 담당자 · 취소·반품 검토 및 환불 승인");
   reviewerPolicy.append(
     el(
       "p",
-      "��ҡ���ǰ ������ ��ǰ ���� ���� �� ȯ�� ���� ����ڴ� �����Դϴ�. ���Ρ��ݷ����۱� �� ���� öȸ�� ������ OS �������� ó���մϴ�." +
+      "취소·반품 사유와 상품 상태 검토 및 환불 승인 담당자는 영우입니다. 승인·반려·송금 전 승인 철회는 영우의 OS 계정으로 처리합니다." +
         (config.refundTransferOperator?.value
-          ? " ���� ȯ�� �۱� �����: " + config.refundTransferOperator.value
-          : " ���� ���� �۱� ����ڴ� ���� �����Դϴ�."),
+          ? " 실제 환불 송금 담당자: " + config.refundTransferOperator.value
+          : " 실제 은행 송금 담당자는 아직 미정입니다."),
     ),
   );
-  if (config.refundReviewer?.value === "����")
+  if (config.refundReviewer?.value === "영우")
     reviewerPolicy.append(
-      el("p", "Ȯ�� ����� �� " + date(config.refundReviewer.confirmedAt)),
+      el("p", "확정 저장됨 · " + date(config.refundReviewer.confirmedAt)),
     );
   else {
     const cf = el("form");
     field(
       cf,
       "confirmed",
-      "��ҡ���ǰ ���� �� ȯ�� ���� ����ڸ� ����� Ȯ���߽��ϴ�.",
+      "취소·반품 검토 및 환불 승인 담당자를 영우로 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "ȯ�� ���� ����� Ȯ�� ����", "button"));
+    cf.append(el("button", "환불 검토 담당자 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/operators/refund-reviewer", {
         revision: config.revision,
-        value: "����",
+        value: "영우",
         confirmed: true,
       });
-      say("ȯ�� ���� �� ���� ����ڸ� ����� �����߽��ϴ�.");
+      say("환불 검토 및 승인 담당자를 영우로 저장했습니다.");
       route();
     });
     reviewerPolicy.append(cf);
   }
   root.append(reviewerPolicy);
-  const transferPolicy = card("� ����� �� ���� ȯ�� �۱� �� �Ϸ� ���");
+  const transferPolicy = card("운영 담당자 · 실제 환불 송금 및 완료 기록");
   transferPolicy.append(
     el(
       "p",
-      "���� ȯ�� �۱ݰ� OS �۱� �Ϸ� ��� ����ڴ� �����Դϴ�. ���찡 ȯ�� ���� �����������Ρ��ݾ��� Ȯ���ϰ� ���࿡�� ���� �۱��� �� OS�� ����մϴ�. OS�� �ڵ����� �۱����� �ʽ��ϴ�.",
+      "실제 환불 송금과 OS 송금 완료 기록 담당자는 영우입니다. 영우가 환불 승인 내역·수취인·금액을 확인하고 은행에서 직접 송금한 뒤 OS에 기록합니다. OS는 자동으로 송금하지 않습니다.",
     ),
   );
-  if (config.refundTransferOperator?.value === "����")
+  if (config.refundTransferOperator?.value === "영우")
     transferPolicy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " + date(config.refundTransferOperator.confirmedAt),
+        "확정 저장됨 · " + date(config.refundTransferOperator.confirmedAt),
       ),
     );
   else {
@@ -1012,94 +1012,94 @@ async function settings(root) {
     field(
       cf,
       "confirmed",
-      "���� ȯ�� �۱� �� �Ϸ� ��� ����ڸ� ����� Ȯ���߽��ϴ�.",
+      "실제 환불 송금 및 완료 기록 담당자를 영우로 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "ȯ�� �۱� ����� Ȯ�� ����", "button"));
+    cf.append(el("button", "환불 송금 담당자 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/operators/refund-transfer", {
         revision: config.revision,
-        value: "����",
+        value: "영우",
         confirmed: true,
       });
-      say("���� ȯ�� �۱� �� �Ϸ� ��� ����ڸ� ����� �����߽��ϴ�.");
+      say("실제 환불 송금 및 완료 기록 담당자를 영우로 저장했습니다.");
       route();
     });
     transferPolicy.append(cf);
   }
   root.append(transferPolicy);
-  const recoveryPolicy = card("� ����� �� ���� ���� ���� Ȯ�� �� ��ũ �߱�");
+  const recoveryPolicy = card("운영 담당자 · 계정 복구 본인 확인 및 링크 발급");
   recoveryPolicy.append(
     el(
       "p",
-      "���� ���� ����ڴ� �����Դϴ�. ���� OS ��� ����ó�� ������ Ȯ���ϰ� 30�� ��ȸ�� ��ũ�� �߱��մϴ�. ��� ����ڳ� ����ó�� �ٲ� ��� ���� ����ó Ȯ�ΰ� ����� ���� Ȯ���� ��ģ �� ó���մϴ�.",
+      "계정 복구 담당자는 영우입니다. 기존 OS 등록 연락처로 본인을 확인하고 30분 일회용 링크를 발급합니다. 등록 담당자나 연락처가 바뀐 경우 기존 연락처 확인과 사업자 권한 확인을 마친 뒤 처리합니다.",
     ),
   );
-  if (config.recoveryOperator?.value === "����")
+  if (config.recoveryOperator?.value === "영우")
     recoveryPolicy.append(
-      el("p", "Ȯ�� ����� �� " + date(config.recoveryOperator.confirmedAt)),
+      el("p", "확정 저장됨 · " + date(config.recoveryOperator.confirmedAt)),
     );
   else {
     const cf = el("form");
     field(
       cf,
       "confirmed",
-      "���� ���� ���� Ȯ�� �� ��ũ �߱� ����ڸ� ����� Ȯ���߽��ϴ�.",
+      "계정 복구 본인 확인 및 링크 발급 담당자를 영우로 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "���� ���� ����� Ȯ�� ����", "button"));
+    cf.append(el("button", "계정 복구 담당자 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/operators/recovery", {
         revision: config.revision,
-        value: "����",
+        value: "영우",
         confirmed: true,
       });
-      say("���� ���� ����ڸ� ����� �����߽��ϴ�.");
+      say("계정 복구 담당자를 영우로 저장했습니다.");
       route();
     });
     recoveryPolicy.append(cf);
   }
   root.append(recoveryPolicy);
-  const recipientPolicy = card("Ȯ�� � ���� �� ȯ�� ������� Ȯ��");
+  const recipientPolicy = card("확정 운영 기준 · 환불 수취계좌 확인");
   recipientPolicy.append(
     el(
       "p",
-      "ȯ�� ������´� ���Ա��� ���Ǹ� ��Ģ���� �ϰ� �ٸ� ���� ��û�� ���찡 ������ Ȯ���մϴ�. �۱� ���� Ȯ���ϰ�, ���� �۱� �Ϸ� ��Ͽ� ���� Ȯ�� ����� ���� �� ���� Ȯ�ι�ȣ�� ����ϴ�. ���� ��ü ��ȣ�� �� ȭ�鿡 �������� �ʽ��ϴ�.",
+      "환불 수취계좌는 원입금자 명의를 원칙으로 하고 다른 명의 요청은 영우가 별도로 확인합니다. 송금 전에 확인하고, 실제 송금 완료 기록에 명의 확인 결과와 변경 시 내부 확인번호를 남깁니다. 계좌 전체 번호는 이 화면에 저장하지 않습니다.",
     ),
   );
   if (config.refundRecipient?.value === "original_payer_else_youngwoo_verified")
     recipientPolicy.append(
-      el("p", "Ȯ�� ����� �� " + date(config.refundRecipient.confirmedAt)),
+      el("p", "확정 저장됨 · " + date(config.refundRecipient.confirmedAt)),
     );
   else {
     const cf = el("form");
     field(
       cf,
       "confirmed",
-      "���Ա��� ���� ��Ģ �� ���� �� ���� ���� Ȯ�� ������ Ȯ���߽��ϴ�.",
+      "원입금자 명의 원칙 및 변경 시 영우 별도 확인 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "ȯ�� ������� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "환불 수취계좌 기준 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/refund-recipient", {
         revision: config.revision,
         value: "original_payer_else_youngwoo_verified",
         confirmed: true,
       });
-      say("ȯ�� ������� Ȯ�� ������ �����߽��ϴ�.");
+      say("환불 수취계좌 확인 기준을 저장했습니다.");
       route();
     });
     recipientPolicy.append(cf);
   }
   root.append(recipientPolicy);
-  const timingPolicy = card("Ȯ�� � ���� �� ��ǰ �� ȯ�� �۱� ����");
+  const timingPolicy = card("확정 운영 기준 · 반품 후 환불 송금 기한");
   timingPolicy.append(
     el(
       "p",
-      "������ Ȯ���� ȸ�����˼� Ȯ�� ������ �����մϴ�. ȯ�� ó�� ��ǥ�� �˼� �Ϸ����� �ƴ� ���� ��ȯ�Ϻ��� 3�����Ϸ� ����ϸ�, ���� �˼������� ������ �ڷ� �̷��� �ʽ��ϴ�. ��ҡ�ȯ�� ȭ�鿡�� ���� ��ȯ���� ����ϰ� �ڵ� ���� �������� Ȯ���ϼ���.",
+      "기존에 확정한 회수·검수 확인 절차는 보존합니다. 환불 처리 목표는 검수 완료일이 아닌 실제 반환일부터 3영업일로 계산하며, 내부 검수·승인 때문에 뒤로 미루지 않습니다. 취소·환불 화면에서 실제 반환일을 기록하고 자동 계산된 마감일을 확인하세요.",
     ),
   );
   if (
@@ -1107,37 +1107,37 @@ async function settings(root) {
     "within_3_business_days_after_inspection"
   )
     timingPolicy.append(
-      el("p", "Ȯ�� ����� �� " + date(config.returnRefundTiming.confirmedAt)),
+      el("p", "확정 저장됨 · " + date(config.returnRefundTiming.confirmedAt)),
     );
   else {
     const cf = el("form");
     field(
       cf,
       "confirmed",
-      "��ǰ ȸ�����˼� �Ϸ� �� 3������ �̳� ȯ�� �۱� ������ Ȯ���߽��ϴ�.",
+      "반품 회수·검수 완료 후 3영업일 이내 환불 송금 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "��ǰ ȯ�� �۱� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "반품 환불 송금 기한 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/return-refund-timing", {
         revision: config.revision,
         value: "within_3_business_days_after_inspection",
         confirmed: true,
       });
-      say("��ǰ �� ȯ�� �۱� ������ 3������ �̳��� �����߽��ϴ�.");
+      say("반품 후 환불 송금 기한을 3영업일 이내로 저장했습니다.");
       route();
     });
     timingPolicy.append(cf);
   }
   root.append(timingPolicy);
   const cancelTimingPolicy = card(
-    "Ȯ�� � ���� �� ���� �� ��� ȯ�� �۱� ����",
+    "확정 운영 기준 · 수령 전 취소 환불 송금 기한",
   );
   cancelTimingPolicy.append(
     el(
       "p",
-      "������ Ȯ���� �̼��ɡ�ȯ�� ���� Ȯ�� ������ �����մϴ�. ȯ�� ó�� ��ǥ�� �������� �ƴ� ���� ��ҡ�öȸ �����Ϻ��� 3�����Ϸ� ����ϸ�, ���� ���Ρ����� Ȯ�� ������ �ڷ� �̷��� �ʽ��ϴ�. ���ۡ����ְ� ���۵� ��ǰ�� ���Ǵ� ���� ������ �켱�Ͽ� ó���մϴ�.",
+      "기존에 확정한 미수령·환불 계좌 확인 절차는 보존합니다. 환불 처리 목표는 승인일이 아닌 실제 취소·철회 접수일부터 3영업일로 계산하며, 내부 승인·계좌 확인 때문에 뒤로 미루지 않습니다. 제작·발주가 시작된 상품의 협의는 적용 법령을 우선하여 처리합니다.",
     ),
   );
   if (
@@ -1147,7 +1147,7 @@ async function settings(root) {
     cancelTimingPolicy.append(
       el(
         "p",
-        "Ȯ�� ����� �� " + date(config.preReceiptRefundTiming.confirmedAt),
+        "확정 저장됨 · " + date(config.preReceiptRefundTiming.confirmedAt),
       ),
     );
   else {
@@ -1155,18 +1155,18 @@ async function settings(root) {
     field(
       cf,
       "confirmed",
-      "���� �� ��� ���Ρ����� Ȯ�� �Ϸ� �� 3������ �̳� �۱� ������ Ȯ���߽��ϴ�.",
+      "수령 전 취소 승인·계좌 확인 완료 후 3영업일 이내 송금 기준을 확정했습니다.",
       false,
       "checkbox",
     ).required = true;
-    cf.append(el("button", "���� �� ��� �۱� ���� Ȯ�� ����", "button"));
+    cf.append(el("button", "수령 전 취소 송금 기한 확정 저장", "button"));
     formTask(cf, async () => {
       await call("/admin/policies/pre-receipt-refund-timing", {
         revision: config.revision,
         value: "within_3_business_days_after_approval_and_account",
         confirmed: true,
       });
-      say("���� �� ��� ȯ�� �۱� ������ 3������ �̳��� �����߽��ϴ�.");
+      say("수령 전 취소 환불 송금 기한을 3영업일 이내로 저장했습니다.");
       route();
     });
     cancelTimingPolicy.append(cf);
@@ -1176,25 +1176,25 @@ async function settings(root) {
   field(
     f,
     "registrationEnabled",
-    "���� ��û ����",
+    "계정 신청 열기",
     config.registrationEnabled,
     "checkbox",
   );
   field(
     f,
     "betaEnabled",
-    "�������Ⱦ� ��û ����",
+    "견적·픽업 신청 열기",
     config.betaEnabled,
     "checkbox",
   );
   field(
     f,
     "documentsConfirmed",
-    "�ΰ��������� ��ġ��������������� � ������ Ȯ���߽��ϴ�.",
+    "부가세·문서 양식·개인정보·수령 운영 기준을 확인했습니다.",
     config.documentsConfirmed,
     "checkbox",
   );
-  f.append(el("button", "���� ���� ����", "button"));
+  f.append(el("button", "접수 설정 저장", "button"));
   formTask(f, async (d) => {
     await call("/admin/config", {
       revision: config.revision,
@@ -1202,7 +1202,7 @@ async function settings(root) {
       betaEnabled: d.betaEnabled === "on",
       documentsConfirmed: d.documentsConfirmed === "on",
     });
-    say("���� ������ �����߽��ϴ�.");
+    say("접수 설정을 저장했습니다.");
     route();
   });
   c.append(f);
@@ -1211,19 +1211,19 @@ async function settings(root) {
   for (const l of locations) {
     const c = card(l.name),
       f = el("form");
-    field(f, "address", "Ȯ�ε� ���� �ּ�", l.address);
-    field(f, "hours", "� ���ϡ��ð� �� ���� ����", l.hours);
-    field(f, "noticeUrl", "Ȯ���� ���� ���� �ּ�", l.noticeUrl, "url");
-    field(f, "fee", "�⺻ �Ⱦ� ��� �� ����", 0, "number").readOnly = true;
+    field(f, "address", "확인된 수령 주소", l.address);
+    field(f, "hours", "운영 요일·시간 및 수령 조건", l.hours);
+    field(f, "noticeUrl", "확인한 공식 공지 주소", l.noticeUrl, "url");
+    field(f, "fee", "기본 픽업 비용 · 무료", 0, "number").readOnly = true;
     field(
       f,
       "sourceVerified",
-      "���� ���������� ���� ���ǡ������ Ȯ���߽��ϴ�.",
+      "공지 원문·현장 수령 조건·비용을 확인했습니다.",
       l.sourceVerified,
       "checkbox",
     );
-    field(f, "enabled", "�� ����� ��û ����", l.enabled, "checkbox");
-    f.append(el("button", "��� ���� ����", "button"));
+    field(f, "enabled", "이 장소의 신청 열기", l.enabled, "checkbox");
+    f.append(el("button", "장소 설정 저장", "button"));
     formTask(f, async (d) => {
       await call("/admin/locations", {
         ...d,
@@ -1233,17 +1233,17 @@ async function settings(root) {
         enabled: d.enabled === "on",
         sourceVerified: d.sourceVerified === "on",
       });
-      say("��� ������ �����߽��ϴ�.");
+      say("장소 설정을 저장했습니다.");
       route();
     });
     c.append(f);
     root.append(c);
   }
-  const slot = card("���� ��й�ȣ ������ ���"),
+  const slot = card("개별 비밀번호 보관함 등록"),
     sf = el("form");
-  field(sf, "id", "������ ID �� ����������");
-  field(sf, "label", "������ ǥ�� �̸�");
-  const label = el("label", "���"),
+  field(sf, "id", "보관함 ID · 영문·숫자");
+  field(sf, "label", "보관함 표시 이름");
+  const label = el("label", "장소"),
     select = el("select");
   select.name = "locationId";
   for (const l of locations) {
@@ -1253,29 +1253,29 @@ async function settings(root) {
   }
   label.append(select);
   sf.append(label);
-  field(sf, "enabled", "������ ���", false, "checkbox");
-  sf.append(el("button", "������ ���", "button"));
+  field(sf, "enabled", "보관함 사용", false, "checkbox");
+  sf.append(el("button", "보관함 등록", "button"));
   formTask(sf, async (d) => {
     await call("/admin/slots", { ...d, enabled: d.enabled === "on" });
-    say("�������� ����߽��ϴ�.");
+    say("보관함을 등록했습니다.");
     route();
   });
   slot.append(sf);
   root.append(slot);
 }
 function auth() {
-  const c = card("OS ������ ����"),
+  const c = card("OS 관리자 연결"),
     f = el("form");
   c.append(
     el(
       "p",
-      "������� ��ũ�� OS���� �� ���� ȭ���� ���� �ּ���. �Ʒ� �α����� ���� ȯ�� �Ǵ� � ����ڿ��Դϴ�.",
+      "운영에서는 워크닉 OS에서 이 관리 화면을 열어 주세요. 아래 로그인은 검증 환경 또는 운영 담당자용입니다.",
     ),
   );
-  field(f, "username", "������ ���̵�");
-  field(f, "password", "��й�ȣ", "", "password");
-  field(f, "otp", "���� �� �ڵ�").required = false;
-  f.append(el("button", "�α���", "button"));
+  field(f, "username", "관리자 아이디");
+  field(f, "password", "비밀번호", "", "password");
+  field(f, "otp", "인증 앱 코드").required = false;
+  f.append(el("button", "로그인", "button"));
   formTask(f, async () => {
     await login(f);
     await load();
@@ -1315,8 +1315,8 @@ async function route() {
 async function load() {
   try {
     actor = (await call("/me")).member;
-    if (actor.role !== "admin") throw Error("������ ������ �ʿ��մϴ�.");
-    say("������ ���� �Ϸ� �� � ������ ��ǰ�ڷ�� �����˴ϴ�.");
+    if (actor.role !== "admin") throw Error("관리자 계정이 필요합니다.");
+    say("관리자 연결 완료 · 운영 원본과 상품자료는 보존됩니다.");
   } catch (e) {
     actor = null;
     say(e.message, true);
@@ -1327,7 +1327,7 @@ function requestOSConnection() {
   if (location.hash !== "#os-connect" || !window.opener) return false;
   ++routeRevision;
   $("#view").replaceChildren();
-  say("OS ������ ������ Ȯ���ϰ� �ֽ��ϴ�.");
+  say("OS 관리자 연결을 확인하고 있습니다.");
   window.opener.postMessage(
     { type: "WORKNIC_TRADE_READY" },
     "https://worknic.tools",

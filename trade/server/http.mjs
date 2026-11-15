@@ -54,13 +54,13 @@ export function createTradeServer({
   };
   const body = async (req) => {
     if (!/^application\/json(?:;|$)/i.test(req.headers["content-type"] || ""))
-      throw new TradeError("JSON ��û�� �ʿ��մϴ�.", 415);
+      throw new TradeError("JSON 요청이 필요합니다.", 415);
     let size = 0,
       chunks = [];
     for await (const chunk of req) {
       size += chunk.length;
       if (size > 128 * 1024)
-        throw new TradeError("��û ũ�⸦ �ٿ� �ּ���.", 413);
+        throw new TradeError("요청 크기를 줄여 주세요.", 413);
       chunks.push(chunk);
     }
     try {
@@ -69,7 +69,7 @@ export function createTradeServer({
         throw Error();
       return value;
     } catch {
-      throw new TradeError("�Է� ������ Ȯ���� �ּ���.");
+      throw new TradeError("입력 내용을 확인해 주세요.");
     }
   };
   const beta = createBetaRouter({
@@ -109,12 +109,12 @@ export function createTradeServer({
           "/api/trade/me",
         ].includes(path)
       )
-        throw new TradeError("��Ÿ �������ֹ� ȭ�鿡�� �̿��� �ּ���.", 404);
+        throw new TradeError("베타 견적·주문 화면에서 이용해 주세요.", 404);
       if (path.startsWith("/api/trade/")) {
         if (!["GET", "POST"].includes(req.method))
-          throw new TradeError("�������� �ʴ� ��û�Դϴ�.", 405);
+          throw new TradeError("지원하지 않는 요청입니다.", 405);
         if (req.method === "POST" && req.headers.origin !== allowedOrigin)
-          throw new TradeError("�� ����Ʈ���� �ٽ� ��û�� �ּ���.", 403);
+          throw new TradeError("이 사이트에서 다시 요청해 주세요.", 403);
         const remoteIp = trustProxy
           ? (req.headers["x-forwarded-for"] || req.socket.remoteAddress)
               .split(",")[0]
@@ -147,7 +147,7 @@ export function createTradeServer({
             adminTotpSecret &&
             !verifyTotp(adminTotpSecret, input.otp)
           )
-            throw new TradeError("���� ���� 6�ڸ� �ڵ带 Ȯ���� �ּ���.", 401);
+            throw new TradeError("인증 앱의 6자리 코드를 확인해 주세요.", 401);
           const session = store.session(member);
           return json(res, { member }, 200, {
             "Set-Cookie": cookie(
@@ -161,7 +161,7 @@ export function createTradeServer({
           return json(res, store.resetPassword(input.token, input.password));
         }
         const actor = store.authenticate(getToken(req));
-        if (!actor) throw new TradeError("�α����� �ʿ��մϴ�.", 401);
+        if (!actor) throw new TradeError("로그인이 필요합니다.", 401);
         if (path === "/api/trade/me" && req.method === "GET")
           return json(res, { member: actor });
         if (path === "/api/trade/logout" && req.method === "POST") {
@@ -192,7 +192,7 @@ export function createTradeServer({
         }
         if (path.startsWith("/api/trade/admin/")) {
           if (actor.role !== "admin" || actor.status !== "approved")
-            throw new TradeError("������ ������ �ʿ��մϴ�.", 403);
+            throw new TradeError("관리자 권한이 필요합니다.", 403);
           if (path === "/api/trade/admin/members" && req.method === "GET")
             return json(res, { members: store.members(actor) });
           if (
@@ -228,10 +228,10 @@ export function createTradeServer({
               store.updateProduct(actor, productMatch[1], input),
             );
         }
-        throw new TradeError("��û�� ����� ã�� �� �����ϴ�.", 404);
+        throw new TradeError("요청한 기능을 찾을 수 없습니다.", 404);
       }
       if (!["GET", "HEAD"].includes(req.method))
-        throw new TradeError("�������� �ʴ� ��û�Դϴ�.", 405);
+        throw new TradeError("지원하지 않는 요청입니다.", 405);
       // Never serve source, SQLite files, environment files, or repository metadata.
       const relative = decodeURIComponent(path);
       const allowed =
@@ -244,7 +244,7 @@ export function createTradeServer({
           relative,
         )
       )
-        throw new TradeError("�������� ã�� �� �����ϴ�.", 404);
+        throw new TradeError("페이지를 찾을 수 없습니다.", 404);
       const filePath =
         relative === "/trade" || relative === "/trade/"
           ? "/trade/index.html"
@@ -253,7 +253,7 @@ export function createTradeServer({
             : relative;
       const file = await realpath(resolve(root, "." + filePath));
       if (!file.startsWith(resolve(root) + sep))
-        throw new TradeError("�������� ã�� �� �����ϴ�.", 404);
+        throw new TradeError("페이지를 찾을 수 없습니다.", 404);
       const content = await readFile(file);
       res.writeHead(200, {
         "Content-Type": MIME[extname(file)] || "application/octet-stream",
@@ -269,7 +269,7 @@ export function createTradeServer({
         {
           error:
             status === 500
-              ? "ó�� �� ������ �߻��߽��ϴ�. ��� �� �ٽ� �õ��� �ּ���."
+              ? "처리 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."
               : e.message,
         },
         status,

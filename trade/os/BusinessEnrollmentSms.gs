@@ -8,10 +8,10 @@ function worknicBusinessSms_(signed){
  var r=wnbRows_(wnbTables_().requests,WNB_HEADERS_).filter(function(x){return x.id===proof.id})[0];
  if(!r||typeof r.phone!=='string'||!/^010\d{8}$/.test(r.phone.replace(/[\s()-]/g,'')))throw Error('PHONE_REVIEW_REQUIRED');
  if(typeof p.eventKey!=='string'||p.eventKey.length>250||p.eventKey.indexOf(r.id+':')!==0)throw Error('INVALID_EVENT');
- var ss=SpreadsheetApp.openById(wnbConfig_().sheetId),headers=['eventKey','requestId','status','messageId','groupId','providerCode','updated'],sheet=ss.getSheetByName('OS_����ڹ��ڿ���');
+ var ss=SpreadsheetApp.openById(wnbConfig_().sheetId),headers=['eventKey','requestId','status','messageId','groupId','providerCode','updated'],sheet=ss.getSheetByName('OS_사업자문자원장');
  var lock=LockService.getScriptLock();lock.waitLock(10000);var row;
  try{
-  if(!sheet){sheet=ss.insertSheet('OS_����ڹ��ڿ���');sheet.appendRow(headers)}
+  if(!sheet){sheet=ss.insertSheet('OS_사업자문자원장');sheet.appendRow(headers)}
   if(JSON.stringify(sheet.getRange(1,1,1,7).getValues()[0])!==JSON.stringify(headers))throw Error('SCHEMA_MISMATCH');
   var records=sheet.getLastRow()>1?sheet.getRange(2,1,sheet.getLastRow()-1,7).getValues():[],index=records.findIndex(function(x){return x[0]===p.eventKey});
   if(index>=0){row={index:index+2,values:records[index]};if(p.operation==='send')return {status:row.values[2]==='submitting'?'unknown':row.values[2],messageId:row.values[3]||null,code:String(row.values[5]||'')};}
@@ -24,7 +24,7 @@ function worknicBusinessSms_(signed){
  var state='unknown',messageId=row.values[3]||'',groupId=row.values[4]||'',code='';
  try{
   if(p.operation==='send'){
-   var reply=wsSolapi_('/messages/v4/send-many/detail',{messages:[{to:r.phone.replace(/[\s()-]/g,''),from:wsCredentials_().from,text:p.text,type:'LMS',subject:'WORKNIC ����� �ȳ�',customFields:{worknicBusinessEvent:p.eventKey}}],allowDuplicates:false,showMessageList:true});
+   var reply=wsSolapi_('/messages/v4/send-many/detail',{messages:[{to:r.phone.replace(/[\s()-]/g,''),from:wsCredentials_().from,text:p.text,type:'LMS',subject:'WORKNIC 사업자 안내',customFields:{worknicBusinessEvent:p.eventKey}}],allowDuplicates:false,showMessageList:true});
    var failed=(reply.data.failedMessageList||[])[0],message=(reply.data.messageList||[])[0];groupId=reply.data.groupInfo&&reply.data.groupInfo.groupId||'';
    if(reply.code>=400){code=String(reply.code);state=reply.code<500?'failed':'unknown'}else if(failed){messageId=failed.messageId||'';code=String(failed.statusCode||'');state='failed'}else if(message&&message.messageId){messageId=message.messageId;code=String(message.statusCode);state=worknicBusinessSmsState_(code)}
   }else{

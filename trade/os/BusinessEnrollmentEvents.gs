@@ -3,8 +3,8 @@ function wnbEnrollmentQueue_(r,kind,contactVerified){
  if(PropertiesService.getScriptProperties().getProperty('WORKNIC_BUSINESS_ENROLLMENT_ENABLED')!=='true')return {state:'disabled'};
  try{
   if(typeof r.phone!=='string'||!/^010\d{8}$/.test(r.phone.replace(/[\s()-]/g,'')))return {state:'phone_review_required'};
-  var headers=['eventId','requestId','revision','kind','payload','state','updated'],ss=SpreadsheetApp.openById(wnbConfig_().sheetId),s=ss.getSheetByName('OS_����ڿ����̺�Ʈ');
-  if(!s){s=ss.insertSheet('OS_����ڿ����̺�Ʈ');s.appendRow(headers)}
+  var headers=['eventId','requestId','revision','kind','payload','state','updated'],ss=SpreadsheetApp.openById(wnbConfig_().sheetId),s=ss.getSheetByName('OS_사업자연결이벤트');
+  if(!s){s=ss.insertSheet('OS_사업자연결이벤트');s.appendRow(headers)}
   if(JSON.stringify(s.getRange(1,1,1,7).getValues()[0])!==JSON.stringify(headers))throw Error('SCHEMA_MISMATCH');
   var eventId=r.id+':'+kind+':'+r.revision,rows=s.getLastRow()>1?s.getRange(2,1,s.getLastRow()-1,7).getValues():[];
   if(rows.some(function(x){return x[0]===eventId}))return {state:'queued'};
@@ -15,7 +15,7 @@ function wnbEnrollmentQueue_(r,kind,contactVerified){
 function processWorknicBusinessEvents(){
  var props=PropertiesService.getScriptProperties();if(props.getProperty('WORKNIC_BUSINESS_ENROLLMENT_ENABLED')!=='true')return;
  var secret=props.getProperty('WORKNIC_TRADE_BRIDGE_SECRET')||'';if(secret.length<32)throw Error('BRIDGE_NOT_CONFIGURED');
- var sheet=SpreadsheetApp.openById(wnbConfig_().sheetId).getSheetByName('OS_����ڿ����̺�Ʈ');if(!sheet||sheet.getLastRow()<2)return;
+ var sheet=SpreadsheetApp.openById(wnbConfig_().sheetId).getSheetByName('OS_사업자연결이벤트');if(!sheet||sheet.getLastRow()<2)return;
  var lock=LockService.getScriptLock();lock.waitLock(10000);var job;
  try{var rows=sheet.getRange(2,1,sheet.getLastRow()-1,7).getValues(),index=rows.findIndex(function(r){return ['queued','retry_required'].includes(r[5])||(r[5]==='handing_off'&&Date.now()-Date.parse(r[6])>300000)});if(index<0)return;job={index:index+2,payload:JSON.parse(rows[index][4])};sheet.getRange(job.index,6,1,2).setValues([['handing_off',new Date().toISOString()]]);SpreadsheetApp.flush()}finally{lock.releaseLock()}
  var timestamp=Date.now(),nonce=Utilities.getUuid(),body={timestamp:timestamp,nonce:nonce,payload:job.payload};body.signature=Utilities.computeHmacSha256Signature(JSON.stringify(body),secret,Utilities.Charset.UTF_8).map(function(b){return('0'+((b+256)%256).toString(16)).slice(-2)}).join('');

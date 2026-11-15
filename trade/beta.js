@@ -1,3 +1,4 @@
+import {itemsOnly,createDraftSession,mayRefresh} from "./quote-draft.js";
 import {
   $,
   el,
@@ -27,21 +28,11 @@ let member = null,
   catalog = { products: [], brands: [] },
   cart = [],
   pinTimers = [];
-try {
-  cart = JSON.parse(localStorage.getItem("worknic_beta_cart") || "[]");
-  if (!Array.isArray(cart)) cart = [];
-} catch {}
-const save = () =>
-  localStorage.setItem(
-    "worknic_beta_cart",
-    JSON.stringify(
-      cart.map((x) => ({
-        productId: x.productId,
-        optionId: x.optionId,
-        quantity: x.quantity,
-      })),
-    ),
-  );
+const draftSession = createDraftSession(localStorage);
+const save = () => draftSession.save(cart);
+const canRefresh = () => mayRefresh(document.querySelector('#view'),document.activeElement);
+document.addEventListener('input',event=>{const form=event.target.closest('#view form');if(form)form.dataset.draftDirty='true';});
+document.addEventListener('change',event=>{const form=event.target.closest('#view form');if(form)form.dataset.draftDirty='true';});
 const clearPins = () => {
     pinTimers.forEach(clearTimeout);
     pinTimers = [];
@@ -57,6 +48,12 @@ async function identity() {
     member = null;
     bound = false;
   }
+  cart = draftSession.select(member?.id || null);
+}
+async function verifyDraftOwner() {
+  const expected = member?.id;
+  await identity();
+  if (!expected || member?.id !== expected || !allowed()) throw Error('로그인 계정이 변경되었거나 확인할 수 없습니다. 기존 계정의 초안은 별도로 보관됩니다.');
 }
 function authNotice(destination = "orders") {
   loginReturn = destination;
@@ -277,11 +274,15 @@ function cartView() {
   }
   formTask(f, async (data) => {
     if (!runtime.betaEnabled) throw Error("베타 접수를 준비하고 있습니다.");
-    await call("/quotes", {
-      ...data,
-      items: cart,
-      requestKey: crypto.randomUUID(),
-    });
+    const owner = member?.id;
+    const items = itemsOnly(cart);
+    await verifyDraftOwner();
+    if (owner !== member?.id) throw Error('로그인 계정을 다시 확인해 주세요.');
+    const payload = {...data,items};
+    const requestKey = draftSession.requestKey(payload);
+    await call("/quotes", {...payload,requestKey});
+    if (member?.id !== owner) { say("견적 요청을 접수했습니다. 현재 계정의 초안은 유지합니다."); return; }
+    draftSession.confirmed();
     cart = [];
     save();
     say("견적 요청을 접수했습니다. 담당자가 확인합니다.");
@@ -382,6 +383,16 @@ async function ordersView(root) {
       ]),
       link("거래명세서 보기", "/api/beta/orders/" + o.id + "/statement"),
     );
+    c.append(button('이전 품목으로 새 견적 준비', async()=>{
+      await verifyDraftOwner();
+      const next = itemsOnly(o.items);
+      if (!next.length) throw Error('이전 품목을 확인할 수 없습니다.');
+      if (cart.length && !confirm('작성 중인 요청 목록을 이전 주문의 품목으로 바꿀까요?')) return;
+      cart = next;
+      save();
+      say('품목·옵션·수량만 담았습니다. 이전 가격·결제·픽업 정보는 복사하지 않았습니다. 현재 판매 조건은 직원이 확인합니다.');
+      route();
+    },'button secondary'));
     orderAftercare(c, o, refunds, route);
     if (o.specialOrder)
       c.append(
@@ -636,13 +647,15 @@ function accountView(root) {
   grid.append(rc);
   root.append(grid);
 }
-async function route() {
+async function route(options = {}) {
+  const background = options?.background === true;
+  if (background && !canRefresh()) return;
   clearPins();
   const revision = ++routeRevision;
   const name = location.hash.slice(1).split("?")[0] || "catalog",
     view = $("#view"),
     root = el("div");
-  view.replaceChildren();
+  if (!background) view.replaceChildren();
   document
     .querySelectorAll(".nav a,.bottom-nav a")
     .forEach((a) =>
@@ -653,7 +666,7 @@ async function route() {
     else if (name === "orders") await ordersView(root);
     else if (name === "pickup") await pickupView(root);
     else accountView(root);
-    if (revision === routeRevision) view.replaceChildren(...root.childNodes);
+    if (revision === routeRevision && (!background || canRefresh())) view.replaceChildren(...root.childNodes);
   } catch (e) {
     if (revision === routeRevision) say(e.message, true);
   }
@@ -680,7 +693,7 @@ document.addEventListener("visibilitychange", () => {
         member &&
         ["orders", "pickup"].includes(location.hash.slice(1))
       )
-        route();
+        route({background:true});
     }, 45000);
   } catch (e) {
     say(e.message, true);

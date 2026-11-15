@@ -17,6 +17,7 @@ import {
 } from "./beta-common.js";
 import { adminRefunds, adminRecovery, orderAftercare } from "./aftercare-ui.js";
 import { inventoryBulk, operationsReadiness } from "./inventory-ui.js";
+import {businessEnrollmentAdmin} from './business-enrollment-admin.js';
 let actor = null,
   lastPreview = null;
 async function prices(root) {
@@ -196,6 +197,7 @@ async function prices(root) {
   root.append(stocks);
 }
 async function members(root) {
+  businessEnrollmentAdmin(root);
   root.append(
     el(
       "p",

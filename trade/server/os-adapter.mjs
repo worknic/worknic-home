@@ -77,6 +77,7 @@ export function createOSAdapter({
         businessNumber: String(row.businessNumber).replace(/[^0-9]/g, ""),
         email: String(row.email).toLowerCase(),
         revision: Number(row.revision),
+        profile: {companyName:String(row.companyName||''),businessNumber:String(row.businessNumber).replace(/[^0-9]/g,''),contactName:String(row.contactName||''),phone:row.phone,email:String(row.email||'').toLowerCase()},
       };
     },
     async status(profile, requestId) {
@@ -116,5 +117,11 @@ export function createOSAdapter({
       });
     },
     review: (token, input) => call("business.review", input, token),
+    async businessSms(input) {
+      if(sharedSecret.length<32)throw new TradeError('기존 문자 계정 연결이 필요합니다.',503);
+      const payload={operation:input.operation,requestId:input.requestId,businessNumber:input.profile.businessNumber,email:input.profile.email,eventKey:input.eventKey,...(input.operation==='send'?{text:input.text}:{messageId:input.messageId})};
+      const timestamp=Date.now(),nonce=randomUUID(),signature=createHmac('sha256',sharedSecret).update(JSON.stringify({timestamp,nonce,payload})).digest('hex');
+      return call('trade.bridge.businessSms',{timestamp,nonce,payload,signature});
+    },
   };
 }

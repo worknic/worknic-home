@@ -34,6 +34,9 @@ export function createTradeServer({
   demo = false,
   os = createOSAdapter(),
   backups = null,
+  businessSms = null,
+  businessSmsAllowedRequests = [],
+  businessSmsMode = 'disabled',
 }) {
   const allowedOrigin = new URL(origin).origin;
   const cookieName = secure ? "__Host-worknic_trade" : "worknic_trade";
@@ -76,6 +79,9 @@ export function createTradeServer({
     demo,
     trustProxy,
     backups,
+    businessSms,
+    businessSmsAllowedRequests,
+    businessSmsMode,
   });
   return createServer(async (req, res) => {
     res.setHeader("Content-Security-Policy", CSP);

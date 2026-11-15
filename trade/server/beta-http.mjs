@@ -14,6 +14,9 @@ export function createBetaRouter({
   demo = false,
   trustProxy = false,
   backups = null,
+  businessSms = null,
+  businessSmsAllowedRequests = [],
+  businessSmsMode = 'disabled',
 }) {
   const bridges = new Map();
   return async (req, res, url, { json, cookie, getToken }) => {
@@ -27,7 +30,7 @@ export function createBetaRouter({
         : req.socket.remoteAddress;
     if (!["GET", "POST"].includes(method))
       fail("지원하지 않는 요청입니다.", 405);
-    if (method === "POST" && req.headers.origin !== new URL(origin).origin)
+    if (method === "POST" && path !== '/enrollment/events' && req.headers.origin !== new URL(origin).origin)
       fail("이 사이트에서 다시 요청해 주세요.", 403);
     store.limit("beta:" + remoteIp, 200, 60000);
     const actor = store.authenticate(getToken(req)),
@@ -75,6 +78,24 @@ export function createBetaRouter({
       json(res, v, s, headers);
       return true;
     };
+    if(path.startsWith('/enrollment/')){
+      if(!store.enrollment)fail('사업자 계정 설정을 준비하고 있습니다.',503);
+      if(method!=='POST')fail('POST 요청이 필요합니다.',405);
+      if(path==='/enrollment/events'){
+        const result=store.enrollment.receive(input);
+        // Real provider dispatch is never implicit during this review. Scope defaults to empty.
+        if(businessSms && (businessSmsMode==='production'||businessSmsAllowedRequests.includes(input.payload?.requestId))){
+          for(let i=0;i<2;i++)await store.enrollment.dispatchOne(businessSms,{requestId:input.payload.requestId});
+        }
+        return send(result,201);
+      }
+      store.limit('business-setup:'+remoteIp,10,600000);
+      const isCheck=path==='/enrollment/check',isComplete=path==='/enrollment/complete';
+      if(!isCheck&&!isComplete)fail('요청을 확인해 주세요.',404);
+      const context=store.enrollment.context(isCheck?input.token:input.verificationToken,isCheck?'invite':'verification');
+      if(!demo){const proof=await os.status(context.profile,context.requestId);if(proof.id!==context.requestId||proof.status!=='approved'||proof.revision!==context.revision)fail('현재 사업자 승인을 확인해 주세요.',403);}
+      return send(isCheck?store.enrollment.check(input):store.enrollment.complete(input));
+    }
     if (path === "/health" && method === "GET") {
       const publicOrigins = new Set([
         "https://worknic.co.kr",
@@ -212,6 +233,27 @@ export function createBetaRouter({
         member,
         bound: !!binding?.activated,
       });
+    }
+    if(path.startsWith('/admin/enrollment/')){
+      if(!admin)fail('관리자 권한이 필요합니다.',403);
+      if(!store.enrollment)fail('사업자 계정 연결을 준비하고 있습니다.',503);
+      if(path==='/admin/enrollment/messages'&&method==='POST')return send({messages:store.enrollment.messages(actor,input.requestId)});
+      if(path==='/admin/enrollment/import'&&method==='POST'){
+        if(demo)fail('운영 OS 원본을 사용한 연결이 필요합니다.',409);
+        const proof=await os.find(bridges.get(actor.id).token,input.profile);
+        if(proof.id!==input.requestId)fail('선택한 신청 원본을 다시 확인해 주세요.',409);
+        return send(store.enrollment.importApproved(actor,proof,input));
+      }
+      if(path==='/admin/enrollment/reissue'&&method==='POST'){
+        const context=store.enrollment.applicationContext(actor,input.requestId);
+        if(!demo){const proof=await os.status(context.profile,context.requestId);if(proof.id!==context.requestId||proof.status!=='approved'||proof.revision!==context.revision)fail('최신 OS 승인을 확인해 주세요.',409);}
+        return send(store.enrollment.reissue(actor,input.requestId,input));
+      }
+      if(path==='/admin/enrollment/refresh-message'&&method==='POST'){
+        if(!businessSms)fail('기존 문자 계정 연결이 필요합니다.',503);
+        return send(await store.enrollment.refreshMessage(businessSms,input.eventKey));
+      }
+      fail('요청을 확인해 주세요.',404);
     }
     if (path === "/receipt-retry" && method === "POST") {
       store.limit("receipt:" + actor.id, 3, 3600000);

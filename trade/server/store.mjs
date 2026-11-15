@@ -1,4 +1,5 @@
 import { installBeta } from "./beta-store.mjs";
+import { installBusinessEnrollment } from "./business-enrollment.mjs";
 import { DatabaseSync } from "node:sqlite";
 import {
   randomBytes,
@@ -82,7 +83,7 @@ export const DEFAULT_SETTINGS = {
 
 export function openStore(
   filename,
-  { clock = () => Date.now(), catalogPath, betaOptions = {} } = {},
+  { clock = () => Date.now(), catalogPath, betaOptions = {}, enrollmentOptions = {} } = {},
 ) {
   mkdirSync(dirname(filename), { recursive: true, mode: 0o700 });
   const db = new DatabaseSync(filename);
@@ -810,6 +811,7 @@ export function openStore(
     { clock, transaction, audit, adminOnly, customerOnly, settings, release },
     betaOptions,
   );
+  api.enrollment = installBusinessEnrollment(api,db,{clock,transaction,audit,adminOnly},enrollmentOptions);
   return api;
 }
 

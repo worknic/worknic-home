@@ -10,7 +10,7 @@ export function createBusinessSolapi({key,secret,from,fetcher=fetch,clock=()=>ne
   const r=await fetcher('https://api.solapi.com'+path,{method:body?'POST':'GET',headers:{Authorization:`HMAC-SHA256 apiKey=${key}, date=${date}, salt=${salt}, signature=${signature}`,...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(20000),redirect:'error'});
   let data;try{data=await r.json()}catch{return {status:r.status,data:null}}return {status:r.status,data};
  }
- const classify=code=>code==='4000'?'delivered':['2000','3000'].includes(code)?'accepted':/^(?:1\d{3}|2\d{3}|3\d{3})$/.test(code||'')?'failed':'unknown';
+ const classify=code=>code==='4000'?'delivered':code==='5000'?'failed':['2000','3000'].includes(code)?'accepted':/^(?:1\d{3}|2\d{3}|3\d{3})$/.test(code||'')?'failed':'unknown';
  return {
   async send({to,text,eventKey}){
    if(!allowSend)throw Error('Live sending disabled');

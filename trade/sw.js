@@ -1,4 +1,4 @@
-const CACHE = "worknic-beta-static-v19",
+const CACHE = "worknic-beta-static-v20",
   OFFLINE = "/trade/offline.html",
   ASSETS = [
     OFFLINE,
@@ -6,6 +6,7 @@ const CACHE = "worknic-beta-static-v19",
     "/trade/beta-common.js",
     "/trade/aftercare-ui.js",
     "/trade/beta.js",
+    "/trade/quote-draft.js",
     "/trade/entry-intent.js",
     "/trade/pwa.js",
     "/trade/app-icon.svg",

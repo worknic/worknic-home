@@ -25,7 +25,7 @@ export function createOSAdapter({
       });
     } catch {
       throw new TradeError(
-        "OS 연결을 확인할 수 없습니다. 다시 시도해 주세요.",
+        "OS ������ Ȯ���� �� �����ϴ�. �ٽ� �õ��� �ּ���.",
         503,
       );
     }
@@ -33,11 +33,11 @@ export function createOSAdapter({
     try {
       j = await r.json();
     } catch {
-      throw new TradeError("OS 연결 응답을 확인해 주세요.", 503);
+      throw new TradeError("OS ���� ������ Ȯ���� �ּ���.", 503);
     }
     if (!r.ok || j.ok !== true)
       throw new TradeError(
-        j.error || "OS 권한 또는 연결을 확인해 주세요.",
+        j.error || "OS ���� �Ǵ� ������ Ȯ���� �ּ���.",
         j.code === "UNAUTHORIZED" ? 401 : 503,
       );
     return j.data;
@@ -47,10 +47,10 @@ export function createOSAdapter({
     publicCatalog: () => call("catalog.get"),
     async authorize(token) {
       if (typeof token !== "string" || token.length > 512 || !token)
-        throw new TradeError("OS 관리자 로그인이 필요합니다.", 401);
+        throw new TradeError("OS ������ �α����� �ʿ��մϴ�.", 401);
       const actor = await call("catalog.authorize", {}, token);
       if (actor?.role !== "admin" || !actor.actor)
-        throw new TradeError("OS 관리자 권한이 필요합니다.", 403);
+        throw new TradeError("OS ������ ������ �ʿ��մϴ�.", 403);
       return actor;
     },
     async find(token, profile) {
@@ -67,7 +67,7 @@ export function createOSAdapter({
         );
       if (matches.length !== 1)
         throw new TradeError(
-          "OS의 사업자번호·담당자 이메일을 대조해 주세요.",
+          "OS�� ����ڹ�ȣ������� �̸����� ������ �ּ���.",
           409,
         );
       const row = matches[0];
@@ -77,11 +77,12 @@ export function createOSAdapter({
         businessNumber: String(row.businessNumber).replace(/[^0-9]/g, ""),
         email: String(row.email).toLowerCase(),
         revision: Number(row.revision),
+        profile: {companyName:String(row.companyName||''),businessNumber:String(row.businessNumber).replace(/[^0-9]/g,''),contactName:String(row.contactName||''),phone:row.phone,email:String(row.email||'').toLowerCase()},
       };
     },
     async status(profile, requestId) {
       if (sharedSecret.length < 32)
-        throw new TradeError("OS 승인 연동을 준비하고 있습니다.", 503);
+        throw new TradeError("OS ���� ������ �غ��ϰ� �ֽ��ϴ�.", 503);
       const payload = {
           requestId,
           businessNumber: profile.businessNumber,
@@ -116,5 +117,11 @@ export function createOSAdapter({
       });
     },
     review: (token, input) => call("business.review", input, token),
+    async businessSms(input) {
+      if(sharedSecret.length<32)throw new TradeError('���� ���� ���� ������ �ʿ��մϴ�.',503);
+      const payload={operation:input.operation,requestId:input.requestId,businessNumber:input.profile.businessNumber,email:input.profile.email,eventKey:input.eventKey,...(input.operation==='send'?{text:input.text}:{messageId:input.messageId})};
+      const timestamp=Date.now(),nonce=randomUUID(),signature=createHmac('sha256',sharedSecret).update(JSON.stringify({timestamp,nonce,payload})).digest('hex');
+      return call('trade.bridge.businessSms',{timestamp,nonce,payload,signature});
+    },
   };
 }

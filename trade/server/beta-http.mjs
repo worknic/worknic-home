@@ -14,6 +14,9 @@ export function createBetaRouter({
   demo = false,
   trustProxy = false,
   backups = null,
+  businessSms = null,
+  businessSmsAllowedRequests = [],
+  businessSmsMode = 'disabled',
 }) {
   const bridges = new Map();
   return async (req, res, url, { json, cookie, getToken }) => {
@@ -26,9 +29,9 @@ export function createBetaRouter({
             .trim()
         : req.socket.remoteAddress;
     if (!["GET", "POST"].includes(method))
-      fail("지원하지 않는 요청입니다.", 405);
-    if (method === "POST" && req.headers.origin !== new URL(origin).origin)
-      fail("이 사이트에서 다시 요청해 주세요.", 403);
+      fail("�������� �ʴ� ��û�Դϴ�.", 405);
+    if (method === "POST" && path !== '/enrollment/events' && req.headers.origin !== new URL(origin).origin)
+      fail("�� ����Ʈ���� �ٽ� ��û�� �ּ���.", 403);
     store.limit("beta:" + remoteIp, 200, 60000);
     const actor = store.authenticate(getToken(req)),
       admin = actor?.role === "admin" && actor.status === "approved";
@@ -44,12 +47,12 @@ export function createBetaRouter({
             ? 5 * 1024 * 1024
             : 1024 * 1024)
         )
-          fail("요청 크기를 줄여 주세요.", 413);
+          fail("��û ũ�⸦ �ٿ� �ּ���.", 413);
         chunks.push(c);
       }
       const buf = Buffer.concat(chunks);
       if (["/admin/prices/file", "/admin/inventory/file"].includes(path)) {
-        if (!admin) fail("관리자 권한이 필요합니다.", 403);
+        if (!admin) fail("������ ������ �ʿ��մϴ�.", 403);
         input = {
           rows: await (
             path === "/admin/prices/file"
@@ -61,13 +64,13 @@ export function createBetaRouter({
         if (
           !/^application\/json(?:;|$)/i.test(req.headers["content-type"] || "")
         )
-          fail("JSON 요청 필요", 415);
+          fail("JSON ��û �ʿ�", 415);
         try {
           input = JSON.parse(buf.toString());
           if (!input || Array.isArray(input) || typeof input !== "object")
             throw Error();
         } catch {
-          fail("입력 내용 확인");
+          fail("�Է� ���� Ȯ��");
         }
       }
     }
@@ -75,6 +78,24 @@ export function createBetaRouter({
       json(res, v, s, headers);
       return true;
     };
+    if(path.startsWith('/enrollment/')){
+      if(!store.enrollment)fail('����� ���� ������ �غ��ϰ� �ֽ��ϴ�.',503);
+      if(method!=='POST')fail('POST ��û�� �ʿ��մϴ�.',405);
+      if(path==='/enrollment/events'){
+        const result=store.enrollment.receive(input);
+        // Real provider dispatch is never implicit during this review. Scope defaults to empty.
+        if(businessSms && (businessSmsMode==='production'||businessSmsAllowedRequests.includes(input.payload?.requestId))){
+          for(let i=0;i<2;i++)await store.enrollment.dispatchOne(businessSms,{requestId:input.payload.requestId});
+        }
+        return send(result,201);
+      }
+      store.limit('business-setup:'+remoteIp,10,600000);
+      const isCheck=path==='/enrollment/check',isComplete=path==='/enrollment/complete';
+      if(!isCheck&&!isComplete)fail('��û�� Ȯ���� �ּ���.',404);
+      const context=store.enrollment.context(isCheck?input.token:input.verificationToken,isCheck?'invite':'verification');
+      if(!demo){const proof=await os.status(context.profile,context.requestId);if(proof.id!==context.requestId||proof.status!=='approved'||proof.revision!==context.revision)fail('���� ����� ������ Ȯ���� �ּ���.',403);}
+      return send(isCheck?store.enrollment.check(input):store.enrollment.complete(input));
+    }
     if (path === "/health" && method === "GET") {
       const publicOrigins = new Set([
         "https://worknic.co.kr",
@@ -140,7 +161,7 @@ export function createBetaRouter({
     }
     if (path === "/register" && method === "POST") {
       if (!store.beta.config().registrationEnabled)
-        fail("베타 회원 접수를 준비하고 있습니다.", 409);
+        fail("��Ÿ ȸ�� ������ �غ��ϰ� �ֽ��ϴ�.", 409);
       store.limit("beta-register:" + remoteIp, 5, 3600000);
       const r = store.register(input);
       try {
@@ -151,7 +172,7 @@ export function createBetaRouter({
             ...r,
             osReceipt: "retry_required",
             message:
-              "계정이 준비됐지만 OS 신청 접수를 확인하지 못했습니다. 로그인 후 접수 다시 보내기를 눌러 주세요.",
+              "������ �غ������ OS ��û ������ Ȯ������ ���߽��ϴ�. �α��� �� ���� �ٽ� �����⸦ ���� �ּ���.",
           },
           201,
         );
@@ -178,21 +199,21 @@ export function createBetaRouter({
         "Set-Cookie": cookie(session.token, 3300),
       });
     }
-    if (!actor) fail("로그인이 필요합니다.", 401);
+    if (!actor) fail("�α����� �ʿ��մϴ�.", 401);
     if (admin && !demo) {
       const bridge = bridges.get(actor.id);
       if (!bridge || bridge.expires < Date.now())
-        fail("OS에서 관리자 연결을 다시 열어 주세요.", 401);
+        fail("OS���� ������ ������ �ٽ� ���� �ּ���.", 401);
       await os.authorize(bridge.token);
     }
     async function approve() {
       if (actor.role === "admin") return;
       const b = store.beta.binding(actor);
-      if (!b?.activated) fail("OS 승인과 계정 본인 확인을 완료해 주세요.", 403);
+      if (!b?.activated) fail("OS ���ΰ� ���� ���� Ȯ���� �Ϸ��� �ּ���.", 403);
       if (demo) return;
       const proof = await os.status(actor.profile, b.request_id);
       if (proof.status !== "approved" || proof.id !== b.request_id)
-        fail("사업자 거래 승인이 유효하지 않습니다.", 403);
+        fail("����� �ŷ� ������ ��ȿ���� �ʽ��ϴ�.", 403);
     }
     if (path === "/me" && method === "GET") {
       const binding = store.beta.binding(actor);
@@ -205,13 +226,34 @@ export function createBetaRouter({
             proof.status,
           )
         )
-          fail("OS 승인 상태를 확인해 주세요.", 503);
+          fail("OS ���� ���¸� Ȯ���� �ּ���.", 503);
         member = { ...actor, status: proof.status };
       }
       return send({
         member,
         bound: !!binding?.activated,
       });
+    }
+    if(path.startsWith('/admin/enrollment/')){
+      if(!admin)fail('������ ������ �ʿ��մϴ�.',403);
+      if(!store.enrollment)fail('����� ���� ������ �غ��ϰ� �ֽ��ϴ�.',503);
+      if(path==='/admin/enrollment/messages'&&method==='POST')return send({messages:store.enrollment.messages(actor,input.requestId)});
+      if(path==='/admin/enrollment/import'&&method==='POST'){
+        if(demo)fail('� OS ������ ����� ������ �ʿ��մϴ�.',409);
+        const proof=await os.find(bridges.get(actor.id).token,input.profile);
+        if(proof.id!==input.requestId)fail('������ ��û ������ �ٽ� Ȯ���� �ּ���.',409);
+        return send(store.enrollment.importApproved(actor,proof,input));
+      }
+      if(path==='/admin/enrollment/reissue'&&method==='POST'){
+        const context=store.enrollment.applicationContext(actor,input.requestId);
+        if(!demo){const proof=await os.status(context.profile,context.requestId);if(proof.id!==context.requestId||proof.status!=='approved'||proof.revision!==context.revision)fail('�ֽ� OS ������ Ȯ���� �ּ���.',409);}
+        return send(store.enrollment.reissue(actor,input.requestId,input));
+      }
+      if(path==='/admin/enrollment/refresh-message'&&method==='POST'){
+        if(!businessSms)fail('���� ���� ���� ������ �ʿ��մϴ�.',503);
+        return send(await store.enrollment.refreshMessage(businessSms,input.eventKey));
+      }
+      fail('��û�� Ȯ���� �ּ���.',404);
     }
     if (path === "/receipt-retry" && method === "POST") {
       store.limit("receipt:" + actor.id, 3, 3600000);
@@ -239,20 +281,20 @@ export function createBetaRouter({
       if (q[2] === "print" && method === "GET") {
         const quote = store.beta.quote(actor, q[1]);
         if (!["issued", "accepted"].includes(quote.status))
-          fail("발행된 견적서가 없습니다.", 409);
+          fail("����� �������� �����ϴ�.", 409);
         const member = admin
           ? store.members(actor).find((m) => m.id === quote.memberId)
           : actor;
         const html = statement({
           ...quote,
           buyer: member.profile,
-          number: "견적 " + quote.id.slice(0, 8),
+          number: "���� " + quote.id.slice(0, 8),
           createdAt: quote.issuedAt,
           dueAt: quote.expiresAt,
           shippingFee: quote.pickupFee,
-          shippingLabel: "픽업 비용",
+          shippingLabel: "�Ⱦ� ���",
           status: "quote",
-        }).replaceAll("거래명세서", "견적서");
+        }).replaceAll("�ŷ�������", "������");
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
         res.end(html);
         return true;
@@ -309,7 +351,7 @@ export function createBetaRouter({
       );
     }
     if (path.startsWith("/admin/")) {
-      if (!admin) fail("관리자 권한이 필요합니다.", 403);
+      if (!admin) fail("������ ������ �ʿ��մϴ�.", 403);
       if (path === "/admin/readiness" && method === "GET") {
         const config = store.beta.config(),
           products = store.beta.inventory(actor),
@@ -360,10 +402,10 @@ export function createBetaRouter({
               fee,
             })),
           manualChecks: [
-            "정확한 현장 위치·연락처와 실제 수령·보관함 확인",
-            "거래처별 단가·판매단위·재고·부가세 및 증빙 확인",
-            "환불 기산일의 법정 기준 적용과 공휴일 확인",
-            "개인정보 고지·보관 기준과 비공개 외부 백업·복구 시험",
+            "��Ȯ�� ���� ��ġ������ó�� ���� ���ɡ������� Ȯ��",
+            "�ŷ�ó�� �ܰ����ǸŴ�����������ΰ��� �� ���� Ȯ��",
+            "ȯ�� ������� ���� ���� ����� ������ Ȯ��",
+            "�������� ���������� ���ذ� ����� �ܺ� ��������� ����",
           ],
         });
       }
@@ -396,7 +438,7 @@ export function createBetaRouter({
         const request = store.beta
           .recoveryRequests(actor)
           .find((r) => r.id === input.id);
-        if (!request) fail("복구 요청을 찾을 수 없습니다.", 404);
+        if (!request) fail("���� ��û�� ã�� �� �����ϴ�.", 404);
         const binding = store.beta.binding({ id: request.member_id });
         const proof = demo
           ? { id: binding?.request_id }
@@ -428,11 +470,11 @@ export function createBetaRouter({
         });
       if (path === "/admin/backups/export" && method === "POST") {
         if (
-          store.beta.config().recoveryOperator?.value !== "영우" ||
+          store.beta.config().recoveryOperator?.value !== "����" ||
           !store.beta.recoveryAccess(actor).canIssue
         )
-          fail("암호화 백업 내보내기는 영우의 OS 계정으로 처리해 주세요.", 403);
-        if (!backups) fail("백업 설정을 확인해 주세요.", 503);
+          fail("��ȣȭ ��� ��������� ������ OS �������� ó���� �ּ���.", 403);
+        if (!backups) fail("��� ������ Ȯ���� �ּ���.", 503);
         store.limit("backup-export:" + actor.id, 1, 600000);
         const archive = await backups.run({ force: true, external: false });
         res.writeHead(200, {
@@ -487,7 +529,7 @@ export function createBetaRouter({
           !demo &&
           !os.configured()
         )
-          fail("OS 승인 서버 연결을 먼저 설정해 주세요.", 409);
+          fail("OS ���� ���� ������ ���� ������ �ּ���.", 409);
         return send(
           method === "POST"
             ? store.beta.updateConfig(actor, input)
@@ -561,7 +603,7 @@ export function createBetaRouter({
         return send({ members: store.members(actor) });
       if (path === "/admin/members/bind" && method === "POST") {
         const m = store.members(actor).find((x) => x.id === input.id);
-        if (!m) fail("회원 확인", 404);
+        if (!m) fail("ȸ�� Ȯ��", 404);
         const proof = demo
           ? {
               id: "demo-os",
@@ -592,7 +634,7 @@ export function createBetaRouter({
         });
       if (path === "/admin/orders/update" && method === "POST") {
         if (!["confirm_payment", "prepare"].includes(input.action))
-          fail("올바른 준비 작업 선택");
+          fail("�ùٸ� �غ� �۾� ����");
         if (input.action === "prepare")
           store.beta.assertFulfillmentAllowed(input.id);
         return send({ order: store.updateOrder(actor, input.id, input) });
@@ -610,6 +652,6 @@ export function createBetaRouter({
       if (path === "/admin/products/stock" && method === "POST")
         return send(store.beta.updateInventory(actor, input.id, input));
     }
-    fail("요청한 기능을 찾을 수 없습니다.", 404);
+    fail("��û�� ����� ã�� �� �����ϴ�.", 404);
   };
 }

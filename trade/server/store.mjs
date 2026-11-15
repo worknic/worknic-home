@@ -1,4 +1,5 @@
 import { installBeta } from "./beta-store.mjs";
+import { installBusinessEnrollment } from "./business-enrollment.mjs";
 import { DatabaseSync } from "node:sqlite";
 import {
   randomBytes,
@@ -48,33 +49,33 @@ export function validBusinessNumber(value) {
   return (10 - (sum % 10)) % 10 === n[9];
 }
 export const STATUS = {
-  pending_payment: "입금 대기",
-  paid: "입금 확인",
-  preparing: "배송 준비",
-  quote: "견적 발행",
-  pickup_ready: "픽업 준비 완료",
-  pickup_reported: "수령 확인 중",
-  collected: "수령 완료",
-  pickup_exception: "담당자 확인 필요",
-  shipped: "발송 완료",
-  cancelled: "주문 취소",
-  refunded: "전액 환불 완료",
-  cancelled_settled: "협의 취소 정산 완료",
-  expired: "입금기한 만료",
+  pending_payment: "�Ա� ���",
+  paid: "�Ա� Ȯ��",
+  preparing: "��� �غ�",
+  quote: "���� ����",
+  pickup_ready: "�Ⱦ� �غ� �Ϸ�",
+  pickup_reported: "���� Ȯ�� ��",
+  collected: "���� �Ϸ�",
+  pickup_exception: "����� Ȯ�� �ʿ�",
+  shipped: "�߼� �Ϸ�",
+  cancelled: "�ֹ� ���",
+  refunded: "���� ȯ�� �Ϸ�",
+  cancelled_settled: "���� ��� ���� �Ϸ�",
+  expired: "�Աݱ��� ����",
 };
 export const DEFAULT_SETTINGS = {
   seller: {
-    companyName: "워크닉 주식회사",
+    companyName: "��ũ�� �ֽ�ȸ��",
     businessNumber: "363-86-03519",
     phone: "1833-3640",
-    address: "경기도 포천시 화현면 화동로348번길 5-1",
+    address: "��⵵ ��õ�� ȭ���� ȭ����348���� 5-1",
   },
   bank: {
-    name: "하나은행",
+    name: "�ϳ�����",
     account: "556-910020-91004",
-    holder: "워크닉 주식회사",
+    holder: "��ũ�� �ֽ�ȸ��",
   },
-  shipping: { fee: 5000, freeOver: 500000, label: "배송·포장비" },
+  shipping: { fee: 5000, freeOver: 500000, label: "��ۡ������" },
   paymentDays: 3,
   ordersEnabled: false,
   consentVersion: "trade-2026-11-07",
@@ -82,7 +83,7 @@ export const DEFAULT_SETTINGS = {
 
 export function openStore(
   filename,
-  { clock = () => Date.now(), catalogPath, betaOptions = {} } = {},
+  { clock = () => Date.now(), catalogPath, betaOptions = {}, enrollmentOptions = {} } = {},
 ) {
   mkdirSync(dirname(filename), { recursive: true, mode: 0o700 });
   const db = new DatabaseSync(filename);
@@ -128,11 +129,11 @@ export function openStore(
       .run(actor.id, action, target, JSON.stringify(detail), clock());
   const adminOnly = (actor) => {
     if (actor?.role !== "admin" || actor.status !== "approved")
-      fail("관리자 권한이 필요합니다.", 403);
+      fail("������ ������ �ʿ��մϴ�.", 403);
   };
   const customerOnly = (actor) => {
     if (actor?.role !== "customer" || actor.status !== "approved")
-      fail("사업자 거래 승인 후 주문할 수 있습니다.", 403);
+      fail("����� �ŷ� ���� �� �ֹ��� �� �ֽ��ϴ�.", 403);
   };
   const safeMember = (row) =>
     row && {
@@ -199,7 +200,7 @@ export function openStore(
       data.products.length > 10000 ||
       data.brands.length > 1000
     )
-      fail("카탈로그 형식을 확인해 주세요.");
+      fail("īŻ�α� ������ Ȯ���� �ּ���.");
     const seen = new Set();
     for (const p of data.products) {
       if (
@@ -210,7 +211,7 @@ export function openStore(
         !Array.isArray(p.images || []) ||
         (p.images || []).length > 3
       )
-        fail("카탈로그 상품을 확인해 주세요.");
+        fail("īŻ�α� ��ǰ�� Ȯ���� �ּ���.");
       seen.add(p.id);
     }
     transaction(() => {
@@ -284,23 +285,23 @@ export function openStore(
         ).run(k, now + windowMs);
       else {
         if (row.count >= max)
-          fail("요청이 많습니다. 잠시 후 다시 시도해 주세요.", 429);
+          fail("��û�� �����ϴ�. ��� �� �ٽ� �õ��� �ּ���.", 429);
         db.prepare("UPDATE limits SET count=count+1 WHERE key=?").run(k);
       }
     },
     register(input) {
       const username = text(input.username, 40).toLowerCase();
       if (!/^[a-z0-9][a-z0-9_-]{3,39}$/.test(username))
-        fail("아이디는 영문·숫자 4~40자로 입력해 주세요.");
+        fail("���̵�� ���������� 4~40�ڷ� �Է��� �ּ���.");
       if (!validPassword(input.password))
-        fail("비밀번호는 조합 제한 없이 10~128자로 입력해 주세요.");
+        fail("��й�ȣ�� ���� ���� ���� 10~128�ڷ� �Է��� �ּ���.");
       if (
         typeof input.businessNumber !== "string" ||
         !validBusinessNumber(input.businessNumber)
       )
-        fail("사업자등록번호를 확인해 주세요.");
+        fail("����ڵ�Ϲ�ȣ�� Ȯ���� �ּ���.");
       if (input.consent !== true)
-        fail("회원가입을 위한 개인정보 수집·이용 동의가 필요합니다.");
+        fail("ȸ�������� ���� �������� �������̿� ���ǰ� �ʿ��մϴ�.");
       const profile = {
         companyName: text(input.companyName, 100),
         businessNumber: input.businessNumber.replace(/[-\s]/g, ""),
@@ -322,7 +323,7 @@ export function openStore(
         !/^\d{5}$/.test(profile.postalCode) ||
         !profile.address
       )
-        fail("회사·담당자·연락처·이메일·우편번호·배송지를 확인해 주세요.");
+        fail("ȸ�硤����ڡ�����ó���̸��ϡ�������ȣ��������� Ȯ���� �ּ���.");
       const memberId = id();
       try {
         db.prepare(
@@ -336,7 +337,7 @@ export function openStore(
         );
       } catch (e) {
         if (e.errcode === 2067 || e.code?.includes("CONSTRAINT"))
-          fail("이미 사용 중인 아이디입니다.", 409);
+          fail("�̹� ��� ���� ���̵��Դϴ�.", 409);
         throw e;
       }
       audit({ id: memberId }, "member.registered", memberId);
@@ -344,9 +345,9 @@ export function openStore(
     },
     createAdmin(username, password) {
       if (!/^[a-z0-9][a-z0-9_-]{3,39}$/.test(text(username, 40).toLowerCase()))
-        fail("관리자 아이디는 영문·숫자 4~40자가 필요합니다.");
+        fail("������ ���̵�� ���������� 4~40�ڰ� �ʿ��մϴ�.");
       if (!validPassword(password))
-        fail("관리자 비밀번호는 10~128자가 필요합니다.");
+        fail("������ ��й�ȣ�� 10~128�ڰ� �ʿ��մϴ�.");
       const memberId = id();
       db.prepare(
         "INSERT INTO members(id,username,password,role,status,profile,created_at) VALUES(?,?,?,'admin','approved','{}',?)",
@@ -367,7 +368,7 @@ export function openStore(
         row?.password || dummyHash,
       );
       if (!row || !good || ["rejected", "suspended"].includes(row.status))
-        fail("아이디 또는 비밀번호를 확인해 주세요.", 401);
+        fail("���̵� �Ǵ� ��й�ȣ�� Ȯ���� �ּ���.", 401);
       return safeMember(row);
     },
     session(member) {
@@ -428,13 +429,13 @@ export function openStore(
         input.stock > 1000000 ||
         typeof input.enabled !== "boolean"
       )
-        fail("주문 가능 수량을 확인해 주세요.");
+        fail("�ֹ� ���� ������ Ȯ���� �ּ���.");
       const r = db
         .prepare(
           "UPDATE products SET stock=?,enabled=?,revision=revision+1 WHERE id=? AND revision=?",
         )
         .run(input.stock, Number(input.enabled), productId, input.revision);
-      if (!r.changes) fail("상품 정보가 변경됐습니다.", 409);
+      if (!r.changes) fail("��ǰ ������ ����ƽ��ϴ�.", 409);
       audit(actor, "product.stock_updated", productId, {
         stock: input.stock,
         enabled: input.enabled,
@@ -444,16 +445,16 @@ export function openStore(
     updateMember(actor, memberId, input) {
       adminOnly(actor);
       if (!["approved", "rejected", "suspended"].includes(input.status))
-        fail("회원 상태를 확인해 주세요.");
+        fail("ȸ�� ���¸� Ȯ���� �ּ���.");
       if (input.status === "approved" && input.businessChecked !== true)
-        fail("사업자 정보를 확인한 뒤 승인해 주세요.");
+        fail("����� ������ Ȯ���� �� ������ �ּ���.");
       return transaction(() => {
         const row = db
           .prepare("SELECT * FROM members WHERE id=? AND role='customer'")
           .get(memberId);
-        if (!row) fail("회원을 찾을 수 없습니다.", 404);
+        if (!row) fail("ȸ���� ã�� �� �����ϴ�.", 404);
         if (row.revision !== input.revision)
-          fail("회원 정보가 변경되었습니다. 새로고침해 주세요.", 409);
+          fail("ȸ�� ������ ����Ǿ����ϴ�. ���ΰ�ħ�� �ּ���.", 409);
         const profile = {
           ...JSON.parse(row.profile),
           businessVerification:
@@ -477,7 +478,7 @@ export function openStore(
       const row = db
         .prepare("SELECT id FROM members WHERE id=? AND role='customer'")
         .get(memberId);
-      if (!row) fail("회원을 찾을 수 없습니다.", 404);
+      if (!row) fail("ȸ���� ã�� �� �����ϴ�.", 404);
       const token = randomBytes(32).toString("base64url");
       db.prepare("DELETE FROM resets WHERE member_id=?").run(memberId);
       db.prepare("INSERT INTO resets VALUES(?,?,?)").run(
@@ -490,11 +491,11 @@ export function openStore(
     },
     resetPassword(token, password) {
       if (!validPassword(password))
-        fail("비밀번호는 10~128자로 입력해 주세요.");
+        fail("��й�ȣ�� 10~128�ڷ� �Է��� �ּ���.");
       const row = db
         .prepare("SELECT * FROM resets WHERE hash=? AND expires>?")
         .get(digest(text(token, 100)), clock());
-      if (!row) fail("재설정 정보가 만료되었거나 올바르지 않습니다.");
+      if (!row) fail("�缳�� ������ ����Ǿ��ų� �ùٸ��� �ʽ��ϴ�.");
       transaction(() => {
         db.prepare(
           "UPDATE members SET password=?,revision=revision+1 WHERE id=?",
@@ -507,7 +508,7 @@ export function openStore(
     },
     products(actor) {
       if (!actor || actor.status !== "approved")
-        fail("사업자 거래 승인 후 상품 가격을 확인할 수 있습니다.", 403);
+        fail("����� �ŷ� ���� �� ��ǰ ������ Ȯ���� �� �ֽ��ϴ�.", 403);
       return db
         .prepare("SELECT * FROM products ORDER BY id")
         .all()
@@ -532,7 +533,7 @@ export function openStore(
         typeof input.enabled !== "boolean" ||
         typeof input.specialShipping !== "boolean"
       )
-        fail("부가세 포함 단가와 주문 가능 수량을 확인해 주세요.");
+        fail("�ΰ��� ���� �ܰ��� �ֹ� ���� ������ Ȯ���� �ּ���.");
       const result = db
         .prepare(
           "UPDATE products SET price=?,stock=?,enabled=?,special_shipping=?,revision=revision+1 WHERE id=? AND revision=?",
@@ -546,7 +547,7 @@ export function openStore(
           input.revision,
         );
       if (!result.changes)
-        fail("상품 정보가 변경되었거나 없습니다. 새로고침해 주세요.", 409);
+        fail("��ǰ ������ ����Ǿ��ų� �����ϴ�. ���ΰ�ħ�� �ּ���.", 409);
       audit(actor, "product.updated", productId, {
         price: input.price,
         stock: input.stock,
@@ -558,18 +559,18 @@ export function openStore(
       adminOnly(actor);
       const old = settings();
       if (old.revision !== input.revision)
-        fail("운영 설정이 변경되었습니다. 새로고침해 주세요.", 409);
+        fail("� ������ ����Ǿ����ϴ�. ���ΰ�ħ�� �ּ���.", 409);
       const bank = {
         name: text(input.bank?.name, 50),
         account: text(input.bank?.account, 60),
         holder: text(input.bank?.holder, 100),
       };
       if (!bank.name || !bank.account || !bank.holder)
-        fail("입금계좌를 모두 입력해 주세요.");
+        fail("�Աݰ��¸� ��� �Է��� �ּ���.");
       const shipping = {
         fee: input.shipping?.fee,
         freeOver: input.shipping?.freeOver,
-        label: "배송·포장비",
+        label: "��ۡ������",
       };
       if (
         !Number.isSafeInteger(shipping.fee) ||
@@ -582,7 +583,7 @@ export function openStore(
         input.paymentDays > 14 ||
         typeof input.ordersEnabled !== "boolean"
       )
-        fail("배송비·무료배송 기준·입금기한을 확인해 주세요.");
+        fail("��ۺ񡤹����� ���ء��Աݱ����� Ȯ���� �ּ���.");
       const next = {
         ...old,
         bank,
@@ -602,7 +603,7 @@ export function openStore(
       expireOrders();
       const key = text(input.requestKey, 100);
       if (!/^[a-zA-Z0-9_-]{16,100}$/.test(key))
-        fail("주문 요청번호를 확인해 주세요.");
+        fail("�ֹ� ��û��ȣ�� Ȯ���� �ּ���.");
       return transaction(() => {
         const existing = db
           .prepare("SELECT * FROM orders WHERE member_id=? AND request_key=?")
@@ -610,19 +611,19 @@ export function openStore(
         if (existing) return orderValue(existing);
         const config = settings();
         if (!config.ordersEnabled)
-          fail("주문 접수를 준비하고 있습니다. 워크닉에 문의해 주세요.", 409);
+          fail("�ֹ� ������ �غ��ϰ� �ֽ��ϴ�. ��ũ�п� ������ �ּ���.", 409);
         if (input.acceptTerms !== true)
-          fail("주문·입금·배송 안내를 확인해 주세요.");
+          fail("�ֹ����Աݡ���� �ȳ��� Ȯ���� �ּ���.");
         if (input.shippingConfirmed !== true)
           fail(
-            "일반 배송 가능 여부를 확인해 주세요. 특수 배송은 담당자 확인이 필요합니다.",
+            "�Ϲ� ��� ���� ���θ� Ȯ���� �ּ���. Ư�� ����� ����� Ȯ���� �ʿ��մϴ�.",
           );
         if (
           !Array.isArray(input.items) ||
           !input.items.length ||
           input.items.length > 100
         )
-          fail("장바구니를 확인해 주세요.");
+          fail("��ٱ��ϸ� Ȯ���� �ּ���.");
         const items = [],
           used = new Set();
         for (const line of input.items) {
@@ -634,24 +635,24 @@ export function openStore(
             quantity < 1 ||
             quantity > 999
           )
-            fail("상품별 수량은 1~999개로 입력해 주세요.");
+            fail("��ǰ�� ������ 1~999���� �Է��� �ּ���.");
           used.add(productId);
           const row = db
             .prepare("SELECT * FROM products WHERE id=?")
             .get(productId);
           if (!row || !row.enabled || row.special_shipping || !row.price)
             fail(
-              "주문할 수 없는 상품이 있습니다. 담당자에게 확인해 주세요.",
+              "�ֹ��� �� ���� ��ǰ�� �ֽ��ϴ�. ����ڿ��� Ȯ���� �ּ���.",
               409,
             );
           if (row.stock < quantity)
             fail(
-              "주문 가능 수량이 변경되었습니다. 장바구니를 확인해 주세요.",
+              "�ֹ� ���� ������ ����Ǿ����ϴ�. ��ٱ��ϸ� Ȯ���� �ּ���.",
               409,
             );
           if (line.expectedPrice !== row.price)
             fail(
-              "상품 가격이 변경되었습니다. 다시 확인한 뒤 주문해 주세요.",
+              "��ǰ ������ ����Ǿ����ϴ�. �ٽ� Ȯ���� �� �ֹ��� �ּ���.",
               409,
             );
           const product = JSON.parse(row.source);
@@ -673,12 +674,12 @@ export function openStore(
           input.expectedShippingFee !== shippingFee
         )
           fail(
-            "주문금액 또는 배송비가 변경되었습니다. 다시 확인해 주세요.",
+            "�ֹ��ݾ� �Ǵ� ��ۺ� ����Ǿ����ϴ�. �ٽ� Ȯ���� �ּ���.",
             409,
           );
         const total = subtotal + shippingFee;
         if (!Number.isSafeInteger(total) || total > 1_000_000_000)
-          fail("대량 주문은 담당자에게 문의해 주세요.");
+          fail("�뷮 �ֹ��� ����ڿ��� ������ �ּ���.");
         const vat = Math.round(total / 11);
         const rowId = id(),
           now = clock(),
@@ -732,7 +733,7 @@ export function openStore(
       expireOrders();
       const row = db.prepare("SELECT * FROM orders WHERE id=?").get(orderId);
       if (!row || (actor.role !== "admin" && row.member_id !== actor.id))
-        fail("주문을 찾을 수 없습니다.", 404);
+        fail("�ֹ��� ã�� �� �����ϴ�.", 404);
       return orderValue(row);
     },
     updateOrder(actor, orderId, input) {
@@ -740,13 +741,13 @@ export function openStore(
       return transaction(() => {
         const row = db.prepare("SELECT * FROM orders WHERE id=?").get(orderId);
         if (!row || (actor.role !== "admin" && row.member_id !== actor.id))
-          fail("주문을 찾을 수 없습니다.", 404);
+          fail("�ֹ��� ã�� �� �����ϴ�.", 404);
         if (row.revision !== input.revision)
-          fail("주문이 변경되었습니다. 다시 확인해 주세요.", 409);
+          fail("�ֹ��� ����Ǿ����ϴ�. �ٽ� Ȯ���� �ּ���.", 409);
         const snapshot = JSON.parse(row.snapshot);
         if (input.action === "cancel") {
           if (row.status !== "pending_payment")
-            fail("입금 확인 이후 취소는 워크닉 담당자에게 문의해 주세요.", 409);
+            fail("�Ա� Ȯ�� ���� ��Ҵ� ��ũ�� ����ڿ��� ������ �ּ���.", 409);
           release(row);
           db.prepare(
             "UPDATE orders SET status='cancelled',revision=revision+1 WHERE id=?",
@@ -755,14 +756,14 @@ export function openStore(
           adminOnly(actor);
           if (input.action === "confirm_payment") {
             if (row.status !== "pending_payment")
-              fail("입금 대기 주문만 확인할 수 있습니다.", 409);
+              fail("�Ա� ��� �ֹ��� Ȯ���� �� �ֽ��ϴ�.", 409);
             if (
               input.amount !== snapshot.total ||
               !text(input.reference, 100) ||
               input.bankChecked !== true
             )
               fail(
-                "실제 입금액·입금자 또는 확인번호와 은행 확인 여부를 입력해 주세요.",
+                "���� �Աݾס��Ա��� �Ǵ� Ȯ�ι�ȣ�� ���� Ȯ�� ���θ� �Է��� �ּ���.",
               );
             const payment = {
               amount: input.amount,
@@ -775,17 +776,17 @@ export function openStore(
             ).run(JSON.stringify(payment), orderId);
           } else if (input.action === "prepare") {
             if (row.status !== "paid")
-              fail("입금 확인 후 배송을 준비할 수 있습니다.", 409);
+              fail("�Ա� Ȯ�� �� ����� �غ��� �� �ֽ��ϴ�.", 409);
             db.prepare(
               "UPDATE orders SET status='preparing',revision=revision+1 WHERE id=?",
             ).run(orderId);
           } else if (input.action === "ship") {
             if (row.status !== "preparing")
-              fail("배송 준비 상태에서 발송할 수 있습니다.", 409);
+              fail("��� �غ� ���¿��� �߼��� �� �ֽ��ϴ�.", 409);
             const carrier = text(input.carrier, 50),
               tracking = text(input.tracking, 80);
             if (!carrier || !/^[A-Za-z0-9-]{5,80}$/.test(tracking))
-              fail("택배사와 운송장번호를 입력해 주세요.");
+              fail("�ù��� ������ȣ�� �Է��� �ּ���.");
             const shipment = {
               carrier,
               tracking,
@@ -795,7 +796,7 @@ export function openStore(
             db.prepare(
               "UPDATE orders SET status='shipped',shipment=?,revision=revision+1 WHERE id=?",
             ).run(JSON.stringify(shipment), orderId);
-          } else fail("올바른 주문 작업을 선택해 주세요.");
+          } else fail("�ùٸ� �ֹ� �۾��� ������ �ּ���.");
         }
         audit(actor, "order." + input.action, orderId);
         return orderValue(
@@ -810,6 +811,7 @@ export function openStore(
     { clock, transaction, audit, adminOnly, customerOnly, settings, release },
     betaOptions,
   );
+  api.enrollment = installBusinessEnrollment(api,db,{clock,transaction,audit,adminOnly},enrollmentOptions);
   return api;
 }
 

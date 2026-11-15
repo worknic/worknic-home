@@ -4,7 +4,7 @@ import { createHmac, randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import { createOSAdapter } from "../server/os-adapter.mjs";
-test("시트에서 숫자로 반환한 사업자번호도 문자열 계정과 정확히 대조", async () => {
+test("��Ʈ���� ���ڷ� ��ȯ�� ����ڹ�ȣ�� ���ڿ� ������ ��Ȯ�� ����", async () => {
   const row = { id: "numeric-sheet-id", businessNumber: 9987412863,
     email: "QA@example.invalid", status: "approved", revision: 2 };
   const adapter = createOSAdapter({fetcher: async () => ({ok: true,
@@ -16,11 +16,11 @@ test("시트에서 숫자로 반환한 사업자번호도 문자열 계정과 �
   assert.equal(proof.status, "approved");
   assert.equal(row.businessNumber, 9987412863);
   await assert.rejects(adapter.find("test-session", {
-    businessNumber: "9987412864", email: "qa@example.invalid" }), /대조/);
+    businessNumber: "9987412864", email: "qa@example.invalid" }), /����/);
   await assert.rejects(adapter.find("test-session", {
-    businessNumber: "9987412863", email: "other@example.invalid" }), /대조/);
+    businessNumber: "9987412863", email: "other@example.invalid" }), /����/);
 });
-test("가입 접수는 OS에 필요한 사업자 연락처만 전달하고 계정 비밀번호를 전송하지 않음", async () => {
+test("���� ������ OS�� �ʿ��� ����� ����ó�� �����ϰ� ���� ��й�ȣ�� �������� ����", async () => {
   const requests = [],
     adapter = createOSAdapter({
       fetcher: async (url, init) => {
@@ -39,9 +39,9 @@ test("가입 접수는 OS에 필요한 사업자 연락처만 전달하고 계�
       },
     });
   await adapter.apply({
-    companyName: "검증",
+    companyName: "����",
     businessNumber: "1234567891",
-    contactName: "검증",
+    contactName: "����",
     phone: "010-0000-0000",
     email: "qa@example.invalid",
     password: "never-forward-this",
@@ -55,7 +55,7 @@ test("가입 접수는 OS에 필요한 사업자 연락처만 전달하고 계�
   assert.equal(p.challenge, "challenge-test");
   assert.equal(p.consentVersion, "business-2026-11-07");
 });
-test("OS 서명 브리지: 정확한 계정만 조회·변조/재전송/만료 차단·기존 라우트 보존", () => {
+test("OS ���� �긮��: ��Ȯ�� ������ ��ȸ������/������/���� ���ܡ����� ���Ʈ ����", () => {
   const secret = "test_only_secret_12345678901234567890",
     cache = new Map(),
     now = Date.now();
@@ -68,6 +68,7 @@ test("OS 서명 브리지: 정확한 계정만 조회·변조/재전송/만료 �
       getScriptProperties: () => ({ getProperty: () => secret }),
     },
     Utilities: {
+      Charset: {UTF_8:"UTF-8"},
       computeHmacSha256Signature: (m, s) => [
         ...createHmac("sha256", s).update(m).digest(),
       ],
@@ -143,7 +144,7 @@ test("OS 서명 브리지: 정확한 계정만 조회·변조/재전송/만료 �
   );
   assert.equal(legacy, 1);
 });
-test("OS 어댑터: 비관리자·승인 응답 오류·미설정 브리지에서 접근 거절", async () => {
+test("OS �����: ������ڡ����� ���� �������̼��� �긮������ ���� ����", async () => {
   const adapter = createOSAdapter({
     sharedSecret: "test".repeat(10),
     fetcher: async () => ({
@@ -154,13 +155,13 @@ test("OS 어댑터: 비관리자·승인 응답 오류·미설정 브리지에�
       }),
     }),
   });
-  await assert.rejects(adapter.authorize("test-token"), /관리자/);
+  await assert.rejects(adapter.authorize("test-token"), /������/);
   await assert.rejects(
     createOSAdapter().status(
       { businessNumber: "1234567891", email: "test@example.invalid" },
       "id",
     ),
-    /준비/,
+    /�غ�/,
   );
   const broken = createOSAdapter({
     sharedSecret: "test".repeat(10),
@@ -173,6 +174,6 @@ test("OS 어댑터: 비관리자·승인 응답 오류·미설정 브리지에�
       { businessNumber: "1234567891", email: "test@example.invalid" },
       "id",
     ),
-    /연결/,
+    /����/,
   );
 });

@@ -25,7 +25,7 @@ rail.addEventListener('wheel',()=>{flush();rest()},{passive:true});
 rail.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();flush();rail.scrollLeft+=e.key==='ArrowLeft'?-160:160;syncScroll();rest()}});
 document.addEventListener('visibilitychange',()=>{last=0});
 const toggle=document.querySelector('#motion');
-function paintToggle(){toggle.textContent=paused?'자동 이동 재생':'이동 멈추기';toggle.setAttribute('aria-pressed',String(paused))}
+function paintToggle(){const label=paused?'브랜드 자동 이동 재생':'브랜드 자동 이동 멈추기';toggle.innerHTML=paused?'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>';toggle.setAttribute('aria-label',label);toggle.title=label;toggle.setAttribute('aria-controls','brands');toggle.setAttribute('aria-pressed',String(paused))}
 toggle.onclick=()=>{flush();paused=!paused;paintToggle();last=0};
 motion.addEventListener('change',e=>{flush();paused=e.matches;paintToggle();last=0});
 new ResizeObserver(measure).observe(rail);measure();paintToggle();requestAnimationFrame(tick);

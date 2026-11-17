@@ -5,3 +5,9 @@
 .preview-language button[aria-pressed="true"]{border-bottom-color:#333;color:#222}.preview-language button:focus-visible{outline:2px solid #333;outline-offset:2px}.language-flag{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-size:19px;line-height:23px}.language-code{font:9px/12px Arial,sans-serif;letter-spacing:.05em}.masthead .return{top:auto;bottom:4px;font-size:10px}
 @container(max-width:700px){.site>header .preview-language{left:10px;top:9px}.preview-language button{width:34px;min-height:46px}.language-flag{font-size:18px}}
 @media(max-width:700px){.masthead .preview-language{left:10px;top:5px}.masthead .return{left:14px;bottom:1px;font-size:9px}}
+
+/* Flags only; accessible native-language names and selection remain. */
+.preview-language button{width:36px;min-height:40px}.language-flag{font-size:22px;line-height:26px}.language-code{display:none}
+@container(max-width:700px){.preview-language button{width:30px;min-height:40px}.language-flag{font-size:20px}}
+
+.preview-language img.language-flag{width:26px;height:18px;object-fit:cover;border:1px solid #e7e7e7;box-shadow:none;border-radius:0}

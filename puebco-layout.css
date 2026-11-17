@@ -153,3 +153,11 @@ footer{padding-left:var(--page-gutter)!important;padding-right:var(--page-gutter
 .stories .social .post-meta,.stories .social .data-note,.stories .social>p{font-size:10px;line-height:1.65;color:#777}.stories .social>p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 /* Keep the production feed freshness disclosure visible. */
 .stories .social[data-instagram-account] .data-note{display:block!important;white-space:normal;overflow:visible;font-size:11px;line-height:1.65;color:#686864;margin-top:8px}
+
+/* Review-only refinement: white canvas, quiet edge-colour surround. */
+html,body,.magazine-stage,.site,.section,.intro.intro-statement,.business,.support-services,.consulting-entry,footer{background-color:#fff!important}
+.editorial-hero.hero-still .hero-stage{background:linear-gradient(90deg,#35322e 0%,#121110 28%,#1b1917 60%,#23201c 76%,#4d4740 100%)}
+.site>header .logo{width:158px;max-height:40px}
+.site>header>nav{gap:clamp(24px,3.1vw,46px)}
+html[lang="en"] .site>header>nav{gap:clamp(20px,2.5vw,38px)}
+@container(max-width:700px){.site>header .logo{width:142px;max-height:36px}.site>header>nav,html[lang="en"] .site>header>nav{gap:19px}.editorial-hero.hero-still .hero-stage{background:#191715}}

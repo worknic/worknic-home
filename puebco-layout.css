@@ -161,3 +161,11 @@ html,body,.magazine-stage,.site,.section,.intro.intro-statement,.business,.suppo
 .site>header>nav{gap:clamp(24px,3.1vw,46px)}
 html[lang="en"] .site>header>nav{gap:clamp(20px,2.5vw,38px)}
 @container(max-width:700px){.site>header .logo{width:142px;max-height:36px}.site>header>nav,html[lang="en"] .site>header>nav{gap:19px}.editorial-hero.hero-still .hero-stage{background:#191715}}
+
+/* Explicit dimensions avoid the previous max-height constraining the logo. */
+.site>header{height:158px}
+.site>header>a{top:16px}
+.site>header .logo{width:190px;height:auto;max-height:none;object-fit:contain}
+.site>header>nav{margin-top:103px;margin-bottom:12px}
+.editorial-hero.hero-still .hero-stage{height:calc(100svh - 224px)}
+@container(max-width:700px){.site>header{height:96px}.site>header>a{top:15px}.site>header .logo{width:150px;height:auto;max-height:none}.site>header>nav{margin:0}.editorial-hero.hero-still .hero-stage{height:auto}}

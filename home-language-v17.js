@@ -7,7 +7,7 @@ const originalTitle=document.title;
 const storageKey='worknic-language';let lang='ko';try{const saved=localStorage.getItem(storageKey);if(['ko','en','ja'].includes(saved))lang=saved}catch{}
 const style=document.createElement('link');style.rel='stylesheet';style.href='/home-language-v17.css';document.head.append(style);
 const box=document.createElement('div');box.dataset.previewLanguage='';box.className='preview-language';box.setAttribute('aria-label','Language / 언어 / 言語');
-box.setAttribute('role','group');box.innerHTML=[['ko','🇰🇷','한국어','KO'],['en','🇬🇧','English','EN'],['ja','🇯🇵','日本語','JA']].map(([code,flag,label,short])=>`<button type="button" data-language="${code}" aria-label="${label}" title="${label}" lang="${code}" aria-pressed="false"><img class="language-flag" src="/assets/flags/${code}.svg" alt="" aria-hidden="true" width="26" height="18"></button>`).join('');
+box.setAttribute('role','group');box.innerHTML=[['ko','🇰🇷','한국어','KO'],['en','🇬🇧','English','EN'],['ja','🇯🇵','日本語','JA']].map(([code,flag,label,short])=>`<button type="button" data-language="${code}" aria-label="${label}" title="${label}" lang="${code}" aria-pressed="false"><img class="language-flag" src="/assets/flags/${code}.svg?v=19" alt="" aria-hidden="true" width="26" height="18"></button>`).join('');
 (document.querySelector('.site>header')||document.querySelector('.masthead')||document.body).append(box);
 const note=document.createElement('p');note.className='preview-language-note';note.dataset.previewLanguage='';(document.querySelector('footer')||document.body).append(note);
 const translate=s=>{const key=normal(s);return lang==='ko'?s:(D[key]?.[lang==='en'?0:1]||s)};

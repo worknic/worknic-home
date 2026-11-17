@@ -1,4 +1,4 @@
-(()=>{'use strict';const $=s=>document.querySelector(s),el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;},normal=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim();
+(()=>{'use strict';const $=s=>document.querySelector(s),el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;},normal=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/\s+/g,' ').replace(/([a-z])\s+(?=\d)/g,'$1').replace(/(\d)\s+(?=[a-z])/g,'$1').trim();
 const params=new URLSearchParams(location.search);let query=params.get('q')||'',category=params.get('category')||'',sub=params.get('subcategory')||'',products=[],matches=[],limit=120,detailLinks={};
 $('#query').value=query;const price=new Intl.NumberFormat('ko-KR');
 function syncURL(){const p=new URLSearchParams();if(query)p.set('q',query);if(category)p.set('category',category);if(sub)p.set('subcategory',sub);history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));}

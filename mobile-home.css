@@ -1,0 +1,18 @@
+.mobile-home-search,.mobile-home-brands,.language-name{display:none}
+@media(max-width:800px){
+body.official-home #site>header{display:grid!important;grid-template-columns:minmax(0,1fr) 44px!important;grid-template-rows:60px 52px 44px!important;gap:10px 12px!important;height:auto!important;min-height:0!important;padding:12px 20px 14px!important;position:relative!important;align-items:center!important}
+body.official-home #site>header>a:first-child{position:static!important;transform:none!important;justify-self:start!important;margin:0!important}
+body.official-home #site>header .logo{width:150px!important;height:auto!important;max-height:none!important}
+body.official-home #site>header>nav,body.official-home #site>header .home-tools>button,body.official-home #site>header .home-tools>a{display:none!important}
+body.official-home #site>header .home-tools{position:static!important;display:block!important;margin:0!important;grid-column:2;grid-row:1}
+body.official-home #site>header .home-menu{position:static!important;margin:0!important}
+body.official-home #site>header .home-menu summary{width:44px!important;height:44px!important;min-height:44px!important;display:flex!important;align-items:center;justify-content:center;padding:10px!important}
+body.official-home #site>header .home-menu nav{position:absolute!important;top:72px!important;right:20px!important;left:20px!important;width:auto!important;max-height:calc(100dvh - 92px)!important;overflow:auto!important;z-index:100}
+body.official-home #site>header .mobile-home-search{display:flex!important;grid-column:1/-1;grid-row:2;gap:0;width:100%;height:52px;border:1px solid #777;background:white}
+body.official-home #site>header .mobile-home-search input{min-width:0;width:100%;height:50px;font:inherit;font-size:14px;border:0;border-radius:0;padding:0 12px;background:white;color:#222}
+body.official-home #site>header .mobile-home-search button{flex:0 0 60px;min-height:50px;border:0;border-left:1px solid #ddd;background:#fff;color:#222;font:inherit;font-size:14px}
+body.official-home #site>header .mobile-home-brands{display:flex;grid-column:1/-1;grid-row:3;align-items:center;justify-content:center;height:44px;border-bottom:1px solid #ddd;font-size:14px;color:#333}
+body.official-home #site>header .home-menu .preview-language{display:flex!important;position:static!important;transform:none!important;gap:8px!important;justify-content:space-between;padding:16px 0 0;margin:16px 0 0!important;border-top:1px solid #ddd}
+body.official-home #site>header .home-menu .preview-language button{display:flex;align-items:center;justify-content:center;gap:5px;width:auto!important;flex:1;min-height:44px;font-size:12px}
+body.official-home #site>header .language-name{display:inline}body.official-home #site>header .language-flag{width:20px;height:auto}
+}

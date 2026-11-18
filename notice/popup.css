@@ -1,3 +1,6 @@
+@font-face{font-family:WorknicNotice;src:url('/assets/Spoqa-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:WorknicNotice;src:url('/assets/Spoqa-Medium.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:WorknicNotice;src:url('/assets/Spoqa-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
 html.event-notice-open{overflow:hidden}
 .notice-board{box-sizing:border-box;width:min(864px,calc(100vw - 40px));max-width:none;max-height:90dvh;padding:0;border:0;background:transparent;overflow:visible;color:#222}
 .notice-board[open]{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
@@ -6,24 +9,28 @@ html.event-notice-open{overflow:hidden}
 .notice-card{box-sizing:border-box;min-width:0;max-height:90dvh;display:flex;flex-direction:column;border:1px solid #333;background:#fff;overflow:hidden}
 .event-notice{order:0}.business-notice{order:1}
 .event-notice-head,.event-notice-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;background:#fff;flex-shrink:0}
-.event-notice .event-notice-head{justify-content:flex-end}
+.notice-card .event-notice-head{justify-content:flex-end}
 .event-notice-head h2{margin:0;font:500 18px/1.5 system-ui,sans-serif}
-.notice-card button,.notice-business-links a{box-sizing:border-box;min-width:44px;min-height:44px;padding:10px 12px;border:1px solid #aaa;background:#fff;color:#222;font:14px/1.5 system-ui,sans-serif;cursor:pointer}
+.notice-card button,.notice-business-links a{box-sizing:border-box;min-width:44px;min-height:44px;padding:10px 12px;border:1px solid #aaa;background:#fff;color:#222;font:14px/1.5 WorknicNotice,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;cursor:pointer}
 .notice-card button:focus-visible,.notice-business-links a:focus-visible{outline:3px solid #222;outline-offset:2px}
 .event-notice-body{min-height:0;overflow-y:auto;overscroll-behavior:contain}
 .event-notice-body img{display:block;width:100%;height:auto}
 .event-notice-foot{justify-content:flex-end;border-top:1px solid #ddd}.event-notice-foot button{width:100%}
 .event-notice-body details{padding:12px 16px;text-align:left;font:14px/1.7 system-ui,sans-serif}.event-notice-body summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-weight:600}.event-notice-body details p{margin:12px 0}
-.business-notice .event-notice-body{padding:12px 20px 24px;text-align:left;font:15px/1.75 system-ui,sans-serif}
-.business-notice h3{margin:0 0 16px;font:500 23px/1.5 system-ui,sans-serif}.business-notice p{margin:12px 0}.business-notice ul{padding-left:22px;margin:16px 0}.business-notice li{margin:6px 0}
-.notice-business-links{display:grid;gap:10px;margin-top:24px}.notice-business-links a{display:flex;align-items:center;justify-content:center;text-decoration:none}.notice-business-links a:first-child{background:#222;color:#fff;border-color:#222}
-body.official-home .event-notice-launcher{box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;width:100%;padding:10px 16px;border-block:1px solid #ddd;background:#f6f5f1;color:#222;font:14px/1.5 system-ui,sans-serif}
-body.official-home .event-notice-launcher button{max-width:100%;min-height:44px;padding:10px 14px;border:1px solid #333;background:#fff;color:#222;font:inherit;cursor:pointer}body.official-home .event-notice-launcher button:focus-visible{outline:3px solid #222;outline-offset:2px}
+.business-notice .event-notice-body{padding:24px 32px 28px;text-align:center;font:14px/1.8 WorknicNotice,'Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+.business-notice .notice-business-logo{width:104px;max-width:45%;height:auto;margin:0 auto}
+.business-notice .notice-business-eyebrow{margin:20px 0 12px;color:#666;font-size:10px;letter-spacing:.18em}
+.business-notice h2{margin:0;font:700 28px/1.45 WorknicNotice,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;letter-spacing:-.035em}.business-notice h2 span{display:block}
+.business-notice .notice-business-benefits{list-style:none;padding:0;margin:30px 0 24px;font-size:15px;line-height:1.8}.business-notice .notice-business-benefits li{margin:8px 0}
+.business-notice .notice-business-description{max-width:27ch;margin:0 auto;color:#555;font-size:13px;line-height:1.9}
+.notice-business-links{display:grid;gap:4px;max-width:250px;margin:26px auto 0}.notice-business-links a{display:flex;align-items:center;justify-content:center;text-decoration:none}.notice-business-links a:first-child{background:#222;color:#fff;border-color:#222}.notice-business-links a+ a{border:0;background:transparent;font-size:12px;text-decoration:underline;text-underline-offset:4px;color:#555}
+.business-notice .notice-business-note{max-width:28ch;margin:18px auto 0;color:#666;font-size:12px;line-height:1.8}
+@media(min-width:768px) and (max-height:760px){.business-notice .event-notice-body{padding:10px 24px 16px}.business-notice .notice-business-logo{width:88px}.business-notice .notice-business-eyebrow{display:none}.business-notice h2{margin-top:16px;font-size:24px;line-height:1.4}.business-notice h2 span{display:inline}.business-notice h2 span+span::before{content:' '}.business-notice .notice-business-benefits{margin:16px 0;font-size:14px;line-height:1.6}.business-notice .notice-business-benefits li{margin:4px 0}.business-notice .notice-business-description{max-width:32ch;font-size:12px;line-height:1.7}.notice-business-links{margin-top:18px}.business-notice .notice-business-note{margin-top:12px;font-size:12px;line-height:1.7}}
 @media(max-width:767px){
  .notice-board,.notice-board[data-count="1"]{width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain}
  .notice-board[open]{display:flex;flex-direction:column;gap:16px}.notice-card{width:100%;max-height:none;flex-shrink:0;overflow:visible}
  .business-notice{order:0}.event-notice{order:1}.event-notice-body{overflow:visible}
  .event-notice-head{position:sticky;top:0;z-index:1;border-bottom:1px solid #eee}
- .business-notice .event-notice-body{padding:8px 16px 16px;font-size:14px;line-height:1.65}.business-notice h3{font-size:20px;margin-bottom:12px}.business-notice ul{margin:12px 0}.notice-business-links{margin-top:16px}
+ .business-notice .event-notice-body{padding:14px 24px 22px}.business-notice .notice-business-logo{width:92px}.business-notice .notice-business-eyebrow{margin:16px 0 10px}.business-notice h2{font-size:26px}.business-notice .notice-business-benefits{margin:24px 0 20px;font-size:14px}.notice-business-links{margin-top:22px}
 }
-@media(max-width:360px){.event-notice-head{gap:8px;padding:6px 8px}.event-notice-head h2{font-size:16px}body.official-home .event-notice-launcher{gap:8px;padding:8px;font-size:13px}body.official-home .event-notice-launcher button{padding-inline:10px}}
+@media(max-width:360px){.event-notice-head{gap:8px;padding:6px 8px}}

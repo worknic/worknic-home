@@ -16,7 +16,7 @@ function render(data){
  document.title=`${b.name} ${p.name}${p.model?' · '+p.model:''} | WORKNIC`;
  $('#product-status').hidden=true;$('#product').hidden=false;const kind=window.WORKNIC_CATEGORIES?.classify(p),area=kind&&kind.group!=='tools'?'현장용품':'도구';$('#breadcrumb').replaceChildren();const back=el('a',area);back.href=area==='현장용품'?'/supplies/':'/catalog/';const home=el('a','홈');home.href='/';const brandLink=el('a',b.name);brandLink.href='/brands/'+encodeURIComponent(b.id)+'/';$('#breadcrumb').append(home,document.createTextNode(' / '),back,document.createTextNode(' / '),brandLink,document.createTextNode(' / '+p.name));
  if($('#product-quote')){$('#product-quote').href='/business/portal/?product='+encodeURIComponent(p.id);$('#product-quote').textContent='사업자 인증·매입 상담';}$('#brand').textContent=b.english||b.name;$('#name').textContent=p.name;$('#model').textContent=p.model||'';$('#model').hidden=!p.model;$('#summary').textContent=p.summary||'';$('#overview-copy').textContent=p.summary||'';
- const img=$('#product-photo');window.WORKNIC_MEDIA?.clear(img);const thumb=g.media?.thumbnail||{},src=https(thumb.editedSource||p.images?.[0]);img.src=src;img.alt=`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;
+ const img=$('#product-photo');window.WORKNIC_MEDIA?.clear(img);const thumb=g.media?.thumbnail||{},src=https(thumb.editedSource||p.images?.[0]);img.src=src;img.alt=p.contentThumbnailAlt||`${b.name} ${p.name}${p.model?' '+p.model:''}`;img.hidden=!src;img.onerror=p.contentRevision?()=>{window.WORKNIC_MEDIA?.clear(img);if(p.contentThumbnailFallback&&img.getAttribute('src')!==p.contentThumbnailFallback){img.src=p.contentThumbnailFallback;}else img.hidden=true;}:null;
  // Keep a square presentation without stretching or recolouring the source photo.
  img.style.maxWidth=Number(thumb.width)>0?Math.floor(Number(thumb.width))+'px':'100%';
  img.style.maxHeight=Number(thumb.height)>0?Math.floor(Number(thumb.height))+'px':'100%';
@@ -54,7 +54,7 @@ async function init(){
  }
  if(!staticPage){$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하고 있습니다.';}
 
- try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');render(j.data);}catch{$('#product').hidden=!staticPage;$('#product-status').hidden=false;$('#product-status').textContent=staticPage?'최신 상품 정보를 확인하지 못했습니다. 아래는 마지막으로 공개 확인된 정보입니다. 현재 공개 여부·구성과 공급 조건은 문의해 주세요.':'최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
+ try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');let live=j.data;try{if(!window.WORKNIC_BUILD){const content=await import('/content/public-content.js');live=await content.enrichCatalog(live);}}catch{}render(live);}catch{$('#product').hidden=!staticPage;$('#product-status').hidden=false;$('#product-status').textContent=staticPage?'최신 상품 정보를 확인하지 못했습니다. 아래는 마지막으로 공개 확인된 정보입니다. 현재 공개 여부·구성과 공급 조건은 문의해 주세요.':'최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
 }
 if(window.WORKNIC_BUILD){window.WORKNIC_RENDER=render;window.WORKNIC_INIT=init;}else init();})();
 

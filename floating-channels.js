@@ -42,4 +42,7 @@
     nav.append(link);
   }
   document.body.append(nav);
+  const footer=document.querySelector('footer'),mobile=matchMedia('(max-width:1100px)');
+  const responsiveStyle=document.createElement('style');responsiveStyle.textContent='@media(max-width:1100px){footer .worknic-channels{position:static!important;display:flex;flex-direction:row;flex-wrap:wrap;gap:14px;justify-content:center;width:100%;padding:24px 0;margin:20px 0 0;isolation:auto}footer .worknic-channel{width:44px;height:44px;min-height:44px}}';document.head.append(responsiveStyle);
+  const place=()=>{if(mobile.matches&&footer)footer.append(nav);else document.body.append(nav)};place();mobile.addEventListener('change',place);
 })();

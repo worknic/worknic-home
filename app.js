@@ -17,4 +17,4 @@ if(form)form.addEventListener('submit',async event=>{
 document.querySelector('.mobile-menu')?.addEventListener('keydown',event=>{if(event.key==='Escape'){const menu=event.currentTarget;menu.open=false;menu.querySelector('summary').focus();}});
 
 // Shared official channel shortcuts.
-(()=>{if(document.querySelector('script[data-worknic-channels-loader]'))return;const s=document.createElement('script');s.src='/floating-channels.js?v=20261112';s.dataset.worknicChannelsLoader='';document.head.append(s);})();
+(()=>{if(document.querySelector('script[data-worknic-channels-loader]'))return;const s=document.createElement('script');s.src='/floating-channels.js?v=20261118-final';s.dataset.worknicChannelsLoader='';document.head.append(s);})();

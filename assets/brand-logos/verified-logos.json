@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "brands": {
+    "festool": {
+      "src": "/assets/brand-logos/festool-official.svg",
+      "alt": "FESTOOL 페스툴",
+      "width": 248,
+      "height": 32,
+      "verifiedFrom": "https://www.festool.com/",
+      "sourceUrl": "https://assets.cdn.festool.io/festool-logo.min.svg",
+      "checkedOn": "2026-11-18",
+      "sha256": "d82577ac0b90c19ccc9116b8870ce3b0b15e01c28fdffafb7a0c1bac496e6eea"
+    }
+  }
+}

@@ -8,4 +8,4 @@
 })();
 
 // Shared official channel shortcuts.
-(()=>{if(document.querySelector('script[data-worknic-channels-loader]'))return;const s=document.createElement('script');s.src='/floating-channels.js?v=20261112';s.dataset.worknicChannelsLoader='';document.head.append(s);})();
+(()=>{if(document.querySelector('script[data-worknic-channels-loader]'))return;const s=document.createElement('script');s.src='/floating-channels.js?v=20261118-final';s.dataset.worknicChannelsLoader='';document.head.append(s);})();

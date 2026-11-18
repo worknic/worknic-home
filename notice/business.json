@@ -1,0 +1,12 @@
+{
+  "id": "worknic-business-members-20261118",
+  "kind": "business",
+  "enabled": true,
+  "title": "사업자회원 가입 안내",
+  "intro": "사업자회원 가입을 신청해 주세요.",
+  "description": "가격과 공급 조건은 사업자 정보 확인·워크닉 승인 후 견적서로 안내합니다.",
+  "items": ["견적·주문 내역 확인", "거래명세서 확인", "픽업 준비 상태 확인"],
+  "note": "처음 이용하는 계정은 담당자의 계정 확인 안내가 필요합니다.",
+  "joinPath": "/business/",
+  "portalPath": "/business/portal/"
+}

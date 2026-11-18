@@ -1,36 +1,63 @@
 export const koreanDay=(time=Date.now())=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date(time));
-export function active(config,time=Date.now()){const end=Date.parse(config?.expiresAt);return config?.enabled===true&&Number.isFinite(end)&&time<end&&/^\/assets\/notices\/[A-Za-z0-9_-]+\.(?:png|jpg|webp)$/.test(config.image)&&typeof config.id==='string'&&/^[A-Za-z0-9_-]+$/.test(config.id);}
+const validId=config=>typeof config?.id==='string'&&/^[A-Za-z0-9_-]+$/.test(config.id);
+export function active(config,time=Date.now()){const end=Date.parse(config?.expiresAt);return config?.enabled===true&&Number.isFinite(end)&&time<end&&/^\/assets\/notices\/[A-Za-z0-9_-]+\.(?:png|jpg|webp)$/.test(config.image)&&validId(config);}
+export function businessActive(config){return config?.enabled===true&&config.kind==='business'&&validId(config)&&config.joinPath==='/business/'&&config.portalPath==='/business/portal/';}
 export function hiddenReason(read,key,day=koreanDay()){if(read('localStorage',key)===day)return 'hidden-today';if(read('sessionStorage',key)==='closed')return 'closed-session';return '';}
 export async function showNotice(){
  if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
+ const main=document.querySelector('main');if(!main||main.querySelector('.event-notice-launcher'))return;
+ const make=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node;};
  const read=(store,key)=>{try{return window[store].getItem(key)}catch{return null}},write=(store,key,value)=>{try{window[store].setItem(key,value)}catch{}};
- try{
-  const response=await fetch('/notice/event.json',{credentials:'omit',cache:'no-store',signal:AbortSignal.timeout(10000)});
-  if(!response.ok)return;const config=await response.json();if(!active(config))return;
-  const key='worknic-notice-'+config.id,main=document.querySelector('main');if(!main||main.querySelector('.event-notice-launcher'))return;
-  const launcher=document.createElement('aside');launcher.className='event-notice-launcher';launcher.setAttribute('aria-label','행사 공지');
-  const label=document.createElement('span');label.textContent=config.title||'워크닉 행사 안내';
-  const reopen=document.createElement('button');reopen.type='button';reopen.textContent='행사 포스터 보기';launcher.append(label,reopen);main.prepend(launcher);
-  let dialog=null,opening=false,timer;
-  const expire=()=>{if(active(config))return;clearTimeout(timer);dialog?.close();launcher.remove();document.removeEventListener('visibilitychange',expire);};
-  timer=setTimeout(expire,Math.min(2147483647,Math.max(0,Date.parse(config.expiresAt)-Date.now())));document.addEventListener('visibilitychange',expire);
-  const open=async()=>{
-   if(opening||dialog?.open||!active(config)){expire();return;}opening=true;reopen.disabled=true;
-   try{
-    const candidate=document.createElement('dialog');candidate.className='event-notice';candidate.setAttribute('aria-labelledby','event-notice-title');
-    const head=document.createElement('div');head.className='event-notice-head';const title=document.createElement('h2');title.id='event-notice-title';title.textContent=config.title||'워크닉 행사 안내';
-    const close=document.createElement('button');close.type='button';close.textContent='닫기';close.setAttribute('aria-label','행사 안내 닫기');head.append(title,close);
-    const body=document.createElement('div');body.className='event-notice-body';const image=document.createElement('img');image.src=config.image;image.alt=config.alt||config.title||'워크닉 행사 안내';image.width=2160;image.height=3800;body.append(image);
-    if(Array.isArray(config.text)){const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='행사 안내 글로 보기';details.append(summary);for(const line of config.text){const p=document.createElement('p');p.textContent=line;details.append(p);}body.append(details);}
-    const foot=document.createElement('div');foot.className='event-notice-foot';const today=document.createElement('button');today.type='button';today.textContent='오늘 하루 보지 않기';foot.append(today);candidate.append(head,body,foot);
-    await image.decode();if(!active(config)){expire();return;}const previous=document.activeElement;dialog=candidate;document.body.append(dialog);document.documentElement.classList.add('event-notice-open');
-    candidate.addEventListener('close',()=>{document.documentElement.classList.remove('event-notice-open');candidate.remove();dialog=null;launcher.dataset.noticeState=hiddenReason(read,key)||'ready';if(previous?.isConnected&&typeof previous.focus==='function')previous.focus({preventScroll:true});},{once:true});
-    const closeForSession=()=>write('sessionStorage',key,'closed');candidate.addEventListener('cancel',closeForSession);close.onclick=()=>{closeForSession();candidate.close();};today.onclick=()=>{write('localStorage',key,koreanDay());candidate.close();};
-    candidate.showModal();launcher.dataset.noticeState='shown';close.focus();
-   }catch{launcher.dataset.noticeState='image-error';reopen.textContent='행사 포스터 다시 불러오기';}
-   finally{opening=false;reopen.disabled=false;}
-  };
-  reopen.onclick=open;const hidden=hiddenReason(read,key);launcher.dataset.noticeState=hidden||'ready';if(!hidden)await open();
- }catch{/* Keep the original homepage usable if notice loading fails. */}
+ const launcher=make('aside');launcher.className='event-notice-launcher';launcher.setAttribute('aria-label','공지 다시 보기');
+ let board=null,previous=null;const notices=[];
+ const visible=()=>notices.filter(n=>n.card?.isConnected);
+ function ensureBoard(){
+  if(board?.isConnected)return board;
+  board=make('dialog');board.className='notice-board';board.setAttribute('aria-label','워크닉 공지');
+  const dismissFocused=()=>{const focused=document.activeElement?.closest('[data-notice-card]');const notice=visible().find(n=>n.card===focused)||visible()[0];if(notice)closeNotice(notice,true);};let escapeDown=false;
+  board.addEventListener('keydown',event=>{if(event.key!=='Escape')return;event.preventDefault();event.stopPropagation();if(!escapeDown){escapeDown=true;dismissFocused();}});board.addEventListener('keyup',event=>{if(event.key==='Escape')escapeDown=false;});
+  board.addEventListener('cancel',event=>{event.preventDefault();if(!escapeDown)dismissFocused();});
+  const created=board;created.addEventListener('close',()=>{if(created.isConnected&&created.children.length){created.showModal();document.documentElement.classList.add('event-notice-open');return;}created.remove();if(board===created){board=null;document.documentElement.classList.remove('event-notice-open');if(previous?.isConnected&&typeof previous.focus==='function')previous.focus({preventScroll:true});}});
+  document.body.append(board);return board;
+ }
+ function closeNotice(notice,session=false){
+  if(session)write('sessionStorage',notice.key,'closed');const hadFocus=notice.card?.contains(document.activeElement);notice.card?.remove();notice.card=null;notice.button.dataset.noticeState=hiddenReason(read,notice.key)||'ready';
+  const remaining=visible();if(!remaining.length){if(board?.open)board.close();board?.remove();board=null;document.documentElement.classList.remove('event-notice-open');if(previous?.isConnected&&typeof previous.focus==='function')previous.focus({preventScroll:true});return;}board.dataset.count=String(remaining.length);if(hadFocus)remaining[0].close.focus();
+ }
+ async function openNotice(notice){
+  if(notice.opening||notice.card?.isConnected||!notice.isActive())return;notice.opening=true;notice.button.disabled=true;
+  try{
+   const card=make('section');card.className='notice-card '+(notice.kind==='event'?'event-notice':'business-notice');card.dataset.noticeCard=notice.config.id;card.dataset.kind=notice.kind;card.setAttribute('role','region');card.setAttribute('aria-label',notice.config.title);
+   const head=make('div');head.className='event-notice-head';const close=make('button','닫기');close.type='button';close.setAttribute('aria-label',notice.kind==='event'?'행사 안내 닫기':'사업자회원 안내 닫기');if(notice.kind==='business')head.append(make('h2',notice.config.title));head.append(close);
+   const body=make('div');body.className='event-notice-body';
+   if(notice.kind==='event'){
+    const image=make('img');image.src=notice.config.image;image.alt=notice.config.alt||notice.config.title;image.width=2160;image.height=3800;body.append(image);
+    if(Array.isArray(notice.config.text)){const details=make('details'),summary=make('summary','행사 안내 글로 보기');details.append(summary);for(const line of notice.config.text)details.append(make('p',line));body.append(details);}
+    await image.decode();
+   }else{
+    body.append(make('h3',notice.config.intro),make('p',notice.config.description));const list=make('ul');for(const item of notice.config.items||[])list.append(make('li',item));body.append(list,make('p',notice.config.note));
+    const links=make('div');links.className='notice-business-links';const join=make('a','사업자회원 가입 신청');join.href=notice.config.joinPath;const portal=make('a','로그인·견적·픽업 안내');portal.href=notice.config.portalPath;links.append(join,portal);body.append(links);
+   }
+   if(!notice.isActive())return;
+   const foot=make('div');foot.className='event-notice-foot';const today=make('button','오늘 하루 보지 않기');today.type='button';foot.append(today);card.append(head,body,foot);close.onclick=()=>closeNotice(notice,true);today.onclick=()=>{write('localStorage',notice.key,koreanDay());closeNotice(notice);};
+   const container=ensureBoard();notice.card=card;notice.close=close;container.append(card);container.dataset.count=String(visible().length);notice.button.dataset.noticeState='shown';
+   if(!container.open){previous=document.activeElement;document.documentElement.classList.add('event-notice-open');container.showModal();close.focus();}
+  }catch{notice.button.dataset.noticeState='load-error';notice.button.textContent=notice.kind==='event'?'행사 포스터 다시 불러오기':'사업자회원 안내 다시 보기';}
+  finally{notice.opening=false;notice.button.disabled=false;}
+ }
+ async function load(path,kind,isActive){
+  try{
+   const response=await fetch(path,{credentials:'omit',cache:'no-store',signal:AbortSignal.timeout(10000)});if(!response.ok)return;const config=await response.json();if(!isActive(config))return;
+   const button=make('button',kind==='event'?'행사 포스터 보기':'사업자회원 안내');button.type='button';button.dataset.noticeId=config.id;launcher.append(button);if(!launcher.isConnected)main.prepend(launcher);
+   const notice={config,kind,button,key:'worknic-notice-'+config.id,isActive:()=>isActive(config),card:null,opening:false};notices.push(notice);button.onclick=()=>openNotice(notice);
+   const hidden=hiddenReason(read,notice.key);button.dataset.noticeState=hidden||'ready';
+   if(kind==='event'){
+    let timer;const expire=()=>{if(notice.isActive())return;clearTimeout(timer);closeNotice(notice);button.remove();if(!launcher.children.length)launcher.remove();document.removeEventListener('visibilitychange',expire);};
+    timer=setTimeout(expire,Math.min(2147483647,Math.max(0,Date.parse(config.expiresAt)-Date.now())));document.addEventListener('visibilitychange',expire);
+   }
+   if(!hidden)await openNotice(notice);
+  }catch{/* Each notice remains independent if the other cannot load. */}
+ }
+ await Promise.allSettled([load('/notice/event.json','event',active),load('/notice/business.json','business',businessActive)]);
 }
 if(typeof document!=='undefined')showNotice();

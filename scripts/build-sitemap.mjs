@@ -6,5 +6,5 @@ const products=JSON.parse(fs.readFileSync('products/routes.json','utf8')).produc
 const routes=[...new Set([...base,...collections,...products])].sort();
 for(const route of routes)if(!fs.existsSync('.'+route+'index.html'))throw Error('Missing sitemap page '+route);
 const output='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+routes.map(route=>'  <url><loc>'+origin+route+'</loc></url>').join('\n')+'\n</urlset>\n';
-if(process.argv.includes('--check')){if(fs.readFileSync('sitemap.xml','utf8')!==output)throw Error('sitemap.xml needs regeneration');}else fs.writeFileSync('sitemap.xml',output);
+if(process.argv.includes('--check')){if(fs.readFileSync('sitemap.xml','utf8').replaceAll('\r\n','\n')!==output)throw Error('sitemap.xml needs regeneration');}else fs.writeFileSync('sitemap.xml',output);
 console.log(`${routes.length} canonical pages in sitemap.xml`);

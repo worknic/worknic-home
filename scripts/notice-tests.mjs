@@ -1,0 +1,3 @@
+import {active,koreanDay} from '../notice/popup.js';import assert from 'node:assert/strict';
+const config={enabled:true,id:'worknic-20261120',image:'/assets/notices/worknic-20261120.png',expiresAt:'2026-11-21T00:00:00+09:00'};
+assert(active(config,Date.parse('2026-11-20T23:59:59+09:00')));assert(!active(config,Date.parse('2026-11-21T00:00:00+09:00')));assert(!active({...config,enabled:false}));assert(!active({...config,image:'https://other.example/x.png'}));assert(!active({...config,expiresAt:'bad'}));assert.equal(koreanDay(Date.parse('2026-11-20T15:00:00Z')),'2026-11-21');console.log('PASS: KST end-of-event boundary, disabled/malformed config and local image allowlist.');

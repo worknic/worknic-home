@@ -3,9 +3,10 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const normalize=s=>s.replaceAll('\r\n','\n');
+const read=p=>normalize(fs.readFileSync(path.join(root,p),'utf8'));
 const check=process.argv.includes('--check'),changed=[];
-const write=(p,s)=>{const target=path.join(root,p);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')===s)return;if(check){changed.push(p);return}fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,s)};
+const write=(p,s)=>{s=normalize(s);const target=path.join(root,p);if(fs.existsSync(target)&&normalize(fs.readFileSync(target,'utf8'))===s)return;if(check){changed.push(p);return}fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,s)};
 const input=JSON.parse(read('data/catalog.json'));
 const sandbox={window:{}};vm.runInNewContext(read('categories.js'),sandbox);
 const taxonomy=sandbox.window.WORKNIC_CATEGORIES;
@@ -32,7 +33,11 @@ catalogPage('/supplies/','현장 소모품·부품·안전용품 소개','워크
 for(const [id,name]of toolCategories)catalogPage('/catalog/'+id+'/',name,name+' 제품의 모델·규격·쓰임과 선택 시 확인사항을 워크닉에서 살펴보세요. 소매점 매입 상담은 사업자 확인·승인 후 연결합니다.',products.filter(p=>{const c=taxonomy.classify(p);return c.group==='tools'&&c.sub===id}),{category:'tools',subcategory:id});
 for(const g of supplyGroups)catalogPage('/supplies/'+g.id+'/',g.name,g.description+'. 워크닉에서 제품별 모델·규격과 제품 선택 시 확인사항을 확인하세요.',products.filter(p=>taxonomy.classify(p).group===g.id),{supply:true,category:g.id});
 for(const b of brands)catalogPage('/brands/'+b.id+'/',b.name+' '+(b.english||'')+' 공구·제품 소개',b.name+'의 '+b.category+' 제품을 워크닉에서 살펴보세요. 모델별 쓰임·규격과 제품 구성 확인사항을 소개합니다. 소매점 매입 상담은 사업자 확인·승인 후 연결합니다.',products.filter(p=>p.brand===b.id),{brand:b});
-for(const filename of ['index.html','brands/index.html']){let html=read(filename);html=section(html,'brands',`<div class="brand-directory" data-brand-directory${filename==='index.html'?' data-brand-slider':''} aria-label="취급 브랜드">${brands.map(brandCard).join('')}</div>`,/<div class="brand-directory" data-brand-directory[^>]*><\/div>/);html=html.replace(/<script src="\/catalog.js[^>]*>/g,'<script src="/catalog.js?v=20261110-static-search" defer>');if(!html.includes('/categories.js'))html=html.replace('</head>','<script src="/categories.js?v=20261107-garden-camping"></script></head>');html=html.replace(/href="\/catalog\/\?brand=([\w-]+)"/g,'href="/brands/$1/"');if(filename==='brands/index.html'){html=meta(html,'공구 브랜드 안내 · WORKNIC 워크닉','페스툴, 마끼다, 철마, 코메론 등 워크닉이 소개하는 공구 브랜드와 제품별 쓰임·규격을 확인하세요.',origin+'/brands/',brands.map(b=>({name:b.name,url:'/brands/'+b.id+'/'})));manifest.push('/brands/')}write(filename,html)}
+for(const filename of ['index.html','brands/index.html']){let html=read(filename);
+// The approved homepage owns its accessible brand rail and source list.
+// Directory generation still applies to the directory page and legacy home template.
+if(filename==='index.html'&&html.includes('class="brand-track" id="brands"')&&html.includes('src="/home-brands-v3.js?')){if(!read('home-brands-v3.js').includes('const list='))throw Error('Missing homepage brand source');continue;}
+html=section(html,'brands',`<div class="brand-directory" data-brand-directory${filename==='index.html'?' data-brand-slider':''} aria-label="취급 브랜드">${brands.map(brandCard).join('')}</div>`,/<div class="brand-directory" data-brand-directory[^>]*><\/div>/);html=html.replace(/<script src="\/catalog.js[^>]*>/g,'<script src="/catalog.js?v=20261110-static-search" defer>');if(!html.includes('/categories.js'))html=html.replace('</head>','<script src="/categories.js?v=20261107-garden-camping"></script></head>');html=html.replace(/href="\/catalog\/\?brand=([\w-]+)"/g,'href="/brands/$1/"');if(filename==='brands/index.html'){html=meta(html,'공구 브랜드 안내 · WORKNIC 워크닉','페스툴, 마끼다, 철마, 코메론 등 워크닉이 소개하는 공구 브랜드와 제품별 쓰임·규격을 확인하세요.',origin+'/brands/',brands.map(b=>({name:b.name,url:'/brands/'+b.id+'/'})));manifest.push('/brands/')}write(filename,html)}
 // The snapshot contains only records already public in the reviewed catalog. Runtime API
 // remains authoritative, especially when a record is unpublished after a site build.
 write('data/search-catalog.json',JSON.stringify({schemaVersion:1,brands,products:products.map(p=>({id:p.id,name:p.name,published:true,brand:p.brand,model:p.model,category:p.category,revision:p.revision,specs:p.specs,images:p.images,collections:p.collections,sourceUrl:p.sourceUrl,guide:{media:{thumbnail:p.guide?.media?.thumbnail},commerce:p.guide?.commerce}}))}));

@@ -39,7 +39,7 @@ const origin='https://worknic.co.kr';
 const safeUrl=v=>{if(typeof v!=='string'||!v.trim())return null;try{const u=new URL(v,origin);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}};
 const json=v=>JSON.stringify(v).replace(/</g,'\\u003c');
 let changed=[];
-function output(relative,content){const target=path.join(root,relative);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')===content)return;if(check){changed.push(relative);return;}fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,content);}
+function output(relative,content){content=content.replaceAll('\r\n','\n');const target=path.join(root,relative);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8').replaceAll('\r\n','\n')===content)return;if(check){changed.push(relative);return;}fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,content);}
 for(const p of products){
  const b=brands.get(p.brand),doc=documentFrom(template),route='/products/'+p.id+'/',url=origin+route;
  const context={window:{WORKNIC_BUILD:true,WORKNIC_CATEGORIES:categories.window.WORKNIC_CATEGORIES},document:doc,URL,URLSearchParams,location:{origin,pathname:route,search:''}};

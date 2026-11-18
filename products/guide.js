@@ -32,7 +32,7 @@ function render(data){
  $('#configuration-rows').replaceChildren(...configurationFields.filter(([key])=>typeof configuration[key]==='string'&&configuration[key].trim()).map(([key,label])=>{const row=el('div');row.append(el('dt',label),el('dd',configuration[key]));return row}));
  $('#configuration-rows').hidden=!$('#configuration-rows').children.length;
  $('#feature-list').replaceChildren(...(g.features||[]).map((f,i)=>{const a=el('article'),d=el('div');d.append(el('h3',f.title),el('p',f.text));a.append(el('span',String(i+1).padStart(2,'0')),d);return a}));
- $('#extra-photos').replaceChildren(...(p.images||[]).slice(1,3).map((url,i)=>{const n=el('figure'),photo=el('img');photo.src=https(url);photo.alt=`${p.name} 상세 사진 ${i+1}`;photo.loading='lazy';n.append(photo);return n}));
+ $('#extra-photos').replaceChildren(...(p.images||[]).slice(1,7).map((url,i)=>{const n=el('figure'),photo=el('img');photo.src=https(url);photo.alt=`${p.name} 상세 사진 ${i+1}`;photo.loading='lazy';n.append(photo);return n}));
  const usage=g.media?.usage,showUsage=!!(usage?.verifiedModel&&usage?.src&&usage?.sourceUrl&&usage?.width>=1000&&usage?.height>=1000);
  $('#in-use').hidden=!showUsage;$('#usage-nav').hidden=!showUsage;
  if(showUsage){const photo=$('#usage-image');photo.src=https(usage.src);photo.alt=usage.alt||`${p.name} 공식 사용 예시`;photo.width=usage.width;photo.height=usage.height;$('#usage-text').textContent=usage.text||'제조사가 공개한 해당 모델의 사용 예시입니다.';$('#usage-caption').replaceChildren(sourceLink(usage.credit||'제조사 공식 사진',usage.sourceUrl));}

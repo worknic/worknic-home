@@ -8,7 +8,7 @@ const groups=[
 ];
 const ids={cutting:['12635593910','12635591708','13853946102','10683597130','10683185871','10352768362'],fastening:['12873523843','6198021113'],gloves:['8675153104','12771968838']};
 const legacy={measuring:['줄자·측정','측정·표시','수평·측정'],storage:['휴대·정리'],access:['사다리·작업대']};
-const handToolCategories=['절단·다듬기','목공 수공구','목공·접합','측정·수공구','체결·가공','플라이어·절단','전설·배선 공구','클램프·고정','라쳇·소켓','작업·측정 공구','토치·가열','타카·체결'];
+const handToolCategories=['수공구 / 스크래퍼','절단·다듬기','목공 수공구','목공·접합','측정·수공구','체결·가공','플라이어·절단','전설·배선 공구','클램프·고정','라쳇·소켓','작업·측정 공구','토치·가열','타카·체결'];
 // Only clear product nouns qualify for automatic import. A tool used on a part
 // (e.g. a bearing puller or bolt cutter) is not the part itself.
 const noun=(terms)=>new RegExp('(?:^|[\\s·/()])(?:'+terms+')(?=$|[\\s·/(),0-9])','i');

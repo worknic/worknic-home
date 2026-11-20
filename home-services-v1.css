@@ -1,0 +1,125 @@
+/* Homepage service menu; deliberately scoped so no other calls to action change. */
+#worknic-services.wn-services {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  max-width:1440px;
+  margin-inline:auto;
+  padding:64px max(24px,5vw);
+  background:#fff;
+  border-block-start:1px solid #dededb;
+  color:#1c1c1c;
+}
+.wn-services > .wn-service {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding-inline:clamp(20px,2.6vw,44px);
+}
+.wn-services > .wn-service:first-child {padding-inline-start:0}
+.wn-services > .wn-service:last-child {padding-inline-end:0}
+.wn-services > .wn-service + .wn-service {border-inline-start:1px solid #e4e4e0}
+.wn-service > .wn-service-label {
+  margin:0 0 15px;
+  color:#595a55;
+  font:500 11px/1.45 Spoqa,sans-serif;
+  letter-spacing:.09em;
+}
+.wn-service > h2 {
+  color:#252622;
+  margin:0 0 12px;
+  font-size:clamp(20px,2.15vw,30px);
+  font-weight:500;
+  line-height:1.31;
+  letter-spacing:-.052em;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+.wn-service > .wn-service-copy {
+  margin:0 0 24px;
+  flex-grow:1;
+  color:#55564f;
+  font-size:14px;
+  line-height:1.75;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+.wn-service > .wn-service-actions {
+  min-width:0;
+  display:flex;
+  flex-wrap:wrap;
+  align-content:flex-start;
+  align-items:flex-start;
+  gap:8px;
+}
+.wn-service-actions > small {
+  display:block;
+  flex:0 0 100%;
+  margin-block:1px 0;
+  color:#666860;
+  font-size:11px;
+  line-height:1.6;
+  word-break:keep-all;
+}
+.wn-service-actions > .wn-service-button {
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  justify-content:center;
+  max-width:100%;
+  padding:10px 15px;
+  border:1px solid #1c1c1c;
+  border-radius:2px;
+  background:#1c1c1c;
+  color:#fff;
+  font:500 13px/1.35 Spoqa,sans-serif;
+  white-space:normal;
+  text-align:center;
+  text-decoration:none;
+  box-shadow:inset 0 0 0 0 #fff;
+  transition:box-shadow .26s cubic-bezier(.2,.7,.3,1),color .13s ease .11s;
+}
+.wn-service-actions > .wn-service-button:focus-visible {
+  outline:2px solid #1c1c1c;
+  outline-offset:4px;
+  background:#fff;
+  color:#1c1c1c;
+  transition:none;
+}
+@media(hover:hover) and (pointer:fine) {
+  .wn-service-actions > .wn-service-button:hover {
+    box-shadow:inset 0 -68px 0 0 #fff;
+    color:#1c1c1c;
+    text-decoration:none;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .wn-service-actions > .wn-service-button {transition:none}
+}
+@supports(grid-template-rows:subgrid) {
+  #worknic-services.wn-services {grid-template-rows:repeat(4,auto)}
+  .wn-services > .wn-service {
+    display:grid;
+    grid-row:span 4;
+    grid-template-rows:subgrid;
+    justify-items:start;
+    align-items:start;
+  }
+}
+@media(max-width:850px) {
+  #worknic-services.wn-services {
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:none;
+    padding:34px 20px;
+  }
+  .wn-services > .wn-service {
+    display:flex;
+    grid-row:auto;
+    padding:20px 0 24px;
+  }
+  .wn-services > .wn-service:first-child {padding-top:0}
+  .wn-services > .wn-service:last-child {padding-bottom:0}
+  .wn-services > .wn-service + .wn-service {border-inline-start:0;border-block-start:1px solid #e4e4e0}
+  .wn-service > h2 {font-size:23px}
+  .wn-service > .wn-service-copy {margin-bottom:18px}
+}

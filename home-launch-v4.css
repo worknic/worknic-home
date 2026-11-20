@@ -1,0 +1,60 @@
+/* The rest of the home collections, services, popups and footer retain their styles. */
+body.official-home #site{width:100%;max-width:none}
+body.official-home #site > header.wn-launch-header{
+  position:sticky!important;top:0;z-index:100;display:grid!important;
+  grid-template-columns:minmax(125px,1fr) auto minmax(44px,1fr)!important;
+  grid-template-rows:66px!important;align-items:center!important;justify-content:stretch;
+  gap:0 18px!important;height:auto!important;min-height:0!important;
+  padding:0 clamp(16px,2.4vw,36px)!important;
+  isolation:isolate;background:#fbfaf7;border-bottom:1px solid #e4e2da;
+}
+body.official-home #site > header.wn-launch-header > a:first-child{grid-area:1/1;display:flex;align-items:center;position:static!important;transform:none!important;margin:0!important;justify-self:start}
+body.official-home #site > header.wn-launch-header .logo{display:block;width:clamp(116px,10vw,146px)!important;height:auto!important;max-height:40px!important;object-fit:contain}
+body.official-home #site > header.wn-launch-header > nav.wn-launch-nav{
+  grid-area:1/2;display:flex!important;justify-content:center;align-items:center;
+  width:auto;min-width:0;margin:0!important;padding:0;gap:clamp(15px,3.1vw,46px)!important;
+  white-space:nowrap;font-family:Spoqa,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+html[lang] body.official-home #site > header.wn-launch-header > nav.wn-launch-nav > a{
+  display:flex;align-items:center;min-height:44px;gap:6px;
+  font:400 14px/1.35 Spoqa,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  letter-spacing:-.015em;color:#252622;text-decoration:none;
+}
+.wn-launch-nav a:hover{color:#54574e;text-decoration:underline;text-underline-offset:.32em}
+.wn-launch-nav a:focus-visible{outline:2px solid #605f55;outline-offset:2px}
+.wn-find svg{width:17px;height:17px;flex:none}
+body.official-home #site > header.wn-launch-header .home-tools,
+body.official-home #site > header.wn-launch-header > .home-menu{
+  grid-area:1/3;position:static!important;display:flex!important;justify-self:end;justify-content:flex-end;
+  width:44px;height:44px;margin:0!important;padding:0;z-index:110;
+}
+body.official-home #site > header.wn-launch-header .home-menu,
+body.official-home #site > header.wn-launch-header .home-menu > summary{
+  width:44px!important;height:44px!important;min-height:44px!important;
+  background:transparent;border:0;box-shadow:none;
+}
+body.official-home #site > header.wn-launch-header .home-tools > button,
+body.official-home #site > header.wn-launch-header .home-tools > a,
+body.official-home #site > header.wn-launch-header .mobile-home-search,
+body.official-home #site > header.wn-launch-header .mobile-home-brands{display:none!important}
+body.official-home #site > header.wn-launch-header .home-menu nav{max-height:min(76vh,570px);overflow:auto}
+body.official-home #site > header.wn-launch-header .home-menu .preview-language{position:static!important;display:flex!important;gap:10px!important;margin:8px 0 0!important;padding:8px 0 0;border-top:1px solid #ddd}
+.wn-launch-photo{margin:0;width:100%;height:clamp(400px,44vw,800px);overflow:hidden;background:#28251f}
+.wn-launch-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 47%}
+.wn-launch-statement{display:block;text-align:center;padding:82px 22px 89px;background:#fbfaf7;color:#1c1c1c}
+#wn-launch-title{font-family:Spoqa,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:clamp(35px,4.2vw,61px);font-weight:500;line-height:1.2;letter-spacing:-.042em;margin:0;word-break:keep-all;text-rendering:optimizeLegibility}
+.official-home .intro-statement h2{font:400 clamp(29px,2.45vw,35px)/1.55 WorknicEditorial,Spoqa,sans-serif;letter-spacing:-.018em;color:#292926;margin:0}
+@media(max-width:800px){
+  body.official-home #site > header.wn-launch-header{grid-template-columns:minmax(0,1fr) 44px!important;grid-template-rows:46px minmax(44px,auto)!important;gap:0!important;padding:7px 14px 0!important}
+  body.official-home #site > header.wn-launch-header .logo{width:120px!important;max-height:36px!important}
+  body.official-home #site > header.wn-launch-header > nav.wn-launch-nav{grid-area:2/1/3/-1;justify-content:space-between;gap:4px!important}
+  html[lang] body.official-home #site > header.wn-launch-header > nav.wn-launch-nav > a{font-size:clamp(10px,3.04vw,13px);gap:4px}
+  .wn-find svg{width:14px;height:14px}
+  body.official-home #site > header.wn-launch-header .home-tools,
+  body.official-home #site > header.wn-launch-header > .home-menu{grid-area:1/2}
+  .wn-launch-photo{height:auto;aspect-ratio:4/4.65}
+  .wn-launch-photo img{object-position:54% 50%}
+  .wn-launch-statement{padding:52px 14px 58px}
+  #wn-launch-title{font-size:clamp(25px,7.8vw,42px);line-height:1.24;letter-spacing:-.045em}
+  .official-home .intro-statement h2{font-size:26px}
+}

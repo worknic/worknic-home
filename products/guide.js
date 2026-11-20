@@ -23,6 +23,8 @@ function render(data){
  window.WORKNIC_MEDIA?.frame(img,thumb);
  img.onerror=()=>{img.hidden=true;$('#photo-caption').textContent='제품 사진은 문의 시 확인해 주세요.'};
  $('#photo-caption').textContent=typeof thumb.caption==='string'&&thumb.caption.trim()?thumb.caption:[b.name,p.model].filter(Boolean).join(' · ');
+ 
+ const fixed=g.commerce?.mode==='fixed-price'&&g.commerce.currency==='KRW'&&Number.isSafeInteger(g.commerce.amount)&&g.commerce.amount>0;let priceBlock=$('#product-sale-price');if(!priceBlock){priceBlock=el('p');priceBlock.id='product-sale-price';priceBlock.className='product-sale-price';priceBlock.style.fontSize='1.25rem';priceBlock.style.fontWeight='600';priceBlock.style.margin='1rem 0';$('#summary').after(priceBlock);}priceBlock.dataset.salePrice=fixed?String(g.commerce.amount):'';priceBlock.hidden=!fixed;priceBlock.textContent=fixed?'판매가 '+g.commerce.amount.toLocaleString('ko-KR')+'원':'';
  const specs=(p.specs||[]).filter(x=>Array.isArray(x)&&x.length===2&&x[0]&&x[1]&&x[0]!=='등록 상품명');
  const suppliedHighlights=Array.isArray(g.highlights)?g.highlights.filter(x=>x&&typeof x.label==='string'&&typeof x.value==='string'&&x.label.trim()&&x.value.trim()).slice(0,3).map(x=>[x.label,x.value]):[];
  const highlights=suppliedHighlights.length?suppliedHighlights:specs.filter(x=>!['모델','제품군','브랜드','등록 제품군','등록 포장 표기','제조사 기본 모델','국내 등록 모델','기본 본체 모델'].includes(x[0])).slice(0,3);

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#34412b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="/trade/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/logo.png" />
+    <title>사업자 주문·픽업 베타 · WORKNIC</title>
+    <link rel="stylesheet" href="/trade/beta.css" />
+    <script src="/media.js"></script>
+    <script type="module" src="/trade/beta.js"></script>
+    <script src="/trade/pwa.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <a href="https://worknic.co.kr/" aria-label="워크닉 공식 홈페이지"
+          ><img src="/assets/logo.png" alt="WORKNIC" width="900" height="313"
+        /></a>
+        <p>WORKNIC BUSINESS · BETA</p>
+      </header>
+      <main>
+        <p class="eyebrow">TOOLS FOR YOUR WORK</p>
+        <h1>필요한 도구를,<br />준비된 자리에서.</h1>
+        <p class="muted">
+          제품 정보는 누구나 확인할 수 있습니다. 사업자 승인 후 견적을 요청하고,
+          거래가 확정된 상품을 안내받은 장소에서 수령합니다.
+        </p>
+        <p id="status" class="status" role="status" aria-live="polite">
+          베타 운영 상태를 확인하고 있습니다.
+        </p>
+        <nav class="nav" aria-label="화면 선택">
+          <a href="#catalog">제품</a><a href="#orders">견적·주문</a
+          ><a href="#pickup">픽업</a><a href="#account">내 계정</a>
+        </nav>
+        <section id="view"></section>
+      </main>
+      <footer class="footer">
+        <p>
+          워크닉 주식회사 · 1833-3640 ·
+          <a href="https://worknic.co.kr/contact/">거래 문의</a>
+        </p>
+        <p>
+          카드결제·자동 입금 확인·보관함 원격 개방은 제공하지 않습니다. 픽업
+          준비 완료 안내 후 방문해 주세요.
+        </p>
+        <button id="install-app" class="button secondary" hidden>
+          휴대폰에 설치하기
+        </button>
+        <p id="install-note" class="muted"></p>
+      </footer>
+    </div>
+    <nav class="bottom-nav" aria-label="앱 메뉴">
+      <a href="#catalog">제품</a><a href="#orders">견적·주문</a
+      ><a href="#pickup">픽업</a><a href="#account">계정</a>
+    </nav>
+  </body>
+</html>

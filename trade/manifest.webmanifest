@@ -1,0 +1,19 @@
+{
+  "id": "/trade/",
+  "name": "WORKNIC 사업자 픽업",
+  "short_name": "WORKNIC",
+  "lang": "ko",
+  "start_url": "/trade/",
+  "scope": "/trade/",
+  "display": "standalone",
+  "background_color": "#fafbf8",
+  "theme_color": "#34412b",
+  "icons": [
+    {
+      "src": "/trade/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

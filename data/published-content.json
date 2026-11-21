@@ -1,0 +1,1586 @@
+{
+  "schema": 1,
+  "release": "olfa-20261121",
+  "items": {
+    "013155": {
+      "code": "013155",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/013155.jpg",
+          "alt": "OLFA MT-1 공식 제품 이미지"
+        },
+        "description": "폭 12.5 mm 교체날을 사용하는 소형 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "MT-1"
+          ],
+          [
+            "날 폭",
+            "12.5 mm"
+          ],
+          [
+            "날 두께",
+            "0.45 mm"
+          ],
+          [
+            "사용 방향",
+            "좌·우손 전환 가능"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/455.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587171082MT-1_1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "013156": {
+      "code": "013156",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/013156.jpg",
+          "alt": "OLFA LB-50 공식 제품 이미지"
+        },
+        "description": "OLFA LB-50 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LB-50"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "날 길이",
+            "100 mm"
+          ],
+          [
+            "날 두께",
+            "0.5 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "50매"
+          ],
+          [
+            "날 형식",
+            "일반 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1596.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587177559LB-50-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "013157": {
+      "code": "013157",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/013157.jpg",
+          "alt": "OLFA LBB-10 공식 제품 이미지"
+        },
+        "description": "OLFA LBB-10 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LBB-10"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "날 길이",
+            "100 mm"
+          ],
+          [
+            "날 두께",
+            "0.5 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "10매"
+          ],
+          [
+            "날 형식",
+            "흑색 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1600.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587178115LBB-10-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "013158": {
+      "code": "013158",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/013158.jpg",
+          "alt": "OLFA LBB-10B 공식 제품 이미지"
+        },
+        "description": "OLFA LBB-10B 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LBB-10B"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "날 길이",
+            "100 mm"
+          ],
+          [
+            "날 두께",
+            "0.5 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "10매"
+          ],
+          [
+            "날 형식",
+            "흑색 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1602.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587178163LBB-10B-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017460": {
+      "code": "017460",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017460.jpg",
+          "alt": "OLFA HOB-1 공식 제품 이미지"
+        },
+        "description": "HOK-1용 대형 훅 형태 교체날입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "HOB-1"
+          ],
+          [
+            "호환 본체",
+            "HOK-1"
+          ],
+          [
+            "날 길이",
+            "90 mm"
+          ],
+          [
+            "날 두께",
+            "0.8 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "1매"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1549.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/XB107_size.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017615": {
+      "code": "017615",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017615.jpg",
+          "alt": "OLFA XMT-1 공식 제품 이미지"
+        },
+        "description": "12.5 mm 날과 미끄럼을 줄이는 손잡이를 갖춘 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "XMT-1"
+          ],
+          [
+            "날 폭",
+            "12.5 mm"
+          ],
+          [
+            "날 두께",
+            "0.45 mm"
+          ],
+          [
+            "잠금 방식",
+            "자동 잠금"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/824.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1553042213XMT1_main.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017621": {
+      "code": "017621",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017621.jpg",
+          "alt": "OLFA H-1 공식 제품 이미지"
+        },
+        "description": "25 mm 대형 날과 휠 잠금 장치를 갖춘 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "H-1"
+          ],
+          [
+            "날 폭",
+            "25 mm"
+          ],
+          [
+            "날 두께",
+            "0.7 mm"
+          ],
+          [
+            "잠금 방식",
+            "휠 잠금"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/368.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586829653H-1_1-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017630": {
+      "code": "017630",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017630.jpg",
+          "alt": "OLFA XH-1 공식 제품 이미지"
+        },
+        "description": "25 mm 대형 날을 사용하는 X 디자인 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "XH-1"
+          ],
+          [
+            "날 폭",
+            "25 mm"
+          ],
+          [
+            "날 두께",
+            "0.7 mm"
+          ],
+          [
+            "손잡이",
+            "엘라스토머·유리섬유 강화 폴리프로필렌"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/370.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586830258XH-1_1-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017631": {
+      "code": "017631",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017631.jpg",
+          "alt": "OLFA XL-2 공식 제품 이미지"
+        },
+        "description": "긴 날 가이드와 휠 잠금 장치를 갖춘 대형 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "XL-2"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "휠 잠금"
+          ],
+          [
+            "형식",
+            "롱 타입"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/423.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/XL-2_1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017659": {
+      "code": "017659",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017659.jpg",
+          "alt": "OLFA MTBB-10B 공식 제품 이미지"
+        },
+        "description": "OLFA MTBB-10B 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "MTBB-10B"
+          ],
+          [
+            "날 폭",
+            "12.5 mm"
+          ],
+          [
+            "날 길이",
+            "83.3 mm"
+          ],
+          [
+            "날 두께",
+            "0.45 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "10매"
+          ],
+          [
+            "날 형식",
+            "흑색 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1710.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1553041787MTBB10B_main.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017664": {
+      "code": "017664",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017664.jpg",
+          "alt": "OLFA MTB-10B 공식 제품 이미지"
+        },
+        "description": "OLFA MTB-10B 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "MTB-10B"
+          ],
+          [
+            "날 폭",
+            "12.5 mm"
+          ],
+          [
+            "날 길이",
+            "83.3 mm"
+          ],
+          [
+            "날 두께",
+            "0.45 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "10매"
+          ],
+          [
+            "날 형식",
+            "일반 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1616.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587178882MTB-10B-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017665": {
+      "code": "017665",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017665.jpg",
+          "alt": "OLFA HB-5B 공식 제품 이미지"
+        },
+        "description": "OLFA HB-5B 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "HB-5B"
+          ],
+          [
+            "날 폭",
+            "25 mm"
+          ],
+          [
+            "날 길이",
+            "126 mm"
+          ],
+          [
+            "날 두께",
+            "0.7 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "5매"
+          ],
+          [
+            "날 형식",
+            "일반 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1581.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587176921HB-5B-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017666": {
+      "code": "017666",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017666.jpg",
+          "alt": "OLFA LB-10B 공식 제품 이미지"
+        },
+        "description": "OLFA LB-10B 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LB-10B"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "날 길이",
+            "100 mm"
+          ],
+          [
+            "날 두께",
+            "0.5 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "10매"
+          ],
+          [
+            "날 형식",
+            "일반 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1594.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587177514LB-10B-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "021217": {
+      "code": "021217",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021217.jpg",
+          "alt": "OLFA BTC-1 공식 제품 이미지"
+        },
+        "description": "절단·긁어내기 작업에 사용하는 교체날식 도구입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "BTC-1"
+          ],
+          [
+            "교체날",
+            "BTB-1"
+          ],
+          [
+            "용도",
+            "절단·스크래핑"
+          ],
+          [
+            "형식",
+            "교체날식"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/560.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/56B_main.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "021218": {
+      "code": "021218",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021218.jpg",
+          "alt": "OLFA CK-1 공식 제품 이미지"
+        },
+        "description": "날 노출 길이를 조절하는 교체날식 공예칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "CK-1"
+          ],
+          [
+            "날 두께",
+            "1 mm"
+          ],
+          [
+            "교체날",
+            "CKB-1"
+          ],
+          [
+            "조절",
+            "날 노출 길이"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/733.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1496112639ck1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "021222": {
+      "code": "021222",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021222.jpg",
+          "alt": "OLFA TS-1 공식 제품 이미지"
+        },
+        "description": "종이의 맨 윗장을 자르기 위한 압력 조절식 커터입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "TS-1"
+          ],
+          [
+            "형식",
+            "톱 시트 커터"
+          ],
+          [
+            "교체날",
+            "TSB-1"
+          ],
+          [
+            "조절",
+            "절단 압력 조절"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/720.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/8c5fa7030753b03da4dfbda4ad29c774.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "021223": {
+      "code": "021223",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021223.jpg",
+          "alt": "OLFA LTD-AL-LFB 공식 제품 이미지"
+        },
+        "description": "SPEED BLADE를 장착한 자동 잠금 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LTD-AL-LFB"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "자동 잠금"
+          ],
+          [
+            "장착 날",
+            "LFB"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/869.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/15978244521586827510Ltd-08-1-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "021224": {
+      "code": "021224",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021224.jpg",
+          "alt": "OLFA LTD-L-LFB 공식 제품 이미지"
+        },
+        "description": "SPEED BLADE를 장착한 휠 잠금 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LTD-L-LFB"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "휠 잠금"
+          ],
+          [
+            "장착 날",
+            "LFB"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/854.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/15928809561586827614Ltd-07-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "021226": {
+      "code": "021226",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021226.jpg",
+          "alt": "OLFA DC-5 공식 제품 이미지"
+        },
+        "description": "사용한 커터 날 조각을 보관하는 클립형 칼날 수거함입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "DC-5"
+          ],
+          [
+            "형식",
+            "클립형 칼날 수거함"
+          ],
+          [
+            "투입 방향",
+            "좌·우측"
+          ],
+          [
+            "용도",
+            "사용한 날 조각 보관"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/508.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1495655391211B_PRO.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "029014": {
+      "code": "029014",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021224.jpg",
+          "alt": "OLFA LTD-L-LFB 공식 제품 이미지"
+        },
+        "description": "SPEED BLADE를 장착한 휠 잠금 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "LTD-L-LFB"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "휠 잠금"
+          ],
+          [
+            "장착 날",
+            "LFB"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/854.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/15928809561586827614Ltd-07-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039210": {
+      "code": "039210",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039210.jpg",
+          "alt": "OLFA MXP-L 공식 제품 이미지"
+        },
+        "description": "알루미늄 다이캐스트 몸체와 휠 잠금 장치의 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "MXP-L"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "휠 잠금"
+          ],
+          [
+            "몸체",
+            "알루미늄 다이캐스트"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/451.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586831448MXP-L_1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039211": {
+      "code": "039211",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039211.jpg",
+          "alt": "OLFA MXP-AL 공식 제품 이미지"
+        },
+        "description": "알루미늄 다이캐스트 몸체와 자동 잠금 장치의 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "MXP-AL"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "자동 잠금"
+          ],
+          [
+            "몸체",
+            "알루미늄 다이캐스트"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/453.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586831399MXP-AL_1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039212": {
+      "code": "039212",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021226.jpg",
+          "alt": "OLFA DC-5 공식 제품 이미지"
+        },
+        "description": "사용한 커터 날 조각을 보관하는 클립형 칼날 수거함입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "DC-5"
+          ],
+          [
+            "형식",
+            "클립형 칼날 수거함"
+          ],
+          [
+            "투입 방향",
+            "좌·우측"
+          ],
+          [
+            "용도",
+            "사용한 날 조각 보관"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/508.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1495655391211B_PRO.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039214": {
+      "code": "039214",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039214.jpg",
+          "alt": "OLFA SCS-2 공식 제품 이미지"
+        },
+        "description": "미끄러짐을 줄이는 톱니형 날의 스테인리스 가위입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "SCS-2"
+          ],
+          [
+            "날 재질",
+            "스테인리스"
+          ],
+          [
+            "날 형식",
+            "톱니형"
+          ],
+          [
+            "사용 예",
+            "나일론·가죽·PP 밴드"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/550.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1496112540SCS2.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039264": {
+      "code": "039264",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039264.jpg",
+          "alt": "OLFA CK-2 공식 제품 이미지"
+        },
+        "description": "스테인리스 몸체와 날을 사용하는 교체날식 공예칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "CK-2"
+          ],
+          [
+            "날 두께",
+            "1.2 mm"
+          ],
+          [
+            "교체날",
+            "CKB-2"
+          ],
+          [
+            "몸체·날",
+            "스테인리스"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/735.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1496112613ck2.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039291": {
+      "code": "039291",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039291.jpg",
+          "alt": "OLFA HBB-5B 공식 제품 이미지"
+        },
+        "description": "OLFA HBB-5B 교체날입니다. 공식 모델의 날 치수와 포장 수량을 확인할 수 있습니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "HBB-5B"
+          ],
+          [
+            "날 폭",
+            "25 mm"
+          ],
+          [
+            "날 길이",
+            "126 mm"
+          ],
+          [
+            "날 두께",
+            "0.7 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "5매"
+          ],
+          [
+            "날 형식",
+            "흑색 날"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1586.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1587177036HBB-5B-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039292": {
+      "code": "039292",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/021217.jpg",
+          "alt": "OLFA BTC-1 공식 제품 이미지"
+        },
+        "description": "절단·긁어내기 작업에 사용하는 교체날식 도구입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "BTC-1"
+          ],
+          [
+            "교체날",
+            "BTB-1"
+          ],
+          [
+            "용도",
+            "절단·스크래핑"
+          ],
+          [
+            "형식",
+            "교체날식"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/560.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/56B_main.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039323": {
+      "code": "039323",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039323.jpg",
+          "alt": "OLFA BTB-1 공식 제품 이미지"
+        },
+        "description": "BTC-1 및 BTC-1/DX용 교체날입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "BTB-1"
+          ],
+          [
+            "호환 본체",
+            "BTC-1 / BTC-1/DX"
+          ],
+          [
+            "날 크기",
+            "43 × 43 mm"
+          ],
+          [
+            "날 두께",
+            "0.6 mm"
+          ],
+          [
+            "공식 포장 수량",
+            "3매"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/blades/1660.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1495657833BTB-1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "039387": {
+      "code": "039387",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/039387.jpg",
+          "alt": "OLFA BTC-1/DX 공식 제품 이미지"
+        },
+        "description": "헤드 위치를 바꾸어 사용하는 교체날식 스크래퍼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "BTC-1/DX"
+          ],
+          [
+            "교체날",
+            "BTB-1"
+          ],
+          [
+            "헤드 조절",
+            "11개 위치"
+          ],
+          [
+            "용도",
+            "스크래핑·절단"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/3352.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/242_main.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    }
+  }
+}

@@ -56,7 +56,7 @@ async function init(){
  }
  if(!staticPage){$('#product').hidden=true;$('#product-status').hidden=false;$('#product-status').textContent='최신 상품 정보를 확인하고 있습니다.';}
 
- try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');let live=j.data;try{if(!window.WORKNIC_BUILD){const content=await import('/content/public-content.js');live=await content.enrichCatalog(live);}}catch{}render(live);}catch{$('#product').hidden=!staticPage;$('#product-status').hidden=false;$('#product-status').textContent=staticPage?'최신 상품 정보를 확인하지 못했습니다. 아래는 마지막으로 공개 확인된 정보입니다. 현재 공개 여부·구성과 공급 조건은 문의해 주세요.':'최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
+ try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.get',payload:{}}),credentials:'omit',signal:AbortSignal.timeout(20000)});const j=await r.json();if(!r.ok||j.ok!==true||!j.data?.brands||!Array.isArray(j.data.products))throw Error('catalog');let live=j.data;try{if(!window.WORKNIC_BUILD){const content=await import('/content/public-content.js?v=20261121-bulk2');live=await content.enrichCatalog(live);}}catch{}render(live);}catch{$('#product').hidden=!staticPage;$('#product-status').hidden=false;$('#product-status').textContent=staticPage?'최신 상품 정보를 확인하지 못했습니다. 아래는 마지막으로 공개 확인된 정보입니다. 현재 공개 여부·구성과 공급 조건은 문의해 주세요.':'최신 상품 정보를 확인하지 못했습니다. 잠시 후 새로고침해 주세요.';}
 }
 if(window.WORKNIC_BUILD){window.WORKNIC_RENDER=render;window.WORKNIC_INIT=init;}else init();})();
 

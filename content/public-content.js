@@ -15,7 +15,7 @@ export async function getContents(codes,{fetcher=fetch,endpoint=ENDPOINT}={}){
   }
  }catch{/* Existing OS publications remain available if the static index fails. */}
  const pending=requested.filter(code=>!owned.has(code));
- for(let i=0;i<pending.length;i+=120){const batch=pending.slice(i,i+120);try{const response=await fetcher(endpoint,{method:'POST',credentials:'omit',cache:'no-store',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.content.get',payload:{codes:batch}}),signal:AbortSignal.timeout(5000)});const j=await response.json();
+ for(let i=0;i<pending.length;i+=120){const batch=pending.slice(i,i+120);try{const response=await fetcher(endpoint,{method:'POST',credentials:'omit',cache:'no-store',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'catalog.content.get',payload:{codes:batch}}),signal:AbortSignal.timeout(20000)});const j=await response.json();
   if(response.ok&&j.ok===true&&j.data?.schema===1&&j.data.items&&typeof j.data.items==='object')for(const code of batch)if(publicRecord(j.data.items[code],code))items[code]=j.data.items[code];
  }catch{/* A failed batch must not hide other verified publications. */}}
  return items;

@@ -1581,6 +1581,282 @@
         "specs": true,
         "sources": true
       }
+    },
+    "017623": {
+      "code": "017623",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017623.jpg",
+          "alt": "OLFA L5-AL 공식 제품 이미지"
+        },
+        "description": "금속 픽과 자동 잠금 장치를 갖춘 X 디자인 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "L5-AL"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "자동 잠금"
+          ],
+          [
+            "장착 날",
+            "LBB"
+          ],
+          [
+            "특징",
+            "금속 픽 내장"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/376.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586832574L5-AL_1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017614": {
+      "code": "017614",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017614.jpg",
+          "alt": "OLFA DL-1 공식 제품 이미지"
+        },
+        "description": "탈착식 칼날 수거함이 달린 자동 잠금 커터칼입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "DL-1"
+          ],
+          [
+            "날 폭",
+            "18 mm"
+          ],
+          [
+            "잠금 방식",
+            "자동 잠금"
+          ],
+          [
+            "손잡이",
+            "ABS 수지"
+          ],
+          [
+            "특징",
+            "탈착식 칼날 수거함"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/379.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586832326DL1_1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "017622": {
+      "code": "017622",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/017622.jpg",
+          "alt": "OLFA HOK-1 공식 제품 이미지"
+        },
+        "description": "끈·로프·PP 밴드 절단용 훅 형태 커터입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "HOK-1"
+          ],
+          [
+            "교체날",
+            "HOB-1"
+          ],
+          [
+            "날 재질",
+            "탄소 공구강"
+          ],
+          [
+            "날 형식",
+            "훅 타입"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/695.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/107B_HOK-1_tmb1.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "013153": {
+      "code": "013153",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/013153.jpg",
+          "alt": "OLFA CS-5 공식 제품 이미지"
+        },
+        "description": "톱날과 커터날을 함께 갖춘 양용 절단 도구입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "CS-5"
+          ],
+          [
+            "커터날 폭",
+            "12.5 mm"
+          ],
+          [
+            "커터날 두께",
+            "0.45 mm"
+          ],
+          [
+            "교체 톱날",
+            "SWB-5"
+          ],
+          [
+            "사용 방향",
+            "좌·우손 전환 가능"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/676.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1495653800217B.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
+    },
+    "013159": {
+      "code": "013159",
+      "revision": 1,
+      "record": {
+        "thumbnail": {
+          "url": "https://worknic.co.kr/assets/olfa-20261121/013159.jpg",
+          "alt": "OLFA HSW-1 공식 제품 이미지"
+        },
+        "description": "날을 수납할 수 있는 휠 잠금 방식의 교체날식 톱입니다.",
+        "specs": [
+          [
+            "브랜드",
+            "OLFA"
+          ],
+          [
+            "모델",
+            "HSW-1"
+          ],
+          [
+            "교체 톱날",
+            "HSWB-1"
+          ],
+          [
+            "잠금 방식",
+            "휠 잠금"
+          ],
+          [
+            "사용 예",
+            "목재·플라스틱"
+          ],
+          [
+            "형식",
+            "날 수납·교체형"
+          ]
+        ],
+        "sources": [
+          {
+            "label": "OLFA 공식 모델 정보",
+            "url": "https://www.olfa.co.jp/en/products/678.html"
+          },
+          {
+            "label": "OLFA 공식 제품 이미지",
+            "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1496113392HSW.jpg"
+          }
+        ],
+        "checkedOn": "2026-11-21"
+      },
+      "publicationChannel": "repository",
+      "publishedAt": "2026-11-21",
+      "checks": {
+        "identity": true,
+        "photos": true,
+        "specs": true,
+        "sources": true
+      }
     }
   }
 }
